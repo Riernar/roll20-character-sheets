@@ -45,15 +45,27 @@
         </div>
     </div>
 </div>
-<div class="sheet-tab-br"></div> 
+<div class="sheet-tab-br"></div>
+<div class="sheet-tabs">
+    <button type="action" name="act_character" class="sheet-tab" data_i18n="character">Character</button>
+    <button type="action" name="act_abilities" class="sheet-tab"  data_i18n="abilities">Abilities</button>
+    <button type="action" name="act_magicalarts" class="sheet-tab"  data_i18n="magical-arts">Magical Arts</button>
+    <button type="action" name="act_combat" class="sheet-tab"  data_i18n="combat">Combat</button>
+    <button type="action" name="act_spells" class="sheet-tab"  data_i18n="spells">Spells</button>
+</div>
+<input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab" value="character"/>
+<!--
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab1" value="1" data-i18n-title="character" title="Character" checked="checked" /><span></span>
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab2" value="2" data-i18n-title="abilities" title="Abilities" /><span></span>
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab3" value="3" data-i18n-title="magical-arts" title="Magical Arts" /><span></span>
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab4" value="4" data-i18n-title="combat" title="Combat" /><span></span>
 <input type="radio" name="attr_tab" class="sheet-tab sheet-tab5" value="5" data-i18n-title="spells" title="Spells" /><span></span>
+-->
+
 <button type="roll" class="sheet-reroll" name="roll_reroll" title="Reroll" value="&{template:reroll} {{roll= [[1d10]]}}" data-i18n="roll">Roll</button>
 <button type="roll" class="sheet-botch" name="roll_botch" title="Botch" value="&{template:botch} {{roll= ?{@{query_i18n}|1 Die,[[1d10]]|2 Dice,[[1d10]] [[1d10]]|3 Dice,[[1d10]] [[1d10]] [[1d10]]|4 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]]|5 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|6 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|7 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|8 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|9 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|10 Dice,[[1d10]] [[1d10]][[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]} }}" data-i18n="botch" >Botch</button>
 <button type="roll" class="sheet-critical" name="roll_critical" title="Critical" value="&{template:critical} {{roll=[[2*2**floor(1d10!!10 / 10)*(1d9+1)]]}}" data-i18n="critical">Critical</button>
+
 <div class="sheet-tab-br"></div> 
     <!-- 1 Details -->
 <div class="sheet-tab-content sheet-tab1">
@@ -1710,6 +1722,14 @@
 
 <!-- Sheet Worker Scripts -->
 <script type="text/worker">
+    const buttonlist = ["character", "abilities", "magicalarts", "combat", "spells"];
+    buttonlist.foreach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
 
 // Ability Experience Calculations
 

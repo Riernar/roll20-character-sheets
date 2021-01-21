@@ -92,9 +92,62 @@ div.sheet-padding {
      padding-right: 5px;
 }
 div.sheet-tab-content { 
-    display: none; 
+    display: none;
 }
 
+.sheet-tabstoggle[value="character"] ~ div.sheet-tab1,
+.sheet-tabstoggle[value="abilities"] ~ div.sheet-tab2,
+.sheet-tabstoggle[value="magicalarts"] ~ div.sheet-tab3,
+.sheet-tabstoggle[value="combat"] ~ div.sheet-tab4,
+.sheet-tabstoggle[value="spells"] ~ div.sheet-tab5 {
+    display: block;
+}
+
+.sheet-tab {
+    width: 130px;
+    height: 20px;
+    position: relative;
+    left: 6px; 
+    margin: 0px ;
+    cursor: pointer;
+    z-index: 1;
+    border-radius: 5px 5px 5px 5px;
+    
+}
+
+.sheet-tab:before {
+    content: attr(title);
+    font-family: 'Uncial Antiqua', cursive;
+    color:white;
+    text-shadow:0px 0px 0.5em black;
+
+    text-align: center;
+    display:block;
+    
+    background: #fff;
+    background-image: url('https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/metalbar.jpg');
+
+    width: 130px;
+    height: 20px;
+    font-size: 16px;
+    font-weight:700;
+    border-radius: 5px 5px 0px 0px ;
+    
+    border:1px solid black;
+    
+}
+
+.sheet-tabstoggle[value="character"] ~ button.sheet-tab[name="character"],
+.sheet-tabstoggle[value="abilities"] ~ button.sheet-tab[name="abilities"],
+.sheet-tabstoggle[value="magicalarts"] ~ button.sheet-tab[name="magicalarts"],
+.sheet-tabstoggle[value="combat"] ~ button.sheet-tab[name="combat"],
+.sheet-tabstoggle[value="spells"] ~ button.sheet-tab[name="spells"] {
+    background: #dcdcdc;
+    background-image:url(https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/metalbar_dark.jpg);
+    text-shadow:0px 0px 0.5em black,0px 0px 0.5em black;
+}
+
+/*
 input.sheet-tab1:checked ~ div.sheet-tab1,
 input.sheet-tab2:checked ~ div.sheet-tab2,
 input.sheet-tab3:checked ~ div.sheet-tab3,
@@ -152,7 +205,7 @@ input.sheet-tab:not(:first-child):before
 {
     border-left: none;
 }
-
+*/
 div.sheet-tab-content {
 	font-size: 14px;
     width: 835px;
@@ -174,6 +227,7 @@ div.sheet-top_bar {
     margin-right:auto;
     margin-left:auto;
     }
+
 /*=======================End of tabs=======================*/
 /*----------- End of Font Face -------------*/
 /*----------- Banner -------------*/
