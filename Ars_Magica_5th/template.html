@@ -45,17 +45,22 @@ $$header$$
         </div>
     </div>
 </div>
-<div class="sheet-tab-br"></div>
-<div class="sheet-tabs">
-    <button type="action" name="act_character" class="sheet-tab" data-i18n-title="character" title="Character" />
-    <button type="action" name="act_abilities" class="sheet-tab"  data-i18n-title="abilities" title="Abilities"/>
-    <button type="action" name="act_magicalarts" class="sheet-tab"  data-i18n-title="magical-arts" title="Magical Arts"/>
-    <button type="action" name="act_combat" class="sheet-tab"  data-i18n-title="combat" title="Combat"/>
-    <button type="action" name="act_spells" class="sheet-tab"  data-i18n-title="spells" title="Spells"/>
 
-    <button type="roll" class="sheet-reroll" name="roll_reroll" title="Reroll" value="&{template:reroll} {{roll= [[1d10]]}}" data-i18n="roll">Roll</button>
-    <button type="roll" class="sheet-botch" name="roll_botch" title="Botch" value="&{template:botch} {{roll= ?{@{query_i18n}|1 Die,[[1d10]]|2 Dice,[[1d10]] [[1d10]]|3 Dice,[[1d10]] [[1d10]] [[1d10]]|4 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]]|5 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|6 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|7 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|8 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|9 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|10 Dice,[[1d10]] [[1d10]][[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]} }}" data-i18n="botch" >Botch</button>
-    <button type="roll" class="sheet-critical" name="roll_critical" title="Critical" value="&{template:critical} {{roll=[[2*2**floor(1d10!!10 / 10)*(1d9+1)]]}}" data-i18n="critical">Critical</button>
+<div class="sheet-tab-br"></div>
+<div class="sheet-buttonbar">
+    <div class="sheet-navbuttons">
+        <button type="action" name="act_character" class="sheet-tabbutton" data-i18n="character" >Character</button>
+        <button type="action" name="act_abilities" class="sheet-tabbutton"  data-i18n="abilities" >Abilities</button>
+        <button type="action" name="act_magic" class="sheet-tabbutton"  data-i18n="magic" >Magic</button>
+        <button type="action" name="act_combat" class="sheet-tabbutton"  data-i18n="combat" >Combat</button>
+        <button type="action" name="act_spells" class="sheet-tabbutton"  data-i18n="spells" >Spells</button>
+        <button type="action" name="act_doc" class="sheet-tabbutton" data-i18n="doc">Doc</button>
+    </div>
+    <div class="sheet-functions">
+        <button type="roll" class="sheet-reroll" name="roll_reroll" title="Reroll" value="&{template:reroll} {{roll= [[1d10]]}}" data-i18n="roll">Roll</button>
+        <button type="roll" class="sheet-botch" name="roll_botch" title="Botch" value="&{template:botch} {{roll= ?{@{query_i18n}|1 Die,[[1d10]]|2 Dice,[[1d10]] [[1d10]]|3 Dice,[[1d10]] [[1d10]] [[1d10]]|4 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]]|5 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|6 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|7 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|8 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|9 Dice,[[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]|10 Dice,[[1d10]] [[1d10]][[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]] [[1d10]]} }}" data-i18n="botch" >Botch</button>
+        <button type="roll" class="sheet-critical" name="roll_critical" title="Critical" value="&{template:critical} {{roll=[[2*2**floor(1d10!!10 / 10)*(1d9+1)]]}}" data-i18n="critical">Critical</button>
+    </div>
 </div>
 <input type="hidden" class="sheet-tabstoggle" name="attr_sheetTab" value="character"/>
 <div class="sheet-tab-br"></div> 
@@ -1178,6 +1183,10 @@ $$header$$
     </fieldset>
 </div>
 
+<div class="sheet-tab-content sheet-tab6">
+    $$documentation$$
+</div>
+
 <!-- Roll Templates -->
 <div class="sheet-hidden">
     <!-- melee -->
@@ -1461,7 +1470,7 @@ $$translation_attrs$$
 
 <!-- Sheet Worker Scripts -->
 <script type="text/worker">
-    const buttonlist = ["character", "abilities", "magicalarts", "combat", "spells"];
+    const buttonlist = ["character", "abilities", "magica", "combat", "spells", "doc"];
     buttonlist.forEach(button => {
         on(`clicked:${button}`, function() {
             setAttrs({
