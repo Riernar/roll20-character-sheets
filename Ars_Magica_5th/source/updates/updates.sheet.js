@@ -18,16 +18,40 @@ const clearAttributesUpdates = function (attributes) {
 //    - The `update_error_rowid` hidden attribute is set to the RowID of the created alert
 //    - Forces an update of the sheet's attribute, to effectively create said alert and store the RowID
 //    - Forwards the caugh error to the caller to interrupt kScaffold update mecanism
-//  - If the `update_error_rowid` hidden attribute is set at the start of the function, it immediatly
+//  - If the `update_error_rowid` hidden attribute is set to an existing row at the start of the function, it immediately
 //    error outs, preventing kScaffold update from running to completion. This is because there is still
 //    an error on the sheet that prevents the update from working, so we cannot continue.
+const ATTR_LOCK_ROW_ID = "update_error_rowid";
+const ALERT_SECTION = "repeating_alerts--global-alerts";
+const checkUpdateLock = function({  attributes, sections }) {
+    const lock_row_id = attributes[ATTR_LOCK_ROW_ID];
+    if (lock_row_id) {
+        const row_ids = sections[ALERT_SECTION];
+        if (! row_ids.includes(lock_row_id)) {
+            console.log(`The alert '${lock_row_id}' locking the update system was not found in the alert section, removing the lock`);
+            attributes[ATTR_LOCK_ROW_ID] = "";
+        } else {
+            k.debug(`The update system is locked by alert row ${lock_row_id}, exiting update stack...`);
+            throw new Error(`Interrupted updates: previous error at row ${lock_row_id} is locking updates`);
+        }
+    }
+};
+const getUpdateErrorAlertText = function({func, error}) {
+    return `An update of the sheet failed. Please contact the sheet developpers for help (see the Help menu). Please provide the full stacktrace below when reporting errors.
+
+The update system has been locked so that you can fix the problem. Closing this alert will unlock the update system and trigger a new update attempt the next time the sheet is opened.
+
+Stacktrace for function '${func.name || '<anonymous>'}'
+──────────
+${error.stack}
+${error}
+`
+};
+
 const wrapUpdateFunction = function (func) {
     const wrapper = function ({ trigger, attributes, sections, casc }) {
         // If the update system is currently on hold due to an error, exit early
-        if (attributes["update_error_rowid"]) {
-            k.debug(`The update system is locked by alert row ${attributes["update_error_rowid"]}, exiting update stack...`);
-            throw new Error(`Interrupted updates: previous error at row ${attributes["update_error_rowid"]} is locking updates`);
-        }
+        checkUpdateLock({attributes, sections})
         // Try to execute the wrapped function
         try {
             func({ trigger, attributes, sections, casc });
@@ -36,15 +60,7 @@ const wrapUpdateFunction = function (func) {
             // First, cancel pending updates: update function may have scheduled partial updates
             clearAttributesUpdates(attributes);
             // Then, generate a new alert for the user
-            const text = `An update of the sheet failed. Please contact the sheet developpers for help (see the Help menu). Please provide the full stacktrace below when reporting errors.
-
-The update system has been locked so that you can fix the problem. Closing this alert will unlock the update system and trigger a new update attempt the next time the sheet is opened.
-
-Stacktrace for function '${func.name || '<anonymous>'}'
-──────────
-${error.stack}
-${error}
-`;
+            const text = getUpdateErrorAlertText({func, error});
             const row_name = kCreateAlert({
                 name: "global-alerts",
                 title: "!! Update error !! Your sheet is likely broken, please read on",
@@ -55,7 +71,7 @@ ${error}
             });
             // Register the error to lock the update system
             const [section, rowID, attrName] = k.parseRepeatName(row_name);
-            attributes["update_error_rowid"] = rowID;
+            attributes[ATTR_LOCK_ROW_ID] = rowID;
             // Forcefully update the attributes of the sheet, because we'll throw an Error so kScaffold won't do it
             attributes.set({ attributes });
             k.debug(`Locked update execution on alert row ${rowID}`);

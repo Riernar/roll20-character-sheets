@@ -1,5 +1,52 @@
-const helpers = {
-};
+const helpers = (() => {
+  class KeyError extends Error {
+    constructor(obj, key) {
+      let description;
+
+      try {
+        description = JSON.stringify(obj, null, 2);
+      } catch {
+        description = String(obj);
+      }
+      if (description === undefined) {
+        description = String(obj);
+      }
+
+      super(`Key '${key}' not found on ${typeof obj} object ${description}`);
+      this.name = "KeyError";
+      this.obj = obj;
+      this.key = key;
+    }
+  }
+
+  const get = (obj, key) => {
+    if (obj == null || obj[key] == null) {
+      throw new KeyError(obj, key);
+    }
+
+    return obj[key];
+  };
+
+  const as_number = (value) => {
+    if (value == null || (typeof value === "string" && value.trim() === "")) {
+      throw new TypeError(`Cannot convert '${value}' to a number`);
+    }
+
+    const result = Number(value);
+
+    if (Number.isNaN(result)) {
+      throw new TypeError(`Cannot convert '${value}' to a number`);
+    }
+
+    return result;
+  };
+
+  return {
+    KeyError,
+    get,
+    as_number,
+  };
+})();
 
 /**
  * The function to create a new alert in an `+alert` mixin. Retruns the RowID (including the repeating secgion namt) of the created alert.
@@ -12,17 +59,17 @@ const helpers = {
  * @param {level} string - The level of the alert. One of "info", "warning", "error", "success". Changes the default styling of the alert.
  */
 const kCreateAlert = function ({ name, title, text, attributes, sections, level = "info" }) {
-    if (["info", "warning", "error", "success"].indexOf(level) === -1) {
-        throw new Error(`Invalid alert level "${level}"`);
-    }
-    // Warning: the name isn't sanitized like it is in the PUG, might create discrepancies
-    const section = `repeating_alerts--${name}`;
-    // Contrary to doc, k.generateRowID also includes the section name in the returned value
-    const rowID = k.generateRowID(section, sections);
-    attributes[`${rowID}_level`] = level;
-    attributes[`${rowID}_title`] = title;
-    attributes[`${rowID}_text`] = text;
-    return rowID;
+  if (["info", "warning", "error", "success"].indexOf(level) === -1) {
+    throw new Error(`Invalid alert level "${level}"`);
+  }
+  // Warning: the name isn't sanitized like it is in the PUG, might create discrepancies
+  const section = `repeating_alerts--${name}`;
+  // Contrary to doc, k.generateRowID also includes the section name in the returned value
+  const rowID = k.generateRowID(section, sections);
+  attributes[`${rowID}_level`] = level;
+  attributes[`${rowID}_title`] = title;
+  attributes[`${rowID}_text`] = text;
+  return rowID;
 };
 
 /**
@@ -33,8 +80,8 @@ const kCreateAlert = function ({ name, title, text, attributes, sections, level 
  * @param {Object} sections - The `sections` object given by k-Scaffold that contains the sections of the sheet
  */
 const kDeleteAlert = function ({ trigger, attributes, sections }) {
-    const [section, rowID, _] = k.parseTriggerName(trigger.name);
-    k.removeRepeatingRow(`${section}_${rowID}`, attributes, sections);
+  const [section, rowID, _] = k.parseTriggerName(trigger.name);
+  k.removeRepeatingRow(`${section}_${rowID}`, attributes, sections);
 };
 
-k.registerFuncs({ "kDeleteAlert": kDeleteAlert });
+k.registerFuncs({ kDeleteAlert: kDeleteAlert });

@@ -32,7 +32,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center">
                             <input type="text" class="number_3 minor" name="attr_Creo_Puissant" value="0">
@@ -58,7 +58,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center">
                             <input type="text" class="number_3 minor" name="attr_Intellego_Puissant" value="0">
@@ -84,7 +84,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center">
                             <input type="text" class="number_3 minor" name="attr_Muto_Puissant" value="0">
@@ -110,7 +110,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center">
                             <input type="text" class="number_3 minor" name="attr_Perdo_Puissant" value="0">
@@ -136,7 +136,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center">
                             <input type="text" class="number_3 minor" name="attr_Rego_Puissant" value="0">
@@ -173,7 +173,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Animal_Puissant" value="0"></td>
                     </tr>
@@ -197,7 +197,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Aquam_Puissant" value="0"></td>
                     </tr>
@@ -221,7 +221,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Auram_Puissant" value="0"></td>
                     </tr>
@@ -245,7 +245,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Corpus_Puissant" value="0"></td>
                     </tr>
@@ -269,7 +269,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Herbam_Puissant" value="0"></td>
                     </tr>
@@ -304,7 +304,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Ignem_Puissant" value="0"></td>
                     </tr>
@@ -328,7 +328,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Imaginem_Puissant" value="0"></td>
                     </tr>
@@ -352,7 +352,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Mentem_Puissant" value="0"></td>
                     </tr>
@@ -376,7 +376,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Terram_Puissant" value="0"></td>
                     </tr>
@@ -400,7 +400,7 @@
                                     </span>)
                                 </span>
                             </span>
-                    
+
                         </td>
                         <td style="text-align: center"><input type="text" class="number_3 minor" name="attr_Vim_Puissant" value="0"></td>
                     </tr>
@@ -427,13 +427,56 @@
                 <th data-i18n="philos-" >Philos.</th>
             </tr>
             <!-- Fatiguing Spontaneous -->
+            -
+                const cast_spont_fatiguing_total = new RollTotal({
+                    score: {
+                        "@{Spontaneous1_Technique}": null,
+                        "@{Spontaneous1_Form}": null,
+                        "[[@{Spontaneous1_Focus}]]": "focus_i18n",
+                        "@{gestures}": null,
+                        "@{words}": null,
+                        "@{Stamina_Score}":  "stamina_i18n",
+                        "@{aura}": "aura_i18n",
+                    },
+                    divider: {
+                        "2": null,
+                        "[[1 + (@{Spontaneous1_Deficiency})]]": "deficiency_i18n",
+                    }
+                });
+                const cast_spont_fatiguing_roll = new Roll({
+                    template:"arcane",
+                    label:"^{spontaneous} ^{casting}",
+                    total: cast_spont_fatiguing_total,
+                    fields:{
+                        "label1": "^{aura}",
+                        "result1": "@{aura}",
+                        "label2": "^{weakness-m}",
+                        "result2": inline_roll(cast_spont_fatiguing_total.get_penalties()),
+                        "label3": "^{circumstances-m}",
+                        "result3": inline_roll(cast_spont_fatiguing_total.get_modifiers()),
+                        "botch-button": "[@{botch_i18n}!](~@{character_name}|botch)",
+                        "crit-button": "[@{critical_i18n}!](~@{character_name}|critical-spontaneous)",
+                    },
+                });
             <tr>
                 <td data-i18n="fatiguing" >Fatiguing</td>
                 <td><div class="flex-container-center">
                     <!-- <button style="margin: 0px auto;" type="roll" class="button simple-roll" name="roll_Spontaneous1_simple" value="$spontaneous_roll_simple$"></button> -->
-                    <button style="margin: 0px auto;" type="roll" class="button stress-roll single-roll" name="roll_Spontaneous1_stress" value="&{template:arcane} {{label0=^{spontaneous} ^{casting}}} {{result0=[[ (@{stress-die} + @{Spontaneous1_Technique} + @{Spontaneous1_Form} + ([[@{Spontaneous1_Focus}]]) [@{focus_i18n}] + (@{gestures}) + (@{words}) + (@{Stamina_Score}) [@{stamina_i18n}] + (@{aura}) [@{aura_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ) / ([[1 + (@{Spontaneous1_Deficiency})]] [@{deficiency_i18n}]) /2]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{wound_total}) [@{wounds_i18n}] + [[floor(@{fatigue})]] [@{fatigue_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ ?{@{modifiers_i18n}|0} ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=1}}"></button>
+                    //- button(
+                    //-     style="margin: 0px auto;"
+                    //-     type="roll"
+                    //-     class="button stress-roll single-roll"
+                    //-     name="roll_Spontaneous1_stress"
+                    //-     value!=cast_spont_fatiguing_roll.get_stress_roll(),
+                    //- )
+                    +am5_roll_button({name: "Spontaneous1", roll: cast_spont_fatiguing_roll, mode: "stress"})
                 </div></td>
-                <td><input type="number" class="number_2" name="attr_Spontaneous1" value="((@{Spontaneous1_Technique} + @{Spontaneous1_Form} + (@{Spontaneous1_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura})/2) / (1 + (@{Spontaneous1_Deficiency}))" disabled="true"></td>
+                <td>
+                    input(
+                        type="number" disabled="true" class="number_2" name="attr_Spontaneous1"
+                        value!=cast_spont_fatiguing_total.get_no_dice_roll({annotations:false})
+                    )
+                </td>
                 <td>
                     <select class="select_1" name="attr_Spontaneous1_Technique">
                         <option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique" >Technique</option>
@@ -784,7 +827,7 @@
                                 </div>
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <td><div style="width:50px;"><input type="number" class="number_2" name="attr_Lab_Int" value="(@{Intelligence_Score})" disabled="true"></div></td>
                             <td><div style="width:50px;"><input type="number" class="number_2" name="attr_Lab_Theory" value="0" ></div></td>

@@ -382,118 +382,8 @@
         }
 
         /*=======================End of tabs=======================*/
-        /* Die Selection */
-        button.die-toggle-simple,
-        button.die-toggle-stress {
-            display: none;
-            /* hidden by default */
-            font-family: 'Uncial Antiqua', cursive;
-            color: white;
-            text-shadow: 0px 0px 0.5em black;
-            text-align: center;
 
-            padding: 1px 4px 2px;
-            height: 20px;
-            font-size: 16px;
-            line-height: 18px;
-            font-weight: 700;
-            border-radius: 8px 8px 2px 2px;
-            margin: 0px;
-            border: 2px solid black;
-        }
-
-        button.die-toggle-simple {
-            background: #555555;
-            background: -moz-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-            background: -webkit-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-            background: -ms-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-            background: -o-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-            background: linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-            background: linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-        }
-
-        button.die-toggle-stress {
-            background: #33bbbb;
-            background: -moz-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-            background: -webkit-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-            background: -ms-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-            background: -o-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-            background: linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-        }
-
-        /* Only display the toggles button when the settings is on toggle, and only display the correct one */
-        input.dtype-selector[value="toggle"]+input.selected-die[value="simple"]~div button.die-toggle-simple {
-            display: inline-block;
-        }
-
-        input.dtype-selector[value="toggle"]+input.selected-die[value="stress"]~div button.die-toggle-stress {
-            display: inline-block;
-        }
-
-        /* Change which roll button to display based on the setting and the toggle */
-        button.simple-roll,
-        button.stress-roll {
-            display: none;
-        }
-
-        input.dtype-selector[value="both"]~div.sheet-tab-content button.simple-roll,
-        input.dtype-selector[value="both"]~div.sheet-tab-content button.stress-roll,
-        input.dtype-selector[value="toggle"]~input.selected-die[value="simple"]~div.sheet-tab-content button.simple-roll,
-        input.dtype-selector[value="toggle"]~input.selected-die[value="stress"]~div.sheet-tab-content button.stress-roll,
-        /* special class for rolls that always have the same type and should always be displayed */
-        button.single-roll {
-            display: block;
-        }
-
-        /* End Die Selection */
-
-        /* Configuration */
-        .config {
-            display: grid;
-            grid-template-columns: 16% 16% 16% 16% 16% 16%;
-            margin-top: 15px;
-            margin-bottom: 15px;
-            font-family: 'Macondo', cursive;
-            color: #663333;
-            font-size: 1.3em;
-            align-items: end;
-        }
-
-        .config>select {
-            align-self: start;
-        }
-
-        .documentation p,
-        .documentation li {
-            font-family: 'Macondo';
-            color: #663333;
-            font-size: 14px;
-        }
-
-        .documentation li li {
-            font-size: 1em;
-        }
-
-        .documentation h1,
-        .documentation h2,
-        .documentation h3,
-        .documentation h4,
-        .documentation h5,
-        .docmentation h6 {
-            margin-bottom: 5px;
-            margin-top: 15px;
-        }
-
-        .codespan {
-            font-family: 'Delius';
-            padding-left: 2px;
-            border-radius: 4px;
-            background-color: rgba(0, 0, 0, 0.05)
-        }
-
-
-
-        /* End configuration */
+        
 
 
         /*----------- End of Font Face -------------*/
@@ -1175,36 +1065,20 @@
 
         /*----------- Radio -------------*/
 
-        /* Hide actual radio */
         input.selector[type="radio"],
         input.radio_2[type="radio"],
         input.radio_1[type="radio"] {
-            opacity: 0;
-            width: 16px;
-            height: 16px;
-            position: relative;
-            top: 0px;
-            left: 8px;
-            margin: 0px;
+            appearance: none;
+            //display: inline-block;
+            outline: none;
+            width: 14px;
+            height: 14px;
+            margin: 0 4px 0 0;
+            padding: 0;
             cursor: pointer;
-            z-index: 1;
-        }
-
-        /* Fake radio */
-        input.selector[type="radio"]+span::before,
-        input.radio_2[type="radio"]+span::before,
-        input.radio_1[type="radio"]+span::before {
-            margin-right: 4px;
             border: solid 1px #a8a8a8;
-            line-height: 14px;
-            text-align: center;
-            display: inline-block;
+            border-radius: 3px;
             vertical-align: middle;
-            position: relative;
-            top: 0px;
-            left: 0px;
-            margin: -8px;
-
             -moz-box-shadow: 0 0 2px #ccc;
             -webkit-box-shadow: 0 0 2px #ccc;
             box-shadow: 0 0 2px #ccc;
@@ -1217,39 +1091,13 @@
             background: radial-gradient(#f6f6f6, #dfdfdf);
         }
 
-        input.selector[type="radio"]+span::before,
-        input.radio_1[type="radio"]+span::before {
-            position: relative;
-            top: 0px;
-            left: -8px;
-            margin: 0px;
-        }
-
-        input.radio_2[type="radio"]+span::before {
-            position: relative;
-            top: 0px;
-            left: 0px;
-            margin: -10px;
-        }
-
-        /* Fake radio */
-        input.selector[type="radio"]+span::before,
-        input.radio_2[type="radio"]+span::before,
-        input.radio_1[type="radio"]+span::before {
-            content: "";
-            width: 14px;
-            height: 14px;
-            font-size: 12px;
-
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
-        }
-
-        input.selector[type="radio"]:checked+span::before,
-        input.radio_2[type="radio"]:checked+span::before,
-        input.radio_1[type="radio"]:checked+span::before {
-            content: "x";
+        input.selector[type="radio"]:checked,
+        input.radio_2[type="radio"]:checked,
+        input.radio_1[type="radio"]:checked {
+            background:
+                linear-gradient(45deg, transparent 40%, #555 40%, #555 60%, transparent 60%),
+                linear-gradient(-45deg, transparent 40%, #555 40%, #555 60%, transparent 60%),
+                radial-gradient(#f6f6f6, #dfdfdf);
         }
 
         /* -----Based on the selector radio, hides options -------*/
@@ -1261,81 +1109,6 @@
         .input.selector[type="radio"][value="free"]:checked~div.options {
             font-family: "Gopperplate Gothic Light";
             font-size: 1em;
-        }
-
-        /*  =====       ======  ======  =====       ======  */
-        /* Hide actual radio */
-        input.puissant[type="radio"] {
-            opacity: 0;
-            width: 20px;
-            height: 16px;
-            position: relative;
-            top: 0px;
-            left: 8px;
-            margin: 0px;
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        /* Fake radio */
-        input.puissant[type="radio"]+span::before {
-            margin-right: 4px;
-            border: solid 1px #a8a8a8;
-            line-height: 14px;
-            text-align: center;
-            display: inline-block;
-            vertical-align: middle;
-            position: relative;
-            top: 0px;
-            left: 0px;
-            margin: -10px;
-
-            -moz-box-shadow: 0 0 2px #ccc;
-            -webkit-box-shadow: 0 0 2px #ccc;
-            box-shadow: 0 0 2px #ccc;
-
-            background: #f6f6f6;
-            background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
-            background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
-            background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
-            background: -o-radial-gradient(#f6f6f6, #dfdfdf);
-            background: radial-gradient(#f6f6f6, #dfdfdf);
-        }
-
-        input.puissant[type="radio"]+span::before {
-            position: relative;
-            top: 0px;
-            left: -8px;
-            margin: 0px;
-        }
-
-        input.puissant[type="radio"]+span::before {
-            position: relative;
-            top: 0px;
-            left: 0px;
-            margin: -10px;
-        }
-
-        /* Fake radio */
-        input.puissant[type="radio"]+span::before {
-            content: "";
-            width: 20px;
-            height: 14px;
-            font-size: 12px;
-
-            -moz-border-radius: 3px;
-            -webkit-border-radius: 3px;
-            border-radius: 3px;
-        }
-
-        input.puissant.red[type="radio"]:checked+span::before {
-            content: "No";
-            color: red;
-        }
-
-        input.puissant.green[type="radio"]:checked+span::before {
-            content: "Yes";
-            color: green;
         }
 
         /*----------- End of Checkbox -------------*/
@@ -1482,51 +1255,6 @@
 
         /*----------- End of Buttons -------------*/
 
-        /*----------- Fatigue Levels -------------*/
-
-        /*
-        The replacement key is in a comment to preserve CSS syntax in the doc
-        The replacement contains will end handle de-commenting itself
-        */
-        :not(.fatigue-proxy[value="1"]):not(.fatigue-proxy[value="2"]):not(.fatigue-proxy[value="3"]):not(.fatigue-proxy[value="4"]):not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"])+table tr.addfatigue-1 {
-            display: none;
-        }
-
-        :not(.fatigue-proxy[value="2"]):not(.fatigue-proxy[value="3"]):not(.fatigue-proxy[value="4"]):not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"])+table tr.addfatigue-2 {
-            display: none;
-        }
-
-        :not(.fatigue-proxy[value="3"]):not(.fatigue-proxy[value="4"]):not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"])+table tr.addfatigue-3 {
-            display: none;
-        }
-
-        :not(.fatigue-proxy[value="4"]):not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"])+table tr.addfatigue-4 {
-            display: none;
-        }
-
-        :not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"])+table tr.addfatigue-5 {
-            display: none;
-        }
-
-        :not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"])+table tr.addfatigue-6 {
-            display: none;
-        }
-
-        :not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"])+table tr.addfatigue-7 {
-            display: none;
-        }
-
-        :not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"])+table tr.addfatigue-8 {
-            display: none;
-        }
-
-        :not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"])+table tr.addfatigue-9 {
-            display: none;
-        }
-
-        :not(.fatigue-proxy[value="10"])+table tr.addfatigue-10 {
-            display: none;
-        }
     }
 }
 
