@@ -1,10 +1,10 @@
-﻿@use '_themes';
-@use 'k-scaffold' as k;
+﻿@use 'k-scaffold' as k;
+@use 'googleFont';
 @use 'legacy/_legacy.scss';
 @use 'helpers/_helpers.scss';
 @use 'elements/_elements.scss';
 @use 'header/_header.scss';
-
+@use 'sfc';
 
 
 
@@ -14,20 +14,36 @@
 @use 'tabs/tabs.scss';
 */
 
-
-
-
-
-
-.ui-dialog .charsheet .kscaffold-compatible {
-    @include k.defaultStyles;
-}
-
-
 .ui-dialog .tab-content .charsheet {
+
+    @include sfc.sheet;
+    @include k.variables;
+
+    --kmodal-width: min(var(--kmodal-max-width), max-content);
+
+    --topHeadFont:"Uncial Antiqua", cursive;
+    --midHeadFont:"Uncial Antiqua", cursive;
+    --baseFontSize: 14px;
+    --size1:200%;
+    --size2:180%;
+    --size3:160%;
+    --size4:140%;
+    --size5:120%;
+    --size6:100%;
+    --size7:87.5%;
+
+    label {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .kscaffold-compatible {
+        @include k.defaultStyles;
+    }
 
     .global-alerts {
         background: white;
         border-radius: 5px;
     }
+
 }

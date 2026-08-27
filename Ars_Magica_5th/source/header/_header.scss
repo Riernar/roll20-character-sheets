@@ -1,4 +1,4 @@
-.ui-dialog .tab-content .charsheet {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible {
     .header {
         justify-content: flex-end;
 
@@ -25,6 +25,57 @@
                 }
             }
         }
+    }
 
+    /* Configuration */
+    .config {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(5ch, max-content) minmax(5ch, max-content));
+        gap: 1ch 2ch; /* row-gap and column-gap */
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-family: 'Macondo', cursive;
+        color: #663333;
+        font-size: 1.3em;
+        align-items: end;
+
+        &>select, &>span {
+            align-self: start;
+        }
+        &>select {
+            border: 1px solid rgb(83, 51, 42);
+            border-radius: 0.25rem;
+        }
+    }
+
+    .documentation, .welcome, .markdown {
+        font-size: 14px;
+    }
+
+    .documentation p,
+    .documentation li {
+        font-family: 'Macondo';
+        color: #663333;
+    }
+
+    .documentation li li {
+        font-size: 1em;
+    }
+
+    .documentation h1,
+    .documentation h2,
+    .documentation h3,
+    .documentation h4,
+    .documentation h5,
+    .docmentation h6 {
+        margin-bottom: 5px;
+        margin-top: 15px;
+    }
+
+    .codespan {
+        font-family: 'Delius';
+        padding-left: 2px;
+        border-radius: 4px;
+        background-color: rgba(0, 0, 0, 0.05)
     }
 }

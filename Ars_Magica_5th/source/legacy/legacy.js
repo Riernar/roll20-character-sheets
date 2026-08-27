@@ -59,15 +59,6 @@ on("change:repeating_labspecializations:labbonus remove:repeating_labspecializat
     });
 });
 
-//Wounds
-on("change:Wounds_Light1 change:Wounds_Light2 change:Wounds_Light3 change:Wounds_Light4 change:Wounds_Light5 change:Wounds_Medium1 change:Wounds_Medium2 change:Wounds_Medium3 change:Wounds_Medium4 change:Wounds_Medium5 change:Wounds_Heavy1 change:Wounds_Heavy2 change:Wounds_Heavy3 change:Wounds_Heavy4 change:Wounds_Heavy5 change:Wounds_Incapacitated change:Wounds_Dead sheet:opened", function() {
-    getAttrs(["Wounds_Light1", "Wounds_Light2", "Wounds_Light3", "Wounds_Light4", "Wounds_Light5", "Wounds_Medium1", "Wounds_Medium2", "Wounds_Medium3", "Wounds_Medium4", "Wounds_Medium5", "Wounds_Heavy1", "Wounds_Heavy2", "Wounds_Heavy3", "Wounds_Heavy4", "Wounds_Heavy5", "Wounds_Incapacitated", "Wounds_Dead"], function(values) {
-        setAttrs({
-            wound_total: (+values.Wounds_Light1 + +values.Wounds_Light2 + +values.Wounds_Light3 + +values.Wounds_Light4 + +values.Wounds_Light5 + +values.Wounds_Medium1 + +values.Wounds_Medium2 + +values.Wounds_Medium3 + +values.Wounds_Medium4 + +values.Wounds_Medium5 + +values.Wounds_Heavy1 + +values.Wounds_Heavy2 + +values.Wounds_Heavy3 + +values.Wounds_Heavy4 + +values.Wounds_Heavy5 + +values.Wounds_Incapacitated + +values.Wounds_Dead)
-        });
-    });
-});
-
 // Function to create a sheet-worker that updates totals computed from repeating sections
 // The sections must follow some naming conventions, see code
 
@@ -139,37 +130,8 @@ function register_repeated_section_totals(section, properties) {
     });
 }
 
-register_repeated_section_totals("armors", ["prot", "load"]);
+//register_repeated_section_totals("armors", ["prot", "load"]);
 register_repeated_section_totals("combat-mods", ["init", "atk", "dfn", "dam", "soak"]);
-
-// Weapon update has been ported to kScaffold, this isn't needed anymore
-// Fix weapon attributes
-// on("sheet:opened", function() {
-//     const fixes = {
-//         "_Wounds_Load": "_Weapon_Load",
-//         "_Wounds_Range": "_Weapon_Range",
-//     };
-//     const keys = Object.keys(fixes);
-//     getSectionIDs("repeating_weapons", function(id_array) {
-//         var attr_names = [];
-//         id_array.forEach( (id_) => (keys.forEach((key) => attr_names.push("repeating_weapons_" + id_ + key))));
-
-//         getAttrs(attr_names, function(attrs) {
-//             var value = 0;
-//             var updates = {};
-//             id_array.forEach( (id_) => (keys.forEach(function(key) {
-//                 if (attrs["repeating_weapons_" + id_ + key]) {
-//                     console.log(attrs["repeating_weapons_" + id_ + key]);
-//                     console.log("Fixing " + "repeating_weapons_" + id_ + key + " to " + "repeating_weapons_" + id_ + fixes[key]);
-//                     updates["repeating_weapons_" + id_ + fixes[key]] = parseInt(attrs["repeating_weapons_" + id_ + key]) || 0;
-//                     updates["repeating_weapons_" + id_ + key] = "";
-//                 }
-//             })));
-//             console.log("All fixes :" + JSON.stringify(updates, null, 1));
-//             setAttrs(updates);
-//         });
-//     });
-// });
 
 // Duplicate the global bonuses inside the weapons repeating section for display
 // From https://app.roll20.net/forum/post/10297616/how-do-i-reference-a-global-attribute-in-a-span-in-a-repeating-section
@@ -216,6 +178,7 @@ on("sheet:opened", function(eventInfo){
         "encumbrance_i18n": getTranslationByKey("encumbrance"),
         "exaggerated_i18n": getTranslationByKey("gestures-exaggerated"),
         "fatigue_i18n": getTranslationByKey("fatigue-m"),
+        "ignored_i18n":getTranslationByKey("ignored"),
         "firm_i18n": getTranslationByKey("words-firm"),
         "focus_i18n": getTranslationByKey("focus"),
         "form_i18n": getTranslationByKey("form"),

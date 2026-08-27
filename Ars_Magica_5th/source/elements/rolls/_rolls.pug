@@ -1,0 +1,634 @@
+-
+
+    const inline_roll = (roll) => `[[ ${roll} ]]`;
+
+    class RollTotal {
+        constructor({
+            score,
+            penalty = {
+                "@{fatigue_penalty}": "fatigue_i18n",
+                "@{wound_penalty}": "wounds_i18n",
+            },
+            modifier = true,
+            divider = null,
+            total_bonuses = null,
+            fatigue = true,
+            wounds = true,
+        }) {
+            this.#validateParts(score, "score");
+            this.#validateParts(penalty, "penalty");
+
+            if (divider !== null) {
+                this.#validateParts(divider, "divider");
+            }
+            if (total_bonuses !== null) {
+                if (divider == null) { // Comparison with == is intentional, it catches undefined
+                    throw new ValueError("roll cannot have total_bonuses without divider");
+                }
+                this.#validateParts(total_bonuses, "total_bonuses");
+            }
+
+            if (typeof fatigue !== "boolean") {
+                throw new TypeError("fatigue must be a boolean");
+            }
+
+            if (typeof wounds !== "boolean") {
+                throw new TypeError("wounds must be a boolean");
+            }
+
+            if (typeof modifier !== "boolean") {
+                throw new TypeError("modifier must be a boolean");
+            }
+
+            this.score = { ...score };
+            this.penalty = { ...penalty };
+            this.modifier = modifier ? {"?{@{modifiers_i18n}|0}": "modifiers_i18n"} : null;
+            this.divider = divider ? { ...divider } : null;
+            this.total_bonuses = total_bonuses ? {...total_bonuses} : null;
+
+
+            if (!fatigue) {
+                delete this.penalty["@{fatigue_penalty}"];
+            }
+
+            if (!wounds) {
+                delete this.penalty["@{wound_penalty}"];
+            }
+        }
+
+        get_modifiers({annotations=true}={}) {
+            return this.#sum({parts: this.modifier, annotations});
+        }
+
+        get_penalties({annotations=true}={}) {
+            return this.#sum({parts: this.penalty, annotations});
+        }
+
+        has_divider() {
+            return this.divider !== null;
+        }
+
+        get_divider({annotations=true}={}) {
+            return this.#prod({parts: this.divider, annotations});
+        }
+
+        get_score({annotations=true}={}) {
+            return this.#sum({parts: {
+                ...this.score,
+                ...this.penalty,
+            }, annotations});
+        }
+
+        get_simple_roll() {
+            return this.#get_roll("@{simple-die}");
+        }
+
+        get_stress_roll() {
+            return this.#get_roll("@{stress-die}");
+        }
+
+        get_no_dice_roll({annotations=true}={}) {
+            return this.#get_roll("0", annotations);
+        }
+
+        #get_roll(die, annotations=true) {
+            const score = this.get_score({annotations});
+            const modifier = this.get_modifiers({annotations});
+            let result = `${die} + ${score} + ${modifier}`;
+
+            if (this.has_divider()) {
+                const divider = this.get_divider({annotations});
+                result = `(${result}) / (${divider})`;
+                if (this.total_bonuses !== null) {
+                    const total_bonus = this.#sum({parts: this.total_bonuses, annotations});
+                    result = `${result} + ${total_bonus}`;
+                }
+            }
+            return `(${result})`;
+        }
+
+        #sum({parts, annotations}) {
+            return this.#agg({parts, op:"+", annotations})
+        }
+
+        #prod({parts, annotations}) {
+            return this.#agg({parts, op:"*", annotations})
+        }
+
+        #agg({parts, op, annotations}) {
+            if (parts === null) {
+                throw new Error("Cannot agg null parts");
+            }
+            return Object.entries(parts)
+                .map(([value, annotation]) =>
+                    annotation && annotations
+                        ? `(${value}) [@{${annotation}}]`
+                        : `(${value})`
+                )
+                .join(` ${op} `);
+        }
+
+        #validateParts(parts, name) {
+            if (
+                parts === null ||
+                typeof parts !== "object" ||
+                Array.isArray(parts)
+            ) {
+                throw new TypeError(`${name} must be an object`);
+            }
+
+            for (const [key, value] of Object.entries(parts)) {
+                // Object keys are always strings in JavaScript, so there
+                // is no need to validate `key`.
+                if (value !== null && typeof value !== "string") {
+                    throw new TypeError(
+                        `${name}["${key}"] must be a string or null`
+                    );
+                }
+            }
+        }
+    }
+
+    class Roll {
+        constructor({
+            template,
+            label,
+            label_key = "label0",
+            total,
+            total_key = "result0",
+            fields = {},
+        }) {
+            if (typeof template !== "string") {
+                throw new TypeError("template must be a string");
+            }
+
+            if (typeof label !== "string") {
+                throw new TypeError("label must be a string");
+            }
+
+            if (typeof label_key !== "string") {
+                throw new TypeError("label_key must be a string");
+            }
+
+            if (!(total instanceof RollTotal)) {
+                throw new TypeError("total must be a RollTotal");
+            }
+
+            if (typeof total_key !== "string") {
+                throw new TypeError("total_key must be a string");
+            }
+
+            this.#validateFields(fields);
+
+            this.template = template;
+            this.label = label;
+            this.label_key = label_key;
+            this.total = total;
+            this.total_key = total_key;
+            this.fields = { ...fields };
+        }
+
+        get_simple_roll() {
+            return this.#build_roll(
+                this.total.get_simple_roll(),
+                "stress=",
+            );
+        }
+
+        get_stress_roll() {
+            return this.#build_roll(
+                this.total.get_stress_roll(),
+                "stress=1",
+            );
+        }
+
+        #build_roll(roll, stress) {
+            const fields = {
+                [this.label_key]: this.label,
+                [this.total_key]: inline_roll(roll),
+                ...this.fields,
+            };
+
+            const template = `&{template:${this.template}}`;
+
+            const body = Object.entries(fields)
+                .map(([key, value]) => `{{${key}=${value}}}`)
+                .join(" ");
+
+            return `${template} ${body} {{${stress}}}`;
+        }
+
+        #validateFields(fields) {
+            if (
+                fields === null ||
+                typeof fields !== "object" ||
+                Array.isArray(fields)
+            ) {
+                throw new TypeError("fields must be an object");
+            }
+
+            for (const [key, value] of Object.entries(fields)) {
+                if (typeof value !== "string") {
+                    throw new TypeError(
+                        `fields["${key}"] must be a string`
+                    );
+                }
+            }
+        }
+    }
+
+
+mixin am5_roll_button({name, roll, mode="simple+stress"})
+    -
+        if (typeof name !== "string") {
+            throw new TypeError(`name must be a string, got ${typeof name} ${name}`);
+        }
+
+        if (!(roll instanceof Roll)) {
+            throw new TypeError(`roll must be a Roll, got ${typeof roll} ${roll}`);
+        }
+
+        if (typeof mode !== "string") {
+            throw new TypeError(`mode must be a string, got ${typeof mode} ${mode}`);
+        }
+
+        const valid_modes = [
+            "simple",
+            "stress",
+            "simple+stress",
+            "no-dice",
+        ];
+
+        if (!valid_modes.includes(mode)) {
+            throw new TypeError(
+                `mode must be one of: ${valid_modes.join(", ")}, got ${mode}`
+            );
+        }
+
+        const total = roll.total;
+        const score = total.get_score({annotations: false});
+        const divider = total.get_divider({annotations: false});
+        const has_divider = total.has_divider({annotations: false});
+
+        const single_roll = mode !== "simple+stress";
+
+        const get_button_data = (die, die_class, value) => ({
+            name: `${name}_${die}`,
+            score_name: `${name}_${die}_score`,
+            divider_name: `${name}_${die}_divider`,
+            die_class,
+            value,
+        });
+
+    div.die-container&attributes(attributes)
+        if mode === "simple" || mode === "simple+stress"
+            -
+                const button_data = get_button_data(
+                    "simple",
+                    "simple-die",
+                    roll.get_simple_roll()
+                );
+
+            button.roll-button.simple-roll(
+                class={ "single-roll": single_roll }
+                type="roll"
+                name=`roll_${button_data.name}`
+                value!=button_data.value
+            )
+                span.roll-formula
+                    if has_divider
+                        span.formula-paren (
+                    span.die(class=button_data.die_class)
+                    span.formula-operator +
+                    input.roll-value(
+                        type="number"
+                        disabled="true"
+                        name=`attr_${button_data.score_name}`
+                        value!=score
+                    )
+                    if has_divider
+                        span.formula-paren )
+                        span.formula-operator /
+                        input.roll-value(
+                            type="number"
+                            disabled="true"
+                            name=`attr_${button_data.divider_name}`
+                            value!=divider
+                        )
+
+        if mode === "stress" || mode === "simple+stress"
+            -
+                const button_data = get_button_data(
+                    "stress",
+                    "stress-die",
+                    roll.get_stress_roll()
+                );
+
+            button.roll-button.stress-roll(
+                class={ "single-roll": single_roll }
+                type="roll"
+                name=`roll_${button_data.name}`
+                value!=button_data.value
+            )
+                span.roll-formula
+                    if has_divider
+                        span.formula-paren (
+                    span.die(class=button_data.die_class)
+                    span.formula-operator +
+                    input.roll-value(
+                        type="number"
+                        disabled="true"
+                        name=`attr_${button_data.score_name}`
+                        value!=score
+                    )
+                    if has_divider
+                        span.formula-paren )
+                        span.formula-operator /
+                        input.roll-value(
+                            type="number"
+                            disabled="true"
+                            name=`attr_${button_data.divider_name}`
+                            value!=divider
+                        )
+
+        if mode === "no-dice"
+            -
+                const button_data = get_button_data(
+                    "no-dice",
+                    "no-dice",
+                    roll.get_no_dice_roll()
+                );
+
+            button.roll-button.no-dice.single-roll(
+                type="roll"
+                name=`roll_${button_data.name}`
+                value!=button_data.value
+            )
+                span.roll-formula
+                    input.roll-value(
+                        type="number"
+                        disabled=true
+                        name=`attr_${button_data.score_name}`
+                        value!=score
+                    )
+
+
+
+
++scss.
+    .arm5-sheet {
+        /* ================================ Die mode selection ===================================== */
+        /* Die mode selector styling */
+        button.die-toggle-simple,
+        button.die-toggle-stress {
+            display: none; /* hidden by default */
+            font-family: 'Uncial Antiqua', cursive;
+            color: white;
+            text-shadow: 0px 0px 0.5em black;
+            text-align: center;
+
+            padding: 1px 4px 2px;
+            height: 20px;
+            font-size: 16px;
+            line-height: 18px;
+            font-weight: 700;
+            border-radius: 8px 8px 2px 2px;
+            margin: 0px;
+            border: 2px solid black;
+        }
+
+        button.die-toggle-simple {
+            background: #555555;
+            background: -moz-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+            background: -webkit-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+            background: -ms-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+            background: -o-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+            background: linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+        }
+
+        button.die-toggle-stress {
+            background: #33bbbb;
+            background: -moz-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+            background: -webkit-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+            background: -ms-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+            background: -o-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+            background: linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+        }
+
+        /* Only display the toggles button when the settings is on toggle, and only display the correct one */
+        input.dtype-selector[value="toggle"]+input.selected-die[value="simple"]~div button.die-toggle-simple {
+            display: inline-block;
+        }
+
+        input.dtype-selector[value="toggle"]+input.selected-die[value="stress"]~div button.die-toggle-stress {
+            display: inline-block;
+        }
+
+        /* Change which roll button to display based on the setting and the toggle */
+        button.simple-roll,
+        button.stress-roll {
+            display: none;
+        }
+
+        input.dtype-selector[value="both"]~div.sheet-tab-content button.simple-roll,
+        input.dtype-selector[value="both"]~div.sheet-tab-content button.stress-roll,
+        input.dtype-selector[value="toggle"]~input.selected-die[value="simple"]~div.sheet-tab-content button.simple-roll,
+        input.dtype-selector[value="toggle"]~input.selected-die[value="stress"]~div.sheet-tab-content button.stress-roll,
+        button.single-roll { /* special class for rolls that always have the same type and should always be displayed */
+            display: block;
+        }
+
+        /* ================================ END Die mode selection ================================== */
+
+        /* START die rolls */
+
+        .die-container {
+            /* CSS reset */
+
+            select,
+            textarea,
+            input,
+            .uneditable-input,
+            label,
+            button {
+                all: initial;
+            }
+
+            /* From https://www.joshwcomeau.com/css/custom-css-reset */
+
+            /* 1. Use a more-intuitive box-sizing model */
+            *, *::before, *::after {
+                box-sizing: border-box;
+            }
+
+            /* 2. Remove default margin */
+            *:not(dialog) {
+                margin: 0;
+            }
+
+            /* 6. Improve media defaults */
+            img, picture, video, canvas, svg {
+                display: block;
+                max-width: 100%;
+            }
+
+            /* 7. Inherit fonts for form controls */
+            input, button, textarea, select {
+                font: inherit;
+            }
+
+            /* 8. Avoid text overflows */
+            p, h1, h2, h3, h4, h5, h6 {
+                overflow-wrap: break-word;
+            }
+
+            /* 9. Improve line wrapping */
+            p {
+                text-wrap: pretty;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                text-wrap: balance;
+            }
+
+            /* Start Die container */
+
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            align-items: center;
+
+            /* Roll buttons */
+            button {
+                flex: 0 0 auto;
+                width: fit-content;
+
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 0.25rem 0.5rem;
+
+                border: 1px solid #888;
+                border-radius: 0.25rem;
+
+                background-color: rgba(83, 51, 42, 0.2);
+                &:hover {
+                    background-color: rgba(83, 51, 42, 0.3);
+                }
+                background-image: none !important;
+                background-repeat: no-repeat;
+
+                cursor: pointer;
+
+                /* Keep the entire formula on one line. */
+                white-space: nowrap;
+
+                /* Remove Roll20's generated decoration */
+                &::before,
+                &::after {
+                    content: none !important;
+                    display: none !important;
+                }
+
+                /* In case individual elements inside the button have their own wrapping/display rules. */
+                * {
+                    white-space: nowrap;
+                    pointer-events: none;
+                }
+
+                /* Formula */
+
+                .roll-formula {
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.15rem;
+
+                    white-space: nowrap;
+                }
+
+
+                /* Formula pieces */
+
+                .die,
+                .formula-paren,
+                .formula-operator {
+                    display: inline-block;
+                    flex: 0 0 auto;
+                }
+
+
+                /* Auto-calculated values */
+
+                .roll-value {
+                    display: inline-block;
+                    flex: 0 0 auto;
+                    width: 2ch;
+                    &[name$="_divider"] {
+                        width: 1ch;
+                    }
+                    min-width: 0;
+
+                    padding: 0;
+                    border: 0;
+                    background: transparent;
+
+                    color: inherit;
+                    text-align: center;
+
+                    /* Prevent number input from getting browser UI. */
+                    appearance: textfield;
+
+                    &::-webkit-inner-spin-button,
+                    &::-webkit-outer-spin-button {
+                        appearance: none;
+                        margin: 0;
+                    }
+
+
+                }
+
+
+                /* ================================
+                Simple / stress dice
+                ================================ */
+
+                .die {
+                    width: 2.2ch;
+                    height: 2.2ch;
+
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: contain;
+                }
+
+                &.simple-roll {
+                    .die {
+                        background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_base.png");
+                    }
+
+                    &:hover .die {
+                        background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton.png");
+                    }
+
+                    &:active .die {
+                        background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_hvr.png");
+                    }
+                }
+
+                &.stress-roll {
+                    .die {
+                        background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_stress_base.png");
+                    }
+
+                    &:hover .die {
+                        background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_stress.png");
+                    }
+
+                    &:active .die {
+                        background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_stress_hvr.png");
+                    }
+                }
+            }
+        }
+    }
+    /* END die rolls */

@@ -1,113 +1,14 @@
-@import url("https://fonts.googleapis.com/css?family=Delius|Bilbo+Swash+Caps|Kavivanar|Fredericka+the+Great|Macondo|Uncial+Antiqua&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Material+Icons&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Material+Symbols+Outlined&display=swap");
-.tabs__container:not(.k-active-tab) {
-  display: none !important;
-}
-
-.tabs__nav-item {
-  list-style: none;
-}
-
-.tabs__nav-list {
-  display: flex;
-}
-
-.ui-dialog .tab-content .charsheet {
-  position: relative;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.ui-dialog .tab-content .charsheet .kmodal__button {
-  all: initial;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-}
-.ui-dialog .tab-content .charsheet .kmodal__checkbox {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .kmodal__outer {
-  opacity: 0;
-  visibility: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: left;
-  background: var(--kmodal-overlay-background);
-  transition: opacity 0.25s ease;
-  z-index: 999;
-}
-.ui-dialog .tab-content .charsheet .kmodal__background {
-  all: initial;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  cursor: pointer;
-}
-.ui-dialog .tab-content .charsheet .kmodal__inner {
-  position: fixed;
-  width: var(--kmodal-width);
-  height: var(--kmodal-height);
-  inset: 0;
-  margin: auto;
-  overflow: auto;
-  background: var(--kmodal-dialog-background);
-  border-radius: 5px;
-  padding: var(--kmodal-close-height) calc(var(--kmodal-close-width) * 3) var(--kmodal-close-height) calc(var(--kmodal-close-width) * 2);
-  max-width: var(--kmodal-max-width);
-  max-height: var(--kmodal-max-height);
-  transition: opacity 0.25s ease;
-  box-shadow: var(--kmodal-box-shadow);
-}
-.ui-dialog .tab-content .charsheet .kmodal__close {
-  position: absolute;
-  right: var(--kmodal-close-width);
-  top: var(--kmodal-close-height);
-  width: var(--kmodal-close-width);
-  height: var(--kmodal-close-height);
-  cursor: pointer;
-}
-.ui-dialog .tab-content .charsheet .kmodal__close:after,
-.ui-dialog .tab-content .charsheet .kmodal__close:before {
-  content: "";
-  position: absolute;
-  width: var(--kmodal-close-line-thickness);
-  height: var(--kmodal-close-line-length);
-  background: var(--kmodal-close-color);
-  display: block;
-  transform: rotate(45deg);
-  left: 50%;
-  margin: -3px 0 0 -1px;
-  top: 0;
-}
-.ui-dialog .tab-content .charsheet .kmodal__close:hover:after,
-.ui-dialog .tab-content .charsheet .kmodal__close:hover:before {
-  background: var(--kmodal-close-hover-color);
-}
-.ui-dialog .tab-content .charsheet .kmodal__close:before {
-  transform: rotate(-45deg);
-}
-.ui-dialog .tab-content .charsheet .kmodal__checkbox:not(:checked) + .kmodal__outer {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .kmodal__checkbox:checked + .kmodal__outer {
-  opacity: 1;
-  visibility: visible;
-}
-.ui-dialog .tab-content .charsheet .kmodal__checkbox:checked + .kmodal__outer .kmodal__inner {
-  top: 0;
-}
-
+@import url("https://fonts.googleapis.com/css?family=Material+Icons|Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200|Delius|Bilbo+Swash+Caps|Kavivanar|Fredericka+the+Great|Macondo|Uncial+Antiqua&display=swap");
+/* Font Import Reference
+//Signatures --- font-family: 'Bilbo Swash Caps', cursive;
+//Headers --- font-family: 'Uncial Antiqua', cursive;
+//Spell Titles--- font-family: 'Macondo', cursive;
+//Text box --- font-family: 'Kavivanar', cursive;
+*/
+/* prevent readonly fields from changing the cursor
+ Makes for more uniform fields between reaonly updated by sheetworkers
+ and auto-calc with disabled=true
+*/
 .ui-dialog .tab-content .charsheet .markdown h1,
 .ui-dialog .tab-content .charsheet .markdown h2,
 .ui-dialog .tab-content .charsheet .markdown h3,
@@ -131,100 +32,15 @@
   padding-right: 30px;
 }
 
-/* Font Import Reference
-//Signatures --- font-family: 'Bilbo Swash Caps', cursive;
-//Headers --- font-family: 'Uncial Antiqua', cursive;
-//Spell Titles--- font-family: 'Macondo', cursive;
-//Text box --- font-family: 'Kavivanar', cursive;
-*/
-/* prevent readonly fields from changing the cursor
- Makes for more uniform fields between reaonly updated by sheetworkers
- and auto-calc with disabled=true
-*/
 .ui-dialog .tab-content .charsheet {
   background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/velvet.jpg");
   margin: 0 auto;
 }
-.ui-dialog .tab-content .charsheet .arm5-sheet {
-  /* Layout utilities */
-  /* Tooltips */
-  /* Class for container having a tooltip */
-  /* Tooltip itself */
-  /* Small arrows pointing to the tooltiped text */
-  /* Make the tooltip visible only if the tooltiped element is hovered */
-  /*----------- Repeating Blocks -------------*/
-  /*----------- End of Repeating Blocks -------------*/
-  /*---------- Hide number scrollers-----------*/
-  /*-- Hide arrows on number fields --*/
-  /* For Firefox */
-  /* Webkit browsers like Safari and Chrome */
-  /* -- Update Alerts -- */
-  /* Info alerts */
-  /* Warning alerts */
-  /* Hide magi-only elements of the sheet */
-  /* End magi-only elements */
-  /*=======================Tabs=======================*/
-  /*=======================End of tabs=======================*/
-  /* Die Selection */
-  /* Only display the toggles button when the settings is on toggle, and only display the correct one */
-  /* Change which roll button to display based on the setting and the toggle */
-  /* End Die Selection */
-  /* Configuration */
-  /* End configuration */
-  /*----------- End of Font Face -------------*/
-  /*----------- Banner -------------*/
-  /*----------- End of Banner -------------*/
-  /*----------- background -------------*/
-  /*----------- End of background -------------*/
-  /*----------- Text -------------*/
-  /* Advancement */
-  /* Advancement Total */
-  /* Misc Formatting */
-  /*-----Subsection Header------*/
-  /*----------- End of Text -------------*/
-  /*----------- Virtue Formatting--------*/
-  /*----------- Tables -------------*/
-  /*----------- End of Tables -------------*/
-  /*----------- textarea -------------*/
-  /*----------- End of textarea -------------*/
-  /*----------- Select -------------*/
-  /*----------- End of Select -------------*/
-  /*----------- Hide Things -------------*/
-  /*----------- End of Hide Things -------------*/
-  /*----------- Checkbox -------------*/
-  /* Hide actual checkbox */
-  /* Fake checkbox */
-  /* Fake checkbox */
-  /* Fake checkbox */
-  /* Fake checkbox */
-  /* Hide actual checkbox */
-  /* Fake checkbox */
-  /* Fake checkbox */
-  /* Fake checkbox */
-  /*--------Health Fake Checkbox-----------*/
-  /*----------- Dropdown ----------*/
-  /*----------- Radio -------------*/
-  /* Hide actual radio */
-  /* Fake radio */
-  /* Fake radio */
-  /* -----Based on the selector radio, hides options -------*/
-  /*  =====       ======  ======  =====       ======  */
-  /* Hide actual radio */
-  /* Fake radio */
-  /* Fake radio */
-  /*----------- End of Checkbox -------------*/
-  /*----------- Buttons -------------*/
-  /* ======== button ========*/
-  /* Set the image of simple and stress roll buttons */
-  /*----------- End of Buttons -------------*/
-  /*----------- Fatigue Levels -------------*/
-  /*
-  The replacement key is in a comment to preserve CSS syntax in the doc
-  The replacement contains will end handle de-commenting itself
-  */
-}
 .ui-dialog .tab-content .charsheet .arm5-sheet input[readonly] {
   cursor: default;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Layout utilities */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .flex-container-center {
   display: flex;
@@ -268,6 +84,10 @@
   display: flex;
   align-items: center;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Tooltips */
+  /* Class for container having a tooltip */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet .has-tooltip {
   position: relative;
   display: inline-block;
@@ -275,6 +95,9 @@
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .has-tooltip :not(.sheet-tooltip) {
   cursor: help;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Tooltip itself */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .has-tooltip .sheet-tooltip {
   visibility: hidden;
@@ -294,6 +117,9 @@
   left: 50%;
   margin-left: -75px;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Small arrows pointing to the tooltiped text */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet .has-tooltip .sheet-tooltip::after {
   content: " ";
   position: absolute;
@@ -304,11 +130,17 @@
   border-style: solid;
   border-color: #331f1a transparent transparent transparent;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Make the tooltip visible only if the tooltiped element is hovered */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet .has-tooltip:hover .sheet-tooltip {
   visibility: visible;
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .has-tooltip .sheet-tooltip:hover {
   visibility: hidden;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- Repeating Blocks -------------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .repcontrol_add {
   display: inline-block;
@@ -358,8 +190,17 @@
   padding-top: 3px;
   padding-bottom: 3px;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of Repeating Blocks -------------*/
+  /*---------- Hide number scrollers-----------*/
+  /*-- Hide arrows on number fields --*/
+  /* For Firefox */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet input[type=number] {
   -moz-appearance: textfield;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Webkit browsers like Safari and Chrome */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet input[type=number]::-webkit-inner-spin-button,
 .ui-dialog .tab-content .charsheet .arm5-sheet input[type=number]::-webkit-outer-spin-button {
@@ -369,6 +210,9 @@
 .ui-dialog .tab-content .charsheet .arm5-sheet div.padding {
   padding-left: 5px;
   padding-right: 5px;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* -- Update Alerts -- */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet div.alert {
   border-radius: 10px;
@@ -395,6 +239,9 @@
 .ui-dialog .tab-content .charsheet .arm5-sheet label.fakebutton input {
   display: none;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Info alerts */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet div.alert-info,
 .ui-dialog .tab-content .charsheet .arm5-sheet div.alert-info h3 {
   color: #31708f;
@@ -408,6 +255,9 @@
 .ui-dialog .tab-content .charsheet .arm5-sheet div.alert-info label.fakebutton:hover {
   color: #519abe;
   border-color: #519abe;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Warning alerts */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet div.alert-warning,
 .ui-dialog .tab-content .charsheet .arm5-sheet div.alert-warning h3 {
@@ -423,8 +273,15 @@
   color: darkred;
   border-color: darkred;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Hide magi-only elements of the sheet */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet input.toggle-magi[value=no] ~ * .magi-only {
   display: none;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* End magi-only elements */
+  /*=======================Tabs=======================*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .buttonbar {
   display: flex;
@@ -511,95 +368,10 @@
   margin-right: auto;
   margin-left: auto;
 }
-.ui-dialog .tab-content .charsheet .arm5-sheet button.die-toggle-simple,
-.ui-dialog .tab-content .charsheet .arm5-sheet button.die-toggle-stress {
-  display: none;
-  /* hidden by default */
-  font-family: "Uncial Antiqua", cursive;
-  color: white;
-  text-shadow: 0px 0px 0.5em black;
-  text-align: center;
-  padding: 1px 4px 2px;
-  height: 20px;
-  font-size: 16px;
-  line-height: 18px;
-  font-weight: 700;
-  border-radius: 8px 8px 2px 2px;
-  margin: 0px;
-  border: 2px solid black;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet button.die-toggle-simple {
-  background: #555555;
-  background: -moz-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-  background: -webkit-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-  background: -ms-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-  background: -o-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-  background: linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-  background: linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet button.die-toggle-stress {
-  background: #33bbbb;
-  background: -moz-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-  background: -webkit-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-  background: -ms-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-  background: -o-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-  background: linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] + input.selected-die[value=simple] ~ div button.die-toggle-simple {
-  display: inline-block;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] + input.selected-die[value=stress] ~ div button.die-toggle-stress {
-  display: inline-block;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet button.simple-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet button.stress-roll {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=both] ~ div.sheet-tab-content button.simple-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=both] ~ div.sheet-tab-content button.stress-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] ~ input.selected-die[value=simple] ~ div.sheet-tab-content button.simple-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] ~ input.selected-die[value=stress] ~ div.sheet-tab-content button.stress-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet button.single-roll {
-  display: block;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet .config {
-  display: grid;
-  grid-template-columns: 16% 16% 16% 16% 16% 16%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  font-family: "Macondo", cursive;
-  color: #663333;
-  font-size: 1.3em;
-  align-items: end;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet .config > select {
-  align-self: start;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet .documentation p,
-.ui-dialog .tab-content .charsheet .arm5-sheet .documentation li {
-  font-family: "Macondo";
-  color: #663333;
-  font-size: 14px;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet .documentation li li {
-  font-size: 1em;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet .documentation h1,
-.ui-dialog .tab-content .charsheet .arm5-sheet .documentation h2,
-.ui-dialog .tab-content .charsheet .arm5-sheet .documentation .kscaffold-compatible .input-label:not(.stacked).large > [name],
-.ui-dialog .tab-content .charsheet .kscaffold-compatible .arm5-sheet .documentation .input-label:not(.stacked).large > [name],
-.ui-dialog .tab-content .charsheet .arm5-sheet .documentation h3,
-.ui-dialog .tab-content .charsheet .arm5-sheet .documentation h4,
-.ui-dialog .tab-content .charsheet .arm5-sheet .documentation h5,
-.ui-dialog .tab-content .charsheet .arm5-sheet .docmentation h6 {
-  margin-bottom: 5px;
-  margin-top: 15px;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet .codespan {
-  font-family: "Delius";
-  padding-left: 2px;
-  border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.05);
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*=======================End of tabs=======================*/
+  /*----------- End of Font Face -------------*/
+  /*----------- Banner -------------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .banner {
   background: url("http://www.atlas-games.com/images/ArM5LogoColor.jpg");
@@ -613,6 +385,10 @@
   height: 100px;
   width: 200px;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of Banner -------------*/
+  /*----------- background -------------*/
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet .divider {
   background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/divider-block.jpg");
   width: 600px;
@@ -622,6 +398,10 @@
   margin-top: 5px;
   margin-bottom: 15px;
   box-shadow: 0px 0px 5px 0px #f0ede4 inset;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of background -------------*/
+  /*----------- Text -------------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .table_2 th,
 .ui-dialog .tab-content .charsheet .arm5-sheet .table_1 th {
@@ -769,13 +549,22 @@
   width: 32px !important;
   font-size: 15px;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Advancement */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet .advance {
   background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/advancement_advance.png");
   background-size: 100% 100%;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Advancement Total */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet .total {
   background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/advancement_total.png");
   background-size: 100% 100%;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Misc Formatting */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .minor {
   color: gray;
@@ -808,6 +597,13 @@
 .ui-dialog .tab-content .charsheet .arm5-sheet input.counter[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*-----Subsection Header------*/
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of Text -------------*/
+  /*----------- Virtue Formatting--------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .Vmajor {
   background: transparent;
@@ -845,6 +641,9 @@
   border-right: none;
   border-bottom: 2px solid #53332a;
   width: 160px;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- Tables -------------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .table_1 th {
   font-variant: small-caps;
@@ -886,6 +685,10 @@
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .table_center td {
   text-align: center;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of Tables -------------*/
+  /*----------- textarea -------------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet textarea.textarea_1 {
   width: 200px;
@@ -931,6 +734,10 @@
   font-size: 14px;
   color: #53332a;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of textarea -------------*/
+  /*----------- Select -------------*/
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet select.select_1 {
   -webkit-appearance: none;
   padding-top: 0px;
@@ -963,6 +770,10 @@
 .ui-dialog .tab-content .charsheet .arm5-sheet select *.italic {
   font-style: italic;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of Select -------------*/
+  /*----------- Hide Things -------------*/
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet .hidden {
   display: none;
 }
@@ -971,6 +782,11 @@
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet input.hider:checked ~ div.sheet-hide {
   display: block;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of Hide Things -------------*/
+  /*----------- Checkbox -------------*/
+  /* Hide actual checkbox */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_wound[type=checkbox],
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_3[type=checkbox],
@@ -986,6 +802,9 @@
   cursor: pointer;
   z-index: 1;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Fake checkbox */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_2[type=checkbox] + span::before,
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_1[type=checkbox] + span::before {
   margin-right: 4px;
@@ -994,6 +813,9 @@
   text-align: center;
   display: inline-block;
   vertical-align: middle;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Fake checkbox */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_2[type=checkbox] + span::before,
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_1[type=checkbox] + span::before {
@@ -1025,6 +847,9 @@
   content: "x";
   color: red;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Fake checkbox */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_3[type=checkbox] + span::before {
   margin-right: 4px;
   border: solid 1px #a8a8a8;
@@ -1037,6 +862,9 @@
   box-shadow: 0 0 2px #ccc;
   background: #f6f6f6;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Fake checkbox */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_3[type=checkbox] + span::before {
   content: "";
   width: 14px;
@@ -1045,6 +873,9 @@
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
   border-radius: 3px;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Hide actual checkbox */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet input.puissant[type=checkbox] {
   opacity: 0;
@@ -1056,6 +887,9 @@
   margin: 0px;
   cursor: pointer;
   z-index: 1;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Fake checkbox */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet input.puissant[type=checkbox] + span::before {
   margin-right: 4px;
@@ -1073,6 +907,9 @@
   background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
   background: -o-radial-gradient(#f6f6f6, #dfdfdf);
   background: radial-gradient(#f6f6f6, #dfdfdf);
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Fake checkbox */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet input.puissant[type=checkbox] + span::before {
   content: "";
@@ -1100,6 +937,9 @@
   color: green;
   font-weight: bold;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Fake checkbox */
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet input.puissant[type=checkbox] + span::before {
   margin-right: 4px;
   border: solid 1px #a8a8a8;
@@ -1111,6 +951,9 @@
   -webkit-box-shadow: 0 0 2px #ccc;
   box-shadow: 0 0 2px #ccc;
   background: #f6f6f6;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*--------Health Fake Checkbox-----------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_wound[type=checkbox] + span {
   min-width: 0px;
@@ -1125,6 +968,9 @@
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet input.checkbox_wound[type=checkbox]:checked + span::before {
   content: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/wounded.png");
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- Dropdown ----------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet select.dropdown {
   font-size: 1.1em;
@@ -1150,32 +996,22 @@
 .ui-dialog .tab-content .charsheet .arm5-sheet select.dropdown:hover {
   background: #53332a;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- Radio -------------*/
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet input.selector[type=radio],
 .ui-dialog .tab-content .charsheet .arm5-sheet input.radio_2[type=radio],
 .ui-dialog .tab-content .charsheet .arm5-sheet input.radio_1[type=radio] {
-  opacity: 0;
-  width: 16px;
-  height: 16px;
-  position: relative;
-  top: 0px;
-  left: 8px;
-  margin: 0px;
+  appearance: none;
+  outline: none;
+  width: 14px;
+  height: 14px;
+  margin: 0 4px 0 0;
+  padding: 0;
   cursor: pointer;
-  z-index: 1;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.selector[type=radio] + span::before,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_2[type=radio] + span::before,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_1[type=radio] + span::before {
-  margin-right: 4px;
   border: solid 1px #a8a8a8;
-  line-height: 14px;
-  text-align: center;
-  display: inline-block;
+  border-radius: 3px;
   vertical-align: middle;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  margin: -8px;
   -moz-box-shadow: 0 0 2px #ccc;
   -webkit-box-shadow: 0 0 2px #ccc;
   box-shadow: 0 0 2px #ccc;
@@ -1186,34 +1022,13 @@
   background: -o-radial-gradient(#f6f6f6, #dfdfdf);
   background: radial-gradient(#f6f6f6, #dfdfdf);
 }
-.ui-dialog .tab-content .charsheet .arm5-sheet input.selector[type=radio] + span::before,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_1[type=radio] + span::before {
-  position: relative;
-  top: 0px;
-  left: -8px;
-  margin: 0px;
+.ui-dialog .tab-content .charsheet .arm5-sheet input.selector[type=radio]:checked,
+.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_2[type=radio]:checked,
+.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_1[type=radio]:checked {
+  background: linear-gradient(45deg, transparent 40%, #555 40%, #555 60%, transparent 60%), linear-gradient(-45deg, transparent 40%, #555 40%, #555 60%, transparent 60%), radial-gradient(#f6f6f6, #dfdfdf);
 }
-.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_2[type=radio] + span::before {
-  position: relative;
-  top: 0px;
-  left: 0px;
-  margin: -10px;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.selector[type=radio] + span::before,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_2[type=radio] + span::before,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_1[type=radio] + span::before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  font-size: 12px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.selector[type=radio]:checked + span::before,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_2[type=radio]:checked + span::before,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.radio_1[type=radio]:checked + span::before {
-  content: "x";
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* -----Based on the selector radio, hides options -------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .input.selector[type=radio][value=minor]:checked ~ div.options {
   font-family: "Gopperplate Gothic Light";
@@ -1223,66 +1038,9 @@
   font-family: "Gopperplate Gothic Light";
   font-size: 1em;
 }
-.ui-dialog .tab-content .charsheet .arm5-sheet input.puissant[type=radio] {
-  opacity: 0;
-  width: 20px;
-  height: 16px;
-  position: relative;
-  top: 0px;
-  left: 8px;
-  margin: 0px;
-  cursor: pointer;
-  z-index: 1;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.puissant[type=radio] + span::before {
-  margin-right: 4px;
-  border: solid 1px #a8a8a8;
-  line-height: 14px;
-  text-align: center;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  margin: -10px;
-  -moz-box-shadow: 0 0 2px #ccc;
-  -webkit-box-shadow: 0 0 2px #ccc;
-  box-shadow: 0 0 2px #ccc;
-  background: #f6f6f6;
-  background: -moz-radial-gradient(#f6f6f6, #dfdfdf);
-  background: -webkit-radial-gradient(#f6f6f6, #dfdfdf);
-  background: -ms-radial-gradient(#f6f6f6, #dfdfdf);
-  background: -o-radial-gradient(#f6f6f6, #dfdfdf);
-  background: radial-gradient(#f6f6f6, #dfdfdf);
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.puissant[type=radio] + span::before {
-  position: relative;
-  top: 0px;
-  left: -8px;
-  margin: 0px;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.puissant[type=radio] + span::before {
-  position: relative;
-  top: 0px;
-  left: 0px;
-  margin: -10px;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.puissant[type=radio] + span::before {
-  content: "";
-  width: 20px;
-  height: 14px;
-  font-size: 12px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  border-radius: 3px;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.puissant.red[type=radio]:checked + span::before {
-  content: "No";
-  color: red;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.puissant.green[type=radio]:checked + span::before {
-  content: "Yes";
-  color: green;
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of Checkbox -------------*/
+  /*----------- Buttons -------------*/
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet button.botch:before,
 .ui-dialog .tab-content .charsheet .arm5-sheet button.reroll:before,
@@ -1358,6 +1116,9 @@
   background: -o-linear-gradient(to top, #daa520, #B8860B, #FFD700);
   background: linear-gradient(to top, #daa520, #B8860B, #FFD700);
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* ======== button ========*/
+}
 .ui-dialog .tab-content .charsheet .arm5-sheet .button button[type=roll]:before,
 .ui-dialog .tab-content .charsheet .arm5-sheet .button:before {
   content: "0" !important;
@@ -1377,6 +1138,9 @@
   width: 25px;
   padding-left: 0px;
   border: none;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Set the image of simple and stress roll buttons */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .simple-roll {
   background: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_base.png");
@@ -1402,35 +1166,8 @@
   background: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_stress_hvr.png");
   background-repeat: no-repeat;
 }
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="1"]):not(.fatigue-proxy[value="2"]):not(.fatigue-proxy[value="3"]):not(.fatigue-proxy[value="4"]):not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"]) + table tr.addfatigue-1 {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="2"]):not(.fatigue-proxy[value="3"]):not(.fatigue-proxy[value="4"]):not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"]) + table tr.addfatigue-2 {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="3"]):not(.fatigue-proxy[value="4"]):not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"]) + table tr.addfatigue-3 {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="4"]):not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"]) + table tr.addfatigue-4 {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="5"]):not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"]) + table tr.addfatigue-5 {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="6"]):not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"]) + table tr.addfatigue-6 {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="7"]):not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"]) + table tr.addfatigue-7 {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="8"]):not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"]) + table tr.addfatigue-8 {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="9"]):not(.fatigue-proxy[value="10"]) + table tr.addfatigue-9 {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet :not(.fatigue-proxy[value="10"]) + table tr.addfatigue-10 {
-  display: none;
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /*----------- End of Buttons -------------*/
 }
 
 /*
@@ -4345,14 +4082,6 @@ End of the python integration block
   --arm5-color-accent-brown: #53332a;
 }
 
-.ui-dialog .tab-content .charsheet {
-  position: relative;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  --color-kmodal-background: rgba(0, 0, 0, .9);
-}
 .ui-dialog .tab-content .charsheet .flexrow {
   display: flex;
   flex-direction: row;
@@ -4369,108 +4098,14 @@ End of the python integration block
   margin: 0;
   padding: 0;
 }
-.ui-dialog .tab-content .charsheet .kmodal__container {
-  position: relative;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.ui-dialog .tab-content .charsheet .kmodal__button {
-  all: initial;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-}
-.ui-dialog .tab-content .charsheet .kmodal__checkbox {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .kmodal__outer {
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: left;
-  background: var(--color-kmodal-background);
-  transition: opacity 0.25s ease;
-  z-index: 999;
-}
-.ui-dialog .tab-content .charsheet .kmodal__background {
-  all: initial;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  cursor: pointer;
-}
-.ui-dialog .tab-content .charsheet .kmodal__inner {
-  position: absolute;
-  top: -20%;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 90%;
-  margin: auto;
-  overflow: auto;
-  background: #fff;
-  border-radius: 5px;
-  padding: 1em 2em;
-  height: 90%;
-  transition: opacity 0.25s ease;
-}
-.ui-dialog .tab-content .charsheet .kmodal__close {
-  position: absolute;
-  right: 1em;
-  top: 1em;
-  width: 1.1em;
-  height: 1.1em;
-  cursor: pointer;
-}
-.ui-dialog .tab-content .charsheet .kmodal__close:after,
-.ui-dialog .tab-content .charsheet .kmodal__close:before {
-  content: "";
-  position: absolute;
-  width: 2px;
-  height: 1.5em;
-  background: #ccc;
-  display: block;
-  transform: rotate(45deg);
-  left: 50%;
-  margin: -3px 0 0 -1px;
-  top: 0;
-}
-.ui-dialog .tab-content .charsheet .kmodal__close:hover:after,
-.ui-dialog .tab-content .charsheet .kmodal__close:hover:before {
-  background: #aaa;
-}
-.ui-dialog .tab-content .charsheet .kmodal__close:before {
-  transform: rotate(-45deg);
-}
-.ui-dialog .tab-content .charsheet .kmodal__checkbox:not(:checked) + .kmodal__outer {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .kmodal__checkbox:checked + .kmodal__outer {
-  opacity: 1;
-  visibility: visible;
-}
-.ui-dialog .tab-content .charsheet .kmodal__checkbox:checked + .kmodal__outer .kmodal__inner {
-  top: 0;
-}
 
-.ui-dialog .tab-content .charsheet .header {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .header {
   justify-content: flex-end;
 }
-.ui-dialog .tab-content .charsheet .header > .header__main {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .header > .header__main {
   flex-grow: 1;
 }
-.ui-dialog .tab-content .charsheet .header > .header__controls {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .header > .header__controls {
   flex-grow: 0;
   gap: 2px;
   align-self: stretch;
@@ -4479,13 +4114,61 @@ End of the python integration block
   margin-right: 5px;
   margin-bottom: 5px;
 }
-.ui-dialog .tab-content .charsheet .header > .header__controls .material-icons {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .header > .header__controls .material-icons {
   color: var(--arm5-color-accent-brown);
   opacity: 0.85;
   user-select: none;
 }
-.ui-dialog .tab-content .charsheet .header > .header__controls .material-icons:hover {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .header > .header__controls .material-icons:hover {
   opacity: 1;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible {
+  /* Configuration */
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .config {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5ch, max-content) minmax(5ch, max-content));
+  gap: 1ch 2ch; /* row-gap and column-gap */
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family: "Macondo", cursive;
+  color: #663333;
+  font-size: 1.3em;
+  align-items: end;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .config > select, .ui-dialog .tab-content .charsheet .kscaffold-compatible .config > span {
+  align-self: start;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .config > select {
+  border: 1px solid rgb(83, 51, 42);
+  border-radius: 0.25rem;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation, .ui-dialog .tab-content .charsheet .kscaffold-compatible .welcome, .ui-dialog .tab-content .charsheet .kscaffold-compatible .markdown {
+  font-size: 14px;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation p,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation li {
+  font-family: "Macondo";
+  color: #663333;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation li li {
+  font-size: 1em;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation h1,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation h2,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation .input-label:not(.stacked).large > [name],
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation h3,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation h4,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .documentation h5,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .docmentation h6 {
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .codespan {
+  font-family: "Delius";
+  padding-left: 2px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 /*
@@ -4493,154 +4176,559 @@ End of the python integration block
 @use 'mixins/elements.scss';
 @use 'tabs/tabs.scss';
 */
-.ui-dialog .charsheet .kscaffold-compatible select,
-.ui-dialog .charsheet .kscaffold-compatible textarea,
-.ui-dialog .charsheet .kscaffold-compatible input,
-.ui-dialog .charsheet .kscaffold-compatible .uneditable-input,
-.ui-dialog .charsheet .kscaffold-compatible label,
-.ui-dialog .charsheet .kscaffold-compatible button {
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* ================================ Die mode selection ===================================== */
+  /* Die mode selector styling */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet button.die-toggle-simple,
+.ui-dialog .tab-content .charsheet .arm5-sheet button.die-toggle-stress {
+  display: none; /* hidden by default */
+  font-family: "Uncial Antiqua", cursive;
+  color: white;
+  text-shadow: 0px 0px 0.5em black;
+  text-align: center;
+  padding: 1px 4px 2px;
+  height: 20px;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  border-radius: 8px 8px 2px 2px;
+  margin: 0px;
+  border: 2px solid black;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet button.die-toggle-simple {
+  background: #555555;
+  background: -moz-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+  background: -webkit-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+  background: -ms-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+  background: -o-linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+  background: linear-gradient(to right, #8f8f8f, #595959, #595959, #7d7d7d);
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet button.die-toggle-stress {
+  background: #33bbbb;
+  background: -moz-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+  background: -webkit-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+  background: -ms-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+  background: -o-linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+  background: linear-gradient(to right, #ee3f2f, #8C5025, #8C5025, #daa520);
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Only display the toggles button when the settings is on toggle, and only display the correct one */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] + input.selected-die[value=simple] ~ div button.die-toggle-simple {
+  display: inline-block;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] + input.selected-die[value=stress] ~ div button.die-toggle-stress {
+  display: inline-block;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* Change which roll button to display based on the setting and the toggle */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet button.simple-roll,
+.ui-dialog .tab-content .charsheet .arm5-sheet button.stress-roll {
+  display: none;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=both] ~ div.sheet-tab-content button.simple-roll,
+.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=both] ~ div.sheet-tab-content button.stress-roll,
+.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] ~ input.selected-die[value=simple] ~ div.sheet-tab-content button.simple-roll,
+.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] ~ input.selected-die[value=stress] ~ div.sheet-tab-content button.stress-roll,
+.ui-dialog .tab-content .charsheet .arm5-sheet button.single-roll { /* special class for rolls that always have the same type and should always be displayed */
+  display: block;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet {
+  /* ================================ END Die mode selection ================================== */
+  /* START die rolls */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container {
+  /* CSS reset */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container select,
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container textarea,
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container input,
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container .uneditable-input,
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container label,
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button {
   all: initial;
 }
-.ui-dialog .charsheet .kscaffold-compatible .flex-box,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-flex-box {
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container {
+  /* From https://www.joshwcomeau.com/css/custom-css-reset */
+  /* 1. Use a more-intuitive box-sizing model */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container *, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container *::before, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container *::after {
+  box-sizing: border-box;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container {
+  /* 2. Remove default margin */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container *:not(dialog) {
+  margin: 0;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container {
+  /* 6. Improve media defaults */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container img, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container picture, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container video, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container canvas, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container svg {
+  display: block;
+  max-width: 100%;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container {
+  /* 7. Inherit fonts for form controls */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container input, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container button, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container textarea, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container select {
+  font: inherit;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container {
+  /* 8. Avoid text overflows */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container p, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h1, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h2, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container .kscaffold-compatible .input-label:not(.stacked).large > [name], .ui-dialog .tab-content .charsheet .kscaffold-compatible .arm5-sheet .die-container .input-label:not(.stacked).large > [name], .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h3, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h4, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h5, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h6 {
+  overflow-wrap: break-word;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container {
+  /* 9. Improve line wrapping */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container p {
+  text-wrap: pretty;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container h1, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h2, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container .kscaffold-compatible .input-label:not(.stacked).large > [name], .ui-dialog .tab-content .charsheet .kscaffold-compatible .arm5-sheet .die-container .input-label:not(.stacked).large > [name], .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h3, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h4, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h5, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container h6 {
+  text-wrap: balance;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container {
+  /* Start Die container */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  /* Roll buttons */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button {
+  flex: 0 0 auto;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #888;
+  border-radius: 0.25rem;
+  background-color: rgba(83, 51, 42, 0.2);
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button:hover {
+  background-color: rgba(83, 51, 42, 0.3);
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button {
+  background-image: none !important;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  /* Keep the entire formula on one line. */
+  white-space: nowrap;
+  /* Remove Roll20's generated decoration */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button::before, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container button::after {
+  content: none !important;
+  display: none !important;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button {
+  /* In case individual elements inside the button have their own wrapping/display rules. */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button * {
+  white-space: nowrap;
+  pointer-events: none;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button {
+  /* Formula */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .roll-formula {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  white-space: nowrap;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button {
+  /* Formula pieces */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .die,
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .formula-paren,
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .formula-operator {
+  display: inline-block;
+  flex: 0 0 auto;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button {
+  /* Auto-calculated values */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .roll-value {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 2ch;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .roll-value[name$=_divider] {
+  width: 1ch;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .roll-value {
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-align: center;
+  /* Prevent number input from getting browser UI. */
+  appearance: textfield;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .roll-value::-webkit-inner-spin-button, .ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .roll-value::-webkit-outer-spin-button {
+  appearance: none;
+  margin: 0;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button {
+  /* ================================
+  Simple / stress dice
+  ================================ */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .die {
+  width: 2.2ch;
+  height: 2.2ch;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button.simple-roll .die {
+  background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_base.png");
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button.simple-roll:hover .die {
+  background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton.png");
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button.simple-roll:active .die {
+  background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_hvr.png");
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button.stress-roll .die {
+  background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_stress_base.png");
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button.stress-roll:hover .die {
+  background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_stress.png");
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button.stress-roll:active .die {
+  background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_stress_hvr.png");
+}
+.ui-dialog .tab-content .charsheet {
+  /* END die rolls */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .wounds input {
+  width: initial;
+}
+.ui-dialog .tab-content .charsheet {
+  --font1:var(--topHeadFont);
+  --font2:var(--topHeadFont);
+  --font3:var(--midHeadFont);
+  --font4:var(--midHeadFont);
+  --font5:var(--midHeadFont);
+  --font6:var(--contentHeadFont);
+  --font7:var(--contentHeadFont);
+  --baseFontSize: 16px;
+  --size1:300%;
+  --size2:250%;
+  --size3:200%;
+  --size4:150%;
+  --size5:125%;
+  --size6:100%;
+  --size7:87.5%;
+  --icon-size:24px;
+  --font-icon: 'Material Icons';
+  --normal-gap-x:1rem;
+  --normal-gap-y:1rem;
+  --normal-gap: var(--normal-gap-x);
+  --half-gap-x:calc(var(--normal-gap-x) / 2);
+  --half-gap-y:calc(var(--normal-gap-y) / 2);
+  --half-gap: var(--half-gap-x);
+  --tiny-gap-x:calc(var(--half-gap-x) / 2);
+  --tiny-gap-y:calc(var(--half-gap-y) / 2);
+  --tiny-gap: var(--tiny-gap-x);
+  --big-gap-x:calc(var(--normal-gap-x) * 2);
+  --big-gap-y:calc(var(--normal-gap-y) * 2);
+  --big-gap: var(--big-gap-x);
+  --lm-backColor:#fff;
+  --dm-backColor:var(--dark-surface1);
+  --backColor:var(--lm-backColor);
+  --lm-selectedColor:#000;
+  --dm-selectedColor:#007476;
+  --selectedColor:var(--lm-selectedColor);
+  --lm-unselectedColor1:lightgrey;
+  --dm-unselectedColor1:#0e0e0e;
+  --unselectedColor1:var(--lm-unselectedColor1);
+  --lm-unselectedColor2:transparent;
+  --dm-unselectedColor2:transparent;
+  --unselectedColor2:var(--lm-unselectedColor2);
+  --lm-checkColor:#000;
+  --dm-checkColor:#ff0000;
+  --checkColor:var(--lm-checkColor);
+  --lm-checkedBackColor:transparent;
+  --dm-checkedBackColor:transparent;
+  --checkedBackColor:var(--lm-checkedBackColor);
+  --lm-borderColor:#000;
+  --dm-borderColor:lightgrey;
+  --borderColor:var(--lm-borderColor);
+  --lm-fontColor:#0f0f0f;
+  --dm-fontColor:var(--dark-primarytext);
+  --fontColor:var(--lm-fontColor);
+  --lm-disabledColor:var(--lm-unselectedColor1);
+  --dm-disabledColor:var(--dm-unselectedColor1);
+  --disabledColor:var(--lm-disabledColor);
+  --checkContent: '✓';
+  --checkWeight: bold;
+  --checkSize: 150%;
+  --checkLineHeight: calc(var(--checkSize) / 3);
+  --checkboxBorderWidth: var(--borderWidth);
+  --checkboxBorderStyle: var(--borderStyle);
+  --lm-checkboxBorderColor: var(--lm-borderColor);
+  --dm-checkboxBorderColor: var(--dm-borderColor);
+  --checkboxBorderColor: var(--lm-checkBorderColor);
+  --checkboxWidth: 14px;
+  --checkboxHeight: 14px;
+  --inputTopPadding: 2px;
+  --inputRightPadding: 2px;
+  --inputBottomPadding: 2px;
+  --inputLeftPadding: 2px;
+  --inputPadding:
+    var(--inputTopPadding)
+    var(--inputRightPadding)
+    var(--inputBottomPadding)
+    var(--inputLeftPadding);
+  --lm-placeholderColor:#ededed80;
+  --dm-placeholderColor:#3f3f3f80;
+  --placeholderColor: var(--lm-placeholderColor);
+  --textareaResize: vertical;
+  --borderWidth:1px;
+  --borderStyle:solid;
+  --expandedSymbol:'unfold_less';
+  --collapsedSymbol: 'unfold_more';
+  --collapseHoverOpacity: 1;
+  --collapseBaseOpacity: 0;
+  --lm-collapseExpandedColor:var(--lm-selectedColor);
+  --dm-collapseExpandedColor:var(--dm-selectedColor);
+  --collapseExpandedColor: var(--lm-collapseExpandedColor);
+  --lm-collapseCollapsedColor:var(--lm-unselectedColor);
+  --dm-collapseCollapsedColor:var(--dm-unselectedColor);
+  --collapseCollapsedColor: var(--lm-collapseCollapsedColor);
+  --fillLeftDisplay: flex;
+  --fillLeftAlignment: center;
+  --fillLeftDataTransform: uppercase;
+  --fillLeftDataSize: var(--size6);
+  --lm-fillLeftSelectedColor: var(--lm-selectedColor);
+  --dm-fillLeftSelectedColor: var(--dm-selectedColor);
+  --fillLeftSelectedColor: var(--lm-fillLeftSelectedColor);
+  --lm-fillLeftUnselectedColor: var(--lm-unselectedColor);
+  --dm-fillLeftUnselectedColor: var(--dm-unselectedColor);
+  --fillLeftUnselectedColor: var(--lm-fillLeftUnselectedColor);
+  --lm-fillLeftDataColor: var(--lm-backColor);
+  --dm-fillLeftDataColor: var(--dm-backColor);
+  --fillLeftDataColor: var(--lm-fillLeftDataColor);
+  --lm-selectColor: var(--lm-fontColor);
+  --dm-selectColor: var(--dm-fontColor);
+  --selectColor: var(--lm-fontColor);
+  --selectTextOverflow: var(--textOverflow);
+  --selectTextAlign: center;
+  --selectTextTransform: capitalize;
+  --revealTime:500ms;
+  --revealFunction: ease-in-out;
+  --revealTrans: var(--revealTime) var(--revealFunction);
+  --kmodal-width:fit-content;
+  --kmodal-height:fit-content;
+  --kmodal-max-width:90vw;
+  --kmodal-max-height:90vh;
+  --lm-kmodal-overlay-background:rgba(0,0,0,.9);
+  --dm-kmodal-overlay-background:rgba(0,0,0,.9);
+  --kmodal-overlay-background: var(--lm-kmodal-overlay-background);
+  --lm-kmodal-dialog-background:var(--lm-backColor);
+  --dm-kmodal-dialog-background:var(--dm-backColor);
+  --kmodal-dialog-background: var(--lm-kmodal-dialog-background);
+  --kmodal-border-width:0px;
+  --kmodal-border-color:transparent;
+  --lm-kmodal-box-shadow-color1:rgba(0, 0, 0, 0.25);
+  --dm-kmodal-box-shadow-color1:rgba(0, 0, 0, 0.25);
+  --kmodal-box-shadow-color1:var(--lm-kmodal-box-shadow-color1);
+  --kmodal-box-shadow-blur1:28px;
+  --kmodal-box-shadow-x1:0px;
+  --kmodal-box-shadow-y1:14px;
+  --kmodal-box-shadow-spread1:0px;
+  --lm-kmodal-box-shadow-color2:rgba(0, 0, 0, 0.22);
+  --dm-kmodal-box-shadow-color2:rgba(0, 0, 0, 0.22);
+  --kmodal-box-shadow-color2:var(--lm-kmodal-box-shadow-color2);
+  --kmodal-box-shadow-blur2:10px;
+  --kmodal-box-shadow-x2:0px;
+  --kmodal-box-shadow-y2:10px;
+  --kmodal-box-shadow-spread2:0px;
+  --kmodal-box-shadow:
+    var(--kmodal-box-shadow-x1) var(--kmodal-box-shadow-y1) var(--kmodal-box-shadow-blur1) var(--kmodal-box-shadow-spread1) var(--kmodal-box-shadow-color1),
+    var(--kmodal-box-shadow-x2) var(--kmodal-box-shadow-y2) var(--kmodal-box-shadow-blur2) var(--kmodal-box-shadow-spread2) var(--kmodal-box-shadow-color2);
+  --kmodal-close-width:1rem;
+  --kmodal-close-height:1rem;
+  --lm-kmodal-close-color:#ccc;
+  --dm-kmodal-close-color:#aaa;
+  --kmodal-close-color:var(--lm-kmodal-close-color);
+  --lm-kmodal-close-hover-color:#aaa;
+  --dm-kmodal-close-hover-color:#aaa;
+  --kmodal-close-hover-color:var(--lm-kmodal-close-hover-color);
+  --kmodal-close-line-thickness:2px;
+  --kmodal-close-line-length:calc(var(--kmodal-close-width) * 1.5);
+  --kmodal-width: min(var(--kmodal-max-width), max-content);
+  --topHeadFont:"Uncial Antiqua", cursive;
+  --midHeadFont:"Uncial Antiqua", cursive;
+  --baseFontSize: 14px;
+  --size1:200%;
+  --size2:180%;
+  --size3:160%;
+  --size4:140%;
+  --size5:120%;
+  --size6:100%;
+  --size7:87.5%;
+}
+.ui-dialog .tab-content .charsheet label {
+  margin: 0px;
+  padding: 0px;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible select,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible textarea,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .uneditable-input,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible label,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible button {
+  all: initial;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .flex-box,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-flex-box {
   display: flex;
 }
-.ui-dialog .charsheet .kscaffold-compatible .flex-wrap,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-flex-wrap {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .flex-wrap,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-flex-wrap {
   flex-wrap: wrap;
 }
-.ui-dialog .charsheet .kscaffold-compatible .justify-space-around,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-justify-space-around {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .justify-space-around,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-justify-space-around {
   justify-content: space-around;
 }
-.ui-dialog .charsheet .kscaffold-compatible .justify-space-between,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-justify-space-between {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .justify-space-between,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-justify-space-between {
   justify-content: space-between;
 }
-.ui-dialog .charsheet .kscaffold-compatible .justify-center,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-justify-center {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .justify-center,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-justify-center {
   justify-content: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible .flex-min-content,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-flex-min-content {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .flex-min-content,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-flex-min-content {
   flex: 1 0 min-content;
 }
-.ui-dialog .charsheet .kscaffold-compatible .stacked {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .stacked {
   flex-direction: column;
 }
-.ui-dialog .charsheet .kscaffold-compatible .stacked.center > * {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .stacked.center > * {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible .stacked:not(.center) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .stacked:not(.center) {
   align-items: start;
 }
-.ui-dialog .charsheet .kscaffold-compatible .stacked > [name]:not([type=number]):not([type=checkbox]):not([type=radio]) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .stacked > [name]:not([type=number]):not([type=checkbox]):not([type=radio]) {
   width: 100%;
 }
-.ui-dialog .charsheet .kscaffold-compatible .flex-column,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-flex-column {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .flex-column,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-flex-column {
   flex-direction: column;
 }
-.ui-dialog .charsheet .kscaffold-compatible .flex-row-reverse,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-flex-row-revers {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .flex-row-reverse,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-flex-row-revers {
   flex-direction: row-reverse;
 }
-.ui-dialog .charsheet .kscaffold-compatible .flex-column-reverse,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-flex-column-reverse {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .flex-column-reverse,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-flex-column-reverse {
   flex-direction: column-reverse;
 }
-.ui-dialog .charsheet .kscaffold-compatible .normal-gap,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-normal-gap {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .normal-gap,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-normal-gap {
   gap: var(--normal-gap);
 }
-.ui-dialog .charsheet .kscaffold-compatible .normal-gap-x,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-normal-gap-x {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .normal-gap-x,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-normal-gap-x {
   column-gap: var(--normal-gap-x);
 }
-.ui-dialog .charsheet .kscaffold-compatible .normal-gap-y,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-normal-gap-y {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .normal-gap-y,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-normal-gap-y {
   row-gap: var(--normal-gap-y);
 }
-.ui-dialog .charsheet .kscaffold-compatible .half-gap,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-half-gap {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .half-gap,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-half-gap {
   gap: var(--half-gap);
 }
-.ui-dialog .charsheet .kscaffold-compatible .half-gap-x,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-half-gap-x {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .half-gap-x,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-half-gap-x {
   column-gap: var(--half-gap-x);
 }
-.ui-dialog .charsheet .kscaffold-compatible .half-gap-y,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-half-gap-y {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .half-gap-y,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-half-gap-y {
   row-gap: var(--half-gap-y);
 }
-.ui-dialog .charsheet .kscaffold-compatible .tiny-gap,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-tiny-gap {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .tiny-gap,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-tiny-gap {
   gap: var(--tiny-gap);
 }
-.ui-dialog .charsheet .kscaffold-compatible .tiny-gap-x,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-tiny-gap-x {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .tiny-gap-x,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-tiny-gap-x {
   column-gap: var(--tiny-gap-x);
 }
-.ui-dialog .charsheet .kscaffold-compatible .tiny-gap-y,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-tiny-gap-y {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .tiny-gap-y,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-tiny-gap-y {
   row-gap: var(--tiny-gap-y);
 }
-.ui-dialog .charsheet .kscaffold-compatible .big-gap,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-big-gap {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .big-gap,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-big-gap {
   gap: var(--big-gap);
 }
-.ui-dialog .charsheet .kscaffold-compatible .big-gap-x,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-big-gap-x {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .big-gap-x,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-big-gap-x {
   column-gap: var(--big-gap-x);
 }
-.ui-dialog .charsheet .kscaffold-compatible .big-gap-y,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-big-gap-y {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .big-gap-y,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-big-gap-y {
   row-gap: var(--big-gap-y);
 }
-.ui-dialog .charsheet .kscaffold-compatible .grid,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-grid {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .grid,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-grid {
   display: grid;
 }
-.ui-dialog .charsheet .kscaffold-compatible .grid-span-2,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-grid-span-2 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .grid-span-2,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-grid-span-2 {
   grid-column: span 2;
 }
-.ui-dialog .charsheet .kscaffold-compatible .grid-span-all,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-grid-span-all {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .grid-span-all,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-grid-span-all {
   grid-column: 1/-1;
 }
-.ui-dialog .charsheet .kscaffold-compatible .grid-column,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-grid-column {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .grid-column,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-grid-column {
   grid-auto-flow: column;
 }
-.ui-dialog .charsheet .kscaffold-compatible .grid-dense,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-grid-dense {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .grid-dense,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-grid-dense {
   grid-auto-flow: dense;
 }
-.ui-dialog .charsheet .kscaffold-compatible .boxed,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-boxed {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .boxed,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-boxed {
   border: 2px solid var(--borderColor);
   border-radius: 0;
   box-sizing: border-box;
 }
-.ui-dialog .charsheet .kscaffold-compatible .boxed.thick-left,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-boxed.thick-left {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .boxed.thick-left,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-boxed.thick-left {
   border-left-width: 5px;
 }
-.ui-dialog .charsheet .kscaffold-compatible .boxed.thick-bottom,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-boxed.thick-bottom {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .boxed.thick-bottom,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-boxed.thick-bottom {
   border-bottom-width: 5px;
 }
-.ui-dialog .charsheet .kscaffold-compatible .boxed.thick-right,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-boxed.thick-right {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .boxed.thick-right,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-boxed.thick-right {
   border-right-width: 5px;
 }
-.ui-dialog .charsheet .kscaffold-compatible .boxed.thick-top,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-boxed.thick-top {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .boxed.thick-top,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-boxed.thick-top {
   border-top-width: 5px;
 }
-.ui-dialog .charsheet .kscaffold-compatible .underlined,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-underlined {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .underlined,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-underlined {
   border-width: 1px 3px;
   border-style: solid;
   border-radius: 5px;
@@ -4650,87 +4738,102 @@ End of the python integration block
   border-bottom: 1px solid var(--borderColor);
   transition: border-radius border var(--revealTrans);
 }
-.ui-dialog .charsheet .kscaffold-compatible :is(.underlined, .boxed):not([readonly]):not([type=checkbox]):not([type=radio]):is(:hover, :focus, :focus-within) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible :is(.underlined, .boxed):not([readonly]):not([type=checkbox]):not([type=radio]):is(:hover, :focus, :focus-within) {
   border-width: 1px 3px;
   border-style: solid;
   border-color: var(--borderColor);
   border-radius: 5px;
   box-sizing: border-box;
 }
-.ui-dialog .charsheet .kscaffold-compatible :is(.underlined, .boxed):not([readonly]):not([type=checkbox]):not([type=radio]):is(:focus, :focus-within) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible :is(.underlined, .boxed):not([readonly]):not([type=checkbox]):not([type=radio]):is(:focus, :focus-within) {
   background-color: var(--disabledColor);
 }
-.ui-dialog .charsheet .kscaffold-compatible .underlined--invisible {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .underlined--invisible {
   border-color: transparent !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .ratio1-1,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-ratio1-1 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .ratio1-1,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-ratio1-1 {
   aspect-ratio: 1/1;
 }
-.ui-dialog .charsheet .kscaffold-compatible span,
-.ui-dialog .charsheet .kscaffold-compatible input,
-.ui-dialog .charsheet .kscaffold-compatible textarea,
-.ui-dialog .charsheet .kscaffold-compatible button,
-.ui-dialog .charsheet .kscaffold-compatible select {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible span,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible textarea,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible button,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible select {
   line-height: normal;
   color: inherit;
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-1,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-text-1 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-1,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-text-1 {
   font-size: var(--size1);
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-2,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-text-2 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-2,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-text-2 {
   font-size: var(--size2);
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-3,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-text-3 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-3,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-text-3 {
   font-size: var(--size3);
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-4,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-text-4 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-4,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-text-4 {
   font-size: var(--size4);
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-5,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-text-5 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-5,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-text-5 {
   font-size: var(--size5);
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-6,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-text-6 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-6,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-text-6 {
   font-size: var(--size6);
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-7,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-text-7 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-7,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-text-7 {
   font-size: var(--size7);
 }
-.ui-dialog .charsheet .kscaffold-compatible .capitalize,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-capitalize {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .capitalize,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-capitalize {
   text-transform: capitalize !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .lowercase,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-lowercase {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .lowercase,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-lowercase {
   text-transform: lowercase !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .uppercase,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-uppercase {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .uppercase,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-uppercase {
   text-transform: uppercase !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .sheet-material-icons,
-.ui-dialog .charsheet .kscaffold-compatible .material-icons {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-material-icons,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .material-icons {
   font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: var(--icon-size); /* Preferred icon size */
 }
-.ui-dialog .charsheet .kscaffold-compatible .sheet-italics,
-.ui-dialog .charsheet .kscaffold-compatible .italics {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .material-symbol,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-material-symbol {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  font-variation-settings: "FILL" 1;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-italics,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .italics {
   font-style: italic;
 }
-.ui-dialog .charsheet .kscaffold-compatible h1,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="1"] {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h1,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="1"] {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4739,16 +4842,15 @@ End of the python integration block
   margin-bottom: 0px;
   font-weight: normal;
   text-transform: uppercase;
-  font-weight: normal;
   font-size: var(--size1);
   font-family: var(--font1);
 }
-.ui-dialog .charsheet .kscaffold-compatible h1:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="1"]:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h1:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="1"]:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h1 *,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="1"] * {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h1 *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="1"] * {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4757,16 +4859,15 @@ End of the python integration block
   margin-bottom: 0px;
   font-weight: normal;
   text-transform: uppercase;
-  font-weight: normal;
   font-size: var(--size1);
   font-family: var(--font1);
 }
-.ui-dialog .charsheet .kscaffold-compatible h1 *:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="1"] *:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h1 *:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="1"] *:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h2, .ui-dialog .charsheet .kscaffold-compatible .input-label:not(.stacked).large > [name],
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="2"] {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h2, .ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label:not(.stacked).large > [name],
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="2"] {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4775,16 +4876,15 @@ End of the python integration block
   margin-bottom: 0px;
   font-weight: normal;
   text-transform: uppercase;
-  font-weight: normal;
   font-size: var(--size2);
   font-family: var(--font2);
 }
-.ui-dialog .charsheet .kscaffold-compatible h2:not(input), .ui-dialog .charsheet .kscaffold-compatible .input-label:not(.stacked).large > [name]:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="2"]:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h2:not(input), .ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label:not(.stacked).large > [name]:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="2"]:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h2 *, .ui-dialog .charsheet .kscaffold-compatible .input-label:not(.stacked).large > [name] *,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="2"] * {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h2 *, .ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label:not(.stacked).large > [name] *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="2"] * {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4793,16 +4893,15 @@ End of the python integration block
   margin-bottom: 0px;
   font-weight: normal;
   text-transform: uppercase;
-  font-weight: normal;
   font-size: var(--size2);
   font-family: var(--font2);
 }
-.ui-dialog .charsheet .kscaffold-compatible h2 *:not(input), .ui-dialog .charsheet .kscaffold-compatible .input-label:not(.stacked).large > [name] *:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="2"] *:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h2 *:not(input), .ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label:not(.stacked).large > [name] *:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="2"] *:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h3,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="3"] {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h3,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="3"] {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4811,16 +4910,15 @@ End of the python integration block
   margin-bottom: 0px;
   font-weight: normal;
   text-transform: uppercase;
-  font-weight: normal;
   font-size: var(--size3);
   font-family: var(--font3);
 }
-.ui-dialog .charsheet .kscaffold-compatible h3:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="3"]:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h3:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="3"]:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h3 *,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="3"] * {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h3 *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="3"] * {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4829,16 +4927,15 @@ End of the python integration block
   margin-bottom: 0px;
   font-weight: normal;
   text-transform: uppercase;
-  font-weight: normal;
   font-size: var(--size3);
   font-family: var(--font3);
 }
-.ui-dialog .charsheet .kscaffold-compatible h3 *:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="3"] *:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h3 *:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="3"] *:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h4,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="4"] {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h4,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="4"] {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4846,19 +4943,22 @@ End of the python integration block
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: normal;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h4:not(:where(input)),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="4"]:not(:where(input)) {
+  text-transform: capitalize;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h4,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="4"] {
   font-size: var(--size4);
   font-family: var(--font4);
 }
-.ui-dialog .charsheet .kscaffold-compatible h4:not(:where(input)),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="4"]:not(:where(input)) {
-  text-transform: capitalize;
-}
-.ui-dialog .charsheet .kscaffold-compatible h4:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="4"]:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h4:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="4"]:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h4 *,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="4"] * {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h4 *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="4"] * {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4866,19 +4966,22 @@ End of the python integration block
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: normal;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h4 *:not(:where(input)),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="4"] *:not(:where(input)) {
+  text-transform: capitalize;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h4 *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="4"] * {
   font-size: var(--size4);
   font-family: var(--font4);
 }
-.ui-dialog .charsheet .kscaffold-compatible h4 *:not(:where(input)),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="4"] *:not(:where(input)) {
-  text-transform: capitalize;
-}
-.ui-dialog .charsheet .kscaffold-compatible h4 *:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="4"] *:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h4 *:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="4"] *:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h5,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="5"] {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h5,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="5"] {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4886,20 +4989,23 @@ End of the python integration block
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: normal;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h5:not(:where(input)),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="5"]:not(:where(input)) {
+  text-transform: capitalize;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h5,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="5"] {
   font-size: var(--size5);
   font-style: normal;
   font-family: var(--font5);
 }
-.ui-dialog .charsheet .kscaffold-compatible h5:not(:where(input)),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="5"]:not(:where(input)) {
-  text-transform: capitalize;
-}
-.ui-dialog .charsheet .kscaffold-compatible h5:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="5"]:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h5:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="5"]:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h5 *,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="5"] * {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h5 *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="5"] * {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4907,20 +5013,23 @@ End of the python integration block
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: normal;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h5 *:not(:where(input)),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="5"] *:not(:where(input)) {
+  text-transform: capitalize;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h5 *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="5"] * {
   font-size: var(--size5);
   font-style: normal;
   font-family: var(--font5);
 }
-.ui-dialog .charsheet .kscaffold-compatible h5 *:not(:where(input)),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="5"] *:not(:where(input)) {
-  text-transform: capitalize;
-}
-.ui-dialog .charsheet .kscaffold-compatible h5 *:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="5"] *:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h5 *:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="5"] *:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h6,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="6"] {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h6,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="6"] {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4928,20 +5037,23 @@ End of the python integration block
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: normal;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h6:not(:where(input)),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="6"]:not(:where(input)) {
+  text-transform: capitalize;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h6,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="6"] {
   font-size: var(--size5);
   font-style: normal;
   font-family: var(--font5);
 }
-.ui-dialog .charsheet .kscaffold-compatible h6:not(:where(input)),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="6"]:not(:where(input)) {
-  text-transform: capitalize;
-}
-.ui-dialog .charsheet .kscaffold-compatible h6:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="6"]:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h6:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="6"]:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible h6 *,
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="6"] * {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h6 *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="6"] * {
   line-height: normal;
   color: var(--fontColor);
   display: block;
@@ -4949,69 +5061,72 @@ End of the python integration block
   margin-top: 0px;
   margin-bottom: 0px;
   font-weight: normal;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h6 *:not(:where(input)),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="6"] *:not(:where(input)) {
+  text-transform: capitalize;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h6 *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="6"] * {
   font-size: var(--size5);
   font-style: normal;
   font-family: var(--font5);
 }
-.ui-dialog .charsheet .kscaffold-compatible h6 *:not(:where(input)),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="6"] *:not(:where(input)) {
-  text-transform: capitalize;
-}
-.ui-dialog .charsheet .kscaffold-compatible h6 *:not(input),
-.ui-dialog .charsheet .kscaffold-compatible *[aria-level="6"] *:not(input) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible h6 *:not(input),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible *[aria-level="6"] *:not(input) {
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible .sheet-pictos,
-.ui-dialog .charsheet .kscaffold-compatible .pictos {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-pictos,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .pictos {
   font-family: pictos;
   text-transform: none;
 }
-.ui-dialog .charsheet .kscaffold-compatible .pictos3,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-pictos3 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .pictos3,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-pictos3 {
   font-family: pictos three;
   text-transform: none;
 }
-.ui-dialog .charsheet .kscaffold-compatible .pictoscustom,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-pictoscustom {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .pictoscustom,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-pictoscustom {
   font-family: pictos custom;
   text-transform: none;
 }
-.ui-dialog .charsheet .kscaffold-compatible .d4,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-d4 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .d4,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-d4 {
   font-family: dicefontd4 !important;
   text-transform: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .d6,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-d6 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .d6,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-d6 {
   font-family: dicefontd6 !important;
   text-transform: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .d8,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-d8 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .d8,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-d8 {
   font-family: dicefontd8 !important;
   text-transform: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .d10,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-d10 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .d10,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-d10 {
   font-family: dicefontd10 !important;
   text-transform: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .d12,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-d12 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .d12,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-d12 {
   font-family: dicefontd12 !important;
   text-transform: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .d20,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-d20 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .d20,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-d20 {
   font-family: dicefontd20 !important;
   text-transform: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .d30,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-d30 {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .d30,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-d30 {
   font-family: dicefontd30 !important;
   text-transform: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible input[type=checkbox] {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input[type=checkbox] {
   border: 1px solid var(--checkboxBorderColor);
   cursor: pointer;
   -webkit-appearance: none;
@@ -5024,10 +5139,10 @@ End of the python integration block
   grid-template-columns: 1fr;
   grid-template-areas: "content";
 }
-.ui-dialog .charsheet .kscaffold-compatible input[type=checkbox]:not(.collapse):not(.fill-left__radio):checked {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input[type=checkbox]:not(.collapse):not(.fill-left__radio):checked {
   background-color: var(--checkedBackColor);
 }
-.ui-dialog .charsheet .kscaffold-compatible input[type=checkbox]:not(.collapse):not(.fill-left__radio):checked:before {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input[type=checkbox]:not(.collapse):not(.fill-left__radio):checked:before {
   content: var(--checkContent);
   grid-area: content;
   font-weight: var(--checkWeight);
@@ -5036,41 +5151,41 @@ End of the python integration block
   font-size: var(--checkSize);
   line-height: var(--checkLineHeight);
 }
-.ui-dialog .charsheet .kscaffold-compatible input[type=number] {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input[type=number] {
   width: 3rem;
   -moz-appearance: textfield !important;
   text-align: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible input[type=number]::-webkit-inner-spin-button, .ui-dialog .charsheet .kscaffold-compatible input[type=number]::-webkit-outer-spin-button {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input[type=number]::-webkit-inner-spin-button, .ui-dialog .tab-content .charsheet .kscaffold-compatible input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-.ui-dialog .charsheet .kscaffold-compatible select,
-.ui-dialog .charsheet .kscaffold-compatible .pseudo-select span,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-pseudo-select span,
-.ui-dialog .charsheet .kscaffold-compatible textarea,
-.ui-dialog .charsheet .kscaffold-compatible input:not(:is([type=radio], [type=checkbox])),
-.ui-dialog .charsheet .kscaffold-compatible .uneditable-input {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible select,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .pseudo-select span,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-pseudo-select span,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible textarea,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input:not(:is([type=radio], [type=checkbox])),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .uneditable-input {
   padding: var(--inputPadding);
 }
-.ui-dialog .charsheet .kscaffold-compatible input:is([type=text], [type=number]), .ui-dialog .charsheet .kscaffold-compatible textarea {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input:is([type=text], [type=number]), .ui-dialog .tab-content .charsheet .kscaffold-compatible textarea {
   cursor: auto;
 }
-.ui-dialog .charsheet .kscaffold-compatible select,
-.ui-dialog .charsheet .kscaffold-compatible .pseudo-select span,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-pseudo-select span,
-.ui-dialog .charsheet .kscaffold-compatible input:not(:where([type=checkbox], [type=radio])),
-.ui-dialog .charsheet .kscaffold-compatible .uneditable-input,
-.ui-dialog .charsheet .kscaffold-compatible textarea {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible select,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .pseudo-select span,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-pseudo-select span,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input:not(:where([type=checkbox], [type=radio])),
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .uneditable-input,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible textarea {
   border-width: 1px 3px;
   border-style: solid;
   border-radius: 5px;
   border-color: transparent;
   box-sizing: border-box;
 }
-.ui-dialog .charsheet .kscaffold-compatible select,
-.ui-dialog .charsheet .kscaffold-compatible .sheet-pseudo-select span,
-.ui-dialog .charsheet .kscaffold-compatible .pseudo-select span {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible select,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .sheet-pseudo-select span,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .pseudo-select span {
   -webkit-apperance: none;
   appearance: none;
   text-transform: var(--selectTextTransform);
@@ -5080,72 +5195,72 @@ End of the python integration block
   text-align: var(--selectTextAlign);
   color: var(--selectColor);
 }
-.ui-dialog .charsheet .kscaffold-compatible input {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input {
   width: auto;
 }
-.ui-dialog .charsheet .kscaffold-compatible input:placeholder {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input:placeholder {
   color: var(--placeholderColor);
 }
-.ui-dialog .charsheet .kscaffold-compatible input.plus-control:not([value*="-"]) + span:before {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible input.plus-control:not([value*="-"]) + span:before {
   content: "+";
 }
-.ui-dialog .charsheet .kscaffold-compatible textarea {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible textarea {
   resize: var(--textareaResize);
   white-space: pre-wrap;
 }
-.ui-dialog .charsheet .kscaffold-compatible textarea.fixed {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible textarea.fixed {
   resize: none;
   overflow: auto;
 }
-.ui-dialog .charsheet .kscaffold-compatible button {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible button {
   cursor: pointer;
 }
-.ui-dialog .charsheet .kscaffold-compatible .roller {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .roller {
   display: flex;
   align-items: center;
   gap: var(--half-gap);
 }
-.ui-dialog .charsheet .kscaffold-compatible .roller:before {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .roller:before {
   content: "T";
   font-family: dicefontd20;
 }
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container {
   display: grid;
   position: relative;
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-collapse {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-collapse {
   cursor: pointer;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-collapse:before {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-collapse:before {
   content: var(--expandedSymbol);
   font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: var(--icon-size); /* Preferred icon size */
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-collapse__text {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-collapse__text {
   display: inline;
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-collapse__check:not(:checked) + .text-collapse {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-collapse__check:not(:checked) + .text-collapse {
   border-width: 1px 3px;
   border-style: solid;
   border-color: var(--borderColor);
   border-radius: 5px;
   box-sizing: border-box;
 }
-.ui-dialog .charsheet .kscaffold-compatible .text-collapse__check:checked + .text-collapse:before {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .text-collapse__check:checked + .text-collapse:before {
   content: var(--collapsedSymbol);
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem:hover .collapse, .ui-dialog .charsheet .kscaffold-compatible .repitem:hover .roll-container,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container:hover .collapse,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container:hover .roll-container {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem:hover > .collapse, .ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem:hover .roll-container,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container:hover > .collapse,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container:hover .roll-container {
   opacity: var(--collapseHoverOpacity);
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem .collapse,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container .collapse {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > .collapse,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container > .collapse {
   opacity: var(--collapseBaseOpacity);
   position: absolute;
   right: -10px;
@@ -5156,45 +5271,45 @@ End of the python integration block
   text-transform: none;
   background-color: transparent;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem .collapse:before,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container .collapse:before {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > .collapse:before,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container > .collapse:before {
   content: "y";
   font-family: pictos;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem .collapse:checked,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container .collapse:checked {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > .collapse:checked,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container > .collapse:checked {
   color: var(--collapseCollapsedColor);
   background-color: transparent;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem .collapse:checked ~ .expanded,
-.ui-dialog .charsheet .kscaffold-compatible .repitem .collapse:checked ~ .collapse-container .expanded,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container .collapse:checked ~ .expanded,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container .collapse:checked ~ .collapse-container .expanded {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > .collapse:checked ~ .expanded,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > .collapse:checked ~ .collapse-container .expanded,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container > .collapse:checked ~ .expanded,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container > .collapse:checked ~ .collapse-container .expanded {
   display: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem .collapse:checked ~ .expanded--empty:is(:not([value]), [value=""]) + *,
-.ui-dialog .charsheet .kscaffold-compatible .repitem .collapse:checked ~ .collapse-container ~ .expanded--empty:is(:not([value]), [value=""]) + *,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container .collapse:checked ~ .expanded--empty:is(:not([value]), [value=""]) + *,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container .collapse:checked ~ .collapse-container ~ .expanded--empty:is(:not([value]), [value=""]) + * {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > .collapse:checked ~ .expanded--empty:is(:not([value]), [value=""]) + *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > .collapse:checked ~ .collapse-container ~ .expanded--empty:is(:not([value]), [value=""]) + *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container > .collapse:checked ~ .expanded--empty:is(:not([value]), [value=""]) + *,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container > .collapse:checked ~ .collapse-container ~ .expanded--empty:is(:not([value]), [value=""]) + * {
   display: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem .collapse:not(:checked) ~ .collapsed,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container .collapse:not(:checked) ~ .collapsed {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > .collapse:not(:checked) ~ .collapsed,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container > .collapse:not(:checked) ~ .collapsed {
   display: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem .collapse:hover,
-.ui-dialog .charsheet .kscaffold-compatible .collapse-container .collapse:hover {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > .collapse:hover,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .collapse-container > .collapse:hover {
   color: var(--collapseExpandedColor);
 }
-.ui-dialog .charsheet .kscaffold-compatible .repcontainer.editmode .collapse {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repcontainer.editmode .collapse {
   display: none;
 }
-.ui-dialog .charsheet .kscaffold-compatible .fill-left {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .fill-left {
   display: var(--fillLeftDisplay);
   align-self: var(--fillLeftAlignment);
   box-sizing: border-box;
 }
-.ui-dialog .charsheet .kscaffold-compatible .fill-left__radio {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .fill-left__radio {
   appearance: none;
   -webkit-appearance: none;
   background-color: var(--fillLeftSelectedColor);
@@ -5202,67 +5317,67 @@ End of the python integration block
   height: 100%;
   cursor: pointer;
 }
-.ui-dialog .charsheet .kscaffold-compatible .fill-left__radio[data-value]:checked:before {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .fill-left__radio[data-value]:checked:before {
   content: attr(data-value);
   color: var(--fillLeftDataColor);
   font-size: var(--fillLeftDataSize);
   place-self: center;
   text-transform: var(--fillLeftDataTransform);
 }
-.ui-dialog .charsheet .kscaffold-compatible .fill-left__radio:checked ~ .fill-left__radio {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .fill-left__radio:checked ~ .fill-left__radio {
   background-color: var(--fillLeftUnselectedColor);
 }
-.ui-dialog .charsheet .kscaffold-compatible .input-label {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label {
   display: inline-flex;
   gap: var(--input-label-gap);
   align-items: center;
 }
-.ui-dialog .charsheet .kscaffold-compatible .input-label:not(.stacked) > input[type=text] {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label:not(.stacked) > input[type=text] {
   flex: 1 1 0;
 }
-.ui-dialog .charsheet .kscaffold-compatible .input-label:not(.stacked) > :not([name]) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label:not(.stacked) > :not([name]) {
   flex: 0 0 auto;
 }
-.ui-dialog .charsheet .kscaffold-compatible .input-label > :is(span, button) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label > :is(span, button) {
   text-transform: var(--input-label-text-transform);
 }
-.ui-dialog .charsheet .kscaffold-compatible .input-label--dual {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label--dual {
   grid-template-columns: 1fr auto 1fr;
   grid-template-areas: "over 	over 	over" "under 	under 	under";
 }
-.ui-dialog .charsheet .kscaffold-compatible .input-label--dual > span:last-of-type {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label--dual > span:last-of-type {
   grid-column: 1/-1;
 }
-.ui-dialog .charsheet .kscaffold-compatible .input-label--dual > input:not([type=number]):not([type=checkbox]):not([type=radio]) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label--dual > input:not([type=number]):not([type=checkbox]):not([type=radio]) {
   width: 100%;
 }
-.ui-dialog .charsheet .kscaffold-compatible .input-label--dual > .slash {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .input-label--dual > .slash {
   line-height: 0rem;
   font-weight: normal;
 }
-.ui-dialog .charsheet .kscaffold-compatible .headed-textarea {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .headed-textarea {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: auto;
   grid-column: 1/-1;
 }
-.ui-dialog .charsheet .kscaffold-compatible .headed-textarea :not(textarea):not(.adaptive) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .headed-textarea :not(textarea):not(.adaptive) {
   justify-self: start;
 }
-.ui-dialog .charsheet .kscaffold-compatible .headed-textarea .headed-textarea__header {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .headed-textarea .headed-textarea__header {
   grid-area: initial;
 }
-.ui-dialog .charsheet .kscaffold-compatible .adaptive {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas: "content";
   position: relative;
 }
-.ui-dialog .charsheet .kscaffold-compatible .adaptive > * {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive > * {
   grid-area: content;
 }
-.ui-dialog .charsheet .kscaffold-compatible .adaptive > span {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive > span {
   opacity: 0;
   z-index: -10;
   border-width: 1px 3px;
@@ -5273,66 +5388,66 @@ End of the python integration block
   text-transform: initial;
   border-radius: 0px;
 }
-.ui-dialog .charsheet .kscaffold-compatible .adaptive--text {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive--text {
   min-height: 4rem;
 }
-.ui-dialog .charsheet .kscaffold-compatible .adaptive--text__span {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive--text__span {
   white-space: pre-wrap;
   padding: 2px;
 }
-.ui-dialog .charsheet .kscaffold-compatible .adaptive--text__textarea {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive--text__textarea {
   width: 100%;
   height: 100%;
   resize: none;
 }
-.ui-dialog .charsheet .kscaffold-compatible .adaptive--text__textarea,
-.ui-dialog .charsheet .kscaffold-compatible .adaptive--input__input {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive--text__textarea,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive--input__input {
   position: absolute;
 }
-.ui-dialog .charsheet .kscaffold-compatible .adaptive--input__input {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive--input__input {
   width: 100%;
 }
-.ui-dialog .charsheet .kscaffold-compatible .adaptive--input__span {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .adaptive--input__span {
   padding: 2px;
   min-height: 1.5rem;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem > input:not([type=checkbox]) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem > input:not([type=checkbox]) {
   width: 100%;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repitem .headed-textarea,
-.ui-dialog .charsheet .kscaffold-compatible .repitem .description {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem .headed-textarea,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repitem .description {
   grid-column: 1/-1;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repcontainer {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repcontainer {
   display: grid;
   gap: var(--normal-gap);
 }
-.ui-dialog .charsheet .kscaffold-compatible .repeating-container {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repeating-container {
   display: grid;
   grid-template-areas: "header";
   align-self: start;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repeating-container > .header {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repeating-container > .header {
   grid-area: header;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repeating-container :is(.repcontrol-button, .repcontrol_edit) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repeating-container :is(.repcontrol-button, .repcontrol_edit) {
   opacity: 0;
   transition: var(--revealTrans);
 }
-.ui-dialog .charsheet .kscaffold-compatible .repeating-container:is(:hover, :focus-within, :focus) :is(.repcontrol-button, .repcontrol_edit) {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repeating-container:is(:hover, :focus-within, :focus) :is(.repcontrol-button, .repcontrol_edit) {
   opacity: 1;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repcontrol-button {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repcontrol-button {
   align-self: start;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repcontrol-button ~ .repcontrol {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repcontrol-button ~ .repcontrol {
   justify-self: end;
   z-index: 100;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repcontrol-button ~ .repcontrol > .repcontrol_add {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repcontrol-button ~ .repcontrol > .repcontrol_add {
   display: none !important;
 }
-.ui-dialog .charsheet .kscaffold-compatible .repcontrol-button--add {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repcontrol-button--add {
   justify-self: start;
   width: 15px;
   height: 15px;
@@ -5341,14 +5456,116 @@ End of the python integration block
   color: var(--col-alt);
   border: 1px solid var(--col-alt);
 }
-.ui-dialog .charsheet .kscaffold-compatible .repcontrol-button--add::before {
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .repcontrol-button--add::before {
   inset: 0;
   place-self: center;
   font-family: var(--font-icon);
   font-size: 12px;
   content: "add";
 }
-
+.ui-dialog .tab-content .charsheet .kscaffold-compatible {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__button {
+  all: initial;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__checkbox[type=checkbox] {
+  display: none;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__outer {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  background: var(--kmodal-overlay-background);
+  transition: opacity 0.25s ease;
+  z-index: 999;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__background {
+  all: initial;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__inner {
+  position: fixed;
+  width: var(--kmodal-width);
+  height: var(--kmodal-height);
+  inset: 0;
+  margin: auto;
+  overflow: auto;
+  background: var(--kmodal-dialog-background);
+  border-radius: 5px;
+  padding: var(--kmodal-close-height) calc(var(--kmodal-close-width) * 3) var(--kmodal-close-height) calc(var(--kmodal-close-width) * 2);
+  max-width: var(--kmodal-max-width);
+  max-height: var(--kmodal-max-height);
+  transition: opacity 0.25s ease;
+  box-shadow: var(--kmodal-box-shadow);
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__close {
+  position: absolute;
+  right: var(--kmodal-close-width);
+  top: var(--kmodal-close-height);
+  width: var(--kmodal-close-width);
+  height: var(--kmodal-close-height);
+  cursor: pointer;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__close:after,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__close:before {
+  content: "";
+  position: absolute;
+  width: var(--kmodal-close-line-thickness);
+  height: var(--kmodal-close-line-length);
+  background: var(--kmodal-close-color);
+  display: block;
+  transform: rotate(45deg);
+  left: 50%;
+  margin: -3px 0 0 -1px;
+  top: 0;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__close:hover:after,
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__close:hover:before {
+  background: var(--kmodal-close-hover-color);
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__close:before {
+  transform: rotate(-45deg);
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__checkbox:not(:checked) + .kmodal__outer {
+  display: none;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__checkbox:checked + .kmodal__outer {
+  opacity: 1;
+  visibility: visible;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .kmodal__checkbox:checked + .kmodal__outer .kmodal__inner {
+  top: 0;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .tabs__container:not(.k-active-tab) {
+  display: none !important;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .tabs__nav-item {
+  list-style: none;
+}
+.ui-dialog .tab-content .charsheet .kscaffold-compatible .tabs__nav-list {
+  display: flex;
+}
 .ui-dialog .tab-content .charsheet .global-alerts {
   background: white;
   border-radius: 5px;

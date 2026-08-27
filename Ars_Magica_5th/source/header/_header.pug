@@ -8,10 +8,10 @@ mixin arm5_help()
 
         div(data-i18n="welcome-title")
             | Welcome to the Ars Magica 5th Edition Sheet !
-        
-    
+
+
     +markdown({file: "./help_feedback.md"})
-    
+
     .welcome
         h3.heading_label Forenote
 
@@ -39,14 +39,14 @@ mixin arm5_help()
                 span(data-i18n="tooltip-welcome").sheet-tooltip Underlined texts feature a tooltip with additional informations
             | :
             span(data-i18n="welcome-3c") this means they have a tooltip that shows additional info about them.
-    
+
     +markdown({file: "./documentation.md"})
 
 
 mixin arm5_settings()
     h3.heading_label(data-i18n="config-configuration")
         Configuration
-    
+
     .config
         span(data-i18n="config-botch") Botch formula
         +select({name: "botch_formula"}).select_1
@@ -54,7 +54,7 @@ mixin arm5_settings()
                 | Grouped rolls
             +option({"value": "&{template:botch} {{roll= ?{@{botch_num_i18n} | 1 Die,[[1d10cf10cs0]]|2 Dice,[[1d10cf10cs0]] [[1d10cf10cs0]]|3 Dice,[[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]]|4 Dice,[[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]]|5 Dice,[[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]]|6 Dice,[[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]]|7 Dice,[[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]]|8 Dice,[[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]] [[1d10cf10cs0]]} }} {{type=Grouped}}", "data-i18n": "config-botch-separate"})
                 | Separate rolls
-        
+
         span(data-i18n="config-dice") Dice type
         // TODO: switch to snake_case
         +select({name: "die-type-selection"}).select_1
@@ -62,7 +62,7 @@ mixin arm5_settings()
                 | Both
             +option({value: "toggle", "data-i18n": "config-dice-toggle"})
                 | Toggle
-        
+
         span(data-i18n="config-magi") Magi character ?
         // TODO: switch to snake_case
         +select({name: "isMagi"})
@@ -70,7 +70,7 @@ mixin arm5_settings()
                 | Yes
             +option({value:"no", "data-i18n": "config-magi-no"})
                 | No
-            
+
 
 mixin arm5_legacy()
     h3(data-i18n="legacy-title").heading_label Legacy sheet elements
@@ -79,7 +79,7 @@ mixin arm5_legacy()
 
     div(data-i18n="legacy-content").welcome
         | This section contains part of the sheet that are no longer used, but cannot be removed because they contain character data.
-    
+
     br
     // This is legacy code
     <div style="margin-top: 15px;">
@@ -96,13 +96,118 @@ mixin arm5_legacy()
         </table>
     </div>
 
+    <table class="table_3" style="width:300px" >
+        <tr>
+            <th style="width:60px;" data-i18n="current" >Current</th>
+            <th style="text-align:center;" data-i18n="penalty" >Penalty</th>
+            <th data-i18n="recovery" >Recovery</th>
+            <th data-i18n="level" >Level</th>
+        </tr>
+        <tr>
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0" checked></td>
+            <td></td>
+            <td></td>
+            <td data-i18n="fresh" >Fresh</td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.1"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-1">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.001"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-2">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.002"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-3">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.003"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-4">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.004"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-5">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.005"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-6">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.006"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-7">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.007"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-8">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.008"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-9">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.009"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr class="addfatigue-10">
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="0.01"></td>
+            <td style="text-align:center;">0</td>
+            <td>2 min.</td>
+            <td data-i18n="winded" >Winded</td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="-1"></td>
+            <td style="text-align:center;">-1</td>
+            <td>10 min.</td>
+            <td data-i18n="weary" >Weary</td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="-3"></td>
+            <td style="text-align:center;">-3</td>
+            <td>30 min.</th>
+            <td data-i18n="tired" >Tired</td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="-5"></td>
+            <td style="text-align:center;">-5</td>
+            <td>1 hr.</td>
+            <td data-i18n="dazed" >Dazed</td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="radio_1" name="attr_Fatigue" value="-99"></td>
+            <td></td>
+            <td>2 hr.</td>
+            <td data-i18n="unconscious" >Unconscious</td>
+        </tr>
+    </table>
+
 .kscaffold-compatible
     +modalWindow({name: "settings"})
         +arm5_settings
-    
+
     +modalWindow({name: "help"})
         +arm5_help
-        
+
     +modalWindow({name: "history"})
         +arm5_legacy()
         +markdown({file: "./changelog.md"})
