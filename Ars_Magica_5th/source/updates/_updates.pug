@@ -7,14 +7,30 @@
 //- new sheets won't
 -
     arm5.updates.preKScaffoldData.attributes.forEach(obj => {
-        varObjects.cascades[`attr_${obj.name}`] =
-        {
-            ...obj,
-            affects: [],
-            triggeredFuncs: []
-        };
+        const attr_name = `attr_${obj.name}`;
+        if (varObjects.cascades[attr_name] == null) {
+            varObjects.cascades[attr_name] = {
+                ...obj,
+                affects: [],
+                triggeredFuncs: []
+            };
+        }
     });
-    arm5.updates.preKScaffoldData.sections.forEach(obj => { varObjects.repeatingSectionDetails.push(obj); })
+    arm5.updates.preKScaffoldData.sections.forEach(obj => {
+        const existing = varObjects.repeatingSectionDetails.find(
+            section => section.section === obj.section
+        );
+        if (existing) {
+            existing.fields = [
+                ...new Set([
+                    ...existing.fields,
+                    ...obj.fields
+                ])
+            ];
+        } else {
+            varObjects.repeatingSectionDetails.push(obj);
+        }
+    });
 
 //- Use a hidden attribute holder to store the RowID of the alert that currently blocks the update system
 //- When an update errors out, it won't retry until this alert ceases to exist
