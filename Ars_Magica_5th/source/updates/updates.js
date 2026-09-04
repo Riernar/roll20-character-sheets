@@ -23,7 +23,7 @@ const preKScaffoldData = {
     sections: [
         // Spell update
         { section: 'repeating_spell', fields: ["Technique_select", "Form_select", "spell_tech_name", "spell_form_name"] },
-        // Fix of the attribute name fo weapon load & range
+        // Fix of the attribute name for weapon load & range
         { section: 'repeating_weapons', fields: ["Wounds_Load", "Wounds_Range", "Weapon_Load", "Weapon_Range"] },
     ]
 };

@@ -59,79 +59,7 @@ on("change:repeating_labspecializations:labbonus remove:repeating_labspecializat
     });
 });
 
-// Function to create a sheet-worker that updates totals computed from repeating sections
-// The sections must follow some naming conventions, see code
 
-function register_repeated_section_totals(section, properties) {
-    var events = (
-        "sheet:opened"
-        + " remove:repeating_" + section
-        + " change:repeating_" + section + ":isactive"
-        + " change:repeating_" + section + ":" + section + "_name"
-    );
-    properties.forEach(function(prop, index, array) {
-        events += " change:repeating_" + section + ":" + section + "_" + prop;
-    });
-
-    console.log("Registering events for section: " + section + " -> " + events);
-
-    on(events, function() {
-        getSectionIDs("repeating_" + section, function(id_array) {
-
-            var attr_names = [];
-            for (var i=0; i < id_array.length; i++) {
-                attr_names.push("repeating_" + section + "_" + id_array[i] + "_" + section + "_name");
-                attr_names.push("repeating_" + section + "_" + id_array[i] + "_isactive");
-                properties.forEach(function(prop, index, array) {
-                    attr_names.push("repeating_" + section + "_" + id_array[i] + "_" + section + "_" + prop);
-                });
-            }
-            console.log("Attributes to get: " + attr_names.toString());
-
-            var totals = {};
-            properties.forEach(function(prop, index, array) {
-                totals[section + "_total_" + prop] = 0
-                totals[section + "_total_" + prop + "_detailed"] = "0";
-            });
-            console.log("Totals to compute: " + JSON.stringify(totals, null, 1));
-
-            getAttrs(attr_names, function(attrs){
-                var prefix = "";
-                var value = 0;
-                console.log("Got attributes: " + JSON.stringify(attrs, null, 1));
-
-                for (var i=0; i < id_array.length; i++) {
-                    console.log("Handling item #" + i);
-                    prefix = "repeating_" + section + "_" + id_array[i] + "_";
-
-                    properties.forEach(function(prop, index, array) {
-                        if ((parseInt(attrs[prefix + "isactive"]) || 0) === 1) {
-                            value = (parseFloat(attrs[prefix + section + "_" + prop]) || 0);
-                            if (value != 0) {
-                                totals[section + "_total_" + prop] += value;
-                                totals[section + "_total_" + prop + "_detailed"] += (
-                                    " + " + value.toString() + " [" + attrs[prefix + section + "_name"] + "]"
-                                );
-                            }
-                        }
-                    });
-                }
-                console.log("Computed totals: " + JSON.stringify(totals, null, 1));
-
-                properties.forEach(function(prop, index, array) {
-                    totals[section + "_total_" + prop] = Math.ceil(totals[section + "_total_" + prop]);
-                    totals[section + "_total_" + prop + "_detailed"] = "ceil(" + totals[section + "_total_" + prop + "_detailed"] + ")";
-                });
-    
-                console.log("computed totals: " + JSON.stringify(totals, null, 1));
-                setAttrs(totals);
-            });
-        });
-    });
-}
-
-//register_repeated_section_totals("armors", ["prot", "load"]);
-register_repeated_section_totals("combat-mods", ["init", "atk", "dfn", "dam", "soak"]);
 
 // Duplicate the global bonuses inside the weapons repeating section for display
 // From https://app.roll20.net/forum/post/10297616/how-do-i-reference-a-global-attribute-in-a-span-in-a-repeating-section

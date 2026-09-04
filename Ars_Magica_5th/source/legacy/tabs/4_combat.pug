@@ -149,7 +149,7 @@
                         </td>
                         <td style="width:  60px; text-align: center;">
                             <span class="has-tooltip">
-                                +number({name: "armors_total_load", value:0, readonly:true, class:"number_2", trigger:{calculation: "section_conditional_sum", sum_section: "repeating_armors", sum_condition: "isactive", sum_value: "armors_load"}})
+                                +number({name: "armors_total_load", value:0, readonly:true, class:"number_2", trigger:{calculation: "section_conditional_sum", sum_section: "repeating_armors", sum_condition: "isactive", sum_value: "armors_load", affects:["total_load"]}})
                                 <span class="sheet-tooltip" data-i18n="total">Total</span>
                             </span>
                             +hidden({name: "armors_total_load_detailed", value:" ", trigger:{calculation: "section_conditional_sum_detail", sum_section: "repeating_armors", sum_condition: "isactive", sum_value: "armors_load", sum_label:"armors_name"}})
@@ -228,7 +228,7 @@
         </div>
     </div>
 
-    <!-- Soak and encumbrance -->
+    <!-- Soak and Encumbrance -->
     div(style="padding-bottom: 15px;").col2grid
         <!-- Soak -->
         div.sheet-col
@@ -256,14 +256,25 @@
         <!-- Encumbrance -->
         div.sheet-col
             <h4 class="heading_label" data-i18n="encumbrance" >Encumbrance</h4>
-            table.table_2
-                tr
-                    th(data-i18n="load" style="text-align: center;") Load
-                tr
-                    th(style="text-align: center;")
-                        input(type="number" class="number_2" name="attr_armors_total_load" value="0" readonly)
+            div.encumbrance
+                .field
+                    span(data-i18n="load").field-name Load
+                    +number({name:"total_load", value:0, readonly:true, class:"number_2", trigger:{calculation:"calc_total_load", affects:["burden"]}})
+
+                .field
+                    span(data-i18n="burden").field-name Burden
+                    +number({name:"burden", value:0, readonly:true, class:"number_2", trigger:{calculation:"calc_burden", affects:["encumbrance"]}})
+
+                .field
+                    span(data-i18n="strength").field-name Strength
+                    +number({name: "Strength_Score", value:0, readonly:true, class:"number_2", affects:["encumbrance"]})
+
+                .field
+                    span(data-i18n="encumbrance").field-name Encumbrance
+                    +number({name: "encumbrance", value:0, readonly:true, class:"number_2", trigger:{calculation:"calc_encumbrance"}})
 
 
+    <!-- Soak by Forms for Magi -->
     <div class="magi-only" style="padding-bottom: 15px;">
         <h4 class="heading_label" style="margin-bottom:0px;" data-i18n="soak-forms" >Soak by Forms</h4>
         <div class='artgrid' style="border:1px solid black">
@@ -323,7 +334,9 @@
     <div>
         <h4 class="heading_label" data-i18n="weapons" >Weapons</h4>
         <table class="table_2" style="width:800px">
+            +hidden({name: "weapon_total_load", value: 0, readonly:true, class:"number_2", trigger:{affects:["total_load"]}})
             <tr>
+                <td style="width: 30px;"><span class="has-tooltip"><span data-i18n="inc-">Inc.</span><span class="sheet-tooltip" data-i18n="tooltip-inc-">"Included<br>Check if the item is active. Unchecked items are not used in the computation"</span></span></td>
                 <th><div style="width:190px" data-i18n="weapon-name" >Weapon Name</div></th>
                 <td><div style="width:100px"></div></td>
                 <th><div style="width:60px" data-i18n="init" >Init</div></th>
@@ -339,9 +352,12 @@
                 <th><div style="width:60px"></div></th>
             </tr>
         </table>
-        <fieldset class="repeating_weapons">
+        +fieldset({name: "weapons"})
             <table class="table_2" style="width:800px">
                 <tr>
+                    td(style="width:  30px;")
+                        div.flex-container-center
+                            +checkbox({name: "is_active", value: 1, checked: false})
                     <th><input type="text" class="heading_3" name="attr_Weapon_name"></th>
 
                     <td><button type="roll" class="button stress-roll single-roll" name="roll_weapon_Init" value="&{template:initiative} {{name=@{character_name}}} {{weapon=@{Weapon_name}}} {{roll=[[ @{stress-die} + (@{Quickness_Score}) [@{quickness_i18n}] + (@{Init_Weap}) [@{Weapon_name}] + (@{combat-mods_total_init}) [@{bonus_i18n}] - (@{Init_Encumbrance}) [@{encumbrance_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] + (?{@{initiative_i18n} @{modifiers_i18n}|0}) [@{initiative_i18n} @{modifiers_i18n}] &{tracker}]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-init)}} {{stress=1}}" data-i18n="init" >Init</button></td>
@@ -356,7 +372,7 @@
                     <td><div style="width:10px;"></div></td>
                     <td><input type="number" class="number_1" name="attr_Dam" value="((@{Strength_Score}) + (@{combat-mods_total_dam}) + (@{Dam_Weap}))" disabled="true"></td>
                     <td><input type="number" class="number_1" name="attr_WeaponAbility" value="0"></td>
-                    <td><input type="number" class="number_1" name="attr_Weapon_Load" value="0"></td>
+                    td: +number({class: "number_1", name: "Weapon_Load", value:"0"})
                     <td><input type="text" class="number_1" name="attr_Weapon_Range"></td>
                     <th><div style="width:40px;"><input type="checkbox" class="hider checkbox_1" name="attr_Weapon_show" value="1" checked><span></span></div></th>
                 </tr>
@@ -457,7 +473,6 @@
                     </tr>
                 </table>
             </div>
-        </fieldset>
     </div>
 </div>
 
@@ -465,9 +480,35 @@
 //- https://kurohyou-studios.github.io/k-scaffold/guide/creating-content/sfc.html
 +scss.
     // Wounds
-    .arm5-sheet .wounds {
-        input {
-            width: initial;
+    .arm5-sheet {
+        .wounds {
+            input {
+                width: initial;
+            }
+        }
+
+        .encumbrance {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(0, max-content));
+            justify-content: start;
+            gap: 1rem;
+            margin-top: 5px;
+
+            .field {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.1rem;
+            }
+
+            .field .field-name {
+                font-variant: small-caps;
+                font-family: 'Macondo', cursive;
+                font-size: 14px;
+                font-weight: bold;
+                color: #53332a;
+                text-align: center;
+            }
         }
     }
 
@@ -500,20 +541,27 @@
     k.registerFuncs({calc_wound_penalty});
 
     const section_conditional_sum = function({trigger, attributes, sections}) {
-        const section = helpers.get(trigger, "sum_section");
-        const condition = helpers.get(trigger, "sum_condition");
-        const value = helpers.get(trigger, "sum_value");
-
-
-        return (
-            helpers.get(sections, section)
-            .filter(row_id => helpers.get(attributes, `${section}_${row_id}_${condition}`))
-            .map(row_id =>  helpers.as_number(helpers.get(attributes, `${section}_${row_id}_${value}`)))
-            .reduce(
-                (sum, value) => sum + value,
-                0
-            )
-        );
+        let result;
+        try {
+            const section = helpers.get(trigger, "sum_section");
+            const condition = helpers.get(trigger, "sum_condition");
+            const value = helpers.get(trigger, "sum_value");
+            result = (
+                helpers.get(sections, section)
+                .filter(row_id => helpers.get(attributes, `${section}_${row_id}_${condition}`))
+                .map(row_id =>  helpers.as_number(helpers.get(attributes, `${section}_${row_id}_${value}`)))
+                .reduce(
+                    (sum, value) => sum + value,
+                    0
+                )
+            );
+        }
+        catch (error) {
+            console.log({func:"section_conditional_sum", trigger, attributes, sections});
+            throw error;
+        }
+        //console.log({func:"section_conditional_sum", trigger, attributes, sections, result});
+        return result;
     };
     k.registerFuncs({section_conditional_sum});
 
@@ -535,4 +583,197 @@
         );
     };
     k.registerFuncs({section_conditional_sum_detail});
+
+    const calc_total_load = ({attributes}) => {
+        const weapon_load = Number(helpers.get(attributes, "weapon_total_load"));
+        const armor_load = Number(helpers.get(attributes, "armors_total_load"));
+        const total_load = weapon_load + armor_load;
+        console.log({"func": "calc_total_load", attributes, weapon_load, armor_load, total_load});
+        return total_load;
+    };
+    k.registerFuncs({calc_total_load});
+
+    const calc_burden = ({attributes}) => {
+        const total_load = helpers.get(attributes, "total_load");
+        // The load & burden table in AM5 core rulebook has the burden progress like an Art using
+        // load as xp
+        // This is represented by the closed-form formula for the sum of integers:
+        //
+        //      load = burden * (budren + 1 ) / 2
+        //
+        // where load is the load required to reach the burden on the right-hand-side.
+        //
+        // Solving for burden using the quadratic formula yields
+        //
+        //      burden = (sqrt(8 * load + 1) - 1) / 2
+        //
+        // The Definitive Edition rules state:
+        //
+        //   > Burden increases when Load reaches the level for that Burden, so that a character with
+        //   > a Load of 9 has a Burden of 3.
+        //   >
+        //   > Ars Magica 5th Edition, Definitive Edition, CC BY-SA 4.0
+        //
+        // so we must round down to get the correct burden given a load
+        const burden = Math.floor((Math.sqrt(8 * total_load + 1) - 1) / 2);
+        //console.log({"func": "calc_burden", attributes, total_load, burden});
+        return burden;
+
+    };
+    k.registerFuncs({calc_burden});
+
+    const calc_encumbrance = ({attributes}) => {
+        const burden = Number(helpers.get(attributes, "burden"));
+        const strength = Number(helpers.get(attributes, "strength_score"));
+        const encumbrance = Math.max(0, burden - Math.max(0, strength));
+        //console.log({"func": "calc_encumbrance", attributes, burden, strength, encumbrance});
+        return encumbrance;
+    };
+    k.registerFuncs({calc_encumbrance});
+
+
+    // Manual summations in repeating sections without using k-scaffold. K-scaffold doesn't work well with
+    // the weapons repeating section due to us injecting data into k-scaffold interlals in _updates.pug
+    // to make k-scaffold aware of legacy attributes in the weapons sections.
+    // For now it is simpler to keep the summation manuals
+    const _validate_summations = ({section, summations}) => {
+        const error = message => {
+            console.error(`Invalid summations for "${section}": ${message}`);
+        };
+
+        if (!Array.isArray(summations) || summations.length === 0) {
+            error("summations must be a non-empty array.");
+            return false;
+        }
+
+        const totals = new Set();
+
+        for (const [index, summation] of summations.entries()) {
+            if (!summation || typeof summation !== "object") {
+                error(`summation at index ${index} must be an object.`);
+                return false;
+            }
+
+            const {value, total, condition, label, total_detailed} = summation;
+
+            if (!value || !total) {
+                error(`summation at index ${index} requires value and total.`);
+                return false;
+            }
+
+            if ((label === undefined) !== (total_detailed === undefined)) {
+                error(
+                    `summation at index ${index} must specify both label and total_detailed, or neither.`
+                );
+                return false;
+            }
+
+            for (const name of [total, total_detailed]) {
+                if (name === undefined) {
+                    continue;
+                }
+
+                if (totals.has(name)) {
+                    error(`duplicate output attribute "${name}".`);
+                    return false;
+                }
+
+                totals.add(name);
+            }
+        }
+
+        return true;
+    };
+
+    const _calculate_summations = ({section, summations, row_ids, attributes}) => {
+        const results = summations.map(({ value, condition, total, label, total_detailed}) => {
+            const filtered_row_ids = (
+                row_ids
+                .filter(row_id => ((condition === undefined) ||(helpers.get(attributes, `repeating_${section}_${row_id}_${condition}`) === "1")))
+            );
+            const values = filtered_row_ids.map(row_id => helpers.get(attributes, `repeating_${section}_${row_id}_${value}`));
+            const total_value = values.reduce((sum, value) => sum + (Number(value) || 0), 0);
+
+            let values_labeled, total_value_labeled;
+            if (label !== undefined && total_detailed !== undefined ) {
+                values_labeled = filtered_row_ids.map(row_id => {
+                    const row_value = helpers.get(attributes, `repeating_${section}_${row_id}_${value}`);
+                    const row_label = helpers.get(attributes, `repeating_${section}_${row_id}_${label}`);
+                    return `(${row_value} [${row_label}])`
+                });
+                total_value_labeled = values_labeled.join(" + ") || "0";
+            }
+            return {
+                summation: { value, condition, total, label, total_detailed},
+                filtered_row_ids, values, total_value, values_labeled, total_value_labeled
+            };
+        });
+        const totals = Object.fromEntries(
+            results.flatMap(({ summation, total_value, total_value_labeled }) => {
+                const { total, total_detailed } = summation;
+
+                return [
+                    ...(total !== undefined
+                        ? [[total, total_value]]
+                        : []),
+                    ...(total_detailed !== undefined && total_value_labeled !== undefined
+                        ? [[total_detailed, total_value_labeled]]
+                        : [])
+                ];
+            })
+        );
+        //console.log({func: "_calculate_summations", section, summations, row_ids, attributes, results, totals});
+        return totals;
+    };
+
+    const register_repeated_section_totals = ({section, summations}) => {
+        if (!_validate_summations({section, summations})) {
+            return;
+        }
+        const unique_attr_names = [
+            ...new Set(
+                summations.flatMap(({ value, condition, label }) =>
+                    [value, condition, label].filter(v => v !== undefined)
+                )
+            )
+        ];
+
+        const events = [
+            "sheet:opened",
+            `add:repeating_${section}`,
+            `remove:repeating_${section}`,
+            ...unique_attr_names.map(attr => `change:repeating_${section}:${attr}`)
+        ].join(" ");
+        console.log("Registering events for section: " + section + " -> " + events);
+
+        on(events, function() {
+            getSectionIDs("repeating_" + section, row_ids => {
+                const attr_names = row_ids.flatMap(
+                    row_id => unique_attr_names.map(attr => `repeating_${section}_${row_id}_${attr}`)
+                );
+                getAttrs(attr_names, (attributes) => {
+                    setAttrs(_calculate_summations({section, summations, row_ids, attributes}));
+                });
+            });
+        });
+    };
+
+    register_repeated_section_totals({
+        section: "combat-mods",
+        summations: ["init", "atk", "dfn", "dam", "soak"].map(value => ({
+            value: `combat-mods_${value}`,
+            condition: "isactive",
+            total: `combat-mods_total_${value}`,
+            label: "combat-mods_name",
+            total_detailed: `combat-mods_total_${value}_detailed`,
+        })),
+    });
+    register_repeated_section_totals({
+        section: "weapons",
+        summations: [{
+            value: "Weapon_Load",
+            condition: "is_active",
+            total: "weapon_total_load",
+        }],
+    });
 
