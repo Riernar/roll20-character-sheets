@@ -6,14 +6,16 @@
         constructor({
             score,
             penalty = {
-                "@{fatigue_penalty}": "fatigue_i18n",
-                "@{wound_penalty}": "wounds_i18n",
+                "@{fatigue_penalty}": "@{fatigue_i18n}",
+                "@{wound_penalty}": "@{wounds_i18n}",
+                "-@{encumbrance}": "@{encumbrance_i18n}"
             },
             modifier = true,
             divider = null,
             total_bonuses = null,
             fatigue = true,
             wounds = true,
+            encumbrance = true,
         }) {
             this.#validateParts(score, "score");
             this.#validateParts(penalty, "penalty");
@@ -53,6 +55,10 @@
 
             if (!wounds) {
                 delete this.penalty["@{wound_penalty}"];
+            }
+
+            if (!encumbrance) {
+                delete this.penalty["-@{encumbrance}"];
             }
         }
 
@@ -122,7 +128,7 @@
             return Object.entries(parts)
                 .map(([value, annotation]) =>
                     annotation && annotations
-                        ? `(${value}) [@{${annotation}}]`
+                        ? `(${value}) [${annotation}]`
                         : `(${value})`
                 )
                 .join(` ${op} `);

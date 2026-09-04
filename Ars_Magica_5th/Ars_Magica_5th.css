@@ -4411,6 +4411,27 @@ End of the python integration block
 .ui-dialog .tab-content .charsheet .arm5-sheet .wounds input {
   width: initial;
 }
+.ui-dialog .tab-content .charsheet .arm5-sheet .encumbrance {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, max-content));
+  justify-content: start;
+  gap: 1rem;
+  margin-top: 5px;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .encumbrance .field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .encumbrance .field .field-name {
+  font-variant: small-caps;
+  font-family: "Macondo", cursive;
+  font-size: 14px;
+  font-weight: bold;
+  color: #53332a;
+  text-align: center;
+}
 .ui-dialog .tab-content .charsheet {
   --font1:var(--topHeadFont);
   --font2:var(--topHeadFont);

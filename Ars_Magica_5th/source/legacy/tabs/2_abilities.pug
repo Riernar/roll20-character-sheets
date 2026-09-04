@@ -59,7 +59,7 @@
                         <tr>
                             <th data-i18n="strength" >Strength</th>
                             <td><input type="text" class="heading_2" name="attr_Strength_Description"></td>
-                            td: +number({name: "Strength_Score", class:"number_1", value: "0"})
+                            td: +number({name: "Strength_Score", class:"number_1", value: "0", trigger:{affects:["encumbrance"]}})
                             <td><input type="text" class="number_1" name="attr_Strength_Aging" value="0"></td>
                             <td><div class="flex-container-center">
                                 <button type="roll" class="button simple-roll" name="roll_Strength_simple" value="&{template:ability} {{name=@{character_name}}} {{label0=^{strength}}} {{result0=[[ @{simple-die} + (@{Strength_Score}) [@{strength_i18n}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{banner=@{Strength_Description}}} {{label1=^{score}}} {{result1=@{Strength_Score}}} {{label2=^{weakness-m}}} {{result2=[[ [[floor(@{Fatigue})]] [@{fatigue_i18n}] + @{wound_total} [@{wounds_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[(?{@{circumstantial_i18n}|0})]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
