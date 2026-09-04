@@ -12,7 +12,7 @@ const preKScaffoldData = {
         { name: "repeating_spell_$X_Form_select", type: "number" },
         { name: "repeating_spell_$X_spell_tech_name", type: "string" },
         { name: "repeating_spell_$X_spell_form_name", type: "string" },
-        // Fix of the attribute name fo weapon load & range
+        // Fix of the attribute name for weapon load & range
         { name: "repeating_weapons_$X_Wounds_Load", type: "number" },
         { name: "repeating_weapons_$X_Wounds_Range", type: "string" },
         { name: "repeating_weapons_$X_Weapon_Load", type: "number" },

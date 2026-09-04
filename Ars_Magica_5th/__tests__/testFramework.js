@@ -14,7 +14,7 @@ import translation from './translation.json' assert {type:'json'}
  * @property {object} queryResponses - Pre defined results you want the roll parser to use for a given roll query. Keys in the objects are roll query prompts. Values are what the user input should be for that query.
  */
 const environment = {
-  attributes:{"update_error_rowid":"","kmodal-settings":0,"botch_formula":"&{template:botch} {{roll= [[{[[?{@{botch_num_i18n}|1}]]d10cs0cf10}=10]] }} {{type=Grouped}}","die-type-selection":"both","isMagi":"yes","kmodal-help":0,"kmodal-history":0,"ArmorWorn":"","ArmorModifiers":"","Fatigue":"0","character_name":"","player_name":"","unspent_xp":"","saga":"","year":"","Confidence":"","ConfidencePoints":"","sheetTab":"character","simple-die":"(1d10cs0cf0) [@{simple-die_i18n}]","stress-die":"ceil(((((1d10cs1cf10 %9) -1)+9) %9) *1.1) [@{stress-die_i18n}]","die-type-selection-proxy":"both","selected-die":"simple","Age":"","MightType":"NoMight","MightScore":"","Warping":"","ApparentAge":"","CurrentMagicMight":"","WarpPoints":"","Warping_effects":"","Birth_Name":"","Year_Born":"","Gender":"","Race_Nationality":"","Place_of_Origin":"","Religion":"","Title_Profession":"","Height":"","Weight":"","Size":"","Handedness":"","Hair":"","Eyes":"","House":"","Covenant":"","sigil":"","DomusMagna":"","Primus":"","Parens":"","CovenantofApprenticeship":"","Personality_Trait1":"","Personality_Trait1_score":"","Personality_Trait2":"","Personality_Trait2_score":"","Personality_Trait3":"","Personality_Trait3_score":"","Personality_Trait4":"","Personality_Trait4_score":"","Personality_Trait5":"","Personality_Trait5_score":"","Personality_Trait6":"","Personality_Trait6_score":"","Reputations1":"","Reputations1_type":"","Reputations1_score":"","Reputations2":"","Reputations2_type":"","Reputations2_score":"","Reputations3":"","Reputations3_type":"","Reputations3_score":"","Reputations4":"","Reputations4_type":"","Reputations4_score":"","Reputations5":"","Reputations5_type":"","Reputations5_score":"","Reputations6":"","Reputations6_type":"","Reputations6_score":"","Intelligence_Description":"","Intelligence_Score":"0","Intelligence_Aging":"0","Perception_Description":"","Perception_Score":"0","Perception_Aging":"0","Presence_Description":"","Presence_Score":"0","Presence_Aging":"0","Communication_Description":"","Communication_Score":"0","Communication_Aging":"0","Strength_Description":"","Strength_Score":"0","Strength_Aging":"0","Stamina_Description":"","Stamina_Score":"0","Stamina_Aging":"0","Dexterity_Description":"","Dexterity_Score":"0","Dexterity_Aging":"0","Quickness_Description":"","Quickness_Score":"0","Quickness_Aging":"0","Decrepitude":"0","Decrepitude_effects":"","Longevity_Scars":"","global_Ability_CharacName":"Intelligence","Creo_Score":"0","Creo_exp":"0","Creo_advancementExp":"1 * ((@{Creo_Score}) + 1)","Creo_totalExp":"1 * (((@{Creo_Score}) + 1) * ((@{Creo_Score}) + 2) / 2)","Creo_Puissant":"0","Intellego_Score":"0","Intellego_exp":"0","Intellego_advancementExp":"1 * ((@{Intellego_Score}) + 1)","Intellego_totalExp":"1 * (((@{Intellego_Score}) + 1) * ((@{Intellego_Score}) + 2) / 2)","Intellego_Puissant":"0","Muto_Score":"0","Muto_exp":"0","Muto_advancementExp":"1 * ((@{Muto_Score}) + 1)","Muto_totalExp":"1 * (((@{Muto_Score}) + 1) * ((@{Muto_Score}) + 2) / 2)","Muto_Puissant":"0","Perdo_Score":"0","Perdo_exp":"0","Perdo_advancementExp":"1 * ((@{Perdo_Score}) + 1)","Perdo_totalExp":"1 * (((@{Perdo_Score}) + 1) * ((@{Perdo_Score}) + 2) / 2)","Perdo_Puissant":"0","Rego_Score":"0","Rego_exp":"0","Rego_advancementExp":"1 * ((@{Rego_Score}) + 1)","Rego_totalExp":"1 * (((@{Rego_Score}) + 1) * ((@{Rego_Score}) + 2) / 2)","Rego_Puissant":"0","Animal_Score":"0","Animal_exp":"0","Animal_advancementExp":"1 * ((@{Animal_Score}) + 1)","Animal_totalExp":"1 * (((@{Animal_Score}) + 1) * ((@{Animal_Score}) + 2) / 2)","Animal_Puissant":"0","Aquam_Score":"0","Aquam_exp":"0","Aquam_advancementExp":"1 * ((@{Aquam_Score}) + 1)","Aquam_totalExp":"1 * (((@{Aquam_Score}) + 1) * ((@{Aquam_Score}) + 2) / 2)","Aquam_Puissant":"0","Auram_Score":"0","Auram_exp":"0","Auram_advancementExp":"1 * ((@{Auram_Score}) + 1)","Auram_totalExp":"1 * (((@{Auram_Score}) + 1) * ((@{Auram_Score}) + 2) / 2)","Auram_Puissant":"0","Corpus_Score":"0","Corpus_exp":"0","Corpus_advancementExp":"1 * ((@{Corpus_Score}) + 1)","Corpus_totalExp":"1 * (((@{Corpus_Score}) + 1) * ((@{Corpus_Score}) + 2) / 2)","Corpus_Puissant":"0","Herbam_Score":"0","Herbam_exp":"0","Herbam_advancementExp":"1 * ((@{Herbam_Score}) + 1)","Herbam_totalExp":"1 * (((@{Herbam_Score}) + 1) * ((@{Herbam_Score}) + 2) / 2)","Herbam_Puissant":"0","Ignem_Score":"0","Ignem_exp":"0","Ignem_advancementExp":"1 * ((@{Ignem_Score}) + 1)","Ignem_totalExp":"1 * (((@{Ignem_Score}) + 1) * ((@{Ignem_Score}) + 2) / 2)","Ignem_Puissant":"0","Imaginem_Score":"0","Imaginem_exp":"0","Imaginem_advancementExp":"1 * ((@{Imaginem_Score}) + 1)","Imaginem_totalExp":"1 * (((@{Imaginem_Score}) + 1) * ((@{Imaginem_Score}) + 2) / 2)","Imaginem_Puissant":"0","Mentem_Score":"0","Mentem_exp":"0","Mentem_advancementExp":"1 * ((@{Mentem_Score}) + 1)","Mentem_totalExp":"1 * (((@{Mentem_Score}) + 1) * ((@{Mentem_Score}) + 2) / 2)","Mentem_Puissant":"0","Terram_Score":"0","Terram_exp":"0","Terram_advancementExp":"1 * ((@{Terram_Score}) + 1)","Terram_totalExp":"1 * (((@{Terram_Score}) + 1) * ((@{Terram_Score}) + 2) / 2)","Terram_Puissant":"0","Vim_Score":"0","Vim_exp":"0","Vim_advancementExp":"1 * ((@{Vim_Score}) + 1)","Vim_totalExp":"1 * (((@{Vim_Score}) + 1) * ((@{Vim_Score}) + 2) / 2)","Vim_Puissant":"0","Spontaneous1_stress_score":"(@{Spontaneous1_Technique}) + (@{Spontaneous1_Form}) + ([[@{Spontaneous1_Focus}]]) + (@{gestures}) + (@{words}) + (@{Stamina_Score}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty})","Spontaneous1_stress_divider":"(2) * ([[1 + (@{Spontaneous1_Deficiency})]])","Spontaneous1":"((0 + (@{Spontaneous1_Technique}) + (@{Spontaneous1_Form}) + ([[@{Spontaneous1_Focus}]]) + (@{gestures}) + (@{words}) + (@{Stamina_Score}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (?{@{modifiers_i18n}|0})) / ((2) * ([[1 + (@{Spontaneous1_Deficiency})]])))","Spontaneous1_Technique":"0 [@{technique_i18n}]","Spontaneous1_Form":"0 [@{form_i18n}]","Spontaneous1_Focus":0,"Spontaneous1_Deficiency":0,"Spontaneous1_Sta":"@{Stamina_Score}","Spontaneous1_aura":"@{aura}","Ceremonial":"((@{Ceremonial_Technique} + @{Ceremonial_Form} + (@{Ceremonial_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura} + @{Ceremonial_Artes_Lib} + @{Ceremonial_Philos})/2 ) / (1 + (@{Ceremonial_Deficiency}))","Ceremonial_Technique":"0 [@{technique_i18n}]","Ceremonial_Form":"0 [@{form_i18n}]","Ceremonial_Focus":0,"Ceremonial_Deficiency":0,"Ceremonial_Sta":"@{Stamina_Score}","Ceremonial_aura":"@{aura}","Ceremonial_Artes_Lib":"0","Ceremonial_Philos":"0","Spontaneous2":"((@{Spontaneous2_Technique} + @{Spontaneous2_Form} + (@{Spontaneous2_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura})/5) / (1 + (@{Spontaneous2_Deficiency}))","Spontaneous2_Technique":"0","Spontaneous2_Form":"0","Spontaneous2_Focus":0,"Spontaneous2_Deficiency":0,"Spontaneous2_Sta":"@{Stamina_Score}","Spontaneous2_aura":"@{aura}","Formulaic":"(@{Formulaic_Technique} + @{Formulaic_Form} + (@{Formulaic_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura}) / (1 + (@{Formulaic_Deficiency}))","Formulaic_Technique":"0 [@{technique_i18n}]","Formulaic_Form":"0 [@{form_i18n}]","Formulaic_Focus":0,"Formulaic_Deficiency":0,"Formulaic_Sta":"@{Stamina_Score}","Formulaic_aura":"@{aura}","Ritual":"(@{Ritual_Technique} + @{Ritual_Form} + (@{Ritual_Focus}) + @{Stamina_Score} + @{aura} + @{Ritual_Artes_Lib} + @{Ritual_Philos}) / (1 + (@{Ritual_Deficiency}))","Ritual_Technique":"0 [@{technique_i18n}]","Ritual_Form":"0 [@{form_i18n}]","Ritual_Focus":0,"Ritual_Deficiency":0,"Ritual_Sta":"@{Stamina_Score}","Ritual_aura":"@{aura}","Ritual_Artes_Lib":"0","Ritual_Philos":"0","aura":"3","gestures":"0 [@{gestures_i18n}: @{bold_i18n}]","words":"0 [@{words_i18n}: @{firm_i18n}]","LabSize_Score":"0","LabRefinement_Score":"0","LabGeneralQuality_Score":"0","LabUpkeep_Score":"0","LabSafety_Score":"0","LabWarping_Score":"0","LabHealth_Score":"0","LabAesthetics_Score":"0","SanctumMarker":"","LabDescription":"","Lab":"(@{Intelligence_Score}) + (@{Lab_Theory}) + (@{aura}) + (@{lab_Technique}) + (@{lab_Form}) + (@{Lab_Focus}) + (@{LabModifiers}) + (@{labbonus_total}) + (@{LabGeneralQuality_Score})","Lab_Focus":0,"LabModifiers":"0","Lab_Int":"(@{Intelligence_Score})","Lab_Theory":"0","Lab_Aura":"@{aura}","lab_Technique":"0","lab_Form":"0","labbonus_total":"0","fatigue_penalty":"0","fatigue_ignored":0,"fatigue_level":"fresh","fatigue_winded__long_term":0,"fatigue_weary__long_term":0,"fatigue_tired__long_term":0,"fatigue_dazed__long_term":0,"fatigue_unconscious__long_term":0,"wound_total":"0","wound_penalty":"0","wound_ignored":0,"Wounds_Light_range":"","Wounds_Light1":0,"Wounds_Light2":0,"Wounds_Light3":0,"Wounds_Light4":0,"Wounds_Light5":0,"Wounds_Medium_range":"","Wounds_Medium1":0,"Wounds_Medium2":0,"Wounds_Medium3":0,"Wounds_Medium4":0,"Wounds_Medium5":0,"Wounds_Heavy_range":"","Wounds_Heavy1":0,"Wounds_Heavy2":0,"Wounds_Heavy3":0,"Wounds_Heavy4":0,"Wounds_Heavy5":0,"Wounds_Incapacitated_range":"","Wounds_Incapacitated":0,"Wounds_Dead_range":"","Wounds_Dead":0,"armors_total_prot":"0","armors_total_prot_detailed":" ","armors_total_load":"0","armors_total_load_detailed":" ","combat-mods_total_init":"0","combat-mods_total_init_detailed":" ","combat-mods_total_atk":"0","combat-mods_total_atk_detailed":" ","combat-mods_total_dfn":"0","combat-mods_total_dfn_detailed":" ","combat-mods_total_dam":"0","combat-mods_total_dam_detailed":" ","combat-mods_total_soak":"0","combat-mods_total_soak_detailed":" ","Soak":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}))","soak_stamina":"(@{Stamina_Score})","soak_bonus":"0","Soak_Animal":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Animal_Score}) + (@{Animal_Puissant})) / 5))","Soak_Aquam":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Aquam_Score}) + (@{Aquam_Puissant})) / 5))","Soak_Auram":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Auram_Score}) + (@{Auram_Puissant})) / 5))","Soak_Corpus":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Corpus_Score}) + (@{Corpus_Puissant})) / 5))","Soak_Herbam":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Herbam_Score}) + (@{Herbam_Puissant})) / 5))","Soak_Ignem":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Ignem_Score}) + (@{Ignem_Puissant})) / 5))","Soak_Imaginem":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Imaginem_Score}) + (@{Imaginem_Puissant})) / 5))","Soak_Mentem":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Mentem_Score}) + (@{Mentem_Puissant})) / 5))","Soak_Terram":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Terram_Score}) + (@{Terram_Puissant})) / 5))","Soak_Vim":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Vim_Score}) + (@{Vim_Puissant})) / 5))","ability_i18n":"Abiliy","armor_i18n":"Armor","artes_i18n":"Artes Lib.","attack_i18n":"Attack","aura_i18n":"Aura","bold_i18n":"Bold","bonus_i18n":"Bonus","botch_i18n":"Botch","characteristic_i18n":"Characteristic","botch_num_i18n":"Number of botch dice","circumstances_i18n":"Circumstances","circumstantial_i18n":"Circumstancial","critical_i18n":"Critical","damage_i18n":"Damage","defense_i18n":"Defense","deficiency_i18n":"Deficiency","encumbrance_i18n":"Encumbrance","exaggerated_i18n":"Exaggerated","fatigue_i18n":"Fatigue","ignored_i18n":"Ignored","firm_i18n":"Firm","focus_i18n":"Focus","form_i18n":"Form","gestures_i18n":"Gestures","gest-none_i18n":"None","initiative_i18n":"Initiative","loud_i18n":"Loud","modifiers_i18n":"Modifiers","philos_i18n":"Philos.","quiet_i18n":"Quiet","simple-die_i18n":"Simple","soakbns_i18n":"Soak Bonus","spontaneous_i18n":"Spontaneous","stress-die_i18n":"Stress","subtle_i18n":"Subtle","technique_i18n":"Technique","total_i18n":"Total","unselected_i18n":"Unselected","words_i18n":"Words","words-none_i18n":"None","wounds_i18n":"Wounds","intelligence_i18n":"Intelligence","perception_i18n":"Perception","presence_i18n":"Presence","communication_i18n":"Communication","strength_i18n":"Strength","stamina_i18n":"Stamina","dexterity_i18n":"Dexterity","quickness_i18n":"Quickness","ask_short_i18n":"Ask","global_char_short_i18n":"Gbl","intelligence_short_i18n":"Int","perception_short_i18n":"Per","presence_short_i18n":"Prs","communication_short_i18n":"Com","strength_short_i18n":"Str","stamina_short_i18n":"Sta","dexterity_short_i18n":"Dex","quickness_short_i18n":"Qik","creo_i18n":"Creo","intellego_i18n":"Intellego","muto_i18n":"Muto","perdo_i18n":"Perdo","rego_i18n":"Rego","animal_i18n":"Animal","aquam_i18n":"Aquam","auram_i18n":"Auram","corpus_i18n":"Corpus","herbam_i18n":"Herbam","ignem_i18n":"Ignem","imaginem_i18n":"Imaginem","mentem_i18n":"Mentem","terram_i18n":"Terram","vim_i18n":"Vim","Unselected_Score":"0","Unselected_Puissant":"0","ask_Score":"?{@{characteristic_i18n}|@{intelligence_i18n},@{intelligence_Score} [@{intelligence_i18n}]| @{perception_i18n},@{perception_Score} [@{perception_i18n}]| @{presence_i18n},@{presence_Score} [@{presence_i18n}]| @{communication_i18n},@{communication_Score} [@{communication_i18n}]| @{strength_i18n},@{strength_Score} [@{strength_i18n}]| @{stamina_i18n},@{stamina_Score} [@{stamina_i18n}]| @{dexterity_i18n},@{dexterity_Score} [@{dexterity_i18n}]| @{quickness_i18n},@{quickness_Score} [@{quickness_i18n}]}","global_char_Score":"@{sys_at}@{character_name}@{sys_pipe}@{global_Ability_CharacName}_Score@{sys_rbk}","global_char_i18n":"@{sys_at}@{character_name}@{sys_pipe}@{global_Ability_CharacName}_i18n@{sys_rbk}","sys_at":"@{","sys_pipe":"|","sys_rbk":"}"},
+  attributes:{"update_error_rowid":"","kmodal-settings":0,"botch_formula":"&{template:botch} {{roll= [[{[[?{@{botch_num_i18n}|1}]]d10cs0cf10}=10]] }} {{type=Grouped}}","die-type-selection":"both","isMagi":"yes","kmodal-help":0,"kmodal-history":0,"ArmorWorn":"","ArmorModifiers":"","Fatigue":"0","character_name":"","player_name":"","unspent_xp":"","saga":"","year":"","Confidence":"","ConfidencePoints":"","sheetTab":"character","simple-die":"(1d10cs0cf0) [@{simple-die_i18n}]","stress-die":"ceil(((((1d10cs1cf10 %9) -1)+9) %9) *1.1) [@{stress-die_i18n}]","die-type-selection-proxy":"both","selected-die":"simple","Age":"","MightType":"NoMight","MightScore":"","Warping":"","ApparentAge":"","CurrentMagicMight":"","WarpPoints":"","Warping_effects":"","Birth_Name":"","Year_Born":"","Gender":"","Race_Nationality":"","Place_of_Origin":"","Religion":"","Title_Profession":"","Height":"","Weight":"","Size":"","Handedness":"","Hair":"","Eyes":"","House":"","Covenant":"","sigil":"","DomusMagna":"","Primus":"","Parens":"","CovenantofApprenticeship":"","Personality_Trait1":"","Personality_Trait1_score":"","Personality_Trait2":"","Personality_Trait2_score":"","Personality_Trait3":"","Personality_Trait3_score":"","Personality_Trait4":"","Personality_Trait4_score":"","Personality_Trait5":"","Personality_Trait5_score":"","Personality_Trait6":"","Personality_Trait6_score":"","Reputations1":"","Reputations1_type":"","Reputations1_score":"","Reputations2":"","Reputations2_type":"","Reputations2_score":"","Reputations3":"","Reputations3_type":"","Reputations3_score":"","Reputations4":"","Reputations4_type":"","Reputations4_score":"","Reputations5":"","Reputations5_type":"","Reputations5_score":"","Reputations6":"","Reputations6_type":"","Reputations6_score":"","Intelligence_Description":"","Intelligence_Score":"0","Intelligence_Aging":"0","Perception_Description":"","Perception_Score":"0","Perception_Aging":"0","Presence_Description":"","Presence_Score":"0","Presence_Aging":"0","Communication_Description":"","Communication_Score":"0","Communication_Aging":"0","Strength_Description":"","Strength_Score":"0","Strength_Aging":"0","Stamina_Description":"","Stamina_Score":"0","Stamina_Aging":"0","Dexterity_Description":"","Dexterity_Score":"0","Dexterity_Aging":"0","Quickness_Description":"","Quickness_Score":"0","Quickness_Aging":"0","Decrepitude":"0","Decrepitude_effects":"","Longevity_Scars":"","global_Ability_CharacName":"Intelligence","Creo_Score":"0","Creo_exp":"0","Creo_advancementExp":"1 * ((@{Creo_Score}) + 1)","Creo_totalExp":"1 * (((@{Creo_Score}) + 1) * ((@{Creo_Score}) + 2) / 2)","Creo_Puissant":"0","Intellego_Score":"0","Intellego_exp":"0","Intellego_advancementExp":"1 * ((@{Intellego_Score}) + 1)","Intellego_totalExp":"1 * (((@{Intellego_Score}) + 1) * ((@{Intellego_Score}) + 2) / 2)","Intellego_Puissant":"0","Muto_Score":"0","Muto_exp":"0","Muto_advancementExp":"1 * ((@{Muto_Score}) + 1)","Muto_totalExp":"1 * (((@{Muto_Score}) + 1) * ((@{Muto_Score}) + 2) / 2)","Muto_Puissant":"0","Perdo_Score":"0","Perdo_exp":"0","Perdo_advancementExp":"1 * ((@{Perdo_Score}) + 1)","Perdo_totalExp":"1 * (((@{Perdo_Score}) + 1) * ((@{Perdo_Score}) + 2) / 2)","Perdo_Puissant":"0","Rego_Score":"0","Rego_exp":"0","Rego_advancementExp":"1 * ((@{Rego_Score}) + 1)","Rego_totalExp":"1 * (((@{Rego_Score}) + 1) * ((@{Rego_Score}) + 2) / 2)","Rego_Puissant":"0","Animal_Score":"0","Animal_exp":"0","Animal_advancementExp":"1 * ((@{Animal_Score}) + 1)","Animal_totalExp":"1 * (((@{Animal_Score}) + 1) * ((@{Animal_Score}) + 2) / 2)","Animal_Puissant":"0","Aquam_Score":"0","Aquam_exp":"0","Aquam_advancementExp":"1 * ((@{Aquam_Score}) + 1)","Aquam_totalExp":"1 * (((@{Aquam_Score}) + 1) * ((@{Aquam_Score}) + 2) / 2)","Aquam_Puissant":"0","Auram_Score":"0","Auram_exp":"0","Auram_advancementExp":"1 * ((@{Auram_Score}) + 1)","Auram_totalExp":"1 * (((@{Auram_Score}) + 1) * ((@{Auram_Score}) + 2) / 2)","Auram_Puissant":"0","Corpus_Score":"0","Corpus_exp":"0","Corpus_advancementExp":"1 * ((@{Corpus_Score}) + 1)","Corpus_totalExp":"1 * (((@{Corpus_Score}) + 1) * ((@{Corpus_Score}) + 2) / 2)","Corpus_Puissant":"0","Herbam_Score":"0","Herbam_exp":"0","Herbam_advancementExp":"1 * ((@{Herbam_Score}) + 1)","Herbam_totalExp":"1 * (((@{Herbam_Score}) + 1) * ((@{Herbam_Score}) + 2) / 2)","Herbam_Puissant":"0","Ignem_Score":"0","Ignem_exp":"0","Ignem_advancementExp":"1 * ((@{Ignem_Score}) + 1)","Ignem_totalExp":"1 * (((@{Ignem_Score}) + 1) * ((@{Ignem_Score}) + 2) / 2)","Ignem_Puissant":"0","Imaginem_Score":"0","Imaginem_exp":"0","Imaginem_advancementExp":"1 * ((@{Imaginem_Score}) + 1)","Imaginem_totalExp":"1 * (((@{Imaginem_Score}) + 1) * ((@{Imaginem_Score}) + 2) / 2)","Imaginem_Puissant":"0","Mentem_Score":"0","Mentem_exp":"0","Mentem_advancementExp":"1 * ((@{Mentem_Score}) + 1)","Mentem_totalExp":"1 * (((@{Mentem_Score}) + 1) * ((@{Mentem_Score}) + 2) / 2)","Mentem_Puissant":"0","Terram_Score":"0","Terram_exp":"0","Terram_advancementExp":"1 * ((@{Terram_Score}) + 1)","Terram_totalExp":"1 * (((@{Terram_Score}) + 1) * ((@{Terram_Score}) + 2) / 2)","Terram_Puissant":"0","Vim_Score":"0","Vim_exp":"0","Vim_advancementExp":"1 * ((@{Vim_Score}) + 1)","Vim_totalExp":"1 * (((@{Vim_Score}) + 1) * ((@{Vim_Score}) + 2) / 2)","Vim_Puissant":"0","Spontaneous1_stress_score":"(@{Spontaneous1_Technique}) + (@{Spontaneous1_Form}) + ([[@{Spontaneous1_Focus}]]) + (@{gestures}) + (@{words}) + (@{Stamina_Score}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})","Spontaneous1_stress_divider":"(2) * ([[1 + (@{Spontaneous1_Deficiency})]])","Spontaneous1":"((0 + (@{Spontaneous1_Technique}) + (@{Spontaneous1_Form}) + ([[@{Spontaneous1_Focus}]]) + (@{gestures}) + (@{words}) + (@{Stamina_Score}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance}) + (?{@{modifiers_i18n}|0})) / ((2) * ([[1 + (@{Spontaneous1_Deficiency})]])))","Spontaneous1_Technique":"0 [@{technique_i18n}]","Spontaneous1_Form":"0 [@{form_i18n}]","Spontaneous1_Focus":0,"Spontaneous1_Deficiency":0,"Spontaneous1_Sta":"@{Stamina_Score}","Spontaneous1_aura":"@{aura}","Ceremonial":"((@{Ceremonial_Technique} + @{Ceremonial_Form} + (@{Ceremonial_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura} + @{Ceremonial_Artes_Lib} + @{Ceremonial_Philos})/2 ) / (1 + (@{Ceremonial_Deficiency}))","Ceremonial_Technique":"0 [@{technique_i18n}]","Ceremonial_Form":"0 [@{form_i18n}]","Ceremonial_Focus":0,"Ceremonial_Deficiency":0,"Ceremonial_Sta":"@{Stamina_Score}","Ceremonial_aura":"@{aura}","Ceremonial_Artes_Lib":"0","Ceremonial_Philos":"0","Spontaneous2":"((@{Spontaneous2_Technique} + @{Spontaneous2_Form} + (@{Spontaneous2_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura})/5) / (1 + (@{Spontaneous2_Deficiency}))","Spontaneous2_Technique":"0","Spontaneous2_Form":"0","Spontaneous2_Focus":0,"Spontaneous2_Deficiency":0,"Spontaneous2_Sta":"@{Stamina_Score}","Spontaneous2_aura":"@{aura}","Formulaic":"(@{Formulaic_Technique} + @{Formulaic_Form} + (@{Formulaic_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura}) / (1 + (@{Formulaic_Deficiency}))","Formulaic_Technique":"0 [@{technique_i18n}]","Formulaic_Form":"0 [@{form_i18n}]","Formulaic_Focus":0,"Formulaic_Deficiency":0,"Formulaic_Sta":"@{Stamina_Score}","Formulaic_aura":"@{aura}","Ritual":"(@{Ritual_Technique} + @{Ritual_Form} + (@{Ritual_Focus}) + @{Stamina_Score} + @{aura} + @{Ritual_Artes_Lib} + @{Ritual_Philos}) / (1 + (@{Ritual_Deficiency}))","Ritual_Technique":"0 [@{technique_i18n}]","Ritual_Form":"0 [@{form_i18n}]","Ritual_Focus":0,"Ritual_Deficiency":0,"Ritual_Sta":"@{Stamina_Score}","Ritual_aura":"@{aura}","Ritual_Artes_Lib":"0","Ritual_Philos":"0","aura":"3","gestures":"0 [@{gestures_i18n}: @{bold_i18n}]","words":"0 [@{words_i18n}: @{firm_i18n}]","LabSize_Score":"0","LabRefinement_Score":"0","LabGeneralQuality_Score":"0","LabUpkeep_Score":"0","LabSafety_Score":"0","LabWarping_Score":"0","LabHealth_Score":"0","LabAesthetics_Score":"0","SanctumMarker":"","LabDescription":"","Lab":"(@{Intelligence_Score}) + (@{Lab_Theory}) + (@{aura}) + (@{lab_Technique}) + (@{lab_Form}) + (@{Lab_Focus}) + (@{LabModifiers}) + (@{labbonus_total}) + (@{LabGeneralQuality_Score})","Lab_Focus":0,"LabModifiers":"0","Lab_Int":"(@{Intelligence_Score})","Lab_Theory":"0","Lab_Aura":"@{aura}","lab_Technique":"0","lab_Form":"0","labbonus_total":"0","fatigue_penalty":"0","fatigue_ignored":0,"fatigue_level":"fresh","fatigue_winded__long_term":0,"fatigue_weary__long_term":0,"fatigue_tired__long_term":0,"fatigue_dazed__long_term":0,"fatigue_unconscious__long_term":0,"wound_total":"0","wound_penalty":"0","wound_ignored":0,"Wounds_Light_range":"","Wounds_Light1":0,"Wounds_Light2":0,"Wounds_Light3":0,"Wounds_Light4":0,"Wounds_Light5":0,"Wounds_Medium_range":"","Wounds_Medium1":0,"Wounds_Medium2":0,"Wounds_Medium3":0,"Wounds_Medium4":0,"Wounds_Medium5":0,"Wounds_Heavy_range":"","Wounds_Heavy1":0,"Wounds_Heavy2":0,"Wounds_Heavy3":0,"Wounds_Heavy4":0,"Wounds_Heavy5":0,"Wounds_Incapacitated_range":"","Wounds_Incapacitated":0,"Wounds_Dead_range":"","Wounds_Dead":0,"armors_total_prot":"0","armors_total_prot_detailed":" ","armors_total_load":"0","armors_total_load_detailed":" ","combat-mods_total_init":"0","combat-mods_total_init_detailed":" ","combat-mods_total_atk":"0","combat-mods_total_atk_detailed":" ","combat-mods_total_dfn":"0","combat-mods_total_dfn_detailed":" ","combat-mods_total_dam":"0","combat-mods_total_dam_detailed":" ","combat-mods_total_soak":"0","combat-mods_total_soak_detailed":" ","Soak":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}))","soak_stamina":"(@{Stamina_Score})","soak_bonus":"0","total_load":"0","burden":"0","encumbrance":"0","Soak_Animal":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Animal_Score}) + (@{Animal_Puissant})) / 5))","Soak_Aquam":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Aquam_Score}) + (@{Aquam_Puissant})) / 5))","Soak_Auram":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Auram_Score}) + (@{Auram_Puissant})) / 5))","Soak_Corpus":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Corpus_Score}) + (@{Corpus_Puissant})) / 5))","Soak_Herbam":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Herbam_Score}) + (@{Herbam_Puissant})) / 5))","Soak_Ignem":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Ignem_Score}) + (@{Ignem_Puissant})) / 5))","Soak_Imaginem":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Imaginem_Score}) + (@{Imaginem_Puissant})) / 5))","Soak_Mentem":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Mentem_Score}) + (@{Mentem_Puissant})) / 5))","Soak_Terram":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Terram_Score}) + (@{Terram_Puissant})) / 5))","Soak_Vim":"((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Vim_Score}) + (@{Vim_Puissant})) / 5))","weapon_total_load":"0","ability_i18n":"Abiliy","armor_i18n":"Armor","artes_i18n":"Artes Lib.","attack_i18n":"Attack","aura_i18n":"Aura","bold_i18n":"Bold","bonus_i18n":"Bonus","botch_i18n":"Botch","characteristic_i18n":"Characteristic","botch_num_i18n":"Number of botch dice","circumstances_i18n":"Circumstances","circumstantial_i18n":"Circumstancial","critical_i18n":"Critical","damage_i18n":"Damage","defense_i18n":"Defense","deficiency_i18n":"Deficiency","encumbrance_i18n":"Encumbrance","exaggerated_i18n":"Exaggerated","fatigue_i18n":"Fatigue","ignored_i18n":"Ignored","firm_i18n":"Firm","focus_i18n":"Focus","form_i18n":"Form","gestures_i18n":"Gestures","gest-none_i18n":"None","initiative_i18n":"Initiative","loud_i18n":"Loud","modifiers_i18n":"Modifiers","philos_i18n":"Philos.","quiet_i18n":"Quiet","simple-die_i18n":"Simple","soakbns_i18n":"Soak Bonus","spontaneous_i18n":"Spontaneous","stress-die_i18n":"Stress","subtle_i18n":"Subtle","technique_i18n":"Technique","total_i18n":"Total","unselected_i18n":"Unselected","words_i18n":"Words","words-none_i18n":"None","wounds_i18n":"Wounds","intelligence_i18n":"Intelligence","perception_i18n":"Perception","presence_i18n":"Presence","communication_i18n":"Communication","strength_i18n":"Strength","stamina_i18n":"Stamina","dexterity_i18n":"Dexterity","quickness_i18n":"Quickness","ask_short_i18n":"Ask","global_char_short_i18n":"Gbl","intelligence_short_i18n":"Int","perception_short_i18n":"Per","presence_short_i18n":"Prs","communication_short_i18n":"Com","strength_short_i18n":"Str","stamina_short_i18n":"Sta","dexterity_short_i18n":"Dex","quickness_short_i18n":"Qik","creo_i18n":"Creo","intellego_i18n":"Intellego","muto_i18n":"Muto","perdo_i18n":"Perdo","rego_i18n":"Rego","animal_i18n":"Animal","aquam_i18n":"Aquam","auram_i18n":"Auram","corpus_i18n":"Corpus","herbam_i18n":"Herbam","ignem_i18n":"Ignem","imaginem_i18n":"Imaginem","mentem_i18n":"Mentem","terram_i18n":"Terram","vim_i18n":"Vim","Unselected_Score":"0","Unselected_Puissant":"0","ask_Score":"?{@{characteristic_i18n}|@{intelligence_i18n},@{intelligence_Score} [@{intelligence_i18n}]| @{perception_i18n},@{perception_Score} [@{perception_i18n}]| @{presence_i18n},@{presence_Score} [@{presence_i18n}]| @{communication_i18n},@{communication_Score} [@{communication_i18n}]| @{strength_i18n},@{strength_Score} [@{strength_i18n}]| @{stamina_i18n},@{stamina_Score} [@{stamina_i18n}]| @{dexterity_i18n},@{dexterity_Score} [@{dexterity_i18n}]| @{quickness_i18n},@{quickness_Score} [@{quickness_i18n}]}","global_char_Score":"@{sys_at}@{character_name}@{sys_pipe}@{global_Ability_CharacName}_Score@{sys_rbk}","global_char_i18n":"@{sys_at}@{character_name}@{sys_pipe}@{global_Ability_CharacName}_i18n@{sys_rbk}","sys_at":"@{","sys_pipe":"|","sys_rbk":"}"},
   triggers: [],
   translation,
   otherCharacters: {
@@ -268,11 +268,11 @@ global.finishRoll = finishRoll;
 const k = (function(){
   const kFuncs = {};
   
-  const cascades = {"attr_character_name":{"name":"character_name","type":"text","defaultValue":"","affects":[],"triggeredFuncs":["setActionCalls"],"listenerFunc":"accessSheet","listener":"change:character_name"},"act_k-network-call":{"name":"k-network-call","type":"action","triggeredFuncs":["kReceive"],"affects":[],"addFuncs":[],"listener":"clicked:k-network-call","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_notNew":{"name":"notNew","type":"number","affects":[],"triggeredFuncs":[]},"attr_alert-161-spell-update":{"name":"alert-161-spell-update","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_Technique_select":{"name":"repeating_spell_$X_Technique_select","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_Form_select":{"name":"repeating_spell_$X_Form_select","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_spell_tech_name":{"name":"repeating_spell_$X_spell_tech_name","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_spell_form_name":{"name":"repeating_spell_$X_spell_form_name","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Wounds_Load":{"name":"repeating_weapons_$X_Wounds_Load","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Wounds_Range":{"name":"repeating_weapons_$X_Wounds_Range","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Weapon_Load":{"name":"repeating_weapons_$X_Weapon_Load","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Weapon_Range":{"name":"repeating_weapons_$X_Weapon_Range","type":"string","affects":[],"triggeredFuncs":[]},"attr_update_error_rowid":{"name":"update_error_rowid","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:update_error_rowid","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_level":{"name":"repeating_alerts--global-alerts_$x_level","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:level","listenerFunc":"accessSheet","defaultValue":"info","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_title":{"name":"repeating_alerts--global-alerts_$x_title","type":"span","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:title","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_text":{"name":"repeating_alerts--global-alerts_$x_text","type":"span","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:text","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"act_repeating_alerts--global-alerts_$x_close":{"name":"repeating_alerts--global-alerts_$x_close","type":"action","triggeredFuncs":["onAlertRemoved"],"affects":[],"addFuncs":[],"listener":"clicked:repeating_alerts--global-alerts:close","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_kmodal-settings":{"name":"kmodal-settings","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-settings","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_botch_formula":{"name":"botch_formula","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:botch_formula","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_die-type-selection":{"name":"die-type-selection","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:die-type-selection","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_ismagi":{"name":"ismagi","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:ismagi","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_kmodal-help":{"name":"kmodal-help","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-help","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_kmodal-history":{"name":"kmodal-history","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-history","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_fatigue_penalty":{"name":"fatigue_penalty","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:fatigue_penalty","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_fatigue_penalty","initialFunc":"","formula":""},"attr_fatigue_ignored":{"name":"fatigue_ignored","type":"checkbox","triggeredFuncs":[],"affects":["fatigue_penalty"],"addFuncs":[],"listener":"change:fatigue_ignored","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_fatigue_level":{"name":"fatigue_level","type":"radio","triggeredFuncs":[],"affects":["fatigue_penalty"],"addFuncs":[],"listener":"change:fatigue_level","listenerFunc":"accessSheet","defaultValue":"fresh","calculation":"","initialFunc":"","formula":""},"attr_wound_total":{"name":"wound_total","type":"hidden","triggeredFuncs":[],"affects":["wound_penalty"],"addFuncs":[],"listener":"change:wound_total","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_wound_penalty":{"name":"wound_penalty","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:wound_penalty","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_wound_penalty","initialFunc":"","formula":""},"attr_wound_ignored":{"name":"wound_ignored","type":"checkbox","triggeredFuncs":[],"affects":["wound_penalty"],"addFuncs":[],"listener":"change:wound_ignored","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_armors_total_prot":{"name":"armors_total_prot","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_prot","listenerFunc":"accessSheet","defaultValue":0,"calculation":"section_conditional_sum","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_prot"},"attr_armors_total_prot_detailed":{"name":"armors_total_prot_detailed","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_prot_detailed","listenerFunc":"accessSheet","defaultValue":" ","calculation":"section_conditional_sum_detail","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_prot","sum_label":"armors_name"},"attr_armors_total_load":{"name":"armors_total_load","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"section_conditional_sum","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_load"},"attr_armors_total_load_detailed":{"name":"armors_total_load_detailed","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_load_detailed","listenerFunc":"accessSheet","defaultValue":" ","calculation":"section_conditional_sum_detail","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_load","sum_label":"armors_name"},"attr_repeating_armors_$x_armors_name":{"name":"repeating_armors_$x_armors_name","type":"text","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_armors:armors_name","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_armors_prot":{"name":"repeating_armors_$x_armors_prot","type":"number","triggeredFuncs":[],"affects":["armors_total_prot","armors_total_prot_detailed"],"addFuncs":[],"listener":"change:repeating_armors:armors_prot","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_armors_load":{"name":"repeating_armors_$x_armors_load","type":"number","triggeredFuncs":[],"affects":["armors_total_load","armors_total_load_detailed"],"addFuncs":[],"listener":"change:repeating_armors:armors_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_isactive":{"name":"repeating_armors_$x_isactive","type":"checkbox","triggeredFuncs":[],"affects":["armors_total_prot","armors_total_prot_detailed","armors_total_load","armors_total_load_detailed"],"addFuncs":[],"listener":"change:repeating_armors:isactive","listenerFunc":"accessSheet","defaultValue":1,"calculation":"","initialFunc":"","formula":""}};
+  const cascades = {"attr_character_name":{"name":"character_name","type":"text","defaultValue":"","affects":[],"triggeredFuncs":["setActionCalls"],"listenerFunc":"accessSheet","listener":"change:character_name"},"act_k-network-call":{"name":"k-network-call","type":"action","triggeredFuncs":["kReceive"],"affects":[],"addFuncs":[],"listener":"clicked:k-network-call","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_notNew":{"name":"notNew","type":"number","affects":[],"triggeredFuncs":[]},"attr_alert-161-spell-update":{"name":"alert-161-spell-update","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_Technique_select":{"name":"repeating_spell_$X_Technique_select","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_Form_select":{"name":"repeating_spell_$X_Form_select","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_spell_tech_name":{"name":"repeating_spell_$X_spell_tech_name","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_spell_form_name":{"name":"repeating_spell_$X_spell_form_name","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Wounds_Load":{"name":"repeating_weapons_$X_Wounds_Load","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Wounds_Range":{"name":"repeating_weapons_$X_Wounds_Range","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Weapon_Load":{"name":"repeating_weapons_$X_Weapon_Load","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Weapon_Range":{"name":"repeating_weapons_$X_Weapon_Range","type":"string","affects":[],"triggeredFuncs":[]},"attr_update_error_rowid":{"name":"update_error_rowid","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:update_error_rowid","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_level":{"name":"repeating_alerts--global-alerts_$x_level","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:level","listenerFunc":"accessSheet","defaultValue":"info","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_title":{"name":"repeating_alerts--global-alerts_$x_title","type":"span","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:title","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_text":{"name":"repeating_alerts--global-alerts_$x_text","type":"span","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:text","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"act_repeating_alerts--global-alerts_$x_close":{"name":"repeating_alerts--global-alerts_$x_close","type":"action","triggeredFuncs":["onAlertRemoved"],"affects":[],"addFuncs":[],"listener":"clicked:repeating_alerts--global-alerts:close","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_kmodal-settings":{"name":"kmodal-settings","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-settings","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_botch_formula":{"name":"botch_formula","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:botch_formula","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_die-type-selection":{"name":"die-type-selection","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:die-type-selection","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_ismagi":{"name":"ismagi","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:ismagi","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_kmodal-help":{"name":"kmodal-help","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-help","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_kmodal-history":{"name":"kmodal-history","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-history","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_strength_score":{"name":"strength_score","type":"number","triggeredFuncs":[],"affects":["encumbrance"],"addFuncs":[],"listener":"change:strength_score","listenerFunc":"accessSheet","defaultValue":"0","calculation":"","initialFunc":"","formula":""},"attr_fatigue_penalty":{"name":"fatigue_penalty","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:fatigue_penalty","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_fatigue_penalty","initialFunc":"","formula":""},"attr_fatigue_ignored":{"name":"fatigue_ignored","type":"checkbox","triggeredFuncs":[],"affects":["fatigue_penalty"],"addFuncs":[],"listener":"change:fatigue_ignored","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_fatigue_level":{"name":"fatigue_level","type":"radio","triggeredFuncs":[],"affects":["fatigue_penalty"],"addFuncs":[],"listener":"change:fatigue_level","listenerFunc":"accessSheet","defaultValue":"fresh","calculation":"","initialFunc":"","formula":""},"attr_wound_total":{"name":"wound_total","type":"hidden","triggeredFuncs":[],"affects":["wound_penalty"],"addFuncs":[],"listener":"change:wound_total","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_wound_penalty":{"name":"wound_penalty","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:wound_penalty","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_wound_penalty","initialFunc":"","formula":""},"attr_wound_ignored":{"name":"wound_ignored","type":"checkbox","triggeredFuncs":[],"affects":["wound_penalty"],"addFuncs":[],"listener":"change:wound_ignored","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_armors_total_prot":{"name":"armors_total_prot","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_prot","listenerFunc":"accessSheet","defaultValue":0,"calculation":"section_conditional_sum","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_prot"},"attr_armors_total_prot_detailed":{"name":"armors_total_prot_detailed","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_prot_detailed","listenerFunc":"accessSheet","defaultValue":" ","calculation":"section_conditional_sum_detail","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_prot","sum_label":"armors_name"},"attr_armors_total_load":{"name":"armors_total_load","type":"number","triggeredFuncs":[],"affects":["total_load"],"addFuncs":[],"listener":"change:armors_total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"section_conditional_sum","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_load"},"attr_armors_total_load_detailed":{"name":"armors_total_load_detailed","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_load_detailed","listenerFunc":"accessSheet","defaultValue":" ","calculation":"section_conditional_sum_detail","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_load","sum_label":"armors_name"},"attr_repeating_armors_$x_armors_name":{"name":"repeating_armors_$x_armors_name","type":"text","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_armors:armors_name","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_armors_prot":{"name":"repeating_armors_$x_armors_prot","type":"number","triggeredFuncs":[],"affects":["armors_total_prot","armors_total_prot_detailed"],"addFuncs":[],"listener":"change:repeating_armors:armors_prot","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_armors_load":{"name":"repeating_armors_$x_armors_load","type":"number","triggeredFuncs":[],"affects":["armors_total_load","armors_total_load_detailed"],"addFuncs":[],"listener":"change:repeating_armors:armors_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_isactive":{"name":"repeating_armors_$x_isactive","type":"checkbox","triggeredFuncs":[],"affects":["armors_total_prot","armors_total_prot_detailed","armors_total_load","armors_total_load_detailed"],"addFuncs":[],"listener":"change:repeating_armors:isactive","listenerFunc":"accessSheet","defaultValue":1,"calculation":"","initialFunc":"","formula":""},"attr_total_load":{"name":"total_load","type":"number","triggeredFuncs":[],"affects":["burden"],"addFuncs":[],"listener":"change:total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_total_load","initialFunc":"","formula":""},"attr_burden":{"name":"burden","type":"number","triggeredFuncs":[],"affects":["encumbrance"],"addFuncs":[],"listener":"change:burden","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_burden","initialFunc":"","formula":""},"attr_encumbrance":{"name":"encumbrance","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:encumbrance","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_encumbrance","initialFunc":"","formula":""},"attr_weapon_total_load":{"name":"weapon_total_load","type":"hidden","triggeredFuncs":[],"affects":["total_load"],"addFuncs":[],"listener":"change:weapon_total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_weapons_$x_is_active":{"name":"repeating_weapons_$x_is_active","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_weapons:is_active","listenerFunc":"accessSheet","defaultValue":1,"calculation":"","initialFunc":"","formula":""},"attr_repeating_weapons_$x_weapon_load":{"name":"repeating_weapons_$x_weapon_load","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_weapons:weapon_load","listenerFunc":"accessSheet","defaultValue":"0","calculation":"","initialFunc":"","formula":""}};
   
   kFuncs.cascades = cascades;
   
-  const repeatingSectionDetails = [{"section":"repeating_spell","fields":["Technique_select","Form_select","spell_tech_name","spell_form_name"]},{"section":"repeating_weapons","fields":["Wounds_Load","Wounds_Range","Weapon_Load","Weapon_Range"]},{"section":"repeating_alerts--global-alerts","fields":["level","title","text"]},{"section":"repeating_armors","fields":["armors_name","armors_prot","armors_load","isactive"]}];
+  const repeatingSectionDetails = [{"section":"repeating_spell","fields":["Technique_select","Form_select","spell_tech_name","spell_form_name"]},{"section":"repeating_weapons","fields":["Wounds_Load","Wounds_Range","Weapon_Load","Weapon_Range","is_active"]},{"section":"repeating_alerts--global-alerts","fields":["level","title","text"]},{"section":"repeating_armors","fields":["armors_name","armors_prot","armors_load","isactive"]}];
   
   kFuncs.repeatingSectionDetails = repeatingSectionDetails;
   
@@ -1954,79 +1954,7 @@ on("change:repeating_labspecializations:labbonus remove:repeating_labspecializat
     });
 });
 
-// Function to create a sheet-worker that updates totals computed from repeating sections
-// The sections must follow some naming conventions, see code
 
-function register_repeated_section_totals(section, properties) {
-    var events = (
-        "sheet:opened"
-        + " remove:repeating_" + section
-        + " change:repeating_" + section + ":isactive"
-        + " change:repeating_" + section + ":" + section + "_name"
-    );
-    properties.forEach(function(prop, index, array) {
-        events += " change:repeating_" + section + ":" + section + "_" + prop;
-    });
-
-    console.log("Registering events for section: " + section + " -> " + events);
-
-    on(events, function() {
-        getSectionIDs("repeating_" + section, function(id_array) {
-
-            var attr_names = [];
-            for (var i=0; i < id_array.length; i++) {
-                attr_names.push("repeating_" + section + "_" + id_array[i] + "_" + section + "_name");
-                attr_names.push("repeating_" + section + "_" + id_array[i] + "_isactive");
-                properties.forEach(function(prop, index, array) {
-                    attr_names.push("repeating_" + section + "_" + id_array[i] + "_" + section + "_" + prop);
-                });
-            }
-            console.log("Attributes to get: " + attr_names.toString());
-
-            var totals = {};
-            properties.forEach(function(prop, index, array) {
-                totals[section + "_total_" + prop] = 0
-                totals[section + "_total_" + prop + "_detailed"] = "0";
-            });
-            console.log("Totals to compute: " + JSON.stringify(totals, null, 1));
-
-            getAttrs(attr_names, function(attrs){
-                var prefix = "";
-                var value = 0;
-                console.log("Got attributes: " + JSON.stringify(attrs, null, 1));
-
-                for (var i=0; i < id_array.length; i++) {
-                    console.log("Handling item #" + i);
-                    prefix = "repeating_" + section + "_" + id_array[i] + "_";
-
-                    properties.forEach(function(prop, index, array) {
-                        if ((parseInt(attrs[prefix + "isactive"]) || 0) === 1) {
-                            value = (parseFloat(attrs[prefix + section + "_" + prop]) || 0);
-                            if (value != 0) {
-                                totals[section + "_total_" + prop] += value;
-                                totals[section + "_total_" + prop + "_detailed"] += (
-                                    " + " + value.toString() + " [" + attrs[prefix + section + "_name"] + "]"
-                                );
-                            }
-                        }
-                    });
-                }
-                console.log("Computed totals: " + JSON.stringify(totals, null, 1));
-
-                properties.forEach(function(prop, index, array) {
-                    totals[section + "_total_" + prop] = Math.ceil(totals[section + "_total_" + prop]);
-                    totals[section + "_total_" + prop + "_detailed"] = "ceil(" + totals[section + "_total_" + prop + "_detailed"] + ")";
-                });
-    
-                console.log("computed totals: " + JSON.stringify(totals, null, 1));
-                setAttrs(totals);
-            });
-        });
-    });
-}
-
-//register_repeated_section_totals("armors", ["prot", "load"]);
-register_repeated_section_totals("combat-mods", ["init", "atk", "dfn", "dam", "soak"]);
 
 // Duplicate the global bonuses inside the weapons repeating section for display
 // From https://app.roll20.net/forum/post/10297616/how-do-i-reference-a-global-attribute-in-a-span-in-a-repeating-section
@@ -2561,20 +2489,27 @@ k.registerFuncs({ updateToKScaffold }, { type: ["new"] });
   k.registerFuncs({calc_wound_penalty});
   
   const section_conditional_sum = function({trigger, attributes, sections}) {
-      const section = helpers.get(trigger, "sum_section");
-      const condition = helpers.get(trigger, "sum_condition");
-      const value = helpers.get(trigger, "sum_value");
-  
-  
-      return (
-          helpers.get(sections, section)
-          .filter(row_id => helpers.get(attributes, `${section}_${row_id}_${condition}`))
-          .map(row_id =>  helpers.as_number(helpers.get(attributes, `${section}_${row_id}_${value}`)))
-          .reduce(
-              (sum, value) => sum + value,
-              0
-          )
-      );
+      let result;
+      try {
+          const section = helpers.get(trigger, "sum_section");
+          const condition = helpers.get(trigger, "sum_condition");
+          const value = helpers.get(trigger, "sum_value");
+          result = (
+              helpers.get(sections, section)
+              .filter(row_id => helpers.get(attributes, `${section}_${row_id}_${condition}`))
+              .map(row_id =>  helpers.as_number(helpers.get(attributes, `${section}_${row_id}_${value}`)))
+              .reduce(
+                  (sum, value) => sum + value,
+                  0
+              )
+          );
+      }
+      catch (error) {
+          console.log({func:"section_conditional_sum", trigger, attributes, sections});
+          throw error;
+      }
+      //console.log({func:"section_conditional_sum", trigger, attributes, sections, result});
+      return result;
   };
   k.registerFuncs({section_conditional_sum});
   
@@ -2596,6 +2531,199 @@ k.registerFuncs({ updateToKScaffold }, { type: ["new"] });
       );
   };
   k.registerFuncs({section_conditional_sum_detail});
+  
+  const calc_total_load = ({attributes}) => {
+      const weapon_load = Number(helpers.get(attributes, "weapon_total_load"));
+      const armor_load = Number(helpers.get(attributes, "armors_total_load"));
+      const total_load = weapon_load + armor_load;
+      console.log({"func": "calc_total_load", attributes, weapon_load, armor_load, total_load});
+      return total_load;
+  };
+  k.registerFuncs({calc_total_load});
+  
+  const calc_burden = ({attributes}) => {
+      const total_load = helpers.get(attributes, "total_load");
+      // The load & burden table in AM5 core rulebook has the burden progress like an Art using
+      // load as xp
+      // This is represented by the closed-form formula for the sum of integers:
+      //
+      //      load = burden * (budren + 1 ) / 2
+      //
+      // where load is the load required to reach the burden on the right-hand-side.
+      //
+      // Solving for burden using the quadratic formula yields
+      //
+      //      burden = (sqrt(8 * load + 1) - 1) / 2
+      //
+      // The Definitive Edition rules state:
+      //
+      //   > Burden increases when Load reaches the level for that Burden, so that a character with
+      //   > a Load of 9 has a Burden of 3.
+      //   >
+      //   > Ars Magica 5th Edition, Definitive Edition, CC BY-SA 4.0
+      //
+      // so we must round down to get the correct burden given a load
+      const burden = Math.floor((Math.sqrt(8 * total_load + 1) - 1) / 2);
+      //console.log({"func": "calc_burden", attributes, total_load, burden});
+      return burden;
+  
+  };
+  k.registerFuncs({calc_burden});
+  
+  const calc_encumbrance = ({attributes}) => {
+      const burden = Number(helpers.get(attributes, "burden"));
+      const strength = Number(helpers.get(attributes, "strength_score"));
+      const encumbrance = Math.max(0, burden - Math.max(0, strength));
+      //console.log({"func": "calc_encumbrance", attributes, burden, strength, encumbrance});
+      return encumbrance;
+  };
+  k.registerFuncs({calc_encumbrance});
+  
+  
+  // Manual summations in repeating sections without using k-scaffold. K-scaffold doesn't work well with
+  // the weapons repeating section due to us injecting data into k-scaffold interlals in _updates.pug
+  // to make k-scaffold aware of legacy attributes in the weapons sections.
+  // For now it is simpler to keep the summation manuals
+  const _validate_summations = ({section, summations}) => {
+      const error = message => {
+          console.error(`Invalid summations for "${section}": ${message}`);
+      };
+  
+      if (!Array.isArray(summations) || summations.length === 0) {
+          error("summations must be a non-empty array.");
+          return false;
+      }
+  
+      const totals = new Set();
+  
+      for (const [index, summation] of summations.entries()) {
+          if (!summation || typeof summation !== "object") {
+              error(`summation at index ${index} must be an object.`);
+              return false;
+          }
+  
+          const {value, total, condition, label, total_detailed} = summation;
+  
+          if (!value || !total) {
+              error(`summation at index ${index} requires value and total.`);
+              return false;
+          }
+  
+          if ((label === undefined) !== (total_detailed === undefined)) {
+              error(
+                  `summation at index ${index} must specify both label and total_detailed, or neither.`
+              );
+              return false;
+          }
+  
+          for (const name of [total, total_detailed]) {
+              if (name === undefined) {
+                  continue;
+              }
+  
+              if (totals.has(name)) {
+                  error(`duplicate output attribute "${name}".`);
+                  return false;
+              }
+  
+              totals.add(name);
+          }
+      }
+  
+      return true;
+  };
+  
+  const _calculate_summations = ({section, summations, row_ids, attributes}) => {
+      const results = summations.map(({ value, condition, total, label, total_detailed}) => {
+          const filtered_row_ids = (
+              row_ids
+              .filter(row_id => ((condition === undefined) ||(helpers.get(attributes, `repeating_${section}_${row_id}_${condition}`) === "1")))
+          );
+          const values = filtered_row_ids.map(row_id => helpers.get(attributes, `repeating_${section}_${row_id}_${value}`));
+          const total_value = values.reduce((sum, value) => sum + (Number(value) || 0), 0);
+  
+          let values_labeled, total_value_labeled;
+          if (label !== undefined && total_detailed !== undefined ) {
+              values_labeled = filtered_row_ids.map(row_id => {
+                  const row_value = helpers.get(attributes, `repeating_${section}_${row_id}_${value}`);
+                  const row_label = helpers.get(attributes, `repeating_${section}_${row_id}_${label}`);
+                  return `(${row_value} [${row_label}])`
+              });
+              total_value_labeled = values_labeled.join(" + ") || "0";
+          }
+          return {
+              summation: { value, condition, total, label, total_detailed},
+              filtered_row_ids, values, total_value, values_labeled, total_value_labeled
+          };
+      });
+      const totals = Object.fromEntries(
+          results.flatMap(({ summation, total_value, total_value_labeled }) => {
+              const { total, total_detailed } = summation;
+  
+              return [
+                  ...(total !== undefined
+                      ? [[total, total_value]]
+                      : []),
+                  ...(total_detailed !== undefined && total_value_labeled !== undefined
+                      ? [[total_detailed, total_value_labeled]]
+                      : [])
+              ];
+          })
+      );
+      //console.log({func: "_calculate_summations", section, summations, row_ids, attributes, results, totals});
+      return totals;
+  };
+  
+  const register_repeated_section_totals = ({section, summations}) => {
+      if (!_validate_summations({section, summations})) {
+          return;
+      }
+      const unique_attr_names = [
+          ...new Set(
+              summations.flatMap(({ value, condition, label }) =>
+                  [value, condition, label].filter(v => v !== undefined)
+              )
+          )
+      ];
+  
+      const events = [
+          "sheet:opened",
+          `add:repeating_${section}`,
+          `remove:repeating_${section}`,
+          ...unique_attr_names.map(attr => `change:repeating_${section}:${attr}`)
+      ].join(" ");
+      console.log("Registering events for section: " + section + " -> " + events);
+  
+      on(events, function() {
+          getSectionIDs("repeating_" + section, row_ids => {
+              const attr_names = row_ids.flatMap(
+                  row_id => unique_attr_names.map(attr => `repeating_${section}_${row_id}_${attr}`)
+              );
+              getAttrs(attr_names, (attributes) => {
+                  setAttrs(_calculate_summations({section, summations, row_ids, attributes}));
+              });
+          });
+      });
+  };
+  
+  register_repeated_section_totals({
+      section: "combat-mods",
+      summations: ["init", "atk", "dfn", "dam", "soak"].map(value => ({
+          value: `combat-mods_${value}`,
+          condition: "isactive",
+          total: `combat-mods_total_${value}`,
+          label: "combat-mods_name",
+          total_detailed: `combat-mods_total_${value}_detailed`,
+      })),
+  });
+  register_repeated_section_totals({
+      section: "weapons",
+      summations: [{
+          value: "Weapon_Load",
+          condition: "is_active",
+          total: "weapon_total_load",
+      }],
+  });
 
 console.debug = vi.fn(a => null);
 console.log = vi.fn(a => null);
