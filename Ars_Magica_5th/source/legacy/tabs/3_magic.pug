@@ -14,7 +14,7 @@ mixin select_hermetic_form(obj)
             +option({value: `(@{${form}_score} + @{${form}_puissant}) [@{${form}_i18n}]`, "data-i18n":form})= helpers.titleCase(form)
 
 
-mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode})
+mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode, critical})
     -
         if (typeof name !== "string") {
             throw new Error(`+hermetic_casting_row(): expected string name, got ${typeof name} object ${name}`);
@@ -27,6 +27,10 @@ mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode})
         }
         if (typeof mode !== "string") {
             throw new Error(`+hermetic_casting_row(): expected string mode, got ${typeof mode} object ${mode}`);
+        }
+        const valid_criticals = ["critical", "critical-spontaneous"]
+        if (!valid_criticals.includes(critical)) {
+            throw new TypeError(`+hermetic_casting_row(): expected 'critical' to be one of ${valid_criticals}, got ${typeof critical} object ${critical}`);
         }
 
         const casting_total =  new RollTotal({
@@ -51,7 +55,7 @@ mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode})
                 [`[[1 + (@{cast_${name}_deficiency})]]`]: "@{deficiency_i18n}",
             },
             ...(divider
-                ? {total_bonuses: {[`@{cast_${name}_total_bonus}`]: "@{bonus_i18n}"}}
+                ? {total_bonuses: {[`@{cast_${name}_total_bonus}`]: "@{bonus_i18n}"} }
                 : {}
             )
         });
@@ -67,7 +71,7 @@ mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode})
                 "label3": "^{circumstances-m}",
                 "result3": inline_roll(casting_total.get_modifiers()),
                 "botch-button": "[@{botch_i18n}!](~@{character_name}|botch)",
-                "crit-button": "[@{critical_i18n}!](~@{character_name}|critical-spontaneous)",
+                "crit-button": `[@{critical_i18n}!](~@{character_name}|${critical})`,
             },
         });
     tr
@@ -551,22 +555,22 @@ mixin hermetic_casting_parameters()
                 </th>
             </tr>
             <!-- Fatiguing Spontaneous -->
-            +hermetic_casting_row({name: "spontaneous", display: "spontaneous", divider: 2, mode: "stress"})
+            +hermetic_casting_row({name: "spontaneous", display: "spontaneous", divider: 2, mode: "stress", critical: "critical-spontaneous"})
             <!-- Ceremonial Spontaneous -->
-            +hermetic_casting_row({name: "ceremonial", display: "ceremonial", ceremonial: true, divider: 2, mode: "stress"})
+            +hermetic_casting_row({name: "ceremonial", display: "ceremonial", ceremonial: true, divider: 2, mode: "stress", critical: "critical-spontaneous"})
             <!-- Non Fatiguing Spontaneous -->
-            +hermetic_casting_row({name: "non-fatiguing", display: "non-fatiguing", divider: 5, mode: "no_dice"})
+            +hermetic_casting_row({name: "non-fatiguing", display: "non-fatiguing", divider: 5, mode: "no_dice", critical: "critical-spontaneous"})
             <!-- Non Fatiguing Spontaneous w/ Ceremonial -->
-            +hermetic_casting_row({name: "non-fatiguing-ceremonial", display: "non-fatiguing ceremonial", ceremonial: true, divider: 5, mode: "no_dice"})
+            +hermetic_casting_row({name: "non-fatiguing-ceremonial", display: "non-fatiguing ceremonial", ceremonial: true, divider: 5, mode: "no_dice", critical: "critical-spontaneous"})
             <tr></tr>
             <tr>
                 <th data-i18n="designed-spells" >Designed Spells</th>
                 <td colspan="10"></td>
             </tr>
             <!-- Formulaic -->
-            +hermetic_casting_row({name: "formulaic", display:"formulaic", divider: null, mode:"simple+stress"})
+            +hermetic_casting_row({name: "formulaic", display:"formulaic", divider: null, mode:"simple+stress", critical: "critical"})
             <!-- Ritual -->
-            +hermetic_casting_row({name: "ritual", display:"ritual", ceremonial: true, divider: null, mode:"simple+stress"})
+            +hermetic_casting_row({name: "ritual", display:"ritual", ceremonial: true, divider: null, mode:"simple+stress", critical: "critical-spontaneous"})
             <tr></tr>
         </table>
 
