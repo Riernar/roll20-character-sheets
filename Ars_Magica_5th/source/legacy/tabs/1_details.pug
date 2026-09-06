@@ -221,118 +221,73 @@
                         <td data-i18n="score" >Score</td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" style="width:245px" name="attr_Personality_Trait1"></td>
-                        <td><input type="text" class="number_1" style="width:70px;" name="attr_Personality_Trait1_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_personality1_simple" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait1}}} {{Result=[[ @{simple-die} + (@{Personality_Trait1_Score}) [@{Personality_Trait1}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_personality1_stress" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait1}}} {{Result=[[ @{stress-die} + (@{Personality_Trait1_Score}) [@{Personality_Trait1}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" style="width:245px" name="attr_Personality_Trait2"></td>
-                        <td><input type="text" class="number_1" style="width:70px;" name="attr_Personality_Trait2_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_personality2_simple" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait2}}} {{Result=[[ @{simple-die} + (@{Personality_Trait2_Score}) [@{Personality_Trait2}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_personality2_stress" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait2}}} {{Result=[[ @{stress-die} + (@{Personality_Trait2_Score}) [@{Personality_Trait2}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" style="width:245px" name="attr_Personality_Trait3"></td>
-                        <td><input type="text" class="number_1" style="width:70px;" name="attr_Personality_Trait3_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_personality3_simple" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait3}}} {{Result=[[ @{simple-die} + (@{Personality_Trait3_Score}) [@{Personality_Trait3}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_personality3_stress" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait3}}} {{Result=[[ @{stress-die} + (@{Personality_Trait3_Score}) [@{Personality_Trait3}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" style="width:245px" name="attr_Personality_Trait4"></td>
-                        <td><input type="text" class="number_1" style="width:70px;" name="attr_Personality_Trait4_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_personality4_simple" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait4}}} {{Result=[[ @{simple-die} + (@{Personality_Trait4_Score}) [@{Personality_Trait4}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_personality4_stress" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait4}}} {{Result=[[ @{stress-die} + (@{Personality_Trait4_Score}) [@{Personality_Trait4}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" style="width:245px" name="attr_Personality_Trait5"></td>
-                        <td><input type="text" class="number_1" style="width:70px;" name="attr_Personality_Trait5_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_personality5_simple" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait5}}} {{Result=[[ @{simple-die} + (@{Personality_Trait5_Score}) [@{Personality_Trait5}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_personality5_stress" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait5}}} {{Result=[[ @{stress-die} + (@{Personality_Trait5_Score}) [@{Personality_Trait5}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" style="width:245px" name="attr_Personality_Trait6"></td>
-                        <td><input type="text" class="number_1" style="width:70px;" name="attr_Personality_Trait6_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_personality6_simple" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait6}}} {{Result=[[ @{simple-die} + (@{Personality_Trait6_Score}) [@{Personality_Trait6}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_personality6_stress" value="&{template:generic} {{Banner=^{personality} ^{roll}}} {{Label=@{Personality_Trait6}}} {{Result=[[ @{stress-die} + (@{Personality_Trait6_Score}) [@{Personality_Trait6}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
+                    - var i = 0
+                    while i < 6
+                        - i++
+                        tr
+                            td: +text({name: `personality_trait${i}`, style:"width:245px"}).heading_2
+                            td: +number({name: `personality_trait${i}_score`, value:0, style: "width:70px;"}).number_1
+                            -
+                                const total = new RollTotal({
+                                    score:{[`@{personality_trait${i}_score}`]: `@{personality_trait1}`},
+                                    penalty: {}, //AM DE says personality roll have nothing but the roll
+                                });
+                                const roll = new Roll({
+                                    template: "generic",
+                                    label: "^{personality} ^{roll}",
+                                    label_key: "Banner",
+                                    total,
+                                    total_key: "Result",
+                                    fields: {
+                                        "Label": `@{personality_trait${i}}`,
+                                        "botch-button": "[@{botch_i18n}!](~@{character_name}|botch)",
+                                        "crit-button": "[@{critical_i18n}!](~@{character_name}|critical)",
+
+                                    }
+                                });
+                            //- AM5, Definitive Edition, says personality rolls are stress die
+                            td: +am5_roll_button({name: `personality${i}`, roll, mode: "stress"})
                 </table>
             </div>
             <div class='sheet-col'>
                 <h4 class="heading_label" data-i18n="reputations" >Reputations</h4>
+                datalist(id="suggestion-reputation-type")
+                    option(value="Local", data-i18n="reputation-local") Local
+                    option(value="Ecclesiastical", data-i18n="reputation-ecclesiastical") Ecclesiastical
+                    option(value="Hermetic", data-i18n="reputation-hermetic") Hermetic
+
                 <table class="table_2" style="width:400px">
                     <tr>
                         <th></th>
                         <td data-i18n="type" >Type</td>
                         <td data-i18n="score" >Score</td>
                     </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" name="attr_Reputations1"></td>
-                        <td><input type="text" class="heading_2a" name="attr_Reputations1_type"></td>
-                        <td><input type="text" class="number_1" style="width:50px;" name="attr_Reputations1_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_reputation1_simple" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations1}}} {{Result=[[ @{simple-die} + (@{Reputations1_Score}) [@{Reputations1}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_reputation1_stress" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations1}}} {{Result=[[ @{stress-die} + (@{Reputations1_Score}) [@{Reputations1}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" name="attr_Reputations2"></td>
-                        <td><input type="text" class="heading_2a" name="attr_Reputations2_type"></td>
-                        <td><input type="text" class="number_1" style="width:50px;" name="attr_Reputations2_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_reputation2_simple" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations2}}} {{Result=[[ @{simple-die} + (@{Reputations2_Score}) [@{Reputations2}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_reputation2_stress" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations2}}} {{Result=[[ @{stress-die} + (@{Reputations2_Score}) [@{Reputations2}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" name="attr_Reputations3"></td>
-                        <td><input type="text" class="heading_2a" name="attr_Reputations3_type"></td>
-                        <td><input type="text" class="number_1" style="width:50px;" name="attr_Reputations3_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_reputation3_simple" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations3}}} {{Result=[[ @{simple-die} + (@{Reputations3_Score}) [@{Reputations3}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_reputation3_stress" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations3}}} {{Result=[[ @{stress-die} + (@{Reputations3_Score}) [@{Reputations3}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" name="attr_Reputations4"></td>
-                        <td><input type="text" class="heading_2a" name="attr_Reputations4_type"></td>
-                        <td><input type="text" class="number_1" style="width:50px;" name="attr_Reputations4_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_reputation4_simple" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations4}}} {{Result=[[ @{simple-die} + (@{Reputations4_Score}) [@{Reputations4}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_reputation4_stress" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations4}}} {{Result=[[ @{stress-die} + (@{Reputations4_Score}) [@{Reputations4}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" name="attr_Reputations5"></td>
-                        <td><input type="text" class="heading_2a" name="attr_Reputations5_type"></td>
-                        <td><input type="text" class="number_1" style="width:50px;" name="attr_Reputations5_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_reputation5_simple" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations5}}} {{Result=[[ @{simple-die} + (@{Reputations5_Score}) [@{Reputations5}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_reputation5_stress" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations5}}} {{Result=[[ @{stress-die} + (@{Reputations5_Score}) [@{Reputations5}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" class="heading_2" name="attr_Reputations6"></td>
-                        <td><input type="text" class="heading_2a" name="attr_Reputations6_type"></td>
-                        <td><input type="text" class="number_1" style="width:50px;" name="attr_Reputations6_score"></td>
-                        <td><div class="flex-container-center">
-                            <button type="roll" class="button simple-roll" name="roll_reputation6_simple" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations6}}} {{Result=[[ @{simple-die} + (@{Reputations6_Score}) [@{Reputations6}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                            <button type="roll" class="button stress-roll" name="roll_reputation6_stress" value="&{template:generic} {{Banner=^{reputation} ^{roll}}} {{Label=@{Reputations6}}} {{Result=[[ @{stress-die} + (@{Reputations6_Score}) [@{Reputations6}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </div></td>
-                    </tr>
+                    - var i = 0
+                    while i < 6
+                        - i++
+                        tr
+                            td: +text({name: `reputations${i}`}).heading_2
+                            td: +text({name: `reputations${i}_type`, list:"suggestion-reputation-type"}).heading_2a
+                            td: +number({name: `reputations${i}_score`, value:0, style: "width:50px;"}).number_1
+                            -
+                                const total = new RollTotal({
+                                    score:{[`@{reputations${i}_score}`]: `@{reputations${i}}`},
+                                    penalty: {}, //AM DE says reputation roll have nothing but the roll
+                                });
+                                const roll = new Roll({
+                                    template: "generic",
+                                    label: "^{reputation} ^{roll}",
+                                    label_key: "Banner",
+                                    total,
+                                    total_key: "Result",
+                                    fields: {
+                                        "Label": `@{reputations${i}}`,
+                                        "botch-button": "[@{botch_i18n}!](~@{character_name}|botch)",
+                                        "crit-button": "[@{critical_i18n}!](~@{character_name}|critical)",
+
+                                    }
+                                });
+                            td:  +am5_roll_button({name: `reputations${i}`, roll, mode: "stress"})
                 </table>
             </div>
         </div>
