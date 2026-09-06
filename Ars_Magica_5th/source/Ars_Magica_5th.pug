@@ -7,12 +7,23 @@ include k-scaffold
 -
     const arm5 = {
         pug: {
+            characteristics: {
+                all: ["intelligence", "perception", "presence", "communication", "strength", "stamina", "dexterity", "quickness"],
+                mental: ["intelligence", "perception", "presence", "communication"],
+                physical: ["strength", "stamina", "dexterity", "quickness"],
+            },
             hermetic: {
                 techniques: ["creo", "intellego", "muto", "perdo", "rego"],
                 forms: ["animal", "aquam", "auram", "corpus", "herbam", "ignem", "imaginem", "mentem", "terram", "vim"],
-            }
+            },
         },
-        sheet:{}
+        sheet:{
+            characteristics: {
+                all: ["intelligence", "perception", "presence", "communication", "strength", "stamina", "dexterity", "quickness"],
+                mental: ["intelligence", "perception", "presence", "communication"],
+                physical: ["strength", "stamina", "dexterity", "quickness"],
+            },
+        }
     };
 
 
@@ -55,7 +66,7 @@ include updates/_updates.pug
     //- arm5.sheet namespace for code that runs during sheet loading in the VTT
     |
     | // Top-level object for the sheetworkers
-    | const arm5 = {sheet: {}};
+    | const arm5 = {sheet: !{JSON.stringify(arm5.sheet, null, 2)}};
     |
     //- Legacy sheetworkers
     | // Legacy sheetworkers

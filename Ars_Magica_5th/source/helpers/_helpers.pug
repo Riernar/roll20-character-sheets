@@ -19,20 +19,20 @@ mixin transfer_data_to_sheet(destination, data)
 //- TODO: remove once kScaffold has it
 
 //- @pugdoc
-  name: alerts
-  description: A mixin that creates a fieldset containing alerts (aka callouts, admonitions). The fieldset name is prepended by `alerts--`. All elements added by this mixin are in a containing div, to which any attributes passed to the mixin will be applied. The content of the mixin is ignored.
-  arguments:
-    - {string} name - The name of the repeating section. Will be prefixed with `repeating_alerts--` and spaces will be replaced with dashes (`-`).
-    - {object} [fieldsetTrigger] - A trigger object that is passed to the underlying `fieldset()`. `Optional`.
-    - {object} [closeTrigger] - A trigger object that is passed to the underlying `action()` mixin used to make the close button. `Optional`. If not provided, defaults to `{triggeredFuncs: ["kDeleteAlert"]}`. If you override this default, it is your responsability to call `kDeleteAlert`.
-  attributes:
-  example: |
-    include ../_k.pug
-    // A simple alert declaration.
-    +alerts({name:"global-alerts"})
-    
-    // An alert declaration with a trigger and attributes
-    +fieldset({name:'global-alerts',trigger:{triggeredFuncs:['doWhenRemoved']}})(class="my-class")
+    name: alerts
+    description: A mixin that creates a fieldset containing alerts (aka callouts, admonitions). The fieldset name is prepended by `alerts--`. All elements added by this mixin are in a containing div, to which any attributes passed to the mixin will be applied. The content of the mixin is ignored.
+    arguments:
+        - {string} name - The name of the repeating section. Will be prefixed with `repeating_alerts--` and spaces will be replaced with dashes (`-`).
+        - {object} [fieldsetTrigger] - A trigger object that is passed to the underlying `fieldset()`. `Optional`.
+        - {object} [closeTrigger] - A trigger object that is passed to the underlying `action()` mixin used to make the close button. `Optional`. If not provided, defaults to `{triggeredFuncs: ["kDeleteAlert"]}`. If you override this default, it is your responsability to call `kDeleteAlert`.
+    attributes:
+    example: |
+        include ../_k.pug
+        // A simple alert declaration.
+        +alerts({name:"global-alerts"})
+
+        // An alert declaration with a trigger and attributes
+        +fieldset({name:'global-alerts',trigger:{triggeredFuncs:['doWhenRemoved']}})(class="my-class")
 mixin alerts({name, fieldsetTrigger, closeTrigger})
     - name = actionButtonName(replaceProblems(name));
     - attributes.class = attributes.class ? ` ${replaceProblems(attributes.class)}` : '';
@@ -89,13 +89,57 @@ mixin markdown({file, string})
 
 -
     const helpers = (() => {
+        class KeyError extends Error {
+            constructor(obj, key) {
+                let description;
+
+                try {
+                    description = JSON.stringify(obj, null, 2);
+                } catch {
+                    description = String(obj);
+                }
+                if (description === undefined) {
+                    description = String(obj);
+                }
+
+                super(`Key '${key}' not found on ${typeof obj} object ${description}`);
+                this.name = "KeyError";
+                this.obj = obj;
+                this.key = key;
+            }
+        }
+
+        const as_number = (value) => {
+            if (value == null || (typeof value === "string" && value.trim() === "")) {
+                throw new TypeError(`Cannot convert '${value}' to a number`);
+            }
+
+            const result = Number(value);
+
+            if (Number.isNaN(result)) {
+                throw new TypeError(`Cannot convert '${value}' to a number`);
+            }
+
+            return result;
+        };
+
+        const get = (obj, key) => {
+            if (obj == null || obj[key] == null) {
+                throw new KeyError(obj, key);
+            }
+
+            return obj[key];
+        };
+
         const titleCase = str => str.replace(/\b\w/g, char => char.toUpperCase());
 
         return {
-            titleCase,
-        }
+            KeyError,
+            as_number,
+            get,
+            titleCase
+        };
     })();
-
 
 //- The +module() mixin comes from k-scaffold: https://kurohyou-studios.github.io/k-scaffold/pug#module
 //- It let us schedule PUG code to be run when injecting sheetworker source code into the sheet

@@ -19,14 +19,6 @@ const helpers = (() => {
     }
   }
 
-  const get = (obj, key) => {
-    if (obj == null || obj[key] == null) {
-      throw new KeyError(obj, key);
-    }
-
-    return obj[key];
-  };
-
   const as_number = (value) => {
     if (value == null || (typeof value === "string" && value.trim() === "")) {
       throw new TypeError(`Cannot convert '${value}' to a number`);
@@ -41,10 +33,21 @@ const helpers = (() => {
     return result;
   };
 
+  const get = (obj, key) => {
+    if (obj == null || obj[key] == null) {
+      throw new KeyError(obj, key);
+    }
+
+    return obj[key];
+  };
+
+  const titleCase = str => str.replace(/\b\w/g, char => char.toUpperCase());
+
   return {
     KeyError,
-    get,
     as_number,
+    get,
+    titleCase
   };
 })();
 
