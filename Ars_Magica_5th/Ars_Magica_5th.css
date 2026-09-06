@@ -4223,17 +4223,26 @@ End of the python integration block
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet {
   /* Change which roll button to display based on the setting and the toggle */
+  /*
+      button.simple-roll,
+      button.stress-roll,
+      {
+          display: none;
+      }
+
+      input.dtype-selector[value="both"]~div.sheet-tab-content button.simple-roll,
+      input.dtype-selector[value="both"]~div.sheet-tab-content button.stress-roll,
+      input.dtype-selector[value="toggle"]~input.selected-die[value="simple"]~div.sheet-tab-content button.simple-roll,
+      input.dtype-selector[value="toggle"]~input.selected-die[value="stress"]~div.sheet-tab-content button.stress-roll,
+      button.single-roll {
+          display: block;
+      }
+  */
+  /* In toggle mode, hide the wrong die */
 }
-.ui-dialog .tab-content .charsheet .arm5-sheet button.simple-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet button.stress-roll {
-  display: none;
-}
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=both] ~ div.sheet-tab-content button.simple-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=both] ~ div.sheet-tab-content button.stress-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] ~ input.selected-die[value=simple] ~ div.sheet-tab-content button.simple-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] ~ input.selected-die[value=stress] ~ div.sheet-tab-content button.stress-roll,
-.ui-dialog .tab-content .charsheet .arm5-sheet button.single-roll { /* special class for rolls that always have the same type and should always be displayed */
-  display: block;
+.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] ~ input.selected-die[value=simple] ~ div.sheet-tab-content button.stress-roll:not(.single-roll),
+.ui-dialog .tab-content .charsheet .arm5-sheet input.dtype-selector[value=toggle] ~ input.selected-die[value=stress] ~ div.sheet-tab-content button.simple-roll:not(.single-roll) {
+  display: none !important;
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet {
   /* ================================ END Die mode selection ================================== */
@@ -4407,6 +4416,9 @@ End of the python integration block
 }
 .ui-dialog .tab-content .charsheet {
   /* END die rolls */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet select.select_hermetic_technique, .ui-dialog .tab-content .charsheet .arm5-sheet select.select_hermetic_form {
+  width: 95px;
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .wounds input {
   width: initial;

@@ -1242,8 +1242,7 @@ Fix Lab Total computation when General Quality has a leading <code>+</code>
 </div>
 </div>
 </div>
-</div><!-- 3 Magic -->
-<div class="sheet-tab-content tab3">
+</div><!-- 3 Magic --><div class="sheet-tab-content tab3">
 <!-- Techniques & Forms -->
 <div>
 <div class="artcontainer" style="margin-top:10px;">
@@ -1644,8 +1643,7 @@ Fix Lab Total computation when General Quality has a leading <code>+</code>
 <table class="table_3" style="width:100%;">
 <tr>
 <th data-i18n="spontaneous-spells" >Spontaneous Spells</th>
-<th style="width:30px;text-align:center;padding-left:0px;" data-i18n="roll" >Roll</th>
-<th data-i18n="total" >Total</th>
+<th style="text-align:center;padding-left:0px;min-width:181px" data-i18n="roll" >Roll</th>
 <th data-i18n="technique" >Technique</th>
 <th data-i18n="form" >Form</th>
 <th data-i18n="focus" >Focus</th>
@@ -1654,243 +1652,491 @@ Fix Lab Total computation when General Quality has a leading <code>+</code>
 <th data-i18n="aura" >Aura</th>
 <th data-i18n="artes-lib-" >Artes Lib.</th>
 <th data-i18n="philos-" >Philos.</th>
+<th>
+<span class="has-tooltip">
+<span data-i18n="bonus">Bonus</span>
+<span class="sheet-tooltip" data-i18n="tooltip-casting-bonus">Casting total bonus
+</span>
+</span>
+</th>
 </tr>
-<!-- Fatiguing Spontaneous --><tr>
-<td data-i18n="fatiguing" >Fatiguing</td>
-<td><div class="flex-container-center">
-<!-- <button style="margin: 0px auto;" type="roll" class="button simple-roll" name="roll_Spontaneous1_simple" value="$spontaneous_roll_simple$"></button> -->
-  <div class="die-container">
-    <button class="roll-button stress-roll single-roll" type="roll" name="roll_Spontaneous1_stress" value="&{template:arcane} {{label0=^{spontaneous} ^{casting}}} {{result0=[[ ((@{stress-die} + (@{Spontaneous1_Technique}) + (@{Spontaneous1_Form}) + ([[@{Spontaneous1_Focus}]]) [@{focus_i18n}] + (@{gestures}) + (@{words}) + (@{Stamina_Score}) [@{stamina_i18n}] + (@{aura}) [@{aura_i18n}] + (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] + (?{@{modifiers_i18n}|0}) [modifiers_i18n]) / ((2) * ([[1 + (@{Spontaneous1_Deficiency})]]) [@{deficiency_i18n}])) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ (?{@{modifiers_i18n}|0}) [modifiers_i18n] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=1}}"><span class="roll-formula"><span class="formula-paren">(</span><span class="die stress-die"></span><span class="formula-operator">+</span>
-        <input class="roll-value" type="number" disabled="true" name="attr_Spontaneous1_stress_score" value="(@{Spontaneous1_Technique}) + (@{Spontaneous1_Form}) + ([[@{Spontaneous1_Focus}]]) + (@{gestures}) + (@{words}) + (@{Stamina_Score}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})"/><span class="formula-paren">)</span><span class="formula-operator">/</span>
-        <input class="roll-value" type="number" disabled="true" name="attr_Spontaneous1_stress_divider" value="(2) * ([[1 + (@{Spontaneous1_Deficiency})]])"/></span></button>
-  </div></div></td>
-<td>
-  <input class="number_2" type="number" disabled="true" name="attr_Spontaneous1" value="((0 + (@{Spontaneous1_Technique}) + (@{Spontaneous1_Form}) + ([[@{Spontaneous1_Focus}]]) + (@{gestures}) + (@{words}) + (@{Stamina_Score}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance}) + (?{@{modifiers_i18n}|0})) / ((2) * ([[1 + (@{Spontaneous1_Deficiency})]])))"/></td>
-<td>
-<select class="select_1" name="attr_Spontaneous1_Technique">
-<option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique" >Technique</option>
-<option value="(@{Creo_Score} + @{Creo_Puissant}) [@{creo_i18n}]" data-i18n="creo" >Creo</option>
-<option value="(@{Intellego_Score} + @{Intellego_Puissant}) [@{intellego_i18n}]" data-i18n="intellego" >Intellego</option>
-<option value="(@{Muto_Score} + @{Muto_Puissant}) [@{muto_i18n}]" data-i18n="muto" >Muto</option>
-<option value="(@{Perdo_Score} + @{Perdo_Puissant}) [@{perdo_i18n}]" data-i18n="perdo" >Perdo</option>
-<option value="(@{Rego_Score} + @{Rego_Puissant}) [@{rego_i18n}]" data-i18n="rego" >Rego</option>
-</select>
-</td>
-<td>
-<select class="select_1" name="attr_Spontaneous1_Form">
-<option class="italic" value="0 [@{form_i18n}]" data-i18n="form" >Form</option>
-<option value="(@{Animal_Score} + @{Animal_Puissant}) [@{animal_i18n}]" data-i18n="animal" >Animal</option>
-<option value="(@{Aquam_Score} + @{Aquam_Puissant}) [@{aquam_i18n}]" data-i18n="aquam" >Aquam</option>
-<option value="(@{Auram_Score} + @{Auram_Puissant}) [@{auram_i18n}]" data-i18n="auram" >Auram</option>
-<option value="(@{Corpus_Score} + @{Corpus_Puissant}) [@{corpus_i18n}]" data-i18n="corpus" >Corpus</option>
-<option value="(@{Herbam_Score} + @{Herbam_Puissant}) [@{herbam_i18n}]" data-i18n="herbam" >Herbam</option>
-<option value="(@{Ignem_Score} + @{Ignem_Puissant}) [@{ignem_i18n}]" data-i18n="ignem" >Ignem</option>
-<option value="(@{Imaginem_Score} + @{Imaginem_Puissant}) [@{imaginem_i18n}]" data-i18n="imaginem" >Imaginem</option>
-<option value="(@{Mentem_Score} + @{Mentem_Puissant}) [@{mentem_i18n}]" data-i18n="mentem" >Mentem</option>
-<option value="(@{Terram_Score} + @{Terram_Puissant}) [@{terram_i18n}]" data-i18n="terram" >Terram</option>
-<option value="(@{Vim_Score} + @{Vim_Puissant}) [@{vim_i18n}]" data-i18n="vim" >Vim</option>
-</select>
-</td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Spontaneous1_Focus" value="((@{Spontaneous1_Technique} + @{Spontaneous1_Form} - abs(@{Spontaneous1_Technique} - @{Spontaneous1_Form}))/2)"></input></td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Spontaneous1_Deficiency" value="1"></input></td>
-<td><input type="number" class="number_2" name="attr_Spontaneous1_Sta" value="@{Stamina_Score}" disabled="true"></td>
-<td><input type="number" class="number_2" name="attr_Spontaneous1_aura" value="@{aura}" disabled="true"></td>
-<td></td>
-<td></td>
-</tr>
-<!-- Ceremonial Spontaneous -->
-<tr>
-<td data-i18n="ceremonial" >Ceremonial</td>
-<td><div class="flex-container-center">
-<!-- <button style="margin: 0px auto;" type="roll" class="button simple-roll" name="roll_Ceremonial_simple" value="$ceremonial_roll_simple$"></button> -->
-<button style="margin: 0px auto;" type="roll" class="button stress-roll single-roll" name="roll_Ceremonial_stress" value="&{template:arcane} {{label0=^{ceremonial} ^{casting}}} {{result0=[[ (@{stress-die} + @{Ceremonial_Technique} + @{Ceremonial_Form} + ([[@{Ceremonial_Focus}]]) [@{focus_i18n}] + (@{gestures}) + (@{words}) + (@{Stamina_Score}) [@{stamina_i18n}] + (@{aura}) [@{aura_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] + (@{Ceremonial_Artes_Lib}) [@{artes_i18n}] + (@{Ceremonial_Philos}) [@{philos_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ) / ([[1 + (@{Ceremonial_Deficiency})]] [@{deficiency_i18n}]) /2 ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} }} {{result2=[[ (@{wound_total}) [@{wounds_i18n}] + [[floor(@{fatigue})]] [@{fatigue_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=?{@{modifiers_i18n}|0}}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=1}}"></button>
-</div></td>
-<td><input type="number" class="number_2" name="attr_Ceremonial" value="((@{Ceremonial_Technique} + @{Ceremonial_Form} + (@{Ceremonial_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura} + @{Ceremonial_Artes_Lib} + @{Ceremonial_Philos})/2 ) / (1 + (@{Ceremonial_Deficiency}))" disabled="true"></td>
-<td>
-<select class="select_1" name="attr_Ceremonial_Technique">
-<option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique" >Technique</option>
-<option value="(@{Creo_Score} + @{Creo_Puissant}) [@{creo_i18n}]" data-i18n="creo" >Creo</option>
-<option value="(@{Intellego_Score} + @{Intellego_Puissant}) [@{intellego_i18n}]" data-i18n="intellego" >Intellego</option>
-<option value="(@{Muto_Score} + @{Muto_Puissant}) [@{muto_i18n}]" data-i18n="muto" >Muto</option>
-<option value="(@{Perdo_Score} + @{Perdo_Puissant}) [@{perdo_i18n}]" data-i18n="perdo" >Perdo</option>
-<option value="(@{Rego_Score} + @{Rego_Puissant}) [@{rego_i18n}]" data-i18n="rego" >Rego</option>
-</select>
-</td>
-<td>
-<select class="select_1" name="attr_Ceremonial_Form">
-<option class="italic" value="0 [@{form_i18n}]" data-i18n="form" >Form</option>
-<option value="(@{Animal_Score} + @{Animal_Puissant}) [@{animal_i18n}]" data-i18n="animal" >Animal</option>
-<option value="(@{Aquam_Score} + @{Aquam_Puissant}) [@{aquam_i18n}]" data-i18n="aquam" >Aquam</option>
-<option value="(@{Auram_Score} + @{Auram_Puissant}) [@{auram_i18n}]" data-i18n="auram" >Auram</option>
-<option value="(@{Corpus_Score} + @{Corpus_Puissant}) [@{corpus_i18n}]" data-i18n="corpus" >Corpus</option>
-<option value="(@{Herbam_Score} + @{Herbam_Puissant}) [@{herbam_i18n}]" data-i18n="herbam" >Herbam</option>
-<option value="(@{Ignem_Score} + @{Ignem_Puissant}) [@{ignem_i18n}]" data-i18n="ignem" >Ignem</option>
-<option value="(@{Imaginem_Score} + @{Imaginem_Puissant}) [@{imaginem_i18n}]" data-i18n="imaginem" >Imaginem</option>
-<option value="(@{Mentem_Score} + @{Mentem_Puissant}) [@{mentem_i18n}]" data-i18n="mentem" >Mentem</option>
-<option value="(@{Terram_Score} + @{Terram_Puissant}) [@{terram_i18n}]" data-i18n="terram" >Terram</option>
-<option value="(@{Vim_Score} + @{Vim_Puissant}) [@{vim_i18n}]" data-i18n="vim" >Vim</option>
-</select>
-</td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Ceremonial_Focus" value="((@{Ceremonial_Technique} + @{Ceremonial_Form} - abs(@{Ceremonial_Technique} - @{Ceremonial_Form}))/2)"></input></td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Ceremonial_Deficiency" value="1"></input></td>
-<td><input type="number" class="number_2" name="attr_Ceremonial_Sta" value="@{Stamina_Score}" disabled="true"></td>
-<td><input type="number" class="number_2" name="attr_Ceremonial_aura" value="@{aura}" disabled="true"></td>
-<td><input type="number" class="number_2" name="attr_Ceremonial_Artes_Lib" value="0"></td>
-<td><input type="number" class="number_2" name="attr_Ceremonial_Philos" value="0"></td>
-</tr>
-<!-- Non Fatiguing Spontaneous -->
-<tr>
-<td data-i18n="non-fatiguing" >Non-Fatiguing</td>
-<td><div class="flex-container-center">
-<button style="margin: 0px auto;" type="roll" class="button simple-roll single-roll" name="roll_Spontaneous2_nodice" value="&{template:arcane} {{label0=^{spontaneous} ^{casting}}} {{result0=[[ ( @{Spontaneous2_Technique} + @{Spontaneous2_Form} + ([[@{Spontaneous2_Focus}]]) [@{focus_i18n}] + (@{gestures}) + (@{words}) + (@{Stamina_Score}) [@{stamina_i18n}] + (@{aura}) [@{aura_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ) / ([[1 + (@{Spontaneous1_Deficiency})]] [@{deficiency_i18n}]) /5]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{wound_total}) [@{wounds_i18n}] + [[floor(@{fatigue})]] [@{fatigue_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ ?{@{modifiers_i18n}|0} ]]}}"></button>
-</div></td>
-<td><input type="number" class="number_2" name="attr_Spontaneous2" value="((@{Spontaneous2_Technique} + @{Spontaneous2_Form} + (@{Spontaneous2_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura})/5) / (1 + (@{Spontaneous2_Deficiency}))" disabled="true"></td>
-<td>
-<select class="select_1" name="attr_Spontaneous2_Technique">
-<option class="italic" value="0" data-i18n="technique" >Technique</option>
-<option value="(@{Creo_Score} + @{Creo_Puissant}) [@{creo_i18n}]" data-i18n="creo" >Creo</option>
-<option value="(@{Intellego_Score} + @{Intellego_Puissant}) [@{intellego_i18n}]" data-i18n="intellego" >Intellego</option>
-<option value="(@{Muto_Score} + @{Muto_Puissant}) [@{muto_i18n}]" data-i18n="muto" >Muto</option>
-<option value="(@{Perdo_Score} + @{Perdo_Puissant}) [@{perdo_i18n}]" data-i18n="perdo" >Perdo</option>
-<option value="(@{Rego_Score} + @{Rego_Puissant}) [@{rego_i18n}]" data-i18n="rego" >Rego</option>
-</select>
-</td>
-<td>
-<select class="select_1" name="attr_Spontaneous2_Form">
-<option class="italic" value="0" data-i18n="form" >Form</option>
-<option value="(@{Animal_Score} + @{Animal_Puissant}) [@{animal_i18n}]" data-i18n="animal" >Animal</option>
-<option value="(@{Aquam_Score} + @{Aquam_Puissant}) [@{aquam_i18n}]" data-i18n="aquam" >Aquam</option>
-<option value="(@{Auram_Score} + @{Auram_Puissant}) [@{auram_i18n}]" data-i18n="auram" >Auram</option>
-<option value="(@{Corpus_Score} + @{Corpus_Puissant}) [@{corpus_i18n}]" data-i18n="corpus" >Corpus</option>
-<option value="(@{Herbam_Score} + @{Herbam_Puissant}) [@{herbam_i18n}]" data-i18n="herbam" >Herbam</option>
-<option value="(@{Ignem_Score} + @{Ignem_Puissant}) [@{ignem_i18n}]" data-i18n="ignem" >Ignem</option>
-<option value="(@{Imaginem_Score} + @{Imaginem_Puissant}) [@{imaginem_i18n}]" data-i18n="imaginem" >Imaginem</option>
-<option value="(@{Mentem_Score} + @{Mentem_Puissant}) [@{mentem_i18n}]" data-i18n="mentem" >Mentem</option>
-<option value="(@{Terram_Score} + @{Terram_Puissant}) [@{terram_i18n}]" data-i18n="terram" >Terram</option>
-<option value="(@{Vim_Score} + @{Vim_Puissant}) [@{vim_i18n}]" data-i18n="vim" >Vim</option>
-</select>
-</td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Spontaneous2_Focus" value="((@{Spontaneous2_Technique} + @{Spontaneous2_Form} - abs(@{Spontaneous2_Technique} - @{Spontaneous2_Form}))/2)"></input></td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Spontaneous2_Deficiency" value="1"></input></td>
-<td><input type="number" class="number_2" name="attr_Spontaneous2_Sta" value="@{Stamina_Score}" disabled="true"></td>
-<td><input type="number" class="number_2" name="attr_Spontaneous2_aura" value="@{aura}" disabled="true"></td>
-<td></td>
-<td></td>
-</tr>
+<!-- Fatiguing Spontaneous -->
+    <tr>
+      <td data-i18n="spontaneous">Spontaneous</td>
+      <td>
+        <div class="flex-container-center">
+          <div class="die-container">
+            <button class="roll-button stress-roll single-roll" type="roll" name="roll_cast_spontaneous_stress" value="&{template:arcane} {{label0=^{casting}: ^{spontaneous}}} {{result0=[[ ((@{stress-die} + (@{cast_spontaneous_technique}) + (@{cast_spontaneous_form}) + ([[@{cast_spontaneous_focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{gestures}) + (@{words}) + (@{aura}) [@{aura_i18n}] + (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / ((2) * ([[1 + (@{cast_spontaneous_deficiency})]]) [@{deficiency_i18n}]) + (@{cast_spontaneous_total_bonus}) [@{bonus_i18n}]) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=1}}"><span class="roll-formula"><span class="formula-paren">(</span><span class="die stress-roll"></span><span class="formula-operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_spontaneous_stress_score" value="(@{cast_spontaneous_technique}) + (@{cast_spontaneous_form}) + ([[@{cast_spontaneous_focus}]]) + (@{Stamina_Score}) + (@{gestures}) + (@{words}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})"/><span class="formula-paren">)</span><span class="formula-operator">/</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_spontaneous_stress_divider" value="(2) * ([[1 + (@{cast_spontaneous_deficiency})]])"/><span class="formula_operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_spontaneous_stress_total_bonus" value="(@{cast_spontaneous_total_bonus})"/></span></button>
+          </div>
+        </div>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_technique" name="attr_cast_spontaneous_technique" title="@{cast_spontaneous_technique}">
+            <option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique">Technique
+            </option>
+            <option value="(@{creo_score} + @{creo_puissant}) [@{creo_i18n}]" data-i18n="creo">Rego
+            </option>
+            <option value="(@{intellego_score} + @{intellego_puissant}) [@{intellego_i18n}]" data-i18n="intellego">Rego
+            </option>
+            <option value="(@{muto_score} + @{muto_puissant}) [@{muto_i18n}]" data-i18n="muto">Rego
+            </option>
+            <option value="(@{perdo_score} + @{perdo_puissant}) [@{perdo_i18n}]" data-i18n="perdo">Rego
+            </option>
+            <option value="(@{rego_score} + @{rego_puissant}) [@{rego_i18n}]" data-i18n="rego">Rego
+            </option>
+          </select>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_form" name="attr_cast_spontaneous_form" title="@{cast_spontaneous_form}">
+            <option class="italic" value="0 [@{form_i18n}]" data-i18n="form">Form
+            </option>
+            <option value="(@{animal_score} + @{animal_puissant}) [@{animal_i18n}]" data-i18n="animal">Vim
+            </option>
+            <option value="(@{aquam_score} + @{aquam_puissant}) [@{aquam_i18n}]" data-i18n="aquam">Vim
+            </option>
+            <option value="(@{auram_score} + @{auram_puissant}) [@{auram_i18n}]" data-i18n="auram">Vim
+            </option>
+            <option value="(@{corpus_score} + @{corpus_puissant}) [@{corpus_i18n}]" data-i18n="corpus">Vim
+            </option>
+            <option value="(@{herbam_score} + @{herbam_puissant}) [@{herbam_i18n}]" data-i18n="herbam">Vim
+            </option>
+            <option value="(@{ignem_score} + @{ignem_puissant}) [@{ignem_i18n}]" data-i18n="ignem">Vim
+            </option>
+            <option value="(@{imaginem_score} + @{imaginem_puissant}) [@{imaginem_i18n}]" data-i18n="imaginem">Vim
+            </option>
+            <option value="(@{mentem_score} + @{mentem_puissant}) [@{mentem_i18n}]" data-i18n="mentem">Vim
+            </option>
+            <option value="(@{terram_score} + @{terram_puissant}) [@{terram_i18n}]" data-i18n="terram">Vim
+            </option>
+            <option value="(@{vim_score} + @{vim_puissant}) [@{vim_i18n}]" data-i18n="vim">Vim
+            </option>
+          </select>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_spontaneous_focus" value="((@{cast_spontaneous_technique} + @{cast_spontaneous_form} - abs(@{cast_spontaneous_technique} - @{cast_spontaneous_form}))/2)" type="checkbox" title="@{cast_spontaneous_focus}"/>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_spontaneous_deficiency" value="1" type="checkbox" title="@{cast_spontaneous_deficiency}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_spontaneous_sta" value="@{Stamina_Score}" disabled="true" type="number" title="@{cast_spontaneous_sta}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_spontaneous_aura" value="@{aura}" disabled="true" type="number" title="@{cast_spontaneous_aura}"/>
+      </td>
+      <td></td>
+      <td></td>
+      <td>
+        <input class="number_2" name="attr_cast_spontaneous_total_bonus" value="0" type="number" title="@{cast_spontaneous_total_bonus}"/>
+      </td>
+    </tr><!-- Ceremonial Spontaneous -->
+    <tr>
+      <td data-i18n="ceremonial">Ceremonial</td>
+      <td>
+        <div class="flex-container-center">
+          <div class="die-container">
+            <button class="roll-button stress-roll single-roll" type="roll" name="roll_cast_ceremonial_stress" value="&{template:arcane} {{label0=^{casting}: ^{ceremonial}}} {{result0=[[ ((@{stress-die} + (@{cast_ceremonial_technique}) + (@{cast_ceremonial_form}) + ([[@{cast_ceremonial_focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{cast_artes_lib}) [@{artes_i18n}] + (@{cast_philos}) [@{philos_i18n}] + (@{gestures}) + (@{words}) + (@{aura}) [@{aura_i18n}] + (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / ((2) * ([[1 + (@{cast_ceremonial_deficiency})]]) [@{deficiency_i18n}]) + (@{cast_ceremonial_total_bonus}) [@{bonus_i18n}]) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=1}}"><span class="roll-formula"><span class="formula-paren">(</span><span class="die stress-roll"></span><span class="formula-operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_ceremonial_stress_score" value="(@{cast_ceremonial_technique}) + (@{cast_ceremonial_form}) + ([[@{cast_ceremonial_focus}]]) + (@{Stamina_Score}) + (@{cast_artes_lib}) + (@{cast_philos}) + (@{gestures}) + (@{words}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})"/><span class="formula-paren">)</span><span class="formula-operator">/</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_ceremonial_stress_divider" value="(2) * ([[1 + (@{cast_ceremonial_deficiency})]])"/><span class="formula_operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_ceremonial_stress_total_bonus" value="(@{cast_ceremonial_total_bonus})"/></span></button>
+          </div>
+        </div>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_technique" name="attr_cast_ceremonial_technique" title="@{cast_ceremonial_technique}">
+            <option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique">Technique
+            </option>
+            <option value="(@{creo_score} + @{creo_puissant}) [@{creo_i18n}]" data-i18n="creo">Rego
+            </option>
+            <option value="(@{intellego_score} + @{intellego_puissant}) [@{intellego_i18n}]" data-i18n="intellego">Rego
+            </option>
+            <option value="(@{muto_score} + @{muto_puissant}) [@{muto_i18n}]" data-i18n="muto">Rego
+            </option>
+            <option value="(@{perdo_score} + @{perdo_puissant}) [@{perdo_i18n}]" data-i18n="perdo">Rego
+            </option>
+            <option value="(@{rego_score} + @{rego_puissant}) [@{rego_i18n}]" data-i18n="rego">Rego
+            </option>
+          </select>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_form" name="attr_cast_ceremonial_form" title="@{cast_ceremonial_form}">
+            <option class="italic" value="0 [@{form_i18n}]" data-i18n="form">Form
+            </option>
+            <option value="(@{animal_score} + @{animal_puissant}) [@{animal_i18n}]" data-i18n="animal">Vim
+            </option>
+            <option value="(@{aquam_score} + @{aquam_puissant}) [@{aquam_i18n}]" data-i18n="aquam">Vim
+            </option>
+            <option value="(@{auram_score} + @{auram_puissant}) [@{auram_i18n}]" data-i18n="auram">Vim
+            </option>
+            <option value="(@{corpus_score} + @{corpus_puissant}) [@{corpus_i18n}]" data-i18n="corpus">Vim
+            </option>
+            <option value="(@{herbam_score} + @{herbam_puissant}) [@{herbam_i18n}]" data-i18n="herbam">Vim
+            </option>
+            <option value="(@{ignem_score} + @{ignem_puissant}) [@{ignem_i18n}]" data-i18n="ignem">Vim
+            </option>
+            <option value="(@{imaginem_score} + @{imaginem_puissant}) [@{imaginem_i18n}]" data-i18n="imaginem">Vim
+            </option>
+            <option value="(@{mentem_score} + @{mentem_puissant}) [@{mentem_i18n}]" data-i18n="mentem">Vim
+            </option>
+            <option value="(@{terram_score} + @{terram_puissant}) [@{terram_i18n}]" data-i18n="terram">Vim
+            </option>
+            <option value="(@{vim_score} + @{vim_puissant}) [@{vim_i18n}]" data-i18n="vim">Vim
+            </option>
+          </select>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_ceremonial_focus" value="((@{cast_ceremonial_technique} + @{cast_ceremonial_form} - abs(@{cast_ceremonial_technique} - @{cast_ceremonial_form}))/2)" type="checkbox" title="@{cast_ceremonial_focus}"/>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_ceremonial_deficiency" value="1" type="checkbox" title="@{cast_ceremonial_deficiency}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_ceremonial_sta" value="@{Stamina_Score}" disabled="true" type="number" title="@{cast_ceremonial_sta}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_ceremonial_aura" value="@{aura}" disabled="true" type="number" title="@{cast_ceremonial_aura}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_artes_lib" value="0" type="number" title="@{cast_artes_lib}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_philos" value="0" type="number" title="@{cast_philos}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_ceremonial_total_bonus" value="0" type="number" title="@{cast_ceremonial_total_bonus}"/>
+      </td>
+    </tr><!-- Non Fatiguing Spontaneous -->
+    <tr>
+      <td data-i18n="non-fatiguing">Non-Fatiguing</td>
+      <td>
+        <div class="flex-container-center">
+          <div class="die-container">
+            <button class="roll-button no_dice-roll single-roll" type="roll" name="roll_cast_non-fatiguing_no_dice" value="&{template:arcane} {{label0=^{casting}: ^{non-fatiguing}}} {{result0=[[ ((0 + (@{cast_non-fatiguing_technique}) + (@{cast_non-fatiguing_form}) + ([[@{cast_non-fatiguing_focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{gestures}) + (@{words}) + (@{aura}) [@{aura_i18n}] + (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / ((5) * ([[1 + (@{cast_non-fatiguing_deficiency})]]) [@{deficiency_i18n}]) + (@{cast_non-fatiguing_total_bonus}) [@{bonus_i18n}]) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=}}"><span class="roll-formula">
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_non-fatiguing_no_dice_score" value="(@{cast_non-fatiguing_technique}) + (@{cast_non-fatiguing_form}) + ([[@{cast_non-fatiguing_focus}]]) + (@{Stamina_Score}) + (@{gestures}) + (@{words}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})"/><span class="formula-operator">/</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_non-fatiguing_no_dice_divider" value="(5) * ([[1 + (@{cast_non-fatiguing_deficiency})]])"/><span class="formula_operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_non-fatiguing_no_dice_total_bonus" value="(@{cast_non-fatiguing_total_bonus})"/></span></button>
+          </div>
+        </div>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_technique" name="attr_cast_non-fatiguing_technique" title="@{cast_non-fatiguing_technique}">
+            <option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique">Technique
+            </option>
+            <option value="(@{creo_score} + @{creo_puissant}) [@{creo_i18n}]" data-i18n="creo">Rego
+            </option>
+            <option value="(@{intellego_score} + @{intellego_puissant}) [@{intellego_i18n}]" data-i18n="intellego">Rego
+            </option>
+            <option value="(@{muto_score} + @{muto_puissant}) [@{muto_i18n}]" data-i18n="muto">Rego
+            </option>
+            <option value="(@{perdo_score} + @{perdo_puissant}) [@{perdo_i18n}]" data-i18n="perdo">Rego
+            </option>
+            <option value="(@{rego_score} + @{rego_puissant}) [@{rego_i18n}]" data-i18n="rego">Rego
+            </option>
+          </select>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_form" name="attr_cast_non-fatiguing_form" title="@{cast_non-fatiguing_form}">
+            <option class="italic" value="0 [@{form_i18n}]" data-i18n="form">Form
+            </option>
+            <option value="(@{animal_score} + @{animal_puissant}) [@{animal_i18n}]" data-i18n="animal">Vim
+            </option>
+            <option value="(@{aquam_score} + @{aquam_puissant}) [@{aquam_i18n}]" data-i18n="aquam">Vim
+            </option>
+            <option value="(@{auram_score} + @{auram_puissant}) [@{auram_i18n}]" data-i18n="auram">Vim
+            </option>
+            <option value="(@{corpus_score} + @{corpus_puissant}) [@{corpus_i18n}]" data-i18n="corpus">Vim
+            </option>
+            <option value="(@{herbam_score} + @{herbam_puissant}) [@{herbam_i18n}]" data-i18n="herbam">Vim
+            </option>
+            <option value="(@{ignem_score} + @{ignem_puissant}) [@{ignem_i18n}]" data-i18n="ignem">Vim
+            </option>
+            <option value="(@{imaginem_score} + @{imaginem_puissant}) [@{imaginem_i18n}]" data-i18n="imaginem">Vim
+            </option>
+            <option value="(@{mentem_score} + @{mentem_puissant}) [@{mentem_i18n}]" data-i18n="mentem">Vim
+            </option>
+            <option value="(@{terram_score} + @{terram_puissant}) [@{terram_i18n}]" data-i18n="terram">Vim
+            </option>
+            <option value="(@{vim_score} + @{vim_puissant}) [@{vim_i18n}]" data-i18n="vim">Vim
+            </option>
+          </select>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_non-fatiguing_focus" value="((@{cast_non-fatiguing_technique} + @{cast_non-fatiguing_form} - abs(@{cast_non-fatiguing_technique} - @{cast_non-fatiguing_form}))/2)" type="checkbox" title="@{cast_non-fatiguing_focus}"/>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_non-fatiguing_deficiency" value="1" type="checkbox" title="@{cast_non-fatiguing_deficiency}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_non-fatiguing_sta" value="@{Stamina_Score}" disabled="true" type="number" title="@{cast_non-fatiguing_sta}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_non-fatiguing_aura" value="@{aura}" disabled="true" type="number" title="@{cast_non-fatiguing_aura}"/>
+      </td>
+      <td></td>
+      <td></td>
+      <td>
+        <input class="number_2" name="attr_cast_non-fatiguing_total_bonus" value="0" type="number" title="@{cast_non-fatiguing_total_bonus}"/>
+      </td>
+    </tr><!-- Non Fatiguing Spontaneous w/ Ceremonial -->
+    <tr>
+      <td data-i18n="non-fatiguing-ceremonial">Non-Fatiguing Ceremonial</td>
+      <td>
+        <div class="flex-container-center">
+          <div class="die-container">
+            <button class="roll-button no_dice-roll single-roll" type="roll" name="roll_cast_non-fatiguing-ceremonial_no_dice" value="&{template:arcane} {{label0=^{casting}: ^{non-fatiguing-ceremonial}}} {{result0=[[ ((0 + (@{cast_non-fatiguing-ceremonial_technique}) + (@{cast_non-fatiguing-ceremonial_form}) + ([[@{cast_non-fatiguing-ceremonial_focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{cast_artes_lib}) [@{artes_i18n}] + (@{cast_philos}) [@{philos_i18n}] + (@{gestures}) + (@{words}) + (@{aura}) [@{aura_i18n}] + (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / ((5) * ([[1 + (@{cast_non-fatiguing-ceremonial_deficiency})]]) [@{deficiency_i18n}]) + (@{cast_non-fatiguing-ceremonial_total_bonus}) [@{bonus_i18n}]) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=}}"><span class="roll-formula">
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_non-fatiguing-ceremonial_no_dice_score" value="(@{cast_non-fatiguing-ceremonial_technique}) + (@{cast_non-fatiguing-ceremonial_form}) + ([[@{cast_non-fatiguing-ceremonial_focus}]]) + (@{Stamina_Score}) + (@{cast_artes_lib}) + (@{cast_philos}) + (@{gestures}) + (@{words}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})"/><span class="formula-operator">/</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_non-fatiguing-ceremonial_no_dice_divider" value="(5) * ([[1 + (@{cast_non-fatiguing-ceremonial_deficiency})]])"/><span class="formula_operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_non-fatiguing-ceremonial_no_dice_total_bonus" value="(@{cast_non-fatiguing-ceremonial_total_bonus})"/></span></button>
+          </div>
+        </div>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_technique" name="attr_cast_non-fatiguing-ceremonial_technique" title="@{cast_non-fatiguing-ceremonial_technique}">
+            <option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique">Technique
+            </option>
+            <option value="(@{creo_score} + @{creo_puissant}) [@{creo_i18n}]" data-i18n="creo">Rego
+            </option>
+            <option value="(@{intellego_score} + @{intellego_puissant}) [@{intellego_i18n}]" data-i18n="intellego">Rego
+            </option>
+            <option value="(@{muto_score} + @{muto_puissant}) [@{muto_i18n}]" data-i18n="muto">Rego
+            </option>
+            <option value="(@{perdo_score} + @{perdo_puissant}) [@{perdo_i18n}]" data-i18n="perdo">Rego
+            </option>
+            <option value="(@{rego_score} + @{rego_puissant}) [@{rego_i18n}]" data-i18n="rego">Rego
+            </option>
+          </select>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_form" name="attr_cast_non-fatiguing-ceremonial_form" title="@{cast_non-fatiguing-ceremonial_form}">
+            <option class="italic" value="0 [@{form_i18n}]" data-i18n="form">Form
+            </option>
+            <option value="(@{animal_score} + @{animal_puissant}) [@{animal_i18n}]" data-i18n="animal">Vim
+            </option>
+            <option value="(@{aquam_score} + @{aquam_puissant}) [@{aquam_i18n}]" data-i18n="aquam">Vim
+            </option>
+            <option value="(@{auram_score} + @{auram_puissant}) [@{auram_i18n}]" data-i18n="auram">Vim
+            </option>
+            <option value="(@{corpus_score} + @{corpus_puissant}) [@{corpus_i18n}]" data-i18n="corpus">Vim
+            </option>
+            <option value="(@{herbam_score} + @{herbam_puissant}) [@{herbam_i18n}]" data-i18n="herbam">Vim
+            </option>
+            <option value="(@{ignem_score} + @{ignem_puissant}) [@{ignem_i18n}]" data-i18n="ignem">Vim
+            </option>
+            <option value="(@{imaginem_score} + @{imaginem_puissant}) [@{imaginem_i18n}]" data-i18n="imaginem">Vim
+            </option>
+            <option value="(@{mentem_score} + @{mentem_puissant}) [@{mentem_i18n}]" data-i18n="mentem">Vim
+            </option>
+            <option value="(@{terram_score} + @{terram_puissant}) [@{terram_i18n}]" data-i18n="terram">Vim
+            </option>
+            <option value="(@{vim_score} + @{vim_puissant}) [@{vim_i18n}]" data-i18n="vim">Vim
+            </option>
+          </select>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_non-fatiguing-ceremonial_focus" value="((@{cast_non-fatiguing-ceremonial_technique} + @{cast_non-fatiguing-ceremonial_form} - abs(@{cast_non-fatiguing-ceremonial_technique} - @{cast_non-fatiguing-ceremonial_form}))/2)" type="checkbox" title="@{cast_non-fatiguing-ceremonial_focus}"/>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_non-fatiguing-ceremonial_deficiency" value="1" type="checkbox" title="@{cast_non-fatiguing-ceremonial_deficiency}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_non-fatiguing-ceremonial_sta" value="@{Stamina_Score}" disabled="true" type="number" title="@{cast_non-fatiguing-ceremonial_sta}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_non-fatiguing-ceremonial_aura" value="@{aura}" disabled="true" type="number" title="@{cast_non-fatiguing-ceremonial_aura}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_artes_lib" value="0" type="number" title="@{cast_artes_lib}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_philos" value="0" type="number" title="@{cast_philos}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_non-fatiguing-ceremonial_total_bonus" value="0" type="number" title="@{cast_non-fatiguing-ceremonial_total_bonus}"/>
+      </td>
+    </tr><tr></tr>
 <tr>
 <th data-i18n="designed-spells" >Designed Spells</th>
-<td colspan="9"></td>
+<td colspan="10"></td>
 </tr>
 <!-- Formulaic -->
-<tr>
-<td data-i18n="formulaic" >Formulaic</td>
-<td><div class="flex-container-center">
-<button style="margin: 0px auto;" type="roll" class="button simple-roll" name="roll_Formulaic_simple" value="&{template:arcane} {{label0=^{formulaic} ^{casting}}} {{result0=[[ (@{simple-die} + @{Formulaic_Technique} + @{Formulaic_Form} + ([[@{Formulaic_Focus}]]) [@{focus_i18n}] + (@{gestures}) + (@{words}) + (@{Stamina_Score}) [@{stamina_i18n}] + (@{aura}) [@{aura_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / ([[1 + (@{Formulaic_Deficiency})]] [@{deficiency_i18n}]) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{wound_total}) [@{wounds_i18n}] + [[floor(@{fatigue})]] [@{fatigue_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=?{@{modifiers_i18n}|0}}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-<button style="margin: 0px auto;" type="roll" class="button stress-roll" name="roll_Formulaic_stress" value="&{template:arcane} {{label0=^{formulaic} ^{casting}}} {{result0=[[ (@{stress-die} + @{Formulaic_Technique} + @{Formulaic_Form} + ([[@{Formulaic_Focus}]]) [@{focus_i18n}] + (@{gestures}) + (@{words}) + (@{Stamina_Score}) [@{stamina_i18n}] + (@{aura}) [@{aura_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / ([[1 + (@{Formulaic_Deficiency})]] [@{deficiency_i18n}]) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{wound_total}) [@{wounds_i18n}] + [[floor(@{fatigue})]] [@{fatigue_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=?{@{modifiers_i18n}|0}}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-</div></td>
-<td><input type="number" class="number_2" name="attr_Formulaic" value="(@{Formulaic_Technique} + @{Formulaic_Form} + (@{Formulaic_Focus}) + @{gestures} + @{words} + @{Stamina_Score} + @{aura}) / (1 + (@{Formulaic_Deficiency}))" disabled="true"></td>
-<td>
-<select class="select_1" name="attr_Formulaic_Technique">
-<option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique" >Technique</option>
-<option value="(@{Creo_Score} + @{Creo_Puissant}) [@{creo_i18n}]" data-i18n="creo" >Creo</option>
-<option value="(@{Intellego_Score} + @{Intellego_Puissant}) [@{intellego_i18n}]" data-i18n="intellego" >Intellego</option>
-<option value="(@{Muto_Score} + @{Muto_Puissant}) [@{muto_i18n}]" data-i18n="muto" >Muto</option>
-<option value="(@{Perdo_Score} + @{Perdo_Puissant}) [@{perdo_i18n}]" data-i18n="perdo" >Perdo</option>
-<option value="(@{Rego_Score} + @{Rego_Puissant}) [@{rego_i18n}]" data-i18n="rego" >Rego</option>
-</select>
-</td>
-<td>
-<select class="select_1" name="attr_Formulaic_Form">
-<option class="italic" value="0 [@{form_i18n}]" data-i18n="form" >Form</option>
-<option value="(@{Animal_Score} + @{Animal_Puissant}) [@{animal_i18n}]" data-i18n="animal" >Animal</option>
-<option value="(@{Aquam_Score} + @{Aquam_Puissant}) [@{aquam_i18n}]" data-i18n="aquam" >Aquam</option>
-<option value="(@{Auram_Score} + @{Auram_Puissant}) [@{auram_i18n}]" data-i18n="auram" >Auram</option>
-<option value="(@{Corpus_Score} + @{Corpus_Puissant}) [@{corpus_i18n}]" data-i18n="corpus" >Corpus</option>
-<option value="(@{Herbam_Score} + @{Herbam_Puissant}) [@{herbam_i18n}]" data-i18n="herbam" >Herbam</option>
-<option value="(@{Ignem_Score} + @{Ignem_Puissant}) [@{ignem_i18n}]" data-i18n="ignem" >Ignem</option>
-<option value="(@{Imaginem_Score} + @{Imaginem_Puissant}) [@{imaginem_i18n}]" data-i18n="imaginem" >Imaginem</option>
-<option value="(@{Mentem_Score} + @{Mentem_Puissant}) [@{mentem_i18n}]" data-i18n="mentem" >Mentem</option>
-<option value="(@{Terram_Score} + @{Terram_Puissant}) [@{terram_i18n}]" data-i18n="terram" >Terram</option>
-<option value="(@{Vim_Score} + @{Vim_Puissant}) [@{vim_i18n}]" data-i18n="vim" >Vim</option>
-</select>
-</td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Formulaic_Focus" value="((@{Formulaic_Technique} + @{Formulaic_Form} - abs(@{Formulaic_Technique} - @{Formulaic_Form}))/2)"></input></td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Formulaic_Deficiency" value="1"></input></td>
-<td><input type="number" class="number_2" name="attr_Formulaic_Sta" value="@{Stamina_Score}" disabled="true"></td>
-<td><input type="number" class="number_2" name="attr_Formulaic_aura" value="@{aura}" disabled="true"></td>
-<td></td>
-<td></td>
-</tr>
-<!-- Ritual -->
-<tr>
-<td data-i18n="ritual" >Ritual</td>
-<td><div class="flex-container-center">
-<button style="margin: 0px auto;" type="roll" class="button simple-roll" name="roll_Ritual_simple" value="&{template:arcane} {{label0=^{ritual} ^{casting}}} {{result0=[[ (@{simple-die} + @{Ritual_Technique} + @{Ritual_Form} + ([[@{Ritual_Focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{aura}) [@{aura_i18n}] + (@{Ritual_Artes_Lib}) [@{artes_i18n}] + (@{Ritual_Philos}) [@{philos_i18n}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{fatigue})]]) [@{fatigue_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / ([[1 + (@{Ritual_Deficiency})]] [@{deficiency_i18n}]) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ @{wound_total}[@{wounds_i18n}] + [[floor(@{fatigue})]][@{fatigue_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=?{@{modifiers_i18n}|0}}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-<button style="margin: 0px auto;" type="roll" class="button stress-roll" name="roll_Ritual_stress" value="&{template:arcane} {{label0=^{ritual} ^{casting}}} {{result0=[[ (@{stress-die} + @{Ritual_Technique} + @{Ritual_Form} + ([[@{Ritual_Focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{aura}) [@{aura_i18n}] + (@{Ritual_Artes_Lib}) [@{artes_i18n}] + (@{Ritual_Philos}) [@{philos_i18n}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{fatigue})]]) [@{fatigue_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / ([[1 + (@{Ritual_Deficiency})]] [@{deficiency_i18n}]) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ @{wound_total}[@{wounds_i18n}] + [[floor(@{fatigue})]][@{fatigue_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=?{@{modifiers_i18n}|0}}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-</div></td>
-<td><input type="number" class="number_2" name="attr_Ritual" value="(@{Ritual_Technique} + @{Ritual_Form} + (@{Ritual_Focus}) + @{Stamina_Score} + @{aura} + @{Ritual_Artes_Lib} + @{Ritual_Philos}) / (1 + (@{Ritual_Deficiency}))" disabled="true"></td>
-<td>
-<select class="select_1" name="attr_Ritual_Technique">
-<option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique" >Technique</option>
-<option value="(@{Creo_Score} + @{Creo_Puissant}) [@{creo_i18n}]" data-i18n="creo" >Creo</option>
-<option value="(@{Intellego_Score} + @{Intellego_Puissant}) [@{intellego_i18n}]" data-i18n="intellego" >Intellego</option>
-<option value="(@{Muto_Score} + @{Muto_Puissant}) [@{muto_i18n}]" data-i18n="muto" >Muto</option>
-<option value="(@{Perdo_Score} + @{Perdo_Puissant}) [@{perdo_i18n}]" data-i18n="perdo" >Perdo</option>
-<option value="(@{Rego_Score} + @{Rego_Puissant}) [@{rego_i18n}]" data-i18n="rego" >Rego</option>
-</select>
-</td>
-<td>
-<select class="select_1" name="attr_Ritual_Form">
-<option class="italic" value="0 [@{form_i18n}]" data-i18n="form" >Form</option>
-<option value="(@{Animal_Score} + @{Animal_Puissant}) [@{animal_i18n}]" data-i18n="animal" >Animal</option>
-<option value="(@{Aquam_Score} + @{Aquam_Puissant}) [@{aquam_i18n}]" data-i18n="aquam" >Aquam</option>
-<option value="(@{Auram_Score} + @{Auram_Puissant}) [@{auram_i18n}]" data-i18n="auram" >Auram</option>
-<option value="(@{Corpus_Score} + @{Corpus_Puissant}) [@{corpus_i18n}]" data-i18n="corpus" >Corpus</option>
-<option value="(@{Herbam_Score} + @{Herbam_Puissant}) [@{herbam_i18n}]" data-i18n="herbam" >Herbam</option>
-<option value="(@{Ignem_Score} + @{Ignem_Puissant}) [@{ignem_i18n}]" data-i18n="ignem" >Ignem</option>
-<option value="(@{Imaginem_Score} + @{Imaginem_Puissant}) [@{imaginem_i18n}]" data-i18n="imaginem" >Imaginem</option>
-<option value="(@{Mentem_Score} + @{Mentem_Puissant}) [@{mentem_i18n}]" data-i18n="mentem" >Mentem</option>
-<option value="(@{Terram_Score} + @{Terram_Puissant}) [@{terram_i18n}]" data-i18n="terram" >Terram</option>
-<option value="(@{Vim_Score} + @{Vim_Puissant}) [@{vim_i18n}]" data-i18n="vim" >Vim</option>
-</select>
-</td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Ritual_Focus" value="((@{Ritual_Technique} + @{Ritual_Form} - abs(@{Ritual_Technique} - @{Ritual_Form}))/2)"></input></td>
-<td style="text-align: center;"><input type="checkbox" class="check" name="attr_Ritual_Deficiency" value="1"></input></td>
-<td><input type="number" class="number_2" name="attr_Ritual_Sta" value="@{Stamina_Score}" disabled="true"></td>
-<td><input type="number" class="number_2" name="attr_Ritual_aura" value="@{aura}" disabled="true"></td>
-<td><input type="number" class="number_2" name="attr_Ritual_Artes_Lib" value="0"></td>
-<td><input type="number" class="number_2" name="attr_Ritual_Philos" value="0"></td>
-</tr>
-<tr></tr>
-<tr>
-<th data-i18n="bonus" >Bonus</th>
-<td colspan="9"></td>
-</tr>
-<tr>
-<td style="text-align:right;"><span style="font-size:1.4em;" data-i18n="aura" >Aura</span></td>
-<td><input type="number" class="number_1" name="attr_aura" value="3"></td>
-<td style="text-align:right;" colspan="2"><span style="font-size:1.2em; margin-right:15px" data-i18n="gestures" >Gestures</span></td>
-<td>
-<select class="select_1" name="attr_gestures">
-<option class="italic" value="1 [@{gestures_i18n}: @{exaggerated_i18n}]" data-i18n="gestures-exaggerated" >Exaggerated</option>
-<option class="italic" selected value="0 [@{gestures_i18n}: @{bold_i18n}]" data-i18n="gestures-bold" >Bold</option>
-<option class="italic" value="(-2) [@{gestures_i18n}: @{subtle_i18n}]" data-i18n="gestures-subtle" >Subtle</option>
-<option class="italic" value="(-5) [@{gestures_i18n}: @{gest-none_i18n}]" data-i18n="gestures-none" >None</option>
-</select>
-</td>
-<td style="text-align:right;" colspan="2"><span style="font-size:1.2em; margin-right:15px" data-i18n="words" >Words</span></td>
-<td colspan="2">
-<select class="select_1" name="attr_words">
-<option class="italic" value="1 [@{words_i18n}: @{loud_i18n}]" data-i18n="words-loud" >Loud</option>
-<option class="italic" selected value="0 [@{words_i18n}: @{firm_i18n}]" data-i18n="words-firm" >Firm</option>
-<option class="italic" value="(-5) [@{words_i18n}: @{quiet_i18n}]" data-i18n="words-quiet" >Quiet</option>
-<option class="italic" value="(-10) [@{words_i18n}: @{words-none_i18n}]" data-i18n="words-none" >None</option>
-</select>
-</td>
-<td></td>
-</tr>
+    <tr>
+      <td data-i18n="formulaic">Formulaic</td>
+      <td>
+        <div class="flex-container-center">
+          <div class="die-container">
+            <button class="roll-button simple-roll" type="roll" name="roll_cast_formulaic_simple" value="&{template:arcane} {{label0=^{casting}: ^{formulaic}}} {{result0=[[ ((@{simple-die} + (@{cast_formulaic_technique}) + (@{cast_formulaic_form}) + ([[@{cast_formulaic_focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{gestures}) + (@{words}) + (@{aura}) [@{aura_i18n}] + (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / (([[1 + (@{cast_formulaic_deficiency})]]) [@{deficiency_i18n}])) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=}}"><span class="roll-formula"><span class="formula-paren">(</span><span class="die simple-roll"></span><span class="formula-operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_formulaic_simple_score" value="(@{cast_formulaic_technique}) + (@{cast_formulaic_form}) + ([[@{cast_formulaic_focus}]]) + (@{Stamina_Score}) + (@{gestures}) + (@{words}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})"/><span class="formula-paren">)</span><span class="formula-operator">/</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_formulaic_simple_divider" value="([[1 + (@{cast_formulaic_deficiency})]])"/></span></button>
+            <button class="roll-button stress-roll" type="roll" name="roll_cast_formulaic_stress" value="&{template:arcane} {{label0=^{casting}: ^{formulaic}}} {{result0=[[ ((@{stress-die} + (@{cast_formulaic_technique}) + (@{cast_formulaic_form}) + ([[@{cast_formulaic_focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{gestures}) + (@{words}) + (@{aura}) [@{aura_i18n}] + (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / (([[1 + (@{cast_formulaic_deficiency})]]) [@{deficiency_i18n}])) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=1}}"><span class="roll-formula"><span class="formula-paren">(</span><span class="die stress-roll"></span><span class="formula-operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_formulaic_stress_score" value="(@{cast_formulaic_technique}) + (@{cast_formulaic_form}) + ([[@{cast_formulaic_focus}]]) + (@{Stamina_Score}) + (@{gestures}) + (@{words}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})"/><span class="formula-paren">)</span><span class="formula-operator">/</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_formulaic_stress_divider" value="([[1 + (@{cast_formulaic_deficiency})]])"/></span></button>
+          </div>
+        </div>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_technique" name="attr_cast_formulaic_technique" title="@{cast_formulaic_technique}">
+            <option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique">Technique
+            </option>
+            <option value="(@{creo_score} + @{creo_puissant}) [@{creo_i18n}]" data-i18n="creo">Rego
+            </option>
+            <option value="(@{intellego_score} + @{intellego_puissant}) [@{intellego_i18n}]" data-i18n="intellego">Rego
+            </option>
+            <option value="(@{muto_score} + @{muto_puissant}) [@{muto_i18n}]" data-i18n="muto">Rego
+            </option>
+            <option value="(@{perdo_score} + @{perdo_puissant}) [@{perdo_i18n}]" data-i18n="perdo">Rego
+            </option>
+            <option value="(@{rego_score} + @{rego_puissant}) [@{rego_i18n}]" data-i18n="rego">Rego
+            </option>
+          </select>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_form" name="attr_cast_formulaic_form" title="@{cast_formulaic_form}">
+            <option class="italic" value="0 [@{form_i18n}]" data-i18n="form">Form
+            </option>
+            <option value="(@{animal_score} + @{animal_puissant}) [@{animal_i18n}]" data-i18n="animal">Vim
+            </option>
+            <option value="(@{aquam_score} + @{aquam_puissant}) [@{aquam_i18n}]" data-i18n="aquam">Vim
+            </option>
+            <option value="(@{auram_score} + @{auram_puissant}) [@{auram_i18n}]" data-i18n="auram">Vim
+            </option>
+            <option value="(@{corpus_score} + @{corpus_puissant}) [@{corpus_i18n}]" data-i18n="corpus">Vim
+            </option>
+            <option value="(@{herbam_score} + @{herbam_puissant}) [@{herbam_i18n}]" data-i18n="herbam">Vim
+            </option>
+            <option value="(@{ignem_score} + @{ignem_puissant}) [@{ignem_i18n}]" data-i18n="ignem">Vim
+            </option>
+            <option value="(@{imaginem_score} + @{imaginem_puissant}) [@{imaginem_i18n}]" data-i18n="imaginem">Vim
+            </option>
+            <option value="(@{mentem_score} + @{mentem_puissant}) [@{mentem_i18n}]" data-i18n="mentem">Vim
+            </option>
+            <option value="(@{terram_score} + @{terram_puissant}) [@{terram_i18n}]" data-i18n="terram">Vim
+            </option>
+            <option value="(@{vim_score} + @{vim_puissant}) [@{vim_i18n}]" data-i18n="vim">Vim
+            </option>
+          </select>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_formulaic_focus" value="((@{cast_formulaic_technique} + @{cast_formulaic_form} - abs(@{cast_formulaic_technique} - @{cast_formulaic_form}))/2)" type="checkbox" title="@{cast_formulaic_focus}"/>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_formulaic_deficiency" value="1" type="checkbox" title="@{cast_formulaic_deficiency}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_formulaic_sta" value="@{Stamina_Score}" disabled="true" type="number" title="@{cast_formulaic_sta}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_formulaic_aura" value="@{aura}" disabled="true" type="number" title="@{cast_formulaic_aura}"/>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr><!-- Ritual -->
+    <tr>
+      <td data-i18n="ritual">Ritual</td>
+      <td>
+        <div class="flex-container-center">
+          <div class="die-container">
+            <button class="roll-button simple-roll" type="roll" name="roll_cast_ritual_simple" value="&{template:arcane} {{label0=^{casting}: ^{ritual}}} {{result0=[[ ((@{simple-die} + (@{cast_ritual_technique}) + (@{cast_ritual_form}) + ([[@{cast_ritual_focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{cast_artes_lib}) [@{artes_i18n}] + (@{cast_philos}) [@{philos_i18n}] + (@{gestures}) + (@{words}) + (@{aura}) [@{aura_i18n}] + (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / (([[1 + (@{cast_ritual_deficiency})]]) [@{deficiency_i18n}])) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=}}"><span class="roll-formula"><span class="formula-paren">(</span><span class="die simple-roll"></span><span class="formula-operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_ritual_simple_score" value="(@{cast_ritual_technique}) + (@{cast_ritual_form}) + ([[@{cast_ritual_focus}]]) + (@{Stamina_Score}) + (@{cast_artes_lib}) + (@{cast_philos}) + (@{gestures}) + (@{words}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})"/><span class="formula-paren">)</span><span class="formula-operator">/</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_ritual_simple_divider" value="([[1 + (@{cast_ritual_deficiency})]])"/></span></button>
+            <button class="roll-button stress-roll" type="roll" name="roll_cast_ritual_stress" value="&{template:arcane} {{label0=^{casting}: ^{ritual}}} {{result0=[[ ((@{stress-die} + (@{cast_ritual_technique}) + (@{cast_ritual_form}) + ([[@{cast_ritual_focus}]]) [@{focus_i18n}] + (@{Stamina_Score}) [@{stamina_i18n}] + (@{cast_artes_lib}) [@{artes_i18n}] + (@{cast_philos}) [@{philos_i18n}] + (@{gestures}) + (@{words}) + (@{aura}) [@{aura_i18n}] + (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] + (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}]) / (([[1 + (@{cast_ritual_deficiency})]]) [@{deficiency_i18n}])) ]]}} {{label1=^{aura}}} {{result1=@{aura}}} {{label2=^{weakness-m}}} {{result2=[[ (@{fatigue_penalty}) [@{fatigue_i18n}] + (@{wound_penalty}) [@{wounds_i18n}] + (-@{encumbrance}) [@{encumbrance_i18n}] ]]}} {{label3=^{circumstances-m}}} {{result3=[[ (?{@{modifiers_i18n}|0}) [@{modifiers_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-spontaneous)}} {{stress=1}}"><span class="roll-formula"><span class="formula-paren">(</span><span class="die stress-roll"></span><span class="formula-operator">+</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_ritual_stress_score" value="(@{cast_ritual_technique}) + (@{cast_ritual_form}) + ([[@{cast_ritual_focus}]]) + (@{Stamina_Score}) + (@{cast_artes_lib}) + (@{cast_philos}) + (@{gestures}) + (@{words}) + (@{aura}) + (@{fatigue_penalty}) + (@{wound_penalty}) + (-@{encumbrance})"/><span class="formula-paren">)</span><span class="formula-operator">/</span>
+                <input class="roll-value" type="number" disabled="true" name="attr_cast_ritual_stress_divider" value="([[1 + (@{cast_ritual_deficiency})]])"/></span></button>
+          </div>
+        </div>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_technique" name="attr_cast_ritual_technique" title="@{cast_ritual_technique}">
+            <option class="italic" value="0 [@{technique_i18n}]" data-i18n="technique">Technique
+            </option>
+            <option value="(@{creo_score} + @{creo_puissant}) [@{creo_i18n}]" data-i18n="creo">Rego
+            </option>
+            <option value="(@{intellego_score} + @{intellego_puissant}) [@{intellego_i18n}]" data-i18n="intellego">Rego
+            </option>
+            <option value="(@{muto_score} + @{muto_puissant}) [@{muto_i18n}]" data-i18n="muto">Rego
+            </option>
+            <option value="(@{perdo_score} + @{perdo_puissant}) [@{perdo_i18n}]" data-i18n="perdo">Rego
+            </option>
+            <option value="(@{rego_score} + @{rego_puissant}) [@{rego_i18n}]" data-i18n="rego">Rego
+            </option>
+          </select>
+      </td>
+      <td>
+          <select class="select_1 select_hermetic_form" name="attr_cast_ritual_form" title="@{cast_ritual_form}">
+            <option class="italic" value="0 [@{form_i18n}]" data-i18n="form">Form
+            </option>
+            <option value="(@{animal_score} + @{animal_puissant}) [@{animal_i18n}]" data-i18n="animal">Vim
+            </option>
+            <option value="(@{aquam_score} + @{aquam_puissant}) [@{aquam_i18n}]" data-i18n="aquam">Vim
+            </option>
+            <option value="(@{auram_score} + @{auram_puissant}) [@{auram_i18n}]" data-i18n="auram">Vim
+            </option>
+            <option value="(@{corpus_score} + @{corpus_puissant}) [@{corpus_i18n}]" data-i18n="corpus">Vim
+            </option>
+            <option value="(@{herbam_score} + @{herbam_puissant}) [@{herbam_i18n}]" data-i18n="herbam">Vim
+            </option>
+            <option value="(@{ignem_score} + @{ignem_puissant}) [@{ignem_i18n}]" data-i18n="ignem">Vim
+            </option>
+            <option value="(@{imaginem_score} + @{imaginem_puissant}) [@{imaginem_i18n}]" data-i18n="imaginem">Vim
+            </option>
+            <option value="(@{mentem_score} + @{mentem_puissant}) [@{mentem_i18n}]" data-i18n="mentem">Vim
+            </option>
+            <option value="(@{terram_score} + @{terram_puissant}) [@{terram_i18n}]" data-i18n="terram">Vim
+            </option>
+            <option value="(@{vim_score} + @{vim_puissant}) [@{vim_i18n}]" data-i18n="vim">Vim
+            </option>
+          </select>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_ritual_focus" value="((@{cast_ritual_technique} + @{cast_ritual_form} - abs(@{cast_ritual_technique} - @{cast_ritual_form}))/2)" type="checkbox" title="@{cast_ritual_focus}"/>
+      </td>
+      <td style="text-align: center;">
+        <input class="check" name="attr_cast_ritual_deficiency" value="1" type="checkbox" title="@{cast_ritual_deficiency}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_ritual_sta" value="@{Stamina_Score}" disabled="true" type="number" title="@{cast_ritual_sta}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_ritual_aura" value="@{aura}" disabled="true" type="number" title="@{cast_ritual_aura}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_artes_lib" value="0" type="number" title="@{cast_artes_lib}"/>
+      </td>
+      <td>
+        <input class="number_2" name="attr_cast_philos" value="0" type="number" title="@{cast_philos}"/>
+      </td>
+      <td></td>
+    </tr><tr></tr>
 </table>
-</div>
+    <h5 class="heading_label" data-i18n="bonus">Bonus</h5>
+    <div class="kscaffold-compatible">
+      <div class="config"><span data-i18n="aura">Aura</span>
+        <input class="number_1" name="attr_aura" value="3" type="number" title="@{aura}"/><span data-i18n="gestures">Gestures</span>
+        <select class="select_1" name="attr_gestures" title="@{gestures}">
+          <option class="italic" data-i18n="gestures-exaggerated" value="1 [@{gestures_i18n}: @{exaggerated_i18n}]">Exaggerated (+1)
+          </option>
+          <option class="italic" data-i18n="gestures-bold" value="0 [@{gestures_i18n}: @{bold_i18n}]" selected="selected">Bold
+          </option>
+          <option class="italic" data-i18n="gestures-subtle" value="(-2) [@{gestures_i18n}: @{subtle_i18n}]">Subtle (-2)
+          </option>
+          <option class="italic" data-i18n="gestures-none" value="(-5) [@{gestures_i18n}: @{gest-none_i18n}]">None (-5)
+          </option>
+        </select><span data-i18n="words">Words</span>
+        <select class="select_1" name="attr_words" title="@{words}">
+          <option class="italic" data-i18n="words-loud" value="1 [@{words_i18n}: @{loud_i18n}]">Loud (+1)
+          </option>
+          <option class="italic" data-i18n="words-firm" value="0 [@{words_i18n}: @{firm_i18n}]" selected="selected">Firm
+          </option>
+          <option class="italic" data-i18n="words-quiet" value="(-5) [@{words_i18n}: @{quiet_i18n}]">Quiet (-5)
+          </option>
+          <option class="italic" data-i18n="words-none" value="(-10) [@{words_i18n}: @{words-none_i18n}]">None (-10)
+          </option>
+        </select>
+      </div>
+    </div></div>
 <br>
 <div class="divider" style="height:15px;"><span>&nbsp;</span></div>
 <!-- Laboratory -->
@@ -2578,34 +2824,32 @@ Fix Lab Total computation when General Quality has a leading <code>+</code>
   </fieldset></div>
 </div><!-- 5  Spells -->
 <div class="sheet-tab-content tab5">
-<h4 class="heading_label" style="margin-top:10px;" data-i18n="bonus" >Bonus</h4>
-<table class="table_3" style="width:400px;">
-<tr></tr>
-<tr>
-<td style="text-align:right;"><span style="font-size:1.4em; margin-left: 15px;" data-i18n="aura" >Aura</span></td>
-<td><input type="number" class="number_1" name="attr_aura" value="3"></td>
-<td style="text-align:right;" colspan="2"><span style="font-size:1.2em; margin-right:15px" data-i18n="gestures" >Gestures</span></td>
-<td>
-<select class="select_1" name="attr_gestures">
-<option class="italic" value="1 [@{gestures_i18n}: @{exaggerated_i18n}]" data-i18n="gestures-exaggerated" >Exaggerated</option>
-<option class="italic" selected value="0 [@{gestures_i18n}: @{bold_i18n}]" data-i18n="gestures-bold" >Bold</option>
-<option class="italic" value="(-2) [@{gestures_i18n}: @{subtle_i18n}]" data-i18n="gestures-subtle" >Subtle</option>
-<option class="italic" value="(-5) [@{gestures_i18n}: @{gest-none_i18n}]" data-i18n="gestures-none" >None</option>
-</select>
-</td>
-<td style="text-align:right;" colspan="2"><span style="font-size:1.2em; margin-right:15px" data-i18n="words" >Words</span></td>
-<td colspan="2">
-<select class="select_1" name="attr_words">
-<option class="italic" value="1 [@{words_i18n}: @{loud_i18n}]" data-i18n="words-loud" >Loud</option>
-<option class="italic" selected value="0 [@{words_i18n}: @{firm_i18n}]" data-i18n="words-firm" >Firm</option>
-<option class="italic" value="(-5) [@{words_i18n}: @{quiet_i18n}]" data-i18n="words-quiet" >Quiet</option>
-<option class="italic" value="(-10) [@{words_i18n}: @{words-none_i18n}]" data-i18n="words-none" >None</option>
-</select>
-</td>
-<td></td>
-</tr>
-</table>
-<h4 class="heading_label" style="margin-top:10px;" data-i18n="formulaic-spells" >Formulaic spells</h4>
+    <h5 class="heading_label" data-i18n="bonus">Bonus</h5>
+    <div class="kscaffold-compatible">
+      <div class="config"><span data-i18n="aura">Aura</span>
+        <input class="number_1" name="attr_aura" value="3" type="number" title="@{aura}"/><span data-i18n="gestures">Gestures</span>
+        <select class="select_1" name="attr_gestures" title="@{gestures}">
+          <option class="italic" data-i18n="gestures-exaggerated" value="1 [@{gestures_i18n}: @{exaggerated_i18n}]">Exaggerated (+1)
+          </option>
+          <option class="italic" data-i18n="gestures-bold" value="0 [@{gestures_i18n}: @{bold_i18n}]" selected="selected">Bold
+          </option>
+          <option class="italic" data-i18n="gestures-subtle" value="(-2) [@{gestures_i18n}: @{subtle_i18n}]">Subtle (-2)
+          </option>
+          <option class="italic" data-i18n="gestures-none" value="(-5) [@{gestures_i18n}: @{gest-none_i18n}]">None (-5)
+          </option>
+        </select><span data-i18n="words">Words</span>
+        <select class="select_1" name="attr_words" title="@{words}">
+          <option class="italic" data-i18n="words-loud" value="1 [@{words_i18n}: @{loud_i18n}]">Loud (+1)
+          </option>
+          <option class="italic" data-i18n="words-firm" value="0 [@{words_i18n}: @{firm_i18n}]" selected="selected">Firm
+          </option>
+          <option class="italic" data-i18n="words-quiet" value="(-5) [@{words_i18n}: @{quiet_i18n}]">Quiet (-5)
+          </option>
+          <option class="italic" data-i18n="words-none" value="(-10) [@{words_i18n}: @{words-none_i18n}]">None (-10)
+          </option>
+        </select>
+      </div>
+    </div><h4 class="heading_label" style="margin-top:10px;" data-i18n="formulaic-spells" >Formulaic spells</h4>
 <fieldset class="repeating_spell">
 <table style="margin-top:10px;">
 <tr>
@@ -3108,7 +3352,7 @@ Fix Lab Total computation when General Quality has a leading <code>+</code>
 <script type="text/worker">const k = (function(){
   const kFuncs = {};
   
-  const cascades = {"attr_character_name":{"name":"character_name","type":"text","defaultValue":"","affects":[],"triggeredFuncs":["setActionCalls"],"listenerFunc":"accessSheet","listener":"change:character_name"},"act_k-network-call":{"name":"k-network-call","type":"action","triggeredFuncs":["kReceive"],"affects":[],"addFuncs":[],"listener":"clicked:k-network-call","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_notNew":{"name":"notNew","type":"number","affects":[],"triggeredFuncs":[]},"attr_alert-161-spell-update":{"name":"alert-161-spell-update","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_Technique_select":{"name":"repeating_spell_$X_Technique_select","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_Form_select":{"name":"repeating_spell_$X_Form_select","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_spell_tech_name":{"name":"repeating_spell_$X_spell_tech_name","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_spell_form_name":{"name":"repeating_spell_$X_spell_form_name","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Wounds_Load":{"name":"repeating_weapons_$X_Wounds_Load","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Wounds_Range":{"name":"repeating_weapons_$X_Wounds_Range","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Weapon_Load":{"name":"repeating_weapons_$X_Weapon_Load","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Weapon_Range":{"name":"repeating_weapons_$X_Weapon_Range","type":"string","affects":[],"triggeredFuncs":[]},"attr_update_error_rowid":{"name":"update_error_rowid","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:update_error_rowid","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_level":{"name":"repeating_alerts--global-alerts_$x_level","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:level","listenerFunc":"accessSheet","defaultValue":"info","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_title":{"name":"repeating_alerts--global-alerts_$x_title","type":"span","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:title","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_text":{"name":"repeating_alerts--global-alerts_$x_text","type":"span","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:text","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"act_repeating_alerts--global-alerts_$x_close":{"name":"repeating_alerts--global-alerts_$x_close","type":"action","triggeredFuncs":["onAlertRemoved"],"affects":[],"addFuncs":[],"listener":"clicked:repeating_alerts--global-alerts:close","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_kmodal-settings":{"name":"kmodal-settings","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-settings","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_botch_formula":{"name":"botch_formula","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:botch_formula","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_die-type-selection":{"name":"die-type-selection","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:die-type-selection","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_ismagi":{"name":"ismagi","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:ismagi","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_kmodal-help":{"name":"kmodal-help","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-help","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_kmodal-history":{"name":"kmodal-history","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-history","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_strength_score":{"name":"strength_score","type":"number","triggeredFuncs":[],"affects":["encumbrance"],"addFuncs":[],"listener":"change:strength_score","listenerFunc":"accessSheet","defaultValue":"0","calculation":"","initialFunc":"","formula":""},"attr_fatigue_penalty":{"name":"fatigue_penalty","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:fatigue_penalty","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_fatigue_penalty","initialFunc":"","formula":""},"attr_fatigue_ignored":{"name":"fatigue_ignored","type":"checkbox","triggeredFuncs":[],"affects":["fatigue_penalty"],"addFuncs":[],"listener":"change:fatigue_ignored","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_fatigue_level":{"name":"fatigue_level","type":"radio","triggeredFuncs":[],"affects":["fatigue_penalty"],"addFuncs":[],"listener":"change:fatigue_level","listenerFunc":"accessSheet","defaultValue":"fresh","calculation":"","initialFunc":"","formula":""},"attr_wound_total":{"name":"wound_total","type":"hidden","triggeredFuncs":[],"affects":["wound_penalty"],"addFuncs":[],"listener":"change:wound_total","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_wound_penalty":{"name":"wound_penalty","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:wound_penalty","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_wound_penalty","initialFunc":"","formula":""},"attr_wound_ignored":{"name":"wound_ignored","type":"checkbox","triggeredFuncs":[],"affects":["wound_penalty"],"addFuncs":[],"listener":"change:wound_ignored","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_armors_total_prot":{"name":"armors_total_prot","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_prot","listenerFunc":"accessSheet","defaultValue":0,"calculation":"section_conditional_sum","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_prot"},"attr_armors_total_prot_detailed":{"name":"armors_total_prot_detailed","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_prot_detailed","listenerFunc":"accessSheet","defaultValue":" ","calculation":"section_conditional_sum_detail","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_prot","sum_label":"armors_name"},"attr_armors_total_load":{"name":"armors_total_load","type":"number","triggeredFuncs":[],"affects":["total_load"],"addFuncs":[],"listener":"change:armors_total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"section_conditional_sum","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_load"},"attr_armors_total_load_detailed":{"name":"armors_total_load_detailed","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_load_detailed","listenerFunc":"accessSheet","defaultValue":" ","calculation":"section_conditional_sum_detail","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_load","sum_label":"armors_name"},"attr_repeating_armors_$x_armors_name":{"name":"repeating_armors_$x_armors_name","type":"text","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_armors:armors_name","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_armors_prot":{"name":"repeating_armors_$x_armors_prot","type":"number","triggeredFuncs":[],"affects":["armors_total_prot","armors_total_prot_detailed"],"addFuncs":[],"listener":"change:repeating_armors:armors_prot","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_armors_load":{"name":"repeating_armors_$x_armors_load","type":"number","triggeredFuncs":[],"affects":["armors_total_load","armors_total_load_detailed"],"addFuncs":[],"listener":"change:repeating_armors:armors_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_isactive":{"name":"repeating_armors_$x_isactive","type":"checkbox","triggeredFuncs":[],"affects":["armors_total_prot","armors_total_prot_detailed","armors_total_load","armors_total_load_detailed"],"addFuncs":[],"listener":"change:repeating_armors:isactive","listenerFunc":"accessSheet","defaultValue":1,"calculation":"","initialFunc":"","formula":""},"attr_total_load":{"name":"total_load","type":"number","triggeredFuncs":[],"affects":["burden"],"addFuncs":[],"listener":"change:total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_total_load","initialFunc":"","formula":""},"attr_burden":{"name":"burden","type":"number","triggeredFuncs":[],"affects":["encumbrance"],"addFuncs":[],"listener":"change:burden","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_burden","initialFunc":"","formula":""},"attr_encumbrance":{"name":"encumbrance","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:encumbrance","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_encumbrance","initialFunc":"","formula":""},"attr_weapon_total_load":{"name":"weapon_total_load","type":"hidden","triggeredFuncs":[],"affects":["total_load"],"addFuncs":[],"listener":"change:weapon_total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_weapons_$x_is_active":{"name":"repeating_weapons_$x_is_active","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_weapons:is_active","listenerFunc":"accessSheet","defaultValue":1,"calculation":"","initialFunc":"","formula":""},"attr_repeating_weapons_$x_weapon_load":{"name":"repeating_weapons_$x_weapon_load","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_weapons:weapon_load","listenerFunc":"accessSheet","defaultValue":"0","calculation":"","initialFunc":"","formula":""}};
+  const cascades = {"attr_character_name":{"name":"character_name","type":"text","defaultValue":"","affects":[],"triggeredFuncs":["setActionCalls"],"listenerFunc":"accessSheet","listener":"change:character_name"},"act_k-network-call":{"name":"k-network-call","type":"action","triggeredFuncs":["kReceive"],"affects":[],"addFuncs":[],"listener":"clicked:k-network-call","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_notNew":{"name":"notNew","type":"number","affects":[],"triggeredFuncs":[]},"attr_alert-161-spell-update":{"name":"alert-161-spell-update","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_Technique_select":{"name":"repeating_spell_$X_Technique_select","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_Form_select":{"name":"repeating_spell_$X_Form_select","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_spell_tech_name":{"name":"repeating_spell_$X_spell_tech_name","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_spell_$X_spell_form_name":{"name":"repeating_spell_$X_spell_form_name","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Wounds_Load":{"name":"repeating_weapons_$X_Wounds_Load","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Wounds_Range":{"name":"repeating_weapons_$X_Wounds_Range","type":"string","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Weapon_Load":{"name":"repeating_weapons_$X_Weapon_Load","type":"number","affects":[],"triggeredFuncs":[]},"attr_repeating_weapons_$X_Weapon_Range":{"name":"repeating_weapons_$X_Weapon_Range","type":"string","affects":[],"triggeredFuncs":[]},"attr_update_error_rowid":{"name":"update_error_rowid","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:update_error_rowid","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_level":{"name":"repeating_alerts--global-alerts_$x_level","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:level","listenerFunc":"accessSheet","defaultValue":"info","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_title":{"name":"repeating_alerts--global-alerts_$x_title","type":"span","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:title","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_alerts--global-alerts_$x_text":{"name":"repeating_alerts--global-alerts_$x_text","type":"span","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_alerts--global-alerts:text","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"act_repeating_alerts--global-alerts_$x_close":{"name":"repeating_alerts--global-alerts_$x_close","type":"action","triggeredFuncs":["onAlertRemoved"],"affects":[],"addFuncs":[],"listener":"clicked:repeating_alerts--global-alerts:close","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_kmodal-settings":{"name":"kmodal-settings","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-settings","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_botch_formula":{"name":"botch_formula","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:botch_formula","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_die-type-selection":{"name":"die-type-selection","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:die-type-selection","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_ismagi":{"name":"ismagi","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:ismagi","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_kmodal-help":{"name":"kmodal-help","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-help","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_kmodal-history":{"name":"kmodal-history","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:kmodal-history","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_strength_score":{"name":"strength_score","type":"number","triggeredFuncs":[],"affects":["encumbrance"],"addFuncs":[],"listener":"change:strength_score","listenerFunc":"accessSheet","defaultValue":"0","calculation":"","initialFunc":"","formula":""},"attr_cast_spontaneous_technique":{"name":"cast_spontaneous_technique","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_spontaneous_technique","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_spontaneous_form":{"name":"cast_spontaneous_form","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_spontaneous_form","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_spontaneous_focus":{"name":"cast_spontaneous_focus","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_spontaneous_focus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_spontaneous_deficiency":{"name":"cast_spontaneous_deficiency","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_spontaneous_deficiency","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_spontaneous_sta":{"name":"cast_spontaneous_sta","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_spontaneous_sta","listenerFunc":"accessSheet","defaultValue":"@{Stamina_Score}","calculation":"","initialFunc":"","formula":""},"attr_cast_spontaneous_aura":{"name":"cast_spontaneous_aura","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_spontaneous_aura","listenerFunc":"accessSheet","defaultValue":"@{aura}","calculation":"","initialFunc":"","formula":""},"attr_cast_spontaneous_total_bonus":{"name":"cast_spontaneous_total_bonus","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_spontaneous_total_bonus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_ceremonial_technique":{"name":"cast_ceremonial_technique","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ceremonial_technique","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_ceremonial_form":{"name":"cast_ceremonial_form","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ceremonial_form","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_ceremonial_focus":{"name":"cast_ceremonial_focus","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ceremonial_focus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_ceremonial_deficiency":{"name":"cast_ceremonial_deficiency","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ceremonial_deficiency","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_ceremonial_sta":{"name":"cast_ceremonial_sta","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ceremonial_sta","listenerFunc":"accessSheet","defaultValue":"@{Stamina_Score}","calculation":"","initialFunc":"","formula":""},"attr_cast_ceremonial_aura":{"name":"cast_ceremonial_aura","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ceremonial_aura","listenerFunc":"accessSheet","defaultValue":"@{aura}","calculation":"","initialFunc":"","formula":""},"attr_cast_artes_lib":{"name":"cast_artes_lib","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_artes_lib","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_philos":{"name":"cast_philos","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_philos","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_ceremonial_total_bonus":{"name":"cast_ceremonial_total_bonus","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ceremonial_total_bonus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing_technique":{"name":"cast_non-fatiguing_technique","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing_technique","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing_form":{"name":"cast_non-fatiguing_form","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing_form","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing_focus":{"name":"cast_non-fatiguing_focus","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing_focus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing_deficiency":{"name":"cast_non-fatiguing_deficiency","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing_deficiency","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing_sta":{"name":"cast_non-fatiguing_sta","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing_sta","listenerFunc":"accessSheet","defaultValue":"@{Stamina_Score}","calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing_aura":{"name":"cast_non-fatiguing_aura","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing_aura","listenerFunc":"accessSheet","defaultValue":"@{aura}","calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing_total_bonus":{"name":"cast_non-fatiguing_total_bonus","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing_total_bonus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing-ceremonial_technique":{"name":"cast_non-fatiguing-ceremonial_technique","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing-ceremonial_technique","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing-ceremonial_form":{"name":"cast_non-fatiguing-ceremonial_form","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing-ceremonial_form","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing-ceremonial_focus":{"name":"cast_non-fatiguing-ceremonial_focus","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing-ceremonial_focus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing-ceremonial_deficiency":{"name":"cast_non-fatiguing-ceremonial_deficiency","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing-ceremonial_deficiency","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing-ceremonial_sta":{"name":"cast_non-fatiguing-ceremonial_sta","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing-ceremonial_sta","listenerFunc":"accessSheet","defaultValue":"@{Stamina_Score}","calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing-ceremonial_aura":{"name":"cast_non-fatiguing-ceremonial_aura","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing-ceremonial_aura","listenerFunc":"accessSheet","defaultValue":"@{aura}","calculation":"","initialFunc":"","formula":""},"attr_cast_non-fatiguing-ceremonial_total_bonus":{"name":"cast_non-fatiguing-ceremonial_total_bonus","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_non-fatiguing-ceremonial_total_bonus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_formulaic_technique":{"name":"cast_formulaic_technique","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_formulaic_technique","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_formulaic_form":{"name":"cast_formulaic_form","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_formulaic_form","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_formulaic_focus":{"name":"cast_formulaic_focus","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_formulaic_focus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_formulaic_deficiency":{"name":"cast_formulaic_deficiency","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_formulaic_deficiency","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_formulaic_sta":{"name":"cast_formulaic_sta","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_formulaic_sta","listenerFunc":"accessSheet","defaultValue":"@{Stamina_Score}","calculation":"","initialFunc":"","formula":""},"attr_cast_formulaic_aura":{"name":"cast_formulaic_aura","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_formulaic_aura","listenerFunc":"accessSheet","defaultValue":"@{aura}","calculation":"","initialFunc":"","formula":""},"attr_cast_ritual_technique":{"name":"cast_ritual_technique","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ritual_technique","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_ritual_form":{"name":"cast_ritual_form","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ritual_form","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_cast_ritual_focus":{"name":"cast_ritual_focus","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ritual_focus","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_ritual_deficiency":{"name":"cast_ritual_deficiency","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ritual_deficiency","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_cast_ritual_sta":{"name":"cast_ritual_sta","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ritual_sta","listenerFunc":"accessSheet","defaultValue":"@{Stamina_Score}","calculation":"","initialFunc":"","formula":""},"attr_cast_ritual_aura":{"name":"cast_ritual_aura","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:cast_ritual_aura","listenerFunc":"accessSheet","defaultValue":"@{aura}","calculation":"","initialFunc":"","formula":""},"attr_aura":{"name":"aura","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:aura","listenerFunc":"accessSheet","defaultValue":3,"calculation":"","initialFunc":"","formula":""},"attr_gestures":{"name":"gestures","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:gestures","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_words":{"name":"words","type":"select","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:words","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_fatigue_penalty":{"name":"fatigue_penalty","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:fatigue_penalty","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_fatigue_penalty","initialFunc":"","formula":""},"attr_fatigue_ignored":{"name":"fatigue_ignored","type":"checkbox","triggeredFuncs":[],"affects":["fatigue_penalty"],"addFuncs":[],"listener":"change:fatigue_ignored","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_fatigue_level":{"name":"fatigue_level","type":"radio","triggeredFuncs":[],"affects":["fatigue_penalty"],"addFuncs":[],"listener":"change:fatigue_level","listenerFunc":"accessSheet","defaultValue":"fresh","calculation":"","initialFunc":"","formula":""},"attr_wound_total":{"name":"wound_total","type":"hidden","triggeredFuncs":[],"affects":["wound_penalty"],"addFuncs":[],"listener":"change:wound_total","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_wound_penalty":{"name":"wound_penalty","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:wound_penalty","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_wound_penalty","initialFunc":"","formula":""},"attr_wound_ignored":{"name":"wound_ignored","type":"checkbox","triggeredFuncs":[],"affects":["wound_penalty"],"addFuncs":[],"listener":"change:wound_ignored","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_armors_total_prot":{"name":"armors_total_prot","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_prot","listenerFunc":"accessSheet","defaultValue":0,"calculation":"section_conditional_sum","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_prot"},"attr_armors_total_prot_detailed":{"name":"armors_total_prot_detailed","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_prot_detailed","listenerFunc":"accessSheet","defaultValue":" ","calculation":"section_conditional_sum_detail","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_prot","sum_label":"armors_name"},"attr_armors_total_load":{"name":"armors_total_load","type":"number","triggeredFuncs":[],"affects":["total_load"],"addFuncs":[],"listener":"change:armors_total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"section_conditional_sum","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_load"},"attr_armors_total_load_detailed":{"name":"armors_total_load_detailed","type":"hidden","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:armors_total_load_detailed","listenerFunc":"accessSheet","defaultValue":" ","calculation":"section_conditional_sum_detail","initialFunc":"","formula":"","sum_section":"repeating_armors","sum_condition":"isactive","sum_value":"armors_load","sum_label":"armors_name"},"attr_repeating_armors_$x_armors_name":{"name":"repeating_armors_$x_armors_name","type":"text","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_armors:armors_name","listenerFunc":"accessSheet","defaultValue":"","calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_armors_prot":{"name":"repeating_armors_$x_armors_prot","type":"number","triggeredFuncs":[],"affects":["armors_total_prot","armors_total_prot_detailed"],"addFuncs":[],"listener":"change:repeating_armors:armors_prot","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_armors_load":{"name":"repeating_armors_$x_armors_load","type":"number","triggeredFuncs":[],"affects":["armors_total_load","armors_total_load_detailed"],"addFuncs":[],"listener":"change:repeating_armors:armors_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_armors_$x_isactive":{"name":"repeating_armors_$x_isactive","type":"checkbox","triggeredFuncs":[],"affects":["armors_total_prot","armors_total_prot_detailed","armors_total_load","armors_total_load_detailed"],"addFuncs":[],"listener":"change:repeating_armors:isactive","listenerFunc":"accessSheet","defaultValue":1,"calculation":"","initialFunc":"","formula":""},"attr_total_load":{"name":"total_load","type":"number","triggeredFuncs":[],"affects":["burden"],"addFuncs":[],"listener":"change:total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_total_load","initialFunc":"","formula":""},"attr_burden":{"name":"burden","type":"number","triggeredFuncs":[],"affects":["encumbrance"],"addFuncs":[],"listener":"change:burden","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_burden","initialFunc":"","formula":""},"attr_encumbrance":{"name":"encumbrance","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:encumbrance","listenerFunc":"accessSheet","defaultValue":0,"calculation":"calc_encumbrance","initialFunc":"","formula":""},"attr_weapon_total_load":{"name":"weapon_total_load","type":"hidden","triggeredFuncs":[],"affects":["total_load"],"addFuncs":[],"listener":"change:weapon_total_load","listenerFunc":"accessSheet","defaultValue":0,"calculation":"","initialFunc":"","formula":""},"attr_repeating_weapons_$x_is_active":{"name":"repeating_weapons_$x_is_active","type":"checkbox","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_weapons:is_active","listenerFunc":"accessSheet","defaultValue":1,"calculation":"","initialFunc":"","formula":""},"attr_repeating_weapons_$x_weapon_load":{"name":"repeating_weapons_$x_weapon_load","type":"number","triggeredFuncs":[],"affects":[],"addFuncs":[],"listener":"change:repeating_weapons:weapon_load","listenerFunc":"accessSheet","defaultValue":"0","calculation":"","initialFunc":"","formula":""}};
   
   kFuncs.cascades = cascades;
   
@@ -4841,7 +5085,6 @@ on("sheet:opened", function(eventInfo){
         "encumbrance_i18n": getTranslationByKey("encumbrance"),
         "exaggerated_i18n": getTranslationByKey("gestures-exaggerated"),
         "fatigue_i18n": getTranslationByKey("fatigue-m"),
-        "ignored_i18n":getTranslationByKey("ignored"),
         "firm_i18n": getTranslationByKey("words-firm"),
         "focus_i18n": getTranslationByKey("focus"),
         "form_i18n": getTranslationByKey("form"),

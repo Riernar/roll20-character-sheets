@@ -106,7 +106,6 @@ on("sheet:opened", function(eventInfo){
         "encumbrance_i18n": getTranslationByKey("encumbrance"),
         "exaggerated_i18n": getTranslationByKey("gestures-exaggerated"),
         "fatigue_i18n": getTranslationByKey("fatigue-m"),
-        "ignored_i18n":getTranslationByKey("ignored"),
         "firm_i18n": getTranslationByKey("words-firm"),
         "focus_i18n": getTranslationByKey("focus"),
         "form_i18n": getTranslationByKey("form"),
