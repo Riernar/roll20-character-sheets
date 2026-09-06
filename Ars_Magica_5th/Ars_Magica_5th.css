@@ -4306,6 +4306,11 @@ End of the python integration block
   flex-wrap: wrap;
   gap: 0.35rem;
   align-items: center;
+  font-family: "Macondo", cursive;
+  color: #53332a;
+  font-size: 14px;
+  font-weight: bold;
+  font-variant-caps: small-caps;
   /* Roll buttons */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .die-container button {
@@ -4416,6 +4421,52 @@ End of the python integration block
 }
 .ui-dialog .tab-content .charsheet {
   /* END die rolls */
+}
+.ui-dialog .tab-content .charsheet .characteristics-grid {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr) auto auto;
+  column-gap: 0.5ch;
+  width: 100%;
+}
+.ui-dialog .tab-content .charsheet .characteristics-grid .grid-separator {
+  grid-column: 1/-1;
+  height: 1px;
+  margin: 1rem 0;
+  background: #53332a;
+}
+.ui-dialog .tab-content .charsheet .characteristics-grid * {
+  font-family: "Macondo", cursive;
+  font-size: 14px;
+  font-weight: bold;
+  color: #53332a;
+}
+.ui-dialog .tab-content .charsheet .characteristics-grid .characteristic-column {
+  font-variant: small-caps;
+}
+.ui-dialog .tab-content .charsheet .characteristics-grid .heading_2 {
+  width: 100%;
+  min-width: 10ch;
+}
+.ui-dialog .tab-content .charsheet .characteristics-grid .characteristic-row {
+  display: contents;
+}
+.ui-dialog .tab-content .charsheet .characteristics-grid .roll-column {
+  white-space: nowrap;
+}
+.ui-dialog .tab-content .charsheet .characteristics-grid .roll-column > .die-container {
+  flex-wrap: nowrap;
+}
+.ui-dialog .tab-content .charsheet .ability-characteristic-short {
+  width: 25px;
+  background: transparent;
+  border: none;
+  text-align: center;
+  color: #53332a;
+  font-variant: small-caps;
+  font-family: Macondo, cursive;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 4px 0px;
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet select.select_hermetic_technique, .ui-dialog .tab-content .charsheet .arm5-sheet select.select_hermetic_form {
   width: 95px;

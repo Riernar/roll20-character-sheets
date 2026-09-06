@@ -525,13 +525,15 @@
 
     const calc_fatigue_penalty = function({attributes}) {
         const penalty_table = {
+            "fresh":  0,
             "winded": 0,
             "weary" :-1,
             "tired" :-3,
             "dazed" :-5,
+            "unconscious": -100,
         };
-        const level = attributes["fatigue_level"];
-        return attributes["fatigue_ignored"] ? 0 : penalty_table[level];
+        const level = helpers.get(attributes, "fatigue_level");
+        return attributes["fatigue_ignored"] ? 0 : helpers.get(penalty_table, level);
     };
     k.registerFuncs({calc_fatigue_penalty});
 
