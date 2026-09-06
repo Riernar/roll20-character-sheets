@@ -146,10 +146,38 @@
                 <fieldset class="repeating_ability">
                     <table class="table_2" style="width:400px;">
                         <tr>
-                            <td width="30px"><div class="flex-container-center">
-                                <button type="roll" class="button simple-roll" name="roll_ability_simple" value="&{template:ability} {{name=@{character_name}}} {{label0=@{Ability_name}}} {{result0=[[ @{simple-die} + (@{Ability_Score} + @{Ability_Puissant}) [@{Ability_name}] + (@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk}) [@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{banner=@{Ability_Speciality}}} {{label1=^{rank}}} {{result1=[[ @{Ability_Score} + @{Ability_Puissant} ]]}} {{label2=@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}}} {{result2=[[ @{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk} ]]}} {{label3=^{weakness-m}}} {{result3=[[ ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] ]]}} {{label4=^{circumstances-m}}} {{result4=[[ (?{@{circumstantial_i18n}|0}) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
-                                <button type="roll" class="button stress-roll" name="roll_ability_stress" value="&{template:ability} {{name=@{character_name}}} {{label0=@{Ability_name}}} {{result0=[[ @{stress-die} + (@{Ability_Score} + @{Ability_Puissant}) [@{Ability_name}] + (@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk}) [@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{banner=@{Ability_Speciality}}} {{label1=^{rank}}} {{result1=[[ @{Ability_Score} + @{Ability_Puissant} ]]}} {{label2=@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}}} {{result2=[[ @{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk} ]]}} {{label3=^{weakness-m}}} {{result3=[[ ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] ]]}} {{label4=^{circumstances-m}}} {{result4=[[ (?{@{circumstantial_i18n}|0}) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                            </div></td>
+                            td
+                                -
+                                    const total = new RollTotal({
+                                        score:{
+                                            "(@{ability_score} + @{ability_puissant})": "@{ability_name}",
+                                            "@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk}": "@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}",
+                                        },
+                                    });
+                                    const roll = new Roll({
+                                        template: "ability",
+                                        label: "@{ability_name}",
+                                        total,
+                                        fields: {
+                                            "name": "@{character_name}",
+                                            "banner": "@{Ability_Speciality}",
+                                            "label1": "^{rank}",
+                                            "result1": inline_roll("@{Ability_Score} + @{Ability_Puissant}"),
+                                            "label2": "@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}",
+                                            "result2": inline_roll("@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk}"),
+                                            "label3": "^{weakness-m}",
+                                            "result3": inline_roll(total.get_penalties()),
+                                            "label4": "^{circumstances-m}",
+                                            "result4": inline_roll(total.get_modifiers()),
+                                            "botch-button": "[@{botch_i18n}!](~@{character_name}|botch)",
+                                            "crit-button": "[@{critical_i18n}!](~@{character_name}|critical)",
+                                        },
+                                    });
+                                +am5_roll_button({name: "ability", roll, mode:"simple+stress"})
+                            //- <td width="30px"><div class="flex-container-center">
+                            //-     <button type="roll" class="button simple-roll" name="roll_ability_simple" value="&{template:ability} {{name=@{character_name}}} {{label0=@{Ability_name}}} {{result0=[[ @{simple-die} + (@{Ability_Score} + @{Ability_Puissant}) [@{Ability_name}] + (@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk}) [@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{banner=@{Ability_Speciality}}} {{label1=^{rank}}} {{result1=[[ @{Ability_Score} + @{Ability_Puissant} ]]}} {{label2=@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}}} {{result2=[[ @{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk} ]]}} {{label3=^{weakness-m}}} {{result3=[[ ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] ]]}} {{label4=^{circumstances-m}}} {{result4=[[ (?{@{circumstantial_i18n}|0}) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=}}"></button>
+                            //-     <button type="roll" class="button stress-roll" name="roll_ability_stress" value="&{template:ability} {{name=@{character_name}}} {{label0=@{Ability_name}}} {{result0=[[ @{stress-die} + (@{Ability_Score} + @{Ability_Puissant}) [@{Ability_name}] + (@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk}) [@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (?{@{circumstantial_i18n}|0}) [@{circumstances_i18n}] ]]}} {{banner=@{Ability_Speciality}}} {{label1=^{rank}}} {{result1=[[ @{Ability_Score} + @{Ability_Puissant} ]]}} {{label2=@{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_i18n@{sys_rbk}}} {{result2=[[ @{sys_at}@{character_name}@{sys_pipe}@{Ability_CharacName}_Score@{sys_rbk} ]]}} {{label3=^{weakness-m}}} {{result3=[[ ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] ]]}} {{label4=^{circumstances-m}}} {{result4=[[ (?{@{circumstantial_i18n}|0}) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
+                            //- </div></td>
                             <td width="240px">
                                 <input type="text" style="width:25px; background: transparent; border: none; text-align: center; color: #53332a; font-variant: small-caps; font-family: Macondo, cursive; font-weight: bold; font-size: 14px; padding: 4px 0px;" name="attr_Ability_CharachShort" value="@{sys_at}@{Ability_CharacName}_short_i18n@{sys_rbk}" disabled >
                                 <input type="text" style="width:210px; padding-left: 0px" class="heading_4" name="attr_Ability_name">
