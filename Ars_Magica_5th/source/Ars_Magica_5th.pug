@@ -4,7 +4,16 @@ include k-scaffold
 //- To clarify difference between sheet code and pug code, we use the
 //- arm5.pug namespace for code that runs during sheet generation, and
 //- arm5.sheet namespace for code that runs during sheet loading in the VTT
-- const arm5 = {};
+-
+    const arm5 = {
+        pug: {
+            hermetic: {
+                techniques: ["creo", "intellego", "muto", "perdo", "rego"],
+                forms: ["animal", "aquam", "auram", "corpus", "herbam", "ignem", "imaginem", "mentem", "terram", "vim"],
+            }
+        },
+        sheet:{}
+    };
 
 
 include helpers/_helpers.pug

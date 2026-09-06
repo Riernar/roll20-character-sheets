@@ -87,6 +87,14 @@ mixin markdown({file, string})
         div.markdown
             != markdown
 
+-
+    const helpers = (() => {
+        const titleCase = str => str.replace(/\b\w/g, char => char.toUpperCase());
+
+        return {
+            titleCase,
+        }
+    })();
 
 
 //- The +module() mixin comes from k-scaffold: https://kurohyou-studios.github.io/k-scaffold/pug#module

@@ -44,7 +44,7 @@
 
             this.score = { ...score };
             this.penalty = { ...penalty };
-            this.modifier = modifier ? {"?{@{modifiers_i18n}|0}": "modifiers_i18n"} : null;
+            this.modifier = modifier ? {"?{@{modifiers_i18n}|0}": "@{modifiers_i18n}"} : null;
             this.divider = divider ? { ...divider } : null;
             this.total_bonuses = total_bonuses ? {...total_bonuses} : null;
 
@@ -60,6 +60,13 @@
             if (!encumbrance) {
                 delete this.penalty["-@{encumbrance}"];
             }
+        }
+
+        get_score({annotations=true}={}) {
+            return this.#sum({parts: {
+                ...this.score,
+                ...this.penalty,
+            }, annotations});
         }
 
         get_modifiers({annotations=true}={}) {
@@ -78,11 +85,12 @@
             return this.#prod({parts: this.divider, annotations});
         }
 
-        get_score({annotations=true}={}) {
-            return this.#sum({parts: {
-                ...this.score,
-                ...this.penalty,
-            }, annotations});
+        has_total_bonus() {
+            return this.total_bonuses != null;
+        }
+
+        get_total_bonus({annotations=true}={}) {
+            return this.#sum({parts: this.total_bonuses, annotations});
         }
 
         get_simple_roll() {
@@ -208,6 +216,13 @@
             );
         }
 
+        get_no_dice_roll() {
+            return this.#build_roll(
+                this.total.get_no_dice_roll(),
+                "stress=",
+            );
+        }
+
         #build_roll(roll, stress) {
             const fields = {
                 [this.label_key]: this.label,
@@ -247,138 +262,89 @@
 mixin am5_roll_button({name, roll, mode="simple+stress"})
     -
         if (typeof name !== "string") {
-            throw new TypeError(`name must be a string, got ${typeof name} ${name}`);
+            throw new TypeError(`+am5_roll_button(): name must be a string, got ${typeof name} ${name}`);
         }
 
         if (!(roll instanceof Roll)) {
-            throw new TypeError(`roll must be a Roll, got ${typeof roll} ${roll}`);
+            throw new TypeError(`+am5_roll_button(): roll must be a Roll, got ${typeof roll} ${roll}`);
         }
 
         if (typeof mode !== "string") {
-            throw new TypeError(`mode must be a string, got ${typeof mode} ${mode}`);
+            throw new TypeError(`+am5_roll_button(): mode must be a string, got ${typeof mode} ${mode}`);
         }
 
         const valid_modes = [
             "simple",
             "stress",
             "simple+stress",
-            "no-dice",
+            "no_dice",
         ];
-
         if (!valid_modes.includes(mode)) {
             throw new TypeError(
-                `mode must be one of: ${valid_modes.join(", ")}, got ${mode}`
+                `+am5_roll_button(): mode must be one of: ${valid_modes.join(", ")}, got ${mode}`
             );
         }
-
-        const total = roll.total;
-        const score = total.get_score({annotations: false});
-        const divider = total.get_divider({annotations: false});
-        const has_divider = total.has_divider({annotations: false});
-
         const single_roll = mode !== "simple+stress";
 
-        const get_button_data = (die, die_class, value) => ({
-            name: `${name}_${die}`,
-            score_name: `${name}_${die}_score`,
-            divider_name: `${name}_${die}_divider`,
-            die_class,
-            value,
-        });
-
     div.die-container&attributes(attributes)
-        if mode === "simple" || mode === "simple+stress"
-            -
-                const button_data = get_button_data(
-                    "simple",
-                    "simple-die",
-                    roll.get_simple_roll()
-                );
+        each die_mode in mode.split("+")
+            +_am5_roll_single_button({name, roll, mode: die_mode})(class={ "single-roll": single_roll })
 
-            button.roll-button.simple-roll(
-                class={ "single-roll": single_roll }
-                type="roll"
-                name=`roll_${button_data.name}`
-                value!=button_data.value
+
+mixin _am5_roll_single_button({name, mode, roll})
+    -
+        if (typeof name !== "string") {
+            throw new TypeError(`+_am5_roll_single_button(): expected 'name' of type string, got ${typeof name} object ${name}`);
+        }
+        const valid_modes = ["simple", "stress", "no_dice"];
+        if (!valid_modes.includes(mode)) {
+            throw new TypeError(
+                `+_am5_roll_single_button(): mode must be one of: ${valid_modes.join(", ")}, got ${mode}`
+            );
+        }
+        if (!(roll instanceof Roll)) {
+            throw new TypeError(`+_am5_roll_single_button(): expected 'roll' of type Roll, got ${typeof roll} object ${roll}`);
+        }
+
+        const has_divider = roll.total.has_divider();
+        const has_total_bonus = roll.total.has_total_bonus();
+
+    button.roll-button(
+        type="roll"
+        class=`${mode}-roll`
+        name=`roll_${name}_${mode}`
+        value!=roll[`get_${mode}_roll`]()
+    )&attributes(attributes)
+        span.roll-formula
+            if (["simple", "stress"].includes(mode))
+                if has_divider
+                    span.formula-paren (
+                span.die(class=`${mode}-roll`)
+                span.formula-operator +
+            input.roll-value(
+                type="number"
+                disabled="true"
+                name=`attr_${name}_${mode}_score`
+                value!=roll.total.get_score({annotations: false})
             )
-                span.roll-formula
-                    if has_divider
-                        span.formula-paren (
-                    span.die(class=button_data.die_class)
-                    span.formula-operator +
+            if has_divider
+                if (["simple", "stress"].includes(mode))
+                    span.formula-paren )
+                span.formula-operator /
+                input.roll-value(
+                    type="number"
+                    disabled="true"
+                    name=`attr_${name}_${mode}_divider`
+                    value!=roll.total.get_divider({annotations: false})
+                )
+                if has_total_bonus
+                    span.formula_operator +
                     input.roll-value(
                         type="number"
                         disabled="true"
-                        name=`attr_${button_data.score_name}`
-                        value!=score
+                        name=`attr_${name}_${mode}_total_bonus`,
+                        value!=roll.total.get_total_bonus({annotations: false})
                     )
-                    if has_divider
-                        span.formula-paren )
-                        span.formula-operator /
-                        input.roll-value(
-                            type="number"
-                            disabled="true"
-                            name=`attr_${button_data.divider_name}`
-                            value!=divider
-                        )
-
-        if mode === "stress" || mode === "simple+stress"
-            -
-                const button_data = get_button_data(
-                    "stress",
-                    "stress-die",
-                    roll.get_stress_roll()
-                );
-
-            button.roll-button.stress-roll(
-                class={ "single-roll": single_roll }
-                type="roll"
-                name=`roll_${button_data.name}`
-                value!=button_data.value
-            )
-                span.roll-formula
-                    if has_divider
-                        span.formula-paren (
-                    span.die(class=button_data.die_class)
-                    span.formula-operator +
-                    input.roll-value(
-                        type="number"
-                        disabled="true"
-                        name=`attr_${button_data.score_name}`
-                        value!=score
-                    )
-                    if has_divider
-                        span.formula-paren )
-                        span.formula-operator /
-                        input.roll-value(
-                            type="number"
-                            disabled="true"
-                            name=`attr_${button_data.divider_name}`
-                            value!=divider
-                        )
-
-        if mode === "no-dice"
-            -
-                const button_data = get_button_data(
-                    "no-dice",
-                    "no-dice",
-                    roll.get_no_dice_roll()
-                );
-
-            button.roll-button.no-dice.single-roll(
-                type="roll"
-                name=`roll_${button_data.name}`
-                value!=button_data.value
-            )
-                span.roll-formula
-                    input.roll-value(
-                        type="number"
-                        disabled=true
-                        name=`attr_${button_data.score_name}`
-                        value!=score
-                    )
-
-
 
 
 +scss.
@@ -431,17 +397,31 @@ mixin am5_roll_button({name, roll, mode="simple+stress"})
         }
 
         /* Change which roll button to display based on the setting and the toggle */
-        button.simple-roll,
-        button.stress-roll {
-            display: none;
-        }
+        /*
+            button.simple-roll,
+            button.stress-roll,
+            {
+                display: none;
+            }
 
-        input.dtype-selector[value="both"]~div.sheet-tab-content button.simple-roll,
-        input.dtype-selector[value="both"]~div.sheet-tab-content button.stress-roll,
-        input.dtype-selector[value="toggle"]~input.selected-die[value="simple"]~div.sheet-tab-content button.simple-roll,
-        input.dtype-selector[value="toggle"]~input.selected-die[value="stress"]~div.sheet-tab-content button.stress-roll,
-        button.single-roll { /* special class for rolls that always have the same type and should always be displayed */
-            display: block;
+            input.dtype-selector[value="both"]~div.sheet-tab-content button.simple-roll,
+            input.dtype-selector[value="both"]~div.sheet-tab-content button.stress-roll,
+            input.dtype-selector[value="toggle"]~input.selected-die[value="simple"]~div.sheet-tab-content button.simple-roll,
+            input.dtype-selector[value="toggle"]~input.selected-die[value="stress"]~div.sheet-tab-content button.stress-roll,
+            button.single-roll {
+                display: block;
+            }
+        */
+        /* In toggle mode, hide the wrong die */
+        input.dtype-selector[value="toggle"]
+            ~ input.selected-die[value="simple"]
+            ~ div.sheet-tab-content
+            button.stress-roll:not(.single-roll),
+        input.dtype-selector[value="toggle"]
+            ~ input.selected-die[value="stress"]
+            ~ div.sheet-tab-content
+            button.simple-roll:not(.single-roll) {
+            display: none !important;
         }
 
         /* ================================ END Die mode selection ================================== */
