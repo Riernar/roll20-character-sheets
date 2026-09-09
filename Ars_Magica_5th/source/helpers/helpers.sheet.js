@@ -41,13 +41,15 @@ const helpers = (() => {
     return obj[key];
   };
 
-  const titleCase = str => str.replace(/\b\w/g, char => char.toUpperCase());
+  const titleCase = (str) => str.replace(/\b\w/g, (char) => char.toUpperCase());
+  const removeSuffix = (str, suffix) => (str.endsWith(suffix) ? str.slice(0, -suffix.length) : str);
 
   return {
     KeyError,
     as_number,
     get,
-    titleCase
+    titleCase,
+    removeSuffix
   };
 })();
 

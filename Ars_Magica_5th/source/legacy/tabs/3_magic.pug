@@ -2,17 +2,89 @@
 
 
 mixin select_hermetic_technique(obj)
-    +select(obj).select_1.select_hermetic_technique
-        +option({class:"italic", value:"0 [@{technique_i18n}]", "data-i18n":"technique"}) Technique
+    -
+        const {name, ...rest} = obj;
+        if (typeof name !== "string" || name.trim() === "") {
+            throw new ValueError(`+select_hermetic_technique(): expected 'name' to be non-empty string, got ${typeof name} object ${name}`);
+        }
+        const selectOptions = {
+            name,
+            ...rest,
+            trigger: {
+            ...(rest.trigger ?? {}),
+                affects: [
+                    ...(rest.trigger?.affects ?? []),
+                    ...[`${name}_value`, `${name}_label`],
+                ],
+            },
+        };
+        
+    +hidden({name: `${name}_value`, trigger:{calculation:"calcHermeticTechnique"}, value: 0})
+    +hidden({name: `${name}_label`, trigger:{calculation:"calcHermeticTechniqueLabel"}, value: "@{technique_i18n}"})
+
+    +select(selectOptions).select_1.select_hermetic_technique
+        +option({class:"italic", value:"unselected", "data-i18n":"technique", selected:true}) Technique
         each technique in arm5.pug.hermetic.techniques
-            +option({value: `(@{${technique}_score} + @{${technique}_puissant}) [@{${technique}_i18n}]`, 'data-i18n':technique})= helpers.titleCase(technique)
+            +option({value: technique, 'data-i18n':technique})= helpers.titleCase(technique)
 
 mixin select_hermetic_form(obj)
-    +select(obj).select_1.select_hermetic_form
-        +option({class:"italic", value:"0 [@{form_i18n}]", "data-i18n":"form"}) Form
-        each form in arm5.pug.hermetic.forms
-            +option({value: `(@{${form}_score} + @{${form}_puissant}) [@{${form}_i18n}]`, "data-i18n":form})= helpers.titleCase(form)
+    -
+        const {name, ...rest} = obj;
+        if (typeof name !== "string" || name.trim() === "") {
+            throw new ValueError(`+select_hermetic_form(): expected 'name' to be non-empty string, got ${typeof name} object ${name}`);
+        }
+        const selectOptions = {
+            name,
+            ...rest,
+            trigger: {
+            ...(rest.trigger ?? {}),
+                affects: [
+                    ...(rest.trigger?.affects ?? []),
+                    ...[`${name}_value`, `${name}_label`],
+                ],
+            },
+        };
 
+    +hidden({name: `${name}_value`, trigger:{calculation:"calcHermeticForm"}, value: 0})
+    +hidden({name: `${name}_label`, trigger:{calculation:"calcHermeticFormLabel"}, value: "@{form_i18n}"})
+
+    +select(selectOptions).select_1.select_hermetic_form
+        +option({class:"italic", value:"unselected", "data-i18n":"form"}) Form
+        each form in arm5.pug.hermetic.forms
+            +option({value: form, "data-i18n":form})= helpers.titleCase(form)
+
+
++hidden({name:"gestures", trigger:{calculation:"calcGestures"} })
++hidden({name:"gestures_label", trigger:{calculation:"calcGesturesLabel"} })
++hidden({name:"words", trigger:{calculation:"calcWords"} })
++hidden({name:"words_label", trigger:{calculation:"calcWordsLabel"} })
+mixin hermetic_casting_parameters()
+    h5(data-i18n="bonus").heading_label Bonus
+    .kscaffold-compatible
+        .config
+            span(data-i18n="aura") Aura
+            +number({name:"aura", value:3}).number_1
+
+            span(data-i18n="gestures") Gestures
+            +select({name: "gestures_raw", trigger:{affects:["gestures", "gestures_label"]} }).select_1
+                +option({"data-i18n": "gestures-exaggerated", value:"exaggerated" }).italic Exaggerated (+1)
+                +option({"data-i18n":"gestures-bold", value:"bold", selected: true, trigger}).italic Bold
+                +option({"data-i18n":"gestures-subtle", value:"subtle", trigger}).italic Subtle (-2)
+                +option({"data-i18n":"gestures-none", value:"none", trigger}).italic None (-5)
+
+            span(data-i18n="words") Words
+            +select({name: "words_raw", trigger: {affects:["words", "words_label"]} }).select_1
+                +option({"data-i18n":"words-loud", value:"loud"}).italic Loud (+1)
+                +option({"data-i18n":"words-firm", value:"firm", selected:true}).italic Firm
+                +option({"data-i18n":"words-quiet", value:"quiet"}).italic Quiet (-5)
+                +option({"data-i18n":"words-none", value:"none"}).italic None (-10)
+
+-
+    const hermetic_parameters = {
+        "@{gestures}": "@{gestures_label}",
+        "@{words}": "@{words_label}",
+        "@{aura}": "@{aura_i18n}",
+    };
 
 mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode, critical})
     -
@@ -35,8 +107,8 @@ mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode, crit
 
         const casting_total =  new RollTotal({
             score: {
-                [`@{cast_${name}_technique}`]: null,
-                [`@{cast_${name}_form}`]: null,
+                [`@{cast_${name}_technique_value}`]: `@{cast_${name}_technique_label}`,
+                [`@{cast_${name}_form_value}`]: `@{cast_${name}_form_label}`,
                 [`[[@{cast_${name}_focus}]]`]: "@{focus_i18n}",
                 "@{Stamina_Score}":  "@{stamina_i18n}",
                 ...(ceremonial
@@ -46,9 +118,7 @@ mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode, crit
                     }
                     : {}
                 ),
-                "@{gestures}": null,
-                "@{words}": null,
-                "@{aura}": "@{aura_i18n}",
+                ...hermetic_parameters,
             },
             divider: {
                 ...(divider !== null ? {[`${divider}`]: null} : {}),
@@ -82,8 +152,9 @@ mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode, crit
         td: +select_hermetic_technique({name: `cast_${name}_technique`})
         td: +select_hermetic_form({name: `cast_${name}_form`})
         td(style="text-align: center;")
-            //- min() is computed as (a + b) - abs(a - b)
-            +checkbox({name: `cast_${name}_focus`, value: `((@{cast_${name}_technique} + @{cast_${name}_form} - abs(@{cast_${name}_technique} - @{cast_${name}_form}))/2)`}).check
+            //- min() is computed as ((a + b) - abs(a - b)) / 2
+            - const attr_min = (l, r) => `(((${l}) + (${r}) - abs((${l}) - (${r})))/2)`;
+            +checkbox({name: `cast_${name}_focus`, value: attr_min(`@{cast_${name}_technique_value}`, `@{cast_${name}_form_value}`) }).check
         td(style="text-align: center;")
             +checkbox({name: `cast_${name}_deficiency`, value: "1"}).check
         td: +number({name: `cast_${name}_sta`, value: "@{Stamina_Score}", disabled: "true"}).number_2
@@ -99,27 +170,7 @@ mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode, crit
         else
             td
 
-mixin hermetic_casting_parameters()
-    h5(data-i18n="bonus").heading_label Bonus
-    .kscaffold-compatible
-        .config
 
-            span(data-i18n="aura") Aura
-            +number({name:"aura", value:3}).number_1
-
-            span(data-i18n="gestures") Gestures
-            +select({name: "gestures"}).select_1
-                +option({"data-i18n": "gestures-exaggerated", value:"1 [@{gestures_i18n}: @{exaggerated_i18n}]"}).italic Exaggerated (+1)
-                +option({"data-i18n":"gestures-bold", value:"0 [@{gestures_i18n}: @{bold_i18n}]", selected: true}).italic Bold
-                +option({"data-i18n":"gestures-subtle", value:"(-2) [@{gestures_i18n}: @{subtle_i18n}]"}).italic Subtle (-2)
-                +option({"data-i18n":"gestures-none", value:"(-5) [@{gestures_i18n}: @{gest-none_i18n}]"}).italic None (-5)
-            
-            span(data-i18n="words") Words
-            +select({name: "words"}).select_1
-                +option({"data-i18n":"words-loud", value:"1 [@{words_i18n}: @{loud_i18n}]"}).italic Loud (+1)
-                +option({"data-i18n":"words-firm", value:"0 [@{words_i18n}: @{firm_i18n}]", selected:true}).italic Firm
-                +option({"data-i18n":"words-quiet", value:"(-5) [@{words_i18n}: @{quiet_i18n}]"}).italic Quiet (-5)
-                +option({"data-i18n":"words-none", value:"(-10) [@{words_i18n}: @{words-none_i18n}]"}).italic None (-10)
 
 <div class="sheet-tab-content tab3">
     <!-- Techniques & Forms -->
@@ -779,3 +830,70 @@ mixin hermetic_casting_parameters()
             width: 95px;
         }
     }
+
++module.
+    const calcHermeticTechnique = function({trigger, attributes}) {
+        const technique = helpers.get(attributes, helpers.removeSuffix(trigger.name, "_value"));
+        if (name === "unselected") return "0";
+        return `@{${technique}_score} + @{${technique}_puissant}`;
+    };
+    const calcHermeticTechniqueLabel = function({trigger, attributes}) {
+        const technique = helpers.get(attributes, helpers.removeSuffix(trigger.name, "_label"));
+        if (name === "unselected") return "@{technique_i18n}";
+        return `@{${technique}_i18n}`;
+    };
+    k.registerFuncs({calcHermeticTechnique, calcHermeticTechniqueLabel});
+
+    const calcHermeticForm = function({trigger, attributes}) {
+        const form = helpers.get(attributes, helpers.removeSuffix(trigger.name, "_value"));
+        if (name === "unselected") return "@{form_i18n}";
+        return `@{${form}_score} + @{${form}_puissant}`;
+    };
+    const calcHermeticFormLabel = function({trigger, attributes}) {
+        const form = helpers.get(attributes, helpers.removeSuffix(trigger.name, "_label"));
+        if (name === "unselected") return "@{form_i18n}";
+        return `@{${form}_i18n}`;
+    };
+    k.registerFuncs({calcHermeticForm, calcHermeticFormLabel});
+
+
+    const calcGestures = function({attributes}) {
+        const gestures = helpers.get(attributes, "gestures_raw");
+        const map = {
+            "exaggerated": 1,
+            "bold": 0,
+            "subtle": -2,
+            "none": -5,
+        };
+        const result = helpers.get(map, gestures);
+        console.log({func:"calcGestures", attributes, gestures, map, result});
+        return result;
+    };
+    k.registerFuncs({calcGestures});
+
+    const calcGesturesLabel = function ({attributes}) {
+        const gestures = helpers.get(attributes, "gestures_raw");
+        return `@{gestures_i18n}: @{${gestures}_i18n}`;
+    };
+    k.registerFuncs({calcGesturesLabel});
+
+    const calcWords = function ({attributes}) {
+        const words = helpers.get(attributes, "words_raw");
+        const map = {
+            "loud": 1,
+            "firm": 0,
+            "quiet": -5,
+            "none": -10,
+        };
+        const result = helpers.get(map, words);
+        console.log({func:"calcWords", attributes, words, map, result});
+        return result;
+    };
+    k.registerFuncs({calcWords});
+
+    const calcWordsLabel = function ({attributes}) {
+        const words = helpers.get(attributes, "words_raw");
+        return `@{words_i18n}: @{${words}_i18n}`;
+    };
+    k.registerFuncs({calcWordsLabel});
+

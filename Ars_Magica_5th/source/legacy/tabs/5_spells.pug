@@ -5,6 +5,18 @@
     //- <!-- Formulaic spells -->
     <h4 class="heading_label" style="margin-top:10px;" data-i18n="formulaic-spells" >Formulaic spells</h4>
     <fieldset class="repeating_spell">
+        -
+            const total = new RollTotal({
+                score: {
+                    "@{Stamina_Score}":  "@{stamina_i18n}",
+                    // TODO: arts and focus
+                    "@{spell_bonus}":"@{bonus_i18n}",
+                    ...hermetic_parameters
+                },
+                divider: {
+                    "[[1 + (@{spell_Deficiency})]]":  "@{deficiency_i18n}",
+                }
+            });
         <table style="margin-top:10px;">
             <tr>
                 <th style="padding-left:10px;"><div class="flex-container-center">
