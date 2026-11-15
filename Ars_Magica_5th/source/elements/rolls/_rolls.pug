@@ -5,20 +5,20 @@
     class RollTotal {
         constructor({
             score,
-            penalty = {
-                "@{fatigue_penalty}": "@{fatigue_i18n}",
-                "@{wound_penalty}": "@{wounds_i18n}",
-                "-@{encumbrance}": "@{encumbrance_i18n}"
-            },
+            penalties = {},
             modifier = true,
             divider = null,
             total_bonuses = null,
+            // Standardized penalties. Set to:
+            // - `true` to use the default value
+            // - `false` to disable
+            // - a string to override the default value
             fatigue = true,
             wounds = true,
             encumbrance = true,
         }) {
             this.#validateParts(score, "score");
-            this.#validateParts(penalty, "penalty");
+            this.#validateParts(penalties, "penalties");
 
             if (divider !== null) {
                 this.#validateParts(divider, "divider");
@@ -43,38 +43,47 @@
             }
 
             this.score = { ...score };
-            this.penalty = { ...penalty };
+            this.penalties = { ...penalties };
             this.modifier = modifier ? {"?{@{modifiers_i18n}|0}": "@{modifiers_i18n}"} : null;
             this.divider = divider ? { ...divider } : null;
             this.total_bonuses = total_bonuses ? {...total_bonuses} : null;
-
-
-            if (!fatigue) {
-                delete this.penalty["@{fatigue_penalty}"];
-            }
-
-            if (!wounds) {
-                delete this.penalty["@{wound_penalty}"];
-            }
-
-            if (!encumbrance) {
-                delete this.penalty["-@{encumbrance}"];
-            }
+            this.fatigue = fatigue;
+            this.wounds = wounds;
+            this.encumbrance = encumbrance;
         }
+
+        // Public API: Get roll strings for all supported dice types
+
+        get_simple_roll() {
+            return this.#get_roll("@{simple-die}");
+        }
+
+        get_stress_roll() {
+            return this.#get_roll("@{stress-die}");
+        }
+
+        get_no_dice_roll({annotations=true}={}) {
+            return this.#get_roll("0", annotations);
+        }
+
+        // Public API: Get roll strings for parts of the computation. Used by the toll button
+        // to create the computation parts, and by roll templates to display some elements
+        // in the roll template result table
 
         get_score({annotations=true}={}) {
             return this.#sum({parts: {
                 ...this.score,
-                ...this.penalty,
+                ...this.#get_all_penalties(),
             }, annotations});
         }
 
-        get_modifiers({annotations=true}={}) {
-            return this.#sum({parts: this.modifier, annotations});
+        get_modifier({annotations=true}={}) {
+            const modifier = "?{@{modifiers_i18n}|0}";
+            return annotations ? `${modifier} [@{modifiers_i18n}]` : modifier;
         }
 
         get_penalties({annotations=true}={}) {
-            return this.#sum({parts: this.penalty, annotations});
+            return this.#sum({parts: this.#get_all_penalties(), annotations});
         }
 
         has_divider() {
@@ -93,21 +102,26 @@
             return this.#sum({parts: this.total_bonuses, annotations});
         }
 
-        get_simple_roll() {
-            return this.#get_roll("@{simple-die}");
-        }
+        // Internals
 
-        get_stress_roll() {
-            return this.#get_roll("@{stress-die}");
-        }
-
-        get_no_dice_roll({annotations=true}={}) {
-            return this.#get_roll("0", annotations);
+        #get_all_penalties() {
+            const penalties = {...this.penalty};
+            for (const [param, defaultValue, label] of [
+                [this.fatigue, "@{fatigue_penalty}", "@{fatigue_i18n}"],
+                [this.wounds, "@{wound_penalty}", "@{wounds_i18n}"],
+                [this.encumbrance, "-@{encumbrance}", "@{encumbrance_i18n}"],
+            ]) {
+                if (param) {
+                    const value = (typeof param === "string") ? param : defaultValue
+                    penalties[value] = label;
+                }
+            }
+            return penalties;
         }
 
         #get_roll(die, annotations=true) {
             const score = this.get_score({annotations});
-            const modifier = this.get_modifiers({annotations});
+            const modifier = this.get_modifier({annotations});
             let result = `${die} + ${score} + ${modifier}`;
 
             if (this.has_divider()) {

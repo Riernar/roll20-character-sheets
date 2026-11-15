@@ -230,7 +230,10 @@
                             -
                                 const total = new RollTotal({
                                     score:{[`@{personality_trait${i}_score}`]: `@{personality_trait1}`},
-                                    penalty: {}, //AM DE says personality roll have nothing but the roll
+                                    //AM DE says personality roll have nothing but the roll
+                                    fatigue: false,
+                                    wounds: false,
+                                    encumbrance: false,
                                 });
                                 const roll = new Roll({
                                     template: "generic",
@@ -272,7 +275,10 @@
                             -
                                 const total = new RollTotal({
                                     score:{[`@{reputations${i}_score}`]: `@{reputations${i}}`},
-                                    penalty: {}, //AM DE says reputation roll have nothing but the roll
+                                    //AM DE says reputation roll have nothing but the roll
+                                    fatigue: false,
+                                    wounds: false,
+                                    encumbrance: false,
                                 });
                                 const roll = new Roll({
                                     template: "generic",

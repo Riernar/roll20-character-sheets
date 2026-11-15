@@ -139,7 +139,7 @@ mixin hermetic_casting_row({name, display, ceremonial=false, divider, mode, crit
                 "label2": "^{weakness-m}",
                 "result2": inline_roll(casting_total.get_penalties()),
                 "label3": "^{circumstances-m}",
-                "result3": inline_roll(casting_total.get_modifiers()),
+                "result3": inline_roll(casting_total.get_modifier()),
                 "botch-button": "[@{botch_i18n}!](~@{character_name}|botch)",
                 "crit-button": `[@{critical_i18n}!](~@{character_name}|${critical})`,
             },
