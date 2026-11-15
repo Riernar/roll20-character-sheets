@@ -1,3 +1,31 @@
+-
+    const soak_total = new RollTotal({
+        score: {
+            "@{Stamina_Score}": "@{stamina_i18n}",
+            "@{armors_total_prot}": "@{armor_i18n}",
+            "@{soak_bonus}": "@{soakbns_i18n}",
+            "@{combat-mods_total_soak}": "@{soakbns_i18n}",
+        },
+        // No penalties to soak
+        fatigue: false,
+        wounds: false,
+        encumbrance: false,
+    });
+    const soak_roll = new Roll({
+        template: "soak",
+        label_key: "name",
+        label: "@{character_name}",
+        total_key: "rollsoak",
+        total: soak_total,
+        fields: {
+            "armorsoak": inline_roll("@{armors_total_prot_detailed}"),
+            "soakbonus": inline_roll("(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})"),
+            "botch-button" : "[@{botch_i18n}!](~@{character_name}|botch)",
+            "crit-button": "[@{critical_i18n}!](~@{character_name}|critical)",
+        }
+    });
+
+
 <!-- 4 Combat -->
 <div class="sheet-tab-content tab4" >
     div(style="margin-top:10px;").col2grid
@@ -242,41 +270,14 @@
                     <th data-i18n="bonus" style="text-align: center;">Bonus</th>
                 </tr>
                 tr
-                    +pug_scope
-                        -
-                            const total = new RollTotal({
-                                score: {
-                                    "@{Stamina_Score}": "@{stamina_i18n}",
-                                    "@{armors_total_prot}": "@{armor_i18n}",
-                                    "@{soak_bonus}": "@{soakbns_i18n}",
-                                    "@{combat-mods_total_soak}": "@{soakbns_i18n}",
-                                },
-                                // No penalties to soak
-                                fatigue: false,
-                                wounds: false,
-                                encumbrance: false,
-                            });
-                            const roll = new Roll({
-                                template: "soak",
-                                label_key: "name",
-                                label: "@{character_name}",
-                                total_key: "rollsoak",
-                                total,
-                                fields: {
-                                    "armorsoak": inline_roll("@{armors_total_prot_detailed}"),
-                                    "soakbonus": inline_roll("(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})"),
-                                    "botch-button" : "[@{botch_i18n}!](~@{character_name}|botch)",
-                                    "crit-button": "[@{critical_i18n}!](~@{character_name}|critical)",
-                                }
-                            });
-                        <td style="width:30px;">
-                            +am5_roll_button({name: "soak", roll, mode:"stress"})
-                            //- <button type="roll" class="button stress-roll single-roll" name="roll_soak" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                        </td>
-                        <td style="text-align: center;"><input type="number" class="number_1" name="attr_soak_stamina" disabled="true" value="(@{Stamina_Score})"></td>
-                        <td style="text-align: center;"><input type="number" class="number_2" name="attr_armors_total_prot" value="0" readonly></td>
-                        <td style="text-align: center;"><input type="number" class="number_2" name="attr_combat-mods_total_soak" value="0" readonly></td>
-                        <td style="text-align: center;"><input type="number" class="number_2" name="attr_soak_bonus" value="0"></td>
+                    <td style="width:30px;">
+                        +am5_roll_button({name: "soak", roll: soak_roll, mode:"stress"})
+                        //- <button type="roll" class="button stress-roll single-roll" name="roll_soak" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
+                    </td>
+                    <td style="text-align: center;"><input type="number" class="number_1" name="attr_soak_stamina" disabled="true" value="(@{Stamina_Score})"></td>
+                    <td style="text-align: center;"><input type="number" class="number_2" name="attr_armors_total_prot" value="0" readonly></td>
+                    <td style="text-align: center;"><input type="number" class="number_2" name="attr_combat-mods_total_soak" value="0" readonly></td>
+                    <td style="text-align: center;"><input type="number" class="number_2" name="attr_soak_bonus" value="0"></td>
             </table>
         <!-- Encumbrance -->
         div.sheet-col
@@ -302,64 +303,34 @@
     <!-- Soak by Forms for Magi -->
     <div class="magi-only" style="padding-bottom: 15px;">
         <h4 class="heading_label" style="margin-bottom:0px;" data-i18n="soak-forms" >Soak by Forms</h4>
-        <div class='artgrid' style="border:1px solid black">
-            <div class="flex-container-left" style="grid-column: 1 / span 1; grid-row: 1 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_animal" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Animal_Score}) + (@{Animal_Puissant})) / 5) [@{animal_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{animal}}} {{formbonus=[[ ceil(((@{Animal_Score}) + (@{Animal_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Animal" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Animal_Score}) + (@{Animal_Puissant})) / 5))" disabled="true">
-                <span data-i18n="animal">Animal</span>
-            </div>
-            <div class="flex-container-left" style="grid-column: 2 / span 1; grid-row: 1 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_aquam" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Aquam_Score}) + (@{Aquam_Puissant})) / 5) [@{aquam_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{aquam}}} {{formbonus=[[ ceil(((@{Aquam_Score}) + (@{Aquam_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Aquam" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Aquam_Score}) + (@{Aquam_Puissant})) / 5))" disabled="true">
-                <span data-i18n="aquam">Aquam</span>
-            </div>
-            <div class="flex-container-left" style="grid-column: 3 / span 1; grid-row: 1 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_auram" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Auram_Score}) + (@{Auram_Puissant})) / 5) [@{auram_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{auram}}} {{formbonus=[[ ceil(((@{Auram_Score}) + (@{Auram_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Auram" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Auram_Score}) + (@{Auram_Puissant})) / 5))" disabled="true">
-                <span data-i18n="auram">Auram</span>
-            </div>
-            <div class="flex-container-left" style="grid-column: 4 / span 1; grid-row: 1 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_corpus" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Corpus_Score}) + (@{Corpus_Puissant})) / 5) [@{corpus_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{corpus}}} {{formbonus=[[ ceil(((@{Corpus_Score}) + (@{Corpus_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Corpus" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Corpus_Score}) + (@{Corpus_Puissant})) / 5))" disabled="true">
-                <span data-i18n="corpus">Corpus</span>
-            </div>
-            <div class="flex-container-left" style="grid-column: 5 / span 1; grid-row: 1 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_herbam" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Herbam_Score}) + (@{Herbam_Puissant})) / 5) [@{herbam_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{herbam}}} {{formbonus=[[ ceil(((@{Herbam_Score}) + (@{Herbam_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Herbam" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Herbam_Score}) + (@{Herbam_Puissant})) / 5))" disabled="true">
-                <span data-i18n="herbam">Herbam</span>
-            </div>
-            <div class="flex-container-left" style="grid-column: 1 / span 1; grid-row: 2 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_ignem" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Ignem_Score}) + (@{Ignem_Puissant})) / 5) [@{ignem_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{ignem}}} {{formbonus=[[ ceil(((@{Ignem_Score}) + (@{Ignem_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Ignem" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Ignem_Score}) + (@{Ignem_Puissant})) / 5))" disabled="true">
-                <span data-i18n="ignem">Ignem</span>
-            </div>
-            <div class="flex-container-left" style="grid-column: 2 / span 1; grid-row: 2 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_imaginem" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Imaginem_Score}) + (@{Imaginem_Puissant})) / 5) [@{imaginem_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{imaginem}}} {{formbonus=[[ ceil(((@{Imaginem_Score}) + (@{Imaginem_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Imaginem" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Imaginem_Score}) + (@{Imaginem_Puissant})) / 5))" disabled="true">
-                <span data-i18n="imaginem">Imaginem</span>
-            </div>
-            <div class="flex-container-left" style="grid-column: 3 / span 1; grid-row: 2 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_mentem" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Mentem_Score}) + (@{Mentem_Puissant})) / 5) [@{mentem_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{mentem}}} {{formbonus=[[ ceil(((@{Mentem_Score}) + (@{Mentem_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Mentem" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Mentem_Score}) + (@{Mentem_Puissant})) / 5))" disabled="true">
-                <span data-i18n="mentem">Mentem</span>
-            </div>
-            <div class="flex-container-left" style="grid-column: 4 / span 1; grid-row: 2 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_terram" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Terram_Score}) + (@{Terram_Puissant})) / 5) [@{terram_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{terram}}} {{formbonus=[[ ceil(((@{Terram_Score}) + (@{Terram_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Terram" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Terram_Score}) + (@{Terram_Puissant})) / 5))" disabled="true">
-                <span data-i18n="terram">Terram</span>
-            </div>
-            <div class="flex-container-left" style="grid-column: 5 / span 1; grid-row: 2 / span 1;">
-                <button type="roll" class="button stress-roll single-roll" name="roll_soak_vim" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] + ceil(((@{Vim_Score}) + (@{Vim_Puissant})) / 5) [@{vim_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{formlabel=^{vim}}} {{formbonus=[[ ceil(((@{Vim_Score}) + (@{Vim_Puissant})) / 5) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                <input type="text" class="number_1" name="attr_Soak_Vim" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}) + ceil(((@{Vim_Score}) + (@{Vim_Puissant})) / 5))" disabled="true">
-                <span data-i18n="vim">Vim</span>
-            </div>
-        </div>
+        div.form-soak
+            each form in arm5.pug.hermetic.forms
+                -
+                    const form_bonus = `ceil(((@{${form}_score}) + (@{${form}_puissant})) / 5)`;
+                    const form_soak_total = new RollTotal({
+                        ...soak_total,
+                        score: {
+                            ...soak_total.score,
+                            [form_bonus]: `@{${form}_i18n}`
+                        }
+                    });
+                    const form_soak_roll = new Roll({
+                        ...soak_roll,
+                        total: form_soak_total,
+                        fields: {
+                            ...soak_roll.fields,
+                            formlabel: `^{${form}}`,
+                            formbonus: inline_roll(form_bonus),
+                        }
+                    });
+                +am5_roll_button({name: `soak_${form}`, roll: form_soak_roll, mode:"stress"})
+                span(data-i18n=form)= helpers.titleCase(form)
     </div>
     <!-- Weapons -->
     <div>
         <h4 class="heading_label" data-i18n="weapons" >Weapons</h4>
         <table class="table_2" style="width:800px">
-            +hidden({name: "weapon_total_load", value: 0, readonly:true, class:"number_2", trigger:{affects:["total_load"]}})
+            +hidden({name: "weapon_total_load", value: 0, readonly:true, class:"number_2", trigger:{affects:["total_load"]} })
             <tr>
                 <td style="width: 30px;"><span class="has-tooltip"><span data-i18n="inc-">Inc.</span><span class="sheet-tooltip" data-i18n="tooltip-inc-">"Included<br>Check if the item is active. Unchecked items are not used in the computation"</span></span></td>
                 <th><div style="width:190px" data-i18n="weapon-name" >Weapon Name</div></th>
@@ -534,6 +505,19 @@
                 color: #53332a;
                 text-align: center;
             }
+        }
+
+        .form-soak {
+            display: grid;
+            grid-auto-rows: auto;
+            grid-template-columns: repeat(5, min-content 1fr);
+            gap: 0.2em 0.5em;
+            border:1px solid black;
+            padding: 0.1em;
+            font-family: 'Macondo', cursive;
+            font-variant: small-caps;
+            font-weight: bold;
+            color: #53332a;
         }
     }
 

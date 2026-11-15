@@ -44,13 +44,15 @@
 
             this.score = { ...score };
             this.penalties = { ...penalties };
-            this.modifier = modifier ? {"?{@{modifiers_i18n}|0}": "@{modifiers_i18n}"} : null;
+            this.modifier = modifier;
             this.divider = divider ? { ...divider } : null;
             this.total_bonuses = total_bonuses ? {...total_bonuses} : null;
             this.fatigue = fatigue;
             this.wounds = wounds;
             this.encumbrance = encumbrance;
         }
+
+        
 
         // Public API: Get roll strings for all supported dice types
 
@@ -303,9 +305,10 @@ mixin am5_roll_button({name, roll, mode="simple+stress"})
     div.die-container&attributes(attributes)
         each die_mode in mode.split("+")
             +_am5_roll_single_button({name, roll, mode: die_mode})(class={ "single-roll": single_roll })
+                block
 
 
-mixin _am5_roll_single_button({name, mode, roll})
+mixin _am5_roll_single_button({name, mode, roll, die_label})
     -
         if (typeof name !== "string") {
             throw new TypeError(`+_am5_roll_single_button(): expected 'name' of type string, got ${typeof name} object ${name}`);
@@ -334,6 +337,7 @@ mixin _am5_roll_single_button({name, mode, roll})
                 if has_divider
                     span.formula-paren (
                 span.die(class=`${mode}-roll`)
+                    block
                 span.formula-operator +
             input.roll-value(
                 type="number"

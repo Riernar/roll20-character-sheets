@@ -71,15 +71,6 @@
   grid-auto-rows: auto;
   grid-template-columns: 33% 33% 33%;
 }
-.ui-dialog .tab-content .charsheet .arm5-sheet div.artgrid {
-  display: grid;
-  grid-auto-rows: auto;
-  grid-template-columns: repeat(5, 165px);
-  font-family: "Macondo", cursive;
-  font-variant: small-caps;
-  font-weight: bold;
-  color: #53332a;
-}
 .ui-dialog .tab-content .charsheet .arm5-sheet .vcenter {
   display: flex;
   align-items: center;
@@ -4494,6 +4485,18 @@ End of the python integration block
   font-weight: bold;
   color: #53332a;
   text-align: center;
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .form-soak {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(5, min-content 1fr);
+  gap: 0.2em 0.5em;
+  border: 1px solid black;
+  padding: 0.1em;
+  font-family: "Macondo", cursive;
+  font-variant: small-caps;
+  font-weight: bold;
+  color: #53332a;
 }
 .ui-dialog .tab-content .charsheet {
   --font1:var(--topHeadFont);
