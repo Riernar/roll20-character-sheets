@@ -6,6 +6,9 @@
 //- - arm5.helpers = require("./source/helpers/helpers.pug.js").helpers;
 
 
+//- Trick to isolate the JS blocks we write in certain section that aren't currently in their own mixin
+mixin pug_scope
+    block
 
 
 //- Allows to transfer data from the PUG runtime to the sheet runtime

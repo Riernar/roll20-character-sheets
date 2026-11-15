@@ -2814,24 +2814,22 @@ Fix Lab Total computation when General Quality has a leading <code>+</code>
     <div class="sheet-col"><h4 class="heading_label" data-i18n="soak" >Soak</h4>
 <table class="table_2" style="width:380px">
 <tr>
-<td></td>
 <th data-i18n="soak" style="text-align: center;">Soak</th>
 <th data-i18n="sta" style="text-align: center;">sta</th>
 <th data-i18n="armor" style="text-align: center;">Armor</th>
 <th data-i18n="bonus" style="text-align: center;">Bonus</th>
 <th data-i18n="bonus" style="text-align: center;">Bonus</th>
 </tr>
-<tr>
-<td style="width:30px;">
-<button type="roll" class="button stress-roll single-roll" name="roll_soak" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-</td>
-<td style="text-align: center;"><input type="number" class="number_1" name="attr_Soak" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}))" disabled="true"></td>
+      <tr><td style="width:30px;">
+        <div class="die-container">
+          <button class="roll-button stress-roll single-roll" type="roll" name="roll_soak_stress" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ (@{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak}) [@{soakbns_i18n}] + ?{@{modifiers_i18n}|0} [@{modifiers_i18n}]) ]]}} {{armorsoak=[[ @{armors_total_prot_detailed} ]]}} {{soakbonus=[[ (@{soak_bonus}) + (@{combat-mods_total_soak_detailed}) ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"><span class="roll-formula"><span class="die stress-roll"></span><span class="formula-operator">+</span>
+              <input class="roll-value" type="number" disabled="true" name="attr_soak_stress_score" value="(@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak})"/></span></button>
+        </div></td>
 <td style="text-align: center;"><input type="number" class="number_1" name="attr_soak_stamina" disabled="true" value="(@{Stamina_Score})"></td>
 <td style="text-align: center;"><input type="number" class="number_2" name="attr_armors_total_prot" value="0" readonly></td>
-<td style="text-align: center;"><input type="number" class="number_2" name="attr_soak_bonus" value="0"></td>
 <td style="text-align: center;"><input type="number" class="number_2" name="attr_combat-mods_total_soak" value="0" readonly></td>
-</tr>
-</table>
+<td style="text-align: center;"><input type="number" class="number_2" name="attr_soak_bonus" value="0"></td>
+      </tr></table>
     </div><!-- Encumbrance -->
     <div class="sheet-col"><h4 class="heading_label" data-i18n="encumbrance" >Encumbrance</h4>
       <div class="encumbrance">

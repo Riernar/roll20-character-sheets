@@ -12,12 +12,12 @@
                     {name: "dazed",  penalty:-5, recovery:"1 hr."},
                 ];
             //- Fatigue penaly attribute
-            +hidden({name: "fatigue_penalty", value:0, trigger:{calculation: "calc_fatigue_penalty"}})
+            +hidden({name: "fatigue_penalty", value:0, trigger:{calculation: "calc_fatigue_penalty"} })
             <!-- Ignore fatigue penalty toggle -->
             table(class="table_2" style="width:300px;")
                 tr
                     td
-                        +checkbox({name:"fatigue_ignored", class:"check", value:"1", trigger:{affects:['fatigue_penalty']}})
+                        +checkbox({name:"fatigue_ignored", class:"check", value:"1", trigger:{affects:['fatigue_penalty']} })
                     td: span(style="font-size:1.2em;" data_i18n="penalty__ignore") Ignore penalty?
 
             <!-- Fatigue level table -->
@@ -30,7 +30,7 @@
                     th(data-i18n="level") Level
                 tr
                     td
-                        +radio({name:"fatigue_level", class:"radio_1", value:"fresh", checked: true, trigger:{affects:['fatigue_penalty']}})
+                        +radio({name:"fatigue_level", class:"radio_1", value:"fresh", checked: true, trigger:{affects:['fatigue_penalty']} })
                     td
                     td
                     td
@@ -39,14 +39,14 @@
                 each fatigueLevel in fatigueLevels
                     tr
                         td
-                            +radio({name:"fatigue_level", class:"radio_1", value:fatigueLevel.name, trigger:{affects:['fatigue_penalty']}})
+                            +radio({name:"fatigue_level", class:"radio_1", value:fatigueLevel.name, trigger:{affects:['fatigue_penalty']} })
                         td: input(type="checkbox" class="check" name=`attr_fatigue_${fatigueLevel.name}__long_term` value="1")
                         td(style="text-align:center;")= fatigueLevel.penalty
                         td= fatigueLevel.recovery
                         td(data-i18n=fatigueLevel.name)= fatigueLevel.name.charAt(0).toUpperCase() + fatigueLevel.name.slice(1)
                 tr
                     td
-                        +radio({name:"fatigue_level", class:"radio_1", value:"unconscious", trigger:{affects:['fatigue_penalty']}})
+                        +radio({name:"fatigue_level", class:"radio_1", value:"unconscious", trigger:{affects:['fatigue_penalty']} })
                     td: input(type="checkbox" class="check" name="attr_fatigue_unconscious__long_term" value="1")
                     td
                     td 2 hr.
@@ -55,14 +55,14 @@
         <!-- Wounds -->
         div.sheet-col.wounds
             <h4 class="heading_label" data-i18n="wounds" style="margin-bottom:10px">Wounds</h4>
-            +hidden({name:"wound_total", value:0, class:"counter", trigger:{affects:['wound_penalty']}})
-            +hidden({name: "wound_penalty", value:0, trigger:{calculation: "calc_wound_penalty"}})
+            +hidden({name:"wound_total", value:0, class:"counter", trigger:{affects:['wound_penalty']} })
+            +hidden({name: "wound_penalty", value:0, trigger:{calculation: "calc_wound_penalty"} })
 
             <!-- Ignore wound penalty toggle -->
             table(class="table_2" style="width:300px;")
                 tr
                     td
-                        +checkbox({name:"wound_ignored", class:"check", value:"1", trigger:{affects:['wound_penalty']}})
+                        +checkbox({name:"wound_ignored", class:"check", value:"1", trigger:{affects:['wound_penalty']} })
                     td: span(style="font-size:1.2em;" data_i18n="penalty__ignore") Ignore penalty?
 
             <!-- Wound table -->
@@ -235,23 +235,48 @@
             <h4 class="heading_label" data-i18n="soak" >Soak</h4>
             <table class="table_2" style="width:380px">
                 <tr>
-                    <td></td>
                     <th data-i18n="soak" style="text-align: center;">Soak</th>
                     <th data-i18n="sta" style="text-align: center;">sta</th>
                     <th data-i18n="armor" style="text-align: center;">Armor</th>
                     <th data-i18n="bonus" style="text-align: center;">Bonus</th>
                     <th data-i18n="bonus" style="text-align: center;">Bonus</th>
                 </tr>
-                <tr>
-                    <td style="width:30px;">
-                        <button type="roll" class="button stress-roll single-roll" name="roll_soak" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
-                    </td>
-                    <td style="text-align: center;"><input type="number" class="number_1" name="attr_Soak" value="((@{Stamina_Score}) + (@{armors_total_prot}) + (@{soak_bonus}) + (@{combat-mods_total_soak}))" disabled="true"></td>
-                    <td style="text-align: center;"><input type="number" class="number_1" name="attr_soak_stamina" disabled="true" value="(@{Stamina_Score})"></td>
-                    <td style="text-align: center;"><input type="number" class="number_2" name="attr_armors_total_prot" value="0" readonly></td>
-                    <td style="text-align: center;"><input type="number" class="number_2" name="attr_soak_bonus" value="0"></td>
-                    <td style="text-align: center;"><input type="number" class="number_2" name="attr_combat-mods_total_soak" value="0" readonly></td>
-                </tr>
+                tr
+                    +pug_scope
+                        -
+                            const total = new RollTotal({
+                                score: {
+                                    "@{Stamina_Score}": "@{stamina_i18n}",
+                                    "@{armors_total_prot}": "@{armor_i18n}",
+                                    "@{soak_bonus}": "@{soakbns_i18n}",
+                                    "@{combat-mods_total_soak}": "@{soakbns_i18n}",
+                                },
+                                // No penalties to soak
+                                fatigue: false,
+                                wounds: false,
+                                encumbrance: false,
+                            });
+                            const roll = new Roll({
+                                template: "soak",
+                                label_key: "name",
+                                label: "@{character_name}",
+                                total_key: "rollsoak",
+                                total,
+                                fields: {
+                                    "armorsoak": inline_roll("@{armors_total_prot_detailed}"),
+                                    "soakbonus": inline_roll("(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})"),
+                                    "botch-button" : "[@{botch_i18n}!](~@{character_name}|botch)",
+                                    "crit-button": "[@{critical_i18n}!](~@{character_name}|critical)",
+                                }
+                            });
+                        <td style="width:30px;">
+                            +am5_roll_button({name: "soak", roll, mode:"stress"})
+                            //- <button type="roll" class="button stress-roll single-roll" name="roll_soak" value="&{template:soak} {{name=@{character_name}}} {{rollsoak=[[ @{stress-die} + (@{Stamina_Score}) [@{stamina_i18n}] + (@{armors_total_prot_detailed}) [@{armor_i18n}] + (@{soak_bonus}) [@{soakbns_i18n}] + (@{combat-mods_total_soak_detailed}) [@{soakbns_i18n}] ]]}} {{armorsoak=[[@{armors_total_prot_detailed}]]}} {{soakbonus=[[(@{soak_bonus}) + (@{combat-mods_total_soak_detailed})]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}"></button>
+                        </td>
+                        <td style="text-align: center;"><input type="number" class="number_1" name="attr_soak_stamina" disabled="true" value="(@{Stamina_Score})"></td>
+                        <td style="text-align: center;"><input type="number" class="number_2" name="attr_armors_total_prot" value="0" readonly></td>
+                        <td style="text-align: center;"><input type="number" class="number_2" name="attr_combat-mods_total_soak" value="0" readonly></td>
+                        <td style="text-align: center;"><input type="number" class="number_2" name="attr_soak_bonus" value="0"></td>
             </table>
         <!-- Encumbrance -->
         div.sheet-col
