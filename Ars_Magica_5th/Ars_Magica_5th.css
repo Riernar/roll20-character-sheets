@@ -4386,11 +4386,24 @@ End of the python integration block
   ================================ */
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .die {
-  width: 2.2ch;
-  height: 2.2ch;
+  width: 2.5ch;
+  height: 2.5ch;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  /* Die text overlay styling (e.g. initiative rolls) */
+}
+.ui-dialog .tab-content .charsheet .arm5-sheet .die-container button .die .die-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  font-family: "Contrail One", Copperplate Gothic Light, "Copperplate Gothic Light";
+  font-size: 0.9em;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  font-weight: bold;
 }
 .ui-dialog .tab-content .charsheet .arm5-sheet .die-container button.simple-roll .die {
   background-image: url("https://raw.githubusercontent.com/Roll20/roll20-character-sheets/master/Ars_Magica_5th/images/rollbutton_base.png");

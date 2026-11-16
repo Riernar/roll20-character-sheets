@@ -52,20 +52,20 @@
             this.encumbrance = encumbrance;
         }
 
-        
+
 
         // Public API: Get roll strings for all supported dice types
 
-        get_simple_roll() {
-            return this.#get_roll("@{simple-die}");
+        get_simple_roll({init_tracker=false}={}) {
+            return this.#get_roll({die: "@{simple-die}", init_tracker});
         }
 
-        get_stress_roll() {
-            return this.#get_roll("@{stress-die}");
+        get_stress_roll({init_tracker=false}={}) {
+            return this.#get_roll({die: "@{stress-die}", init_tracker});
         }
 
         get_no_dice_roll({annotations=true}={}) {
-            return this.#get_roll("0", annotations);
+            return this.#get_roll({die: "0", annotations});
         }
 
         // Public API: Get roll strings for parts of the computation. Used by the toll button
@@ -121,7 +121,7 @@
             return penalties;
         }
 
-        #get_roll(die, annotations=true) {
+        #get_roll({die, annotation=true, init_tracker=false}) {
             const score = this.get_score({annotations});
             const modifier = this.get_modifier({annotations});
             let result = `${die} + ${score} + ${modifier}`;
@@ -134,7 +134,11 @@
                     result = `${result} + ${total_bonus}`;
                 }
             }
-            return `(${result})`;
+            result = `(${result})`;
+            if (init_tracker) {
+                result = `${result} &{tracker}`;
+            }
+            return result;
         }
 
         #sum({parts, annotations}) {
@@ -218,23 +222,23 @@
             this.fields = { ...fields };
         }
 
-        get_simple_roll() {
+        get_simple_roll({init_tracker=false}={}) {
             return this.#build_roll(
-                this.total.get_simple_roll(),
+                this.total.get_simple_roll({init_tracker}),
                 "stress=",
             );
         }
 
-        get_stress_roll() {
+        get_stress_roll({init_tracker=false}={}) {
             return this.#build_roll(
-                this.total.get_stress_roll(),
+                this.total.get_stress_roll({init_tracker}),
                 "stress=1",
             );
         }
 
-        get_no_dice_roll() {
+        get_no_dice_roll({init_tracker=false}={}) {
             return this.#build_roll(
-                this.total.get_no_dice_roll(),
+                this.total.get_no_dice_roll({init_tracker}),
                 "stress=",
             );
         }
@@ -275,7 +279,7 @@
     }
 
 
-mixin am5_roll_button({name, roll, mode="simple+stress"})
+mixin am5_roll_button({name, roll, mode="simple+stress", init_tracker=false})
     -
         if (typeof name !== "string") {
             throw new TypeError(`+am5_roll_button(): name must be a string, got ${typeof name} ${name}`);
@@ -304,11 +308,11 @@ mixin am5_roll_button({name, roll, mode="simple+stress"})
 
     div.die-container&attributes(attributes)
         each die_mode in mode.split("+")
-            +_am5_roll_single_button({name, roll, mode: die_mode})(class={ "single-roll": single_roll })
+            +_am5_roll_single_button({name, roll, mode: die_mode, init_tracker})(class={ "single-roll": single_roll })
                 block
 
 
-mixin _am5_roll_single_button({name, mode, roll, die_label})
+mixin _am5_roll_single_button({name, mode, roll, die_label, init_tracker})
     -
         if (typeof name !== "string") {
             throw new TypeError(`+_am5_roll_single_button(): expected 'name' of type string, got ${typeof name} object ${name}`);
@@ -330,14 +334,16 @@ mixin _am5_roll_single_button({name, mode, roll, die_label})
         type="roll"
         class=`${mode}-roll`
         name=`roll_${name}_${mode}`
-        value!=roll[`get_${mode}_roll`]()
+        value!=roll[`get_${mode}_roll`]({init_tracker})
     )&attributes(attributes)
         span.roll-formula
             if (["simple", "stress"].includes(mode))
                 if has_divider
                     span.formula-paren (
                 span.die(class=`${mode}-roll`)
-                    block
+                    if block
+                    span.die-overlay
+                        block
                 span.formula-operator +
             input.roll-value(
                 type="number"
@@ -568,7 +574,6 @@ mixin _am5_roll_single_button({name, mode, roll, die_label})
 
 
                 /* Auto-calculated values */
-
                 .roll-value {
                     display: inline-block;
                     flex: 0 0 auto;
@@ -593,8 +598,6 @@ mixin _am5_roll_single_button({name, mode, roll, die_label})
                         appearance: none;
                         margin: 0;
                     }
-
-
                 }
 
 
@@ -603,12 +606,29 @@ mixin _am5_roll_single_button({name, mode, roll, die_label})
                 ================================ */
 
                 .die {
-                    width: 2.2ch;
-                    height: 2.2ch;
+                    width: 2.5ch;
+                    height: 2.5ch;
 
                     background-repeat: no-repeat;
                     background-position: center;
                     background-size: contain;
+
+                    /* Die text overlay styling (e.g. initiative rolls) */
+                    .die-overlay {
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-end;
+                        width: 100%;
+                        height: 100%;
+                        font-family: "Contrail One", Copperplate Gothic Light, "Copperplate Gothic Light";
+                        font-size: 0.9em;
+                        color: white;
+                        text-shadow: 1px 1px 2px black;
+                        font-weight: bold;
+                    }
+
+                    // font-family: "Con
+
                 }
 
                 &.simple-roll {
