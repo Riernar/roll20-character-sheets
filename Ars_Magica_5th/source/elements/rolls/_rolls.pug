@@ -6,13 +6,13 @@
         constructor({
             score,
             penalties = {},
-            modifier = true,
             divider = null,
             total_bonuses = null,
-            // Standardized penalties. Set to:
+            // Standardized bonus/penalties. Set to:
             // - `true` to use the default value
             // - `false` to disable
             // - a string to override the default value
+            modifier = true,
             fatigue = true,
             wounds = true,
             encumbrance = true,
@@ -30,23 +30,17 @@
                 this.#validateParts(total_bonuses, "total_bonuses");
             }
 
-            if (typeof fatigue !== "boolean") {
-                throw new TypeError("fatigue must be a boolean");
-            }
-
-            if (typeof wounds !== "boolean") {
-                throw new TypeError("wounds must be a boolean");
-            }
-
-            if (typeof modifier !== "boolean") {
-                throw new TypeError("modifier must be a boolean");
+            for (const [key, value] of Object.entries( { modifier, fatigue, wounds, encumbrance } )) {
+                if (typeof value !== "string" && typeof value !== "boolean") {
+                    throw new TypeError(`Invalid parameter '${key}': expected a string or boolean, received ${typeof value} object ${value}`);
+                }
             }
 
             this.score = { ...score };
             this.penalties = { ...penalties };
-            this.modifier = modifier;
             this.divider = divider ? { ...divider } : null;
             this.total_bonuses = total_bonuses ? {...total_bonuses} : null;
+            this.modifier = modifier;
             this.fatigue = fatigue;
             this.wounds = wounds;
             this.encumbrance = encumbrance;
@@ -80,7 +74,7 @@
         }
 
         get_modifier({annotations=true}={}) {
-            const modifier = "?{@{modifiers_i18n}|0}";
+            const modifier = (typeof this.modifier === "string" ) ? this.modifier : "?{@{modifiers_i18n}|0}";
             return annotations ? `${modifier} [@{modifiers_i18n}]` : modifier;
         }
 

@@ -336,11 +336,8 @@
                 <th><div style="width:190px" data-i18n="weapon-name" >Weapon Name</div></th>
                 //- <td><div style="width:100px"></div></td>
                 <th><div style="width:60px" data-i18n="init" >Init</div></th>
-                <td><div style="width:25px"></div></td>
                 <th><div style="width:60px" data-i18n="atk" >Atk</div></th>
-                <td><div style="width:30px"></div></td>
                 <th><div style="width:45px" data-i18n="dfn" >Dfn</div></th>
-                <td><div style="width:18px;"></div></td>
                 <th><div style="width:45px" data-i18n="dam" >Dam</div></th>
                 <th><div style="width:50px" data-i18n="ability" >Ability</div></th>
                 <th><div style="width:50px" data-i18n="load" >Load</div></th>
@@ -355,6 +352,9 @@
                         div.flex-container-center
                             +checkbox({name: "is_active", value: 1, checked: false})
                     <th><input type="text" class="heading_3" name="attr_Weapon_name"></th>
+
+                    //- <td><button type="roll" class="button stress-roll single-roll" name="roll_weapon_Init" value="&{template:initiative} {{name=@{character_name}}} {{weapon=@{Weapon_name}}} {{roll=[[ @{stress-die} + (@{Quickness_Score}) [@{quickness_i18n}] + (@{Init_Weap}) [@{Weapon_name}] + (@{combat-mods_total_init}) [@{bonus_i18n}] - (@{Init_Encumbrance}) [@{encumbrance_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] + (?{@{initiative_i18n} @{modifiers_i18n}|0}) [@{initiative_i18n} @{modifiers_i18n}] &{tracker}]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-init)}} {{stress=1}}" data-i18n="init" >Init</button></td>
+                    //- <td><input type="text" class="number_1" name="attr_Init" value="(@{Quickness_Score}) + (@{Init_Weap}) + (@{combat-mods_total_init})- (@{Init_Encumbrance})" disabled="true"></td>
 
                     td
                         -
@@ -377,24 +377,88 @@
                         +am5_roll_button({name: "weapon_init", roll: init_roll, mode:"stress", init_tracker: true})
                             +span({"data-i18n": "init"}) Init
 
-                    //- <td><button type="roll" class="button stress-roll single-roll" name="roll_weapon_Init" value="&{template:initiative} {{name=@{character_name}}} {{weapon=@{Weapon_name}}} {{roll=[[ @{stress-die} + (@{Quickness_Score}) [@{quickness_i18n}] + (@{Init_Weap}) [@{Weapon_name}] + (@{combat-mods_total_init}) [@{bonus_i18n}] - (@{Init_Encumbrance}) [@{encumbrance_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (@{wound_total}) [@{wounds_i18n}] + (?{@{initiative_i18n} @{modifiers_i18n}|0}) [@{initiative_i18n} @{modifiers_i18n}] &{tracker}]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical-init)}} {{stress=1}}" data-i18n="init" >Init</button></td>
-                    //- <td><input type="text" class="number_1" name="attr_Init" value="(@{Quickness_Score}) + (@{Init_Weap}) + (@{combat-mods_total_init})- (@{Init_Encumbrance})" disabled="true"></td>
+                    
+                    //- <td><button type="roll" class="button stress-roll single-roll" name="roll_weapon_Atk" value="&{template:attack} {{name=@{character_name}}} {{weapon=@{Weapon_name}}} {{attack=[[ @{stress-die} + (@{Dexterity_Score}) [@{dexterity_i18n}] + (@{WeaponAbility}) [@{ability_i18n}] + (@{combat-mods_total_atk}) [@{bonus_i18n}] + (@{Atk_Weap}) [@{Weapon_name}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (?{@{circumstantial_i18n} @{attack_i18n}|0}) [@{circumstantial_i18n} @{attack_i18n}]]]}} {{damage=[[ (@{Strength_Score}) [@{strength_i18n}] + (@{Dam_Weap}) [@{Weapon_name}] + (@{combat-mods_total_dam}) [@{bonus_i18n}] + (?{@{circumstantial_i18n} @{damage_i18n}|0}) [@{circumstantial_i18n} @{damage_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}" data-i18n="atk" >Atk</button></td>
+                    //- <td><input type="text" class="number_1" name="attr_Atk" value="(@{Dexterity_Score}) + (@{WeaponAbility}) + (@{combat-mods_total_atk}) + (@{Atk_Weap})" disabled="true"></td>
 
-                    <td><button type="roll" class="button stress-roll single-roll" name="roll_weapon_Atk" value="&{template:attack} {{name=@{character_name}}} {{weapon=@{Weapon_name}}} {{attack=[[ @{stress-die} + (@{Dexterity_Score}) [@{dexterity_i18n}] + (@{WeaponAbility}) [@{ability_i18n}] + (@{combat-mods_total_atk}) [@{bonus_i18n}] + (@{Atk_Weap}) [@{Weapon_name}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (?{@{circumstantial_i18n} @{attack_i18n}|0}) [@{circumstantial_i18n} @{attack_i18n}]]]}} {{damage=[[ (@{Strength_Score}) [@{strength_i18n}] + (@{Dam_Weap}) [@{Weapon_name}] + (@{combat-mods_total_dam}) [@{bonus_i18n}] + (?{@{circumstantial_i18n} @{damage_i18n}|0}) [@{circumstantial_i18n} @{damage_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}" data-i18n="atk" >Atk</button></td>
-                    <td><input type="text" class="number_1" name="attr_Atk" value="(@{Dexterity_Score}) + (@{WeaponAbility}) + (@{combat-mods_total_atk}) + (@{Atk_Weap})" disabled="true"></td>
+                    td
+                        -
+                            const atk_total = new RollTotal({
+                                score: {
+                                    "@{Dexterity_Score}": "@{dexterity_i18n}",
+                                    "@{WeaponAbility}": "@{ability_i18n}",
+                                    "@{combat-mods_total_atk}": "@{bonus_i18n}",
+                                    "@{Atk_Weap}": "@{Weapon_name}",
+                                },
+                                modifier: "?{@{circumstantial_i18n} @{attack_i18n}|0}",
+                                encumbrance: false, // already accounted for in combat rolls
+                            });
 
-                    <td><button type="roll" class="button stress-roll single-roll" name="roll_weapon_Dfn" value="&{template:defend} {{name=@{character_name}}} {{weapon=@{Weapon_name}}} {{defend=[[ @{stress-die} + (@{Quickness_Score}) [@{quickness_i18n}] + (@{WeaponAbility}) [@{ability_i18n}] + (@{combat-mods_total_dfn}) [@{bonus_i18n}] + (@{Dfn_Weap}) [@{Weapon_name}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (?{@{circumstantial_i18n} @{defense_i18n}|0}) [@{circumstantial_i18n} @{defense_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}" data-i18n="dfn" >Dfn</button></td>
-                    <td><input type="text" class="number_1" name="attr_Dfn" value="(@{Quickness_Score}) + (@{WeaponAbility}) + (@{combat-mods_total_dfn}) + (@{Dfn_Weap})" disabled="true"></td>
+                            const dam_total = new RollTotal({
+                                score: {
+                                    "@{Strength_Score}": "@{strength_i18n}",
+                                    "@{Dam_Weap}": "@{Weapon_name}",
+                                    "@{combat-mods_total_dam}": "@{bonus_i18n}",
+                                },
+                                modifier: "?{@{circumstantial_i18n} @{damage_i18n}|0}",
+                                fatigue: false,
+                                wounds: false,
+                                encumbrance: false,
+                            });
 
-                    <td><div style="width:10px;"></div></td>
-                    <td><input type="number" class="number_1" name="attr_Dam" value="((@{Strength_Score}) + (@{combat-mods_total_dam}) + (@{Dam_Weap}))" disabled="true"></td>
+                            const atk_roll = new Roll({
+                                template: "attack",
+                                label_key: "weapon",
+                                label: "@{Weapon_name}",
+                                total_key: "attack",
+                                total: atk_total,
+                                fields: {
+                                    "damage": inline_roll(dam_total.get_no_dice_roll({annotations: true})),
+                                    "botch-button": "[@{botch_i18n}!](~@{character_name}|botch)",
+                                    "crit-button": "[@{critical_i18n}!](~@{character_name}|critical)",
+                                }
+                            });
+                        +am5_roll_button({name: "weapon_atk", roll: atk_roll, mode:"stress"})
+                            +span({"data-i18n": "atk"}) Atk
+
+                    //- <td><button type="roll" class="button stress-roll single-roll" name="roll_weapon_Dfn" value="&{template:defend} {{name=@{character_name}}} {{weapon=@{Weapon_name}}} {{defend=[[ @{stress-die} + (@{Quickness_Score}) [@{quickness_i18n}] + (@{WeaponAbility}) [@{ability_i18n}] + (@{combat-mods_total_dfn}) [@{bonus_i18n}] + (@{Dfn_Weap}) [@{Weapon_name}] + (@{wound_total}) [@{wounds_i18n}] + ([[floor(@{Fatigue})]]) [@{fatigue_i18n}] + (?{@{circumstantial_i18n} @{defense_i18n}|0}) [@{circumstantial_i18n} @{defense_i18n}] ]]}} {{botch-button=[@{botch_i18n}!](~@{character_name}|botch)}} {{crit-button=[@{critical_i18n}!](~@{character_name}|critical)}} {{stress=1}}" data-i18n="dfn" >Dfn</button></td>
+                    //- <td><input type="text" class="number_1" name="attr_Dfn" value="(@{Quickness_Score}) + (@{WeaponAbility}) + (@{combat-mods_total_dfn}) + (@{Dfn_Weap})" disabled="true"></td>
+
+                    td
+                        -
+                            const dfn_total = new RollTotal({
+                                score: {
+                                    "@{Quickness_Score}": "@{quickness_i18n}",
+                                    "@{WeaponAbility}": "@{ability_i18n}",
+                                    "@{combat-mods_total_dfn}": "@{bonus_i18n}",
+                                    "@{Dfn_Weap}": "@{Weapon_name}",
+                                },
+                                modifier: "?{@{circumstantial_i18n} @{defense_i18n}|0}",
+                                encumbrance: false,
+                            });
+
+                            const dfn_roll = new Roll({
+                                template: "defend",
+                                label_key: "weapon",
+                                label: "@{Weapon_name}",
+                                total_key: "defend",
+                                total: dfn_total,
+                                fields: {
+                                    "botch-button": "[@{botch_i18n}!](~@{character_name}|botch)",
+                                    "crit-button": "[@{critical_i18n}!](~@{character_name}|critical)",
+                                }
+                            });
+                        +am5_roll_button({name: "weapon_dfn", roll: dfn_roll, mode:"stress"})
+                            +span({"data-i18n": "dfn"}) Dfn
+
+                    td: input(type="number" class="number_1" name="attr_Dam" value=dam_total.get_no_dice_roll({annotations: false}) disabled="true")
                     <td><input type="number" class="number_1" name="attr_WeaponAbility" value="0"></td>
                     td: +number({class: "number_1", name: "Weapon_Load", value:"0"})
                     <td><input type="text" class="number_1" name="attr_Weapon_Range"></td>
                     <th><div style="width:40px;"><input type="checkbox" class="hider checkbox_1" name="attr_Weapon_show" value="1" checked><span></span></div></th>
                 </tr>
             </table>
-            <input type="checkbox" class="hider hidden" name="attr_Weapon_show" value="1" checked><span></span>
+            <input type="checkbox" class="hider hidden" name="attr_Weapon_show" value="1" checked>
             <div class="sheet-hide" style="border-color:#e6dbc6; border-style: inset;">
                 <table class="table_3 table_center" style="display:inline; margin-right:10px;">
                     <tr >
